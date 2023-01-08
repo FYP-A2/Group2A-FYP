@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a0c6c5ff166984bb56385258fb3cd9, type: 3}
+  m_Name: miniboss
+  m_EditorClassIdentifier: 
+  health: 150
+  damage: 20
+  animSpeed: 0.5
+  baseOffset: -0.2
+  speed: 0.1
+  angularSpeed: 720
+  acceleration: 4
+  stoppingDistance: 1.7
+  radius: 1.7
+  height: 1.6
+  obstacleAvoidance: 1
+  avoidancePriority: 50
+  areaMask: -1
+  velocity: {x: 1, y: 1, z: 1}
