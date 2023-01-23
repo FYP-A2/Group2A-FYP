@@ -80,6 +80,6 @@ public class InputHandleExample : MonoBehaviour
 
     private bool ReadValueBool(InputAction action)
     {
-        return ReadValue(action) == 0 ? false : true;
+        return ReadValue(action) != 0;
     }
 }
