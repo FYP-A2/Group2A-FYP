@@ -12,22 +12,27 @@ namespace FYP2A.VR.Melee
         {
             Source, Target
         }
-        public HitboxType hitboxType;
-        public MeleeSource source;
-        public MeleeTarget target;
-        public Vector3 velocity;
+        HitboxType hitboxType;
+        MeleeSource source;
+        MeleeTarget target;
+        public Vector3 velocity { get => (transform.position - oldPosition) / Time.deltaTime; }
+        public Vector3 upDirecton { get => transform.up; }
         Vector3 oldPosition;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            velocity = (transform.position - oldPosition) / Time.deltaTime;
+
+        }
+
+        private void LateUpdate()
+        {
             oldPosition = transform.position;
         }
 
@@ -45,8 +50,6 @@ namespace FYP2A.VR.Melee
 
         private void OnCollisionEnter(Collision collision)
         {
-
-            Debug.Log("OnCollisionEnter");
             if (hitboxType == HitboxType.Target)
                 return;
 
@@ -62,7 +65,6 @@ namespace FYP2A.VR.Melee
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("OnTriggerEnter");
             if (hitboxType == HitboxType.Target)
                 return;
 

@@ -75,8 +75,10 @@ namespace FYP2A.VR.Melee
         // Update is called once per frame
         protected void Update()
         {
-            HittedTargetCountdown(foughtTargets,out foughtTargets);
-            HittedTargetCountdown(hewedTargets,out hewedTargets);        
+            if (foughtTargets.Count > 0) 
+                HittedTargetCountdown(foughtTargets,out foughtTargets);
+            if (hewedTargets.Count > 0)
+                HittedTargetCountdown(hewedTargets,out hewedTargets);        
         }
 
         public virtual void HitTo(MeleeTarget target,MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
@@ -103,8 +105,6 @@ namespace FYP2A.VR.Melee
 
         private void HittedTargetCountdown(List<TargetCD> targets, out List<TargetCD> o)
         {
-            if (targets.Count == 0)
-                o = targets;
 
             List<TargetCD> result = new List<TargetCD>();
             TargetCD t;
