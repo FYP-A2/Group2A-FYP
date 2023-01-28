@@ -7,10 +7,9 @@ using UnityEngine;
 
 namespace FYP2A.VR.Melee
 {
-    [RequireComponent(typeof(MeleeHitbox))]
     public class MeleeSource : MonoBehaviour
     {
-
+        
         [Header("Melee Source Property")]
 
         [SerializeField]

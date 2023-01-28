@@ -12,10 +12,10 @@ namespace FYP2A.VR.Melee
         {
             Source, Target
         }
-        HitboxType hitboxType;
-        MeleeSource source;
-        MeleeTarget target;
-        public Vector3 velocity { get => (transform.position - oldPosition) / Time.deltaTime; }
+        internal HitboxType hitboxType;
+        internal MeleeSource source;
+        internal MeleeTarget target;
+        public Vector3 velocity { get => GetComponent<Rigidbody>().velocity; }
         public Vector3 upDirecton { get => transform.up; }
         Vector3 oldPosition;
 
@@ -28,7 +28,7 @@ namespace FYP2A.VR.Melee
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         private void LateUpdate()

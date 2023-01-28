@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace FYP2A.VR.Melee
 {
-    [RequireComponent(typeof(MeleeHitbox))]
     public class MeleeTarget : MonoBehaviour
     {
 
         [Header("Melee Target Property")]
+
+        [SerializeField]
+        private bool enableHitboxs = true;
+
+        
+        [SerializeField]
+        private bool affectByActivator = true;
 
         [SerializeField]
         protected MeleeHitbox hitbox;
@@ -24,7 +30,6 @@ namespace FYP2A.VR.Melee
 
         protected void Start()
         {
-            Debug.Log("t start");
             if (hitbox == null)
                 TryGetComponent<MeleeHitbox>(out hitbox);
         
@@ -35,6 +40,37 @@ namespace FYP2A.VR.Melee
             {
                 foreach (MeleeHitbox hb in hitboxes)
                     hb.SetMeleeProperty(this);
+            }
+        }
+
+
+        public virtual void EnableHitboxs()
+        {
+            if (!enableHitboxs && affectByActivator)
+            {
+                if (hitbox != null)
+                    hitbox.enabled = true;
+
+                foreach (MeleeHitbox meleeHitbox in hitboxes)
+                    if (meleeHitbox != null)
+                        meleeHitbox.enabled = true;
+
+                enableHitboxs = true;
+            }
+        }
+
+        public virtual void DisableHitboxs()
+        {
+            if (enableHitboxs && affectByActivator)
+            {
+                if (hitbox != null)
+                    hitbox.enabled = false;
+
+                foreach (MeleeHitbox meleeHitbox in hitboxes)
+                    if (meleeHitbox != null)
+                        meleeHitbox.enabled = false;
+
+                enableHitboxs = false;
             }
         }
 
