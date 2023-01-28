@@ -27,7 +27,13 @@ public class InputHandleExample : MonoBehaviour
 
     void Start()
     {
+        testAction1.action.performed += Action_performed;
+    }
 
+    private void Action_performed(InputAction.CallbackContext obj)
+    {
+        //do something when button was clicked
+        Debug.Log("Action_performed");
     }
 
     void Update()
