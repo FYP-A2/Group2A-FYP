@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 245838569859616268}
   - component: {fileID: 2178937818030642903}
   m_Layer: 0
-  m_Name: FireEffect 1
+  m_Name: FreezeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4760,7 +4760,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90e6d6f133154e6419e4370c2063f931, type: 2}
+  - {fileID: 2100000, guid: 11b2349b923b0a34c87802867479d456, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
