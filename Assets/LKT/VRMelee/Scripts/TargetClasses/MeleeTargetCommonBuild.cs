@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace FYP2A.VR.Melee.Target
@@ -17,6 +18,12 @@ namespace FYP2A.VR.Melee.Target
         public float HitArea1ProgressAdd = 5;
         public float HitArea2ProgressAdd = 1;
 
+        [SerializeField]
+        Color colorAfterHit = Color.white;
+        Color cA0;
+        Color cA1;
+        Color cA2;
+
         int HitArea0Enter = 0;
         int HitArea1Enter = 0;
         int HitArea2Enter = 0;
@@ -28,6 +35,10 @@ namespace FYP2A.VR.Melee.Target
         {
             base.Start();
             AddBuildProgressEvent += MeleeTargetCommonBuild_addBuildProgressEvent;
+
+            cA0 = hitboxes[0].GetComponent<Renderer>().material.color;
+            cA1 = hitboxes[1].GetComponent<Renderer>().material.color;
+            cA2 = hitboxes[2].GetComponent<Renderer>().material.color;
         }
 
         // Update is called once per frame
@@ -39,13 +50,16 @@ namespace FYP2A.VR.Melee.Target
                 if (HitArea0Enter > 0)
                 {
                     AddBuildProgressEvent(HitArea0ProgressAdd);
+                    StartCoroutine(DisplayHitted(hitboxes[0], cA0, colorAfterHit, 0.3f));
                 }
                 else if (HitArea1Enter > 0) {
                     AddBuildProgressEvent(HitArea1ProgressAdd);
+                    StartCoroutine(DisplayHitted(hitboxes[1], cA1, colorAfterHit, 0.3f));
                 }
                 else if (HitArea2Enter > 0)
                 {
                     AddBuildProgressEvent(HitArea2ProgressAdd);
+                    StartCoroutine(DisplayHitted(hitboxes[2], cA2, colorAfterHit, 0.3f));
                 }
 
 
@@ -92,6 +106,31 @@ namespace FYP2A.VR.Melee.Target
         private void MeleeTargetCommonBuild_addBuildProgressEvent(float buildProgress)
         {
 
+        }
+
+        IEnumerator DisplayHitted(MeleeHitbox targetHitbox,Color colorStart, Color colorEnd, float duration)
+        {
+            float t = 0;
+
+            Material m = targetHitbox.GetComponent<Renderer>().material;
+
+            while (t < 1)
+            {
+                m.color = Color.Lerp(colorStart,colorEnd,t);
+
+                t += Time.deltaTime / duration;
+
+                yield return null;
+            }
+
+            while (t > 0)
+            {
+                m.color = Color.Lerp(colorStart, colorEnd, t);
+
+                t -= Time.deltaTime / duration;
+
+                yield return null;
+            }
         }
     }
 
