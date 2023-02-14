@@ -1,4 +1,5 @@
 using FYP2A.VR.Melee.Source;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -32,7 +33,7 @@ namespace FYP2A.VR.Melee.Target
         float difficultyFactorMin = 1;
         [SerializeField]
         float difficultyFactorMax = 1.2f;
-        float OneOverDifficultyFactor { get => 1/Random.Range(difficultyFactorMin, difficultyFactorMax); }
+        float OneOverDifficultyFactor { get => 1/ UnityEngine.Random.Range(difficultyFactorMin, difficultyFactorMax); }
 
 
 
@@ -42,13 +43,13 @@ namespace FYP2A.VR.Melee.Target
         float randomRestMin = 0.1f;
         [SerializeField]
         float randomRestMax = 0.5f;
-        float RandomRest { get => Random.Range(randomRestMin, randomRestMax); }
+        float RandomRest { get => UnityEngine.Random.Range(randomRestMin, randomRestMax); }
 
 
 
         int nowHitRingNumber = 0;
         int MaxHitRingCount { get => hitboxes.Count; }
-        int RandomHitRingNumber { get => Random.Range(0, MaxHitRingCount); }
+        int RandomHitRingNumber { get => UnityEngine.Random.Range(0, MaxHitRingCount); }
 
         float nowDamage;
 
@@ -114,6 +115,9 @@ namespace FYP2A.VR.Melee.Target
 
         public override void HitBy(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
         {
+            if (source.gameObject.name != "Axe")
+                return;
+
             if (minigameOn && minigameCanInput && CheckHitRing(targetHitbox) && CheckHitCorrectRing(targetHitbox))
             {
                 StopAllMinigameCheckTimeOut();

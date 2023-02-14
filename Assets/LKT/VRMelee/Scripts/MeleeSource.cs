@@ -102,6 +102,11 @@ namespace FYP2A.VR.Melee
 
         }
 
+        public virtual void HitLeave(MeleeTarget target, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
+        {
+
+        }
+
         private void HittedTargetCountdown(List<TargetCD> targets, out List<TargetCD> o)
         {
 

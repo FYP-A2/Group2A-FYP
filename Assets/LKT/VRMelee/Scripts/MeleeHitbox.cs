@@ -50,7 +50,7 @@ namespace FYP2A.VR.Melee
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (hitboxType == HitboxType.Target)
+            if (hitboxType != HitboxType.Source)
                 return;
 
             MeleeHitbox targetHitbox;
@@ -65,7 +65,7 @@ namespace FYP2A.VR.Melee
 
         private void OnTriggerEnter(Collider other)
         {
-            if (hitboxType == HitboxType.Target)
+            if (hitboxType != HitboxType.Source)
                 return;
 
             MeleeHitbox targetHitbox;
@@ -74,6 +74,34 @@ namespace FYP2A.VR.Melee
                 {
                     source.HitTo(targetHitbox.target, this, targetHitbox);
                     targetHitbox.target.HitBy(source, this, targetHitbox);
+                }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (hitboxType != HitboxType.Source)
+                return;
+
+            MeleeHitbox targetHitbox;
+            if (collision.gameObject.TryGetComponent<MeleeHitbox>(out targetHitbox))
+                if (targetHitbox.hitboxType == HitboxType.Target)
+                {
+                    source.HitLeave(targetHitbox.target, this, targetHitbox);
+                    targetHitbox.target.HitLeave(source, this, targetHitbox);
+                }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (hitboxType != HitboxType.Source)
+                return;
+
+            MeleeHitbox targetHitbox;
+            if (other.gameObject.TryGetComponent<MeleeHitbox>(out targetHitbox))
+                if (targetHitbox.hitboxType == HitboxType.Target)
+                {
+                    source.HitLeave(targetHitbox.target, this, targetHitbox);
+                    targetHitbox.target.HitLeave(source, this, targetHitbox);
                 }
         }
     }

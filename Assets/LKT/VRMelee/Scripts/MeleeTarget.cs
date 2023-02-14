@@ -79,6 +79,11 @@ namespace FYP2A.VR.Melee
 
         }
 
+        public virtual void HitLeave(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
+        {
+
+        }
+
 
         public void TakeFightDamageCheck(float damage)
         {
