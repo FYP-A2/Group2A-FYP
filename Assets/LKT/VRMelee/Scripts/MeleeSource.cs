@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace FYP2A.VR.Melee
 {
@@ -42,6 +44,8 @@ namespace FYP2A.VR.Melee
         [SerializeField]
         protected GameObject _owner;
         public GameObject owner { get { return _owner; } }
+        public XRBaseController hand;
+
 
         [Serializable]
         public struct TargetCD
@@ -145,6 +149,16 @@ namespace FYP2A.VR.Melee
         public virtual float GetHewDamage(MeleeTarget target)
         {
             return hewDamage;
+        }
+
+        public XRBaseController GetGrabbingHand()
+        {
+            if (XRInteractorList.directInteractorLeft.hasSelection && XRInteractorList.directInteractorLeft.IsSelecting(GetComponent<XRGrabInteractable>()))
+                return XRInteractorList.baseControllerLeft;
+            else if (XRInteractorList.directInteractorRight.hasSelection && XRInteractorList.directInteractorRight.IsSelecting(GetComponent<XRGrabInteractable>()))
+                return XRInteractorList.baseControllerRight;
+            else
+                return null;
         }
 
     }

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
+using static Unity.VisualScripting.Member;
 
 namespace FYP2A.VR.Melee.Target
 {
@@ -14,6 +17,20 @@ namespace FYP2A.VR.Melee.Target
 
         [Header("")]
         [Header("Melee Target Common Build Motion")]
+
+        [SerializeField]
+        Transform hitArea;
+        [SerializeField]
+        float hitAreaOffsetRandom = 0.1f;
+        [SerializeField]
+        float hitAreaOffsetMax = 0.5f;
+
+        float hitTimeCD = 0;
+        float defaultHitTimeCD = 0.2f;
+        float sourceHitboxVelocityNow = 0;
+        float sourceHitboxVelocityMin = 3f;
+
+        [Header("")]
         public float HitArea0ProgressAdd = 15;
         public float HitArea1ProgressAdd = 5;
         public float HitArea2ProgressAdd = 1;
@@ -30,6 +47,13 @@ namespace FYP2A.VR.Melee.Target
 
         bool thisUpdateRoundEnter = false;
 
+        [SerializeField]
+        Slider progressionBar;
+        float progressionBarMax = 100;
+        float progressionBarNow = 50;
+
+        MeleeSource sourceNow;
+
         // Start is called before the first frame update
         new void Start()
         {
@@ -44,26 +68,39 @@ namespace FYP2A.VR.Melee.Target
         // Update is called once per frame
         void Update()
         {
+            //if hammer is really entered.
             if (thisUpdateRoundEnter)
             {
-
-                if (HitArea0Enter > 0)
+                if (hitTimeCD <= 0 && sourceHitboxVelocityNow > sourceHitboxVelocityMin)
                 {
-                    AddBuildProgressEvent(HitArea0ProgressAdd);
-                    StartCoroutine(DisplayHitted(hitboxes[0], cA0, colorAfterHit, 0.3f));
-                }
-                else if (HitArea1Enter > 0) {
-                    AddBuildProgressEvent(HitArea1ProgressAdd);
-                    StartCoroutine(DisplayHitted(hitboxes[1], cA1, colorAfterHit, 0.3f));
-                }
-                else if (HitArea2Enter > 0)
-                {
-                    AddBuildProgressEvent(HitArea2ProgressAdd);
-                    StartCoroutine(DisplayHitted(hitboxes[2], cA2, colorAfterHit, 0.3f));
-                }
+                    if (HitArea0Enter > 0)
+                    {
+                        AddBuildProgressEvent(HitArea0ProgressAdd);
+                        StartCoroutine(DisplayHitted(hitboxes[0], cA0, colorAfterHit, 0.2f));
+                    }
+                    else if (HitArea1Enter > 0)
+                    {
+                        AddBuildProgressEvent(HitArea1ProgressAdd);
+                        StartCoroutine(DisplayHitted(hitboxes[1], cA1, colorAfterHit, 0.2f));
+                    }
+                    else if (HitArea2Enter > 0)
+                    {
+                        AddBuildProgressEvent(HitArea2ProgressAdd);
+                        StartCoroutine(DisplayHitted(hitboxes[2], cA2, colorAfterHit, 0.2f));
+                    }
 
+                    hitAreaRandomOffset();
+                    hitTimeCD += defaultHitTimeCD;
+
+                    StartCoroutine(HapticTest(sourceNow.GetGrabbingHand()));
+                }
 
                 thisUpdateRoundEnter = false;
+            }
+
+            if (hitTimeCD > 0)
+            {
+                hitTimeCD -= Time.deltaTime;
             }
         }
 
@@ -72,8 +109,11 @@ namespace FYP2A.VR.Melee.Target
             if (source.gameObject.name != "Hammer")
                 return;
 
+            // if Hammer enter the hitboxes and all previous Hammer exited, then do real Hammer enter in update. 
             if (CheckAllAreaNoEnter())
             {
+                sourceHitboxVelocityNow = sourceHitbox.velocity.magnitude;
+                sourceNow = source;
                 thisUpdateRoundEnter = true;
             }
 
@@ -98,6 +138,11 @@ namespace FYP2A.VR.Melee.Target
                 HitArea2Enter--;
         }
 
+        //public override void EnableHitboxs()
+        //{
+        //    base.EnableHitboxs();
+        //}
+
         bool CheckAllAreaNoEnter()
         {
             return HitArea0Enter == 0 && HitArea1Enter == 0 && HitArea2Enter == 0;
@@ -105,6 +150,22 @@ namespace FYP2A.VR.Melee.Target
 
         private void MeleeTargetCommonBuild_addBuildProgressEvent(float buildProgress)
         {
+
+        }
+
+        void hitAreaRandomOffset()
+        {
+            hitArea.localPosition += new Vector3(Random.Range(-hitAreaOffsetRandom, hitAreaOffsetRandom), 0, Random.Range(-hitAreaOffsetRandom, hitAreaOffsetRandom));
+
+            if (hitArea.localPosition.x < -hitAreaOffsetMax)
+                hitArea.localPosition += new Vector3(hitAreaOffsetMax / 2, 0, 0);
+            if (hitArea.localPosition.x > hitAreaOffsetMax)
+                hitArea.localPosition += new Vector3(-hitAreaOffsetMax / 2, 0, 0);
+
+            if (hitArea.localPosition.z < -hitAreaOffsetMax)
+                hitArea.localPosition += new Vector3(0, 0, hitAreaOffsetMax / 2);
+            if (hitArea.localPosition.z > hitAreaOffsetMax)
+                hitArea.localPosition += new Vector3(0, 0, -hitAreaOffsetMax / 2);
 
         }
 
@@ -131,6 +192,43 @@ namespace FYP2A.VR.Melee.Target
 
                 yield return null;
             }
+        }
+
+        public void SetProgressionDisplay(float now)
+        {
+            progressionBarNow = now;
+            UpdateProgressionBar();
+        }
+
+        public void SetProgressionDisplay(float now,float max)
+        {
+            progressionBarNow = now;
+            progressionBarMax = max;
+            UpdateProgressionBar();
+        }
+
+        void UpdateProgressionBar()
+        {
+            progressionBar.maxValue = progressionBarMax;
+            progressionBar.value = progressionBarNow;
+        }
+
+        IEnumerator HapticTest(XRBaseController xrbc)
+        {
+            float t = 0;
+
+            while (t < 1)
+            {
+                xrbc.SendHapticImpulse(WitchOfAgnesi(0.1f,0.1f,0.05f,t), Time.deltaTime);
+
+                t += Time.deltaTime;
+                yield return null;  
+            }
+        }
+
+        float WitchOfAgnesi(float a,float b,float c,float x)
+        {
+            return (Mathf.Pow(a, 2) * x) / ((Mathf.Pow(x, 2) + a * b)*c);
         }
     }
 

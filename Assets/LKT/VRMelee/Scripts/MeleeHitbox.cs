@@ -15,9 +15,9 @@ namespace FYP2A.VR.Melee
         internal HitboxType hitboxType;
         internal MeleeSource source;
         internal MeleeTarget target;
-        public Vector3 velocity { get => GetComponent<Rigidbody>().velocity; }
+        public Vector3 velocity { get => (oldCenterOfMass - GetComponent<Rigidbody>().worldCenterOfMass)/Time.deltaTime; }
         public Vector3 upDirecton { get => transform.up; }
-        Vector3 oldPosition;
+        Vector3 oldCenterOfMass;
 
         // Start is called before the first frame update
         void Start()
@@ -33,7 +33,7 @@ namespace FYP2A.VR.Melee
 
         private void LateUpdate()
         {
-            oldPosition = transform.position;
+            oldCenterOfMass = GetComponent<Rigidbody>().worldCenterOfMass;
         }
 
         public void SetMeleeProperty(MeleeSource source)
