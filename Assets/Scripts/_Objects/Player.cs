@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HardCodeSpawner : MonoBehaviour
+public class Player : MonoBehaviour,APlayer,IPlayer
 {
-    public Player p = new Player();
-    public GameObject grandchild_UsedModel;
-    
+    // Start is called before the first frame update
     void Start()
     {
-        p.usedModel=grandchild_UsedModel;
-        p.Spawn();
+        
     }
 
     // Update is called once per frame
