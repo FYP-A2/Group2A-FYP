@@ -44,7 +44,6 @@ namespace FYP2A.VR.Melee
         [SerializeField]
         protected GameObject _owner;
         public GameObject owner { get { return _owner; } }
-        public XRBaseController hand;
 
 
         [Serializable]

@@ -219,7 +219,7 @@ namespace FYP2A.VR.Melee.Target
 
             while (t < 1)
             {
-                xrbc.SendHapticImpulse(WitchOfAgnesi(0.1f,0.1f,0.05f,t), Time.deltaTime);
+                xrbc.SendHapticImpulse(WitchOfAgnesi(1f,0.26f,0.05f,t), Time.deltaTime);
 
                 t += Time.deltaTime;
                 yield return null;  
@@ -228,7 +228,7 @@ namespace FYP2A.VR.Melee.Target
 
         float WitchOfAgnesi(float a,float b,float c,float x)
         {
-            return (Mathf.Pow(a, 2) * x) / ((Mathf.Pow(x, 2) + a * b)*c);
+            return (Mathf.Pow(a, 2) * x/c) / ((Mathf.Pow(x/c, 2) + a * b));
         }
     }
 
