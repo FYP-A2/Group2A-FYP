@@ -670,6 +670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
 --- !u!4 &4717481339418193340 stripped
@@ -687,6 +691,10 @@ PrefabInstance:
     - target: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
       propertyPath: m_Name
       value: FreezeEffect_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6339499732898190898, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
       propertyPath: m_RootOrder

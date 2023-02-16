@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public Transform target;
-    public float range = 15f;
+    public float attackRange = 15f;
 
     public float fireRate = 1f;
     float fireCountdown = 0f;
@@ -36,7 +36,7 @@ public class Tower : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     void UpdateTarget()
@@ -54,7 +54,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= range)
+        if(nearestEnemy != null && shortestDistance <= attackRange)
         {
             target = nearestEnemy.transform;
         }
