@@ -18,7 +18,7 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 
     public bool connected { get => _connectedConnector2.Count == 1; }
     public TurretUpgradeConnector2 connectedConnector2 { get => _connectedConnector2[0]; }
-    List<TurretUpgradeConnector2> _connectedConnector2 = new List<TurretUpgradeConnector2>();
+    public List<TurretUpgradeConnector2> _connectedConnector2 = new List<TurretUpgradeConnector2>();
 
     public void SetRelation(TurretUpgradeConnector1 parentConnector, List<TurretUpgradeConnector3> connectorChildren, Connector2Type connectorType)
     {
@@ -28,12 +28,6 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 
         foreach(TurretUpgradeConnector3 tuc3 in childrenConnector)
             tuc3.parentConnector = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     int CheckConnectedChildren()
@@ -61,6 +55,7 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("enter: " + name.ToString() +" -> "+ other.name.ToString());
         TurretUpgradeConnector2 temp;
         if (other.TryGetComponent<TurretUpgradeConnector2>(out temp) && temp.connectorType != connectorType)
             _connectedConnector2.Add(other.GetComponent<TurretUpgradeConnector2>());

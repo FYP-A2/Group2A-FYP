@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49757da2aedb46a46a1bb1ccc25c85e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBase: 0
+  isBase: 1
   connectorUp: {fileID: 5631165044840497021}
   connectorDown: {fileID: 0}
   nexus:

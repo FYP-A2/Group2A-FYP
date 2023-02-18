@@ -9,6 +9,9 @@ namespace FYP2A.VR.PlaceTurrent
 {
     public class PlaceTurrent : MonoBehaviour
     {
+        float placeAnimationHeight = 10f;
+        float placeAnimationduration = 0.3f;
+
         TurrentPreview nowPreview;
         bool isPreviewing;
         [SerializeField]
@@ -159,9 +162,27 @@ namespace FYP2A.VR.PlaceTurrent
             if (nowPreview.canPlace)
             {
                 //if (nowPreview.placeType==TurrentPreview.PlaceType.baseT)
-                Instantiate(nowPreview.TurrentPrefab, nowPreview.gameObject.transform.position + new Vector3(0,nowPreview.offsetY,0), nowPreview.gameObject.transform.rotation);
+                Transform turret = Instantiate(nowPreview.TurrentPrefab, nowPreview.gameObject.transform.position + new Vector3(0,nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation).transform;
+                StartCoroutine(PlaceDownTurrentAnimation(turret, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
             }
+        }
+
+        IEnumerator PlaceDownTurrentAnimation(Transform turret,float height,float duration)
+        {
+            float t = 0;
+            float originHeight = turret.position.y - height;
+            float heightNow;
+            while (t < 1)
+            {
+                heightNow = Mathf.Lerp(originHeight + height, originHeight, t);
+                turret.position = new Vector3(turret.position.x, heightNow, turret.position.z);
+
+                t += Time.deltaTime / duration;
+                yield return null;
+            }
+            heightNow = Mathf.Lerp(originHeight + height, originHeight, t);
+            turret.position = new Vector3(turret.position.x, heightNow, turret.position.z);
         }
 
         bool CheckEnoughResources(TurrentPrefabIndex.Resources neededResources)
