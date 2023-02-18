@@ -10,12 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
-  m_Name: TestTower
+  m_Name: PhyTower
   m_EditorClassIdentifier: 
-  phyDamage: 0
+  towerPrefab: {fileID: 0}
+  phyDamage: 20
   magicDamage: 0
-  fireRate: 0
-  attackRange: 0
-  Type: 
+  fireRate: 1
+  attackRange: 10
+  Type: Phy
   level: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
+  burntDamage: 0
+  burntTime: 0
+  slowRatio: 0
+  slowTime: 0
+  ratio: 0
+  jumpCount: 0

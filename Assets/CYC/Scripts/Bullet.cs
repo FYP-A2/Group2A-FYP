@@ -34,21 +34,23 @@ public class Bullet : MonoBehaviour
             Idamage.TakeDamage(damage);
             Destroy(gameObject);
         }
-        else if(other.transform.tag == parent.tag)
+        else if (other.transform.tag == "AttackArea" || other.transform.tag == parent.tag)
         {
 
         }
         else
+        {
+            //Debug.Log(other.name);
             Destroy(gameObject);
+        }
     }
 
     IEnumerator SelfDestory()
     {
         while (true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             Destroy(gameObject);
         }
-
     }
 }

@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9391b5a0a12a54ca411a703defd06e, type: 3}
   m_Name: TestMonster
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 200
   damage: 20
-  defense: 10
-  resistance: 10
-  isRanged: 0
+  defense: 0.5
+  resistance: 0.5
   attackRange: 1
   attackDelay: 2
+  isRanged: 0
+  fireEffect: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
+  slowEffect: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
+  toxicEffect: {fileID: 0}
+  bullet: {fileID: 0}
   baseOffset: 1
   speed: 3
   angularSpeed: 120

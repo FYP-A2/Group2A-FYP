@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   damage: 20
-  defense: 10
-  resistance: 10
+  defense: 1
+  resistance: 1
   attackRange: 5
   attackDelay: 2
   isRanged: 1
+  fireEffect: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
+  slowEffect: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
+  toxicEffect: {fileID: 0}
   bullet: {fileID: 4936703170902901937, guid: c098ec0bf2b6ef74887dec8391e0ce68, type: 3}
   baseOffset: 1
   speed: 3

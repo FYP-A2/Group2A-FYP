@@ -12,7 +12,10 @@ public class EnemyScriptableObject : ScriptableObject
     public float attackRange;
     public float attackDelay;
     public bool isRanged = false;
-    public GameObject bullet;  
+    public GameObject fireEffect;
+    public GameObject slowEffect;
+    public GameObject toxicEffect;
+    public GameObject bullet;
 
     [Header("NavMeshAgent")]
     public float baseOffset = 1;
