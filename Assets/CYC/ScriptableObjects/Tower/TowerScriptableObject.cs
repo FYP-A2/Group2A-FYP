@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Tower Configuration", menuName = "ScriptableObjects.Tower Configuration")]
 public class TowerScriptableObject : ScriptableObject
 {
+    public GameObject towerPrefab;
     public int phyDamage;
     public int magicDamage;
     public int fireRate;
