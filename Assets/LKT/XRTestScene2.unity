@@ -1605,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 262.1
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1613,7 +1613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 147.05
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1936,21 +1936,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed655ad94b5095c43870250c7b08f001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turrents:
+  turrentsBase:
   - name: T1
-    description: T1 dddd
+    description: haha
     prefab: {fileID: 688548838375289791, guid: fd1447d3f59b6eb4a9d8bd798f240287, type: 3}
     preview: {fileID: 7110999667277423892, guid: 4fbe55a8aa7725d4da7b4b4b963c6edb, type: 3}
     neededResources:
-      wood: 0
-      ore: 0
-  - name: T2
-    description: T2 dddd
+      woodAmount: 0
+      stoneAmount: 0
+      coinAmount: 0
+      fireOreAmount: 0
+      iceOreAmount: 0
+      toxicOreAmount: 0
+      physicalOreAmount: 0
+      lightningOreAmount: 0
+  turrentsUpgrade:
+  - name: ss
+    description: d
     prefab: {fileID: 8766460034064593260, guid: 5c161ba428535d146baf9f2d30054ae7, type: 3}
     preview: {fileID: 5200336980493814201, guid: 06c4f774bf5b2c5489107a8ecefaa016, type: 3}
     neededResources:
-      wood: 0
-      ore: 0
+      woodAmount: 0
+      stoneAmount: 0
+      coinAmount: 0
+      fireOreAmount: 0
+      iceOreAmount: 0
+      toxicOreAmount: 0
+      physicalOreAmount: 0
+      lightningOreAmount: 0
 --- !u!114 &1014100641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,7 +2001,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -337186538344353344, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: 2433004570866368523, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   testSelect:
     m_UseReference: 1
     m_Action:
@@ -2012,7 +2025,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 2573958678587379509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -337186538344353344, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1021619523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3118,7 +3131,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902928839}
-  - component: {fileID: 1902928840}
   m_Layer: 0
   m_Name: Place Turrent Test
   m_TagString: Untagged
@@ -3143,20 +3155,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1902928840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902928838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df8cab2f4dd66a4a83230301d343a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotType: 0
-  connectorChildren: []
 --- !u!1 &1924809597
 GameObject:
   m_ObjectHideFlags: 0

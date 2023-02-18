@@ -29,6 +29,8 @@ namespace FYP2A.VR.PlaceTurrent
         InputActionProperty testSelect2;
 
 
+
+
         private void OnEnable()
         {
             inputConfirm.EnableDirectAction();
@@ -55,11 +57,11 @@ namespace FYP2A.VR.PlaceTurrent
 
         private void Test_Action_performed(InputAction.CallbackContext obj)
         {
-            SetPreviewTurrent(turrentPrefabIndex.turrents[0]);
+            SetPreviewTurrent(turrentPrefabIndex.turrentsBase[0]);
         }
         private void Test2_Action_performed(InputAction.CallbackContext obj)
         {
-            SetPreviewTurrent(turrentPrefabIndex.turrents[1]);
+            SetPreviewTurrent(turrentPrefabIndex.turrentsUpgrade[0]);
         }
 
         // Update is called once per frame
@@ -87,6 +89,7 @@ namespace FYP2A.VR.PlaceTurrent
 
         bool SetPreviewTurrent(TurrentPrefabIndex.Turrent turrentType)
         {
+            Debug.Log("Set preview");
             if (CheckEnoughResources(turrentType.neededResources))
             {
 
@@ -105,6 +108,8 @@ namespace FYP2A.VR.PlaceTurrent
             nowPreview = Instantiate(previewPrefab).GetComponent<TurrentPreview>();
             isPreviewing = true;
 
+            Debug.Log("Create");
+
         }
 
         void DeletePreview()
@@ -114,22 +119,46 @@ namespace FYP2A.VR.PlaceTurrent
 
             nowPreview = null;
             isPreviewing = false;
+
+            Debug.Log("Delete");
         }
 
         void SetPreviewPosition()
         {
             RaycastHit hit;
             Ray ray = new Ray(xrRayInteractor.rayOriginTransform.position, xrRayInteractor.rayOriginTransform.rotation * Vector3.forward);
-            Physics.Raycast(ray, out hit, 100, 1 << 10);
+ 
+            if (nowPreview.placeType == TurrentPreview.PlaceType.baseT)
+            {
+                Physics.Raycast(ray, out hit, 100, 1 << 10);
+                nowPreview.SetPosition(hit.point);
+            }
+            else
+            {
+                LayerMask lm = 1 << 10;
+                lm |= (1 << 12);
+                Physics.Raycast(ray, out hit, 100, lm);
+                TurretUpgradeConnector2 tupc;
+                if (hit.transform != null && hit.transform.TryGetComponent(out tupc))
+                {
+                    nowPreview.canPlaceUpgrade = true;
+                    nowPreview.SetPosition(tupc.transform.position);
+                }
+                else
+                {
+                    nowPreview.canPlaceUpgrade = false;
+                    nowPreview.SetPosition(hit.point);
+                }
+            }
 
             
-            nowPreview.SetPosition(hit.point);
         }
 
         void PlaceDownTurrent()
         {
             if (nowPreview.canPlace)
             {
+                //if (nowPreview.placeType==TurrentPreview.PlaceType.baseT)
                 Instantiate(nowPreview.TurrentPrefab, nowPreview.gameObject.transform.position + new Vector3(0,nowPreview.offsetY,0), nowPreview.gameObject.transform.rotation);
                 DeletePreview();
             }

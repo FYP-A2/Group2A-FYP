@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretUpgradePlaceConnectorChild : MonoBehaviour
+public class UpgradeTurret : MonoBehaviour
 {
-    public bool connected;
+    
+
     // Start is called before the first frame update
     void Start()
     {

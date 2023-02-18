@@ -18,10 +18,11 @@ public class TurrentPrefabIndex : MonoBehaviour
     [Serializable]
     public struct Resources
     {
-        public int wood;
-        public int ore;
+        public int woodAmount, stoneAmount, coinAmount, fireOreAmount, iceOreAmount, toxicOreAmount, physicalOreAmount, lightningOreAmount;
     }
 
     [SerializeField]
-    public List<Turrent> turrents = new List<Turrent>();
+    public List<Turrent> turrentsBase = new List<Turrent>();
+    [SerializeField]
+    public List<Turrent> turrentsUpgrade = new List<Turrent>();
 }

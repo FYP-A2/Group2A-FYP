@@ -8,7 +8,9 @@ namespace FYP2A.VR.PlaceTurrent
     {
         public GameObject TurrentPrefab;
         [HideInInspector]
-        public bool canPlace;
+        public bool canPlace = false;
+        [HideInInspector]
+        public bool canPlaceUpgrade = false;
         [SerializeField]
         private GameObject colorCanPlace;
         [SerializeField]
@@ -22,11 +24,17 @@ namespace FYP2A.VR.PlaceTurrent
         [SerializeField]
         List<GameObject> overlappedGameobject = new List<GameObject>();
 
+        public enum PlaceType { baseT, upgradeT }
+        public PlaceType placeType = PlaceType.baseT;
+
         // Start is called before the first frame update
         void Start()
         {
             if (autoSetOffsetY)
                 offsetY = colorCanPlace.transform.localPosition.y;
+
+            colorCannotPlace.GetComponent<MeshRenderer>().enabled = true;
+            colorCanPlace.GetComponent<MeshRenderer>().enabled = false;
         }
 
         // Update is called once per frame
@@ -42,7 +50,16 @@ namespace FYP2A.VR.PlaceTurrent
 
         void CheckCanPlace()
         {
-            bool result = overlappedGameobject.Count == 0;
+            bool result = false;
+            if (placeType == PlaceType.baseT)
+            {
+                result = overlappedGameobject.Count == 0;
+            }
+            else
+            {
+                result = canPlaceUpgrade;
+            }
+
             if (canPlace != result)
             {
                 if (result)
@@ -63,7 +80,7 @@ namespace FYP2A.VR.PlaceTurrent
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer != 10 && !other.gameObject.Equals(colorCanPlace) && !other.gameObject.Equals(colorCannotPlace))
+            if (other.gameObject.layer != 10 && other.gameObject.layer != 12 && !other.gameObject.Equals(colorCanPlace) && !other.gameObject.Equals(colorCannotPlace))
                 overlappedGameobject.Add(other.gameObject);
         }
 

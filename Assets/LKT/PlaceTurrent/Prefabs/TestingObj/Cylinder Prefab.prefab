@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2620971646373223632}
-  - component: {fileID: 6988817540302404319}
   - component: {fileID: 2729741493000268520}
   - component: {fileID: 6736900357003764901}
+  - component: {fileID: 8352974891208092790}
   m_Layer: 0
   m_Name: Cylinder Prefab
   m_TagString: Untagged
@@ -35,20 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6988817540302404319
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200336980493814201}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.5, z: -0.00000008940697}
 --- !u!54 &2729741493000268520
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,11 +65,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurrentPrefab: {fileID: 8766460034064593260, guid: 5c161ba428535d146baf9f2d30054ae7, type: 3}
   canPlace: 0
+  canPlaceUpgrade: 0
   colorCanPlace: {fileID: 6311951111241399699}
   colorCannotPlace: {fileID: 576158526559602753}
   offsetY: 0
   autoSetOffsetY: 1
   overlappedGameobject: []
+  placeType: 1
+--- !u!136 &8352974891208092790
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200336980493814201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.45
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3328220476386888959
 PrefabInstance:
   m_ObjectHideFlags: 0
