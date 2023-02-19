@@ -56,7 +56,7 @@ public class @Custom_IA : IInputActionCollection, IDisposable
                     ""id"": ""dd7892bc-2eca-486f-a44e-7cce7f9b6d52"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [

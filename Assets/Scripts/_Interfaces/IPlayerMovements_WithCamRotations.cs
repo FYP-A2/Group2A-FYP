@@ -12,7 +12,7 @@ public interface IPlayerMovements_WithCamRotations{
    bool GetSpace();
 
    //Custom-defined events based on data.
-   void Move(Vector2 rightness_n_forwardness, Animator animator);
+   //void Move(Vector2 rightness_n_forwardness, Animator animator);
    void CamRotate(float MouseX, float MouseY);
    void Jump();
 

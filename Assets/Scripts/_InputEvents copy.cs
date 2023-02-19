@@ -1,5 +1,4 @@
-using System.Collections;
-using System;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,10 +24,11 @@ public class _InputEvents : MonoBehaviour,IPlayerMovements_WithCamRotations
 
    //Our custom-defined events based on data.
    public void Move(Vector2 rightness_n_forwardness,Animator animator){
-      Vector2 temp= rightness_n_forwardness;
       
-      if(temp.y>0 && GetSpace()){player_RB.AddForce(Vector3.up*5f,ForceMode.Impulse);}
+      Vector2 temp= rightness_n_forwardness;
+      if(temp.y>0 && GetSpace()){player_RB.AddForce(Vector3.up*500*1.7f);}
       //Included larger rotation.
+      // worked player.transform.position += Vector3.forward * rightness_n_forwardness.y * .02f;
       player.transform.Translate(0,0,temp.y*.07f,Space.Self);
       
       player.transform.Rotate(0,temp.x*.23f,0,Space.Self);
@@ -41,13 +41,16 @@ public class _InputEvents : MonoBehaviour,IPlayerMovements_WithCamRotations
       cam.transform.eulerAngles -= temp;
    }
    public void Jump(){     
-      if(GetSpace()){player_RB.AddForce(Vector3.up*15,ForceMode.Impulse);}
+      if(GetSpace()){player_RB.AddForce(Vector3.up*20,ForceMode.Impulse);}
    }
 
 
    //Unity Event Sequences (Callers)
    void Awake() { CIA = new Custom_IA(); CIA.Player.Enable(); }
    void Start() { player_AN = player.GetComponent<Animator>(); }
-   void Update() { Move(GetRightness_n_Forwardness(),player_AN); CamRotate(GetMouseX(),GetMouseY()); Jump();}
-
+   void Update() { Move(GetRightness_n_Forwardness(),player_AN); CamRotate(GetMouseX(),GetMouseY()); }
+   private void FixedUpdate() {
+      Jump();
+   }
 }
+*/
