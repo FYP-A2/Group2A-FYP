@@ -14,37 +14,6 @@ public class _InputEvents : MonoBehaviour, IPlayerMovements_WithCamRotations
 
 
 
-   float g=9.81f;
-   float v;
-
-   //Data passing and arithmetic calculations (Getters)
-   public Vector2 GetRightness_n_Forwardness(){ return CIA.Player.WASD.ReadValue<Vector2>(); }
-   public float GetMouseX(){return CIA.Player.MouseX.ReadValue<float>();}
-   public float GetMouseY(){return CIA.Player.MouseY.ReadValue<float>();}
-   public bool GetSpace(){return CIA.Player.Space.triggered;}
-
-
-   //Our custom-defined events based on data.
-   public void Move(Vector2 rightness_n_forwardness,Animator animator){
-      Vector2 temp= rightness_n_forwardness;
-      
-      if(temp.y>0 && GetSpace()){player_RB.AddForce(Vector3.up*5f,ForceMode.Impulse);}
-      //Included larger rotation.
-      player.transform.Translate(0,0,temp.y*.07f,Space.Self);
-      
-      player.transform.Rotate(0,temp.x*.23f,0,Space.Self);
-      
-   }
-   public void CamRotate(float MouseX,float MouseY){
-      //This is smaller rotation.
-      Vector3 temp;
-      temp= new Vector3(MouseY*.09f,MouseX*-.09f,0);
-      cam.transform.eulerAngles -= temp;
-   }
-   public void Jump(){     
-      if(GetSpace()){player_RB.AddForce(Vector3.up*15,ForceMode.Impulse);}
-   }
-
     [Header("Movement Factors")]
     public float moveSpeedFactor = 15f;
     public float rotSpeedFactor = 100f;
