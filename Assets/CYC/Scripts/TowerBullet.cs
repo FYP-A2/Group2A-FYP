@@ -34,8 +34,8 @@ public class TowerBullet : MonoBehaviour
 
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
-
-        if(dir.magnitude <= distanceThisFrame )
+        //transform.rotation = Quaternion.LookRotation(Vector3.forward);
+        if (dir.magnitude <= distanceThisFrame )
         {
             HitTarget();
             return;

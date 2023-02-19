@@ -17,7 +17,7 @@ MonoBehaviour:
   magicDamage: 10
   fireRate: 1
   attackRange: 10
-  Type: Electro
+  towerType: 4
   level: 0
   bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
   burntDamage: 0

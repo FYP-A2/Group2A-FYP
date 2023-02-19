@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour, IMonster
     [SerializeField] EnemyScriptableObject enemyScriptable;
     NavMeshAgent agent;
     public int hp, damage;
-    float defense, resistance;
+    [SerializeField]float defense, resistance;
     float attackDelay, burntTime, slowTime, reductionTime;
     bool isBurnt, isSlow, isDefenseBreak, isAttacked;
     public SphereCollider sphereCollider;
@@ -17,7 +17,7 @@ public class Monster : MonoBehaviour, IMonster
     List<Transform> hitTargets;
     GameObject bulletPrefab;
     public Slider slider;
-    [SerializeField]GameObject fireEffect, slowEffect;
+    [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +85,8 @@ public class Monster : MonoBehaviour, IMonster
         if (fireEffect == null)
         {
             fireEffect = Instantiate(enemyScriptable.fireEffect, transform);
-            fireEffect.transform.localPosition= Vector3.zero;
+            fireEffect.transform.localPosition= new Vector3(0,-enemyScriptable.height/2,0);
+            fireEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         if (!isBurnt)
         {
@@ -107,17 +108,24 @@ public class Monster : MonoBehaviour, IMonster
         if (slowEffect == null)
         {
             slowEffect = Instantiate(enemyScriptable.slowEffect, transform);
-            slowEffect.transform.localPosition = Vector3.zero;
+            slowEffect.transform.localPosition = new Vector3(0, -enemyScriptable.height / 2, 0);
+            slowEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         agent.speed = enemyScriptable.speed * slowRatio;
         this.slowTime= slowTime;
         isSlow = true;
     }
 
-    public void DefenseReduction(int value, float reductionTime)
+    public void DefenseReduction(float value, float reductionTime)
     {
         defense = enemyScriptable.defense * value;
         resistance = enemyScriptable.resistance * value;
+        if (toxicEffect == null)
+        {
+            toxicEffect = Instantiate(enemyScriptable.toxicEffect, transform);
+            toxicEffect.transform.localPosition = new Vector3(0, -enemyScriptable.height / 2, 0);
+            toxicEffect.transform.localScale *= 1 + enemyScriptable.radius;
+        }
         this.reductionTime = reductionTime;
         isDefenseBreak = true;
     }
@@ -198,7 +206,7 @@ public class Monster : MonoBehaviour, IMonster
 
     void DefenseBreak()
     {
-        if(isDefenseBreak)
+        if(reductionTime>0)
         {
             reductionTime -= Time.deltaTime;
         }
@@ -207,13 +215,18 @@ public class Monster : MonoBehaviour, IMonster
             isDefenseBreak= false;
             defense= enemyScriptable.defense;
             resistance= enemyScriptable.resistance;
+            if (toxicEffect != null)
+            {
+                Destroy(toxicEffect);
+                toxicEffect = null;
+            }
         }
     }
     IEnumerator Ignite(int damage)
     {
         while (isBurnt)
         {
-            Debug.Log("burnt");
+            //Debug.Log("burnt");
             hp -= damage;
             if (hp <= 0)
             {

@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: FireTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 8738393908247863392, guid: 1dd7434569e57694f9000d973e943746, type: 3}
   phyDamage: 0
   magicDamage: 30
   fireRate: 2
   attackRange: 10
-  Type: Fire
+  towerType: 1
   level: 0
   bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
   burntDamage: 5
   burntTime: 5
   slowRatio: 0
   slowTime: 0
-  ratio: 0
+  penetrationRatio: 0
+  penetrationTime: 0
   jumpCount: 0

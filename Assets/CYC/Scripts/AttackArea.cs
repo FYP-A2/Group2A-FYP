@@ -10,12 +10,12 @@ public class AttackArea : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("ClearList", 0f, 1f);
+        //InvokeRepeating("ClearList", 0f, 1f);
     }
 
     private void Update()
     {
-        //ClearList();
+        ClearList();
     }
     private void OnTriggerEnter(Collider other)
     {

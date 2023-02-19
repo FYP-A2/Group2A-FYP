@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: IceTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 5650527309878815204, guid: 8b83ef968eecd7641bd520f384cb6ca7, type: 3}
   phyDamage: 0
   magicDamage: 20
   fireRate: 2
   attackRange: 10
-  Type: Ice
+  towerType: 2
   level: 0
   bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
   burntDamage: 0
   burntTime: 0
   slowRatio: 0.5
   slowTime: 5
-  ratio: 0
+  penetrationRatio: 0
+  penetrationTime: 0
   jumpCount: 0
