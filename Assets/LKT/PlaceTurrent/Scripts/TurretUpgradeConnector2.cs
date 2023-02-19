@@ -9,15 +9,14 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 {
     [HideInInspector]
     public TurretUpgradeConnector1 parentConnector;
-    [HideInInspector]
-    public List<TurretUpgradeConnector3> childrenConnector = new List<TurretUpgradeConnector3>();
+    List<TurretUpgradeConnector3> _childrenConnector3 = new List<TurretUpgradeConnector3>();
 
     public enum Connector2Type { UP, DOWN }
     [HideInInspector]
     public Connector2Type connectorType = Connector2Type.UP;
 
-    public bool connected { get => _connectedConnector2.Count == 1; }
-    public TurretUpgradeConnector2 connectedConnector2 { get => _connectedConnector2.Count > 0 ? _connectedConnector2[0] : null; }
+    public bool connected { get => _connectedConnector2.Count >= 1; }
+    public TurretUpgradeConnector2 connectedConnector2 { get => _connectedConnector2.Count > 0 ? _connectedConnector2[_connectedConnector2.Count-1] : null; }
     public List<TurretUpgradeConnector2> _connectedConnector2 = new List<TurretUpgradeConnector2>();
 
     [HideInInspector]
@@ -26,11 +25,11 @@ public class TurretUpgradeConnector2 : MonoBehaviour
     public void SetRelation(TurretUpgradeConnector1 parentConnector, List<TurretUpgradeConnector3> connectorChildren, Connector2Type connectorType)
     {
         this.parentConnector = parentConnector;
-        this.childrenConnector = connectorChildren;
+        this._childrenConnector3 = connectorChildren;
         this.connectorType = connectorType;
 
-        if (childrenConnector != null && childrenConnector.Count > 0)
-            foreach(TurretUpgradeConnector3 tuc3 in childrenConnector)
+        if (_childrenConnector3 != null && _childrenConnector3.Count > 0)
+            foreach(TurretUpgradeConnector3 tuc3 in _childrenConnector3)
                 if (tuc3 != null)
                     tuc3.parentConnector = this;
     }
@@ -39,7 +38,7 @@ public class TurretUpgradeConnector2 : MonoBehaviour
     {
         int i = 0;
 
-        foreach (TurretUpgradeConnector3 child in childrenConnector)
+        foreach (TurretUpgradeConnector3 child in _childrenConnector3)
             if (child.connected)
                 i++;
 
@@ -56,24 +55,29 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 
     public void ConnectionCheckOnOff(bool on)
     {
-        if (childrenConnector != null && childrenConnector.Count > 0)
-            foreach (TurretUpgradeConnector3 tuc3 in childrenConnector)
+        if (_childrenConnector3 != null && _childrenConnector3.Count > 0)
+            foreach (TurretUpgradeConnector3 tuc3 in _childrenConnector3)
                 tuc3.enabled = on;
 
         enabled = on;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
+    {
+        _connectedConnector2 = new List<TurretUpgradeConnector2>();
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         TurretUpgradeConnector2 temp;
-        if (other.TryGetComponent<TurretUpgradeConnector2>(out temp) && temp.connectorType != connectorType)
+        if (other.TryGetComponent<TurretUpgradeConnector2>(out temp) && temp.connectorType != connectorType && !_connectedConnector2.Contains(temp))
             _connectedConnector2.Add(other.GetComponent<TurretUpgradeConnector2>());
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        TurretUpgradeConnector2 temp;
-        if (other.TryGetComponent<TurretUpgradeConnector2>(out temp) && _connectedConnector2.Contains(temp))
-            _connectedConnector2.Remove(other.GetComponent<TurretUpgradeConnector2>());
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    TurretUpgradeConnector2 temp;
+    //    if (other.TryGetComponent<TurretUpgradeConnector2>(out temp) && _connectedConnector2.Contains(temp))
+    //        _connectedConnector2.Remove(other.GetComponent<TurretUpgradeConnector2>());
+    //}
 }

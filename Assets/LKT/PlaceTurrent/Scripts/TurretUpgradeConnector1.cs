@@ -21,7 +21,7 @@ public class TurretUpgradeConnector1 : MonoBehaviour
 
         //public orbSlot;
 
-        public bool canPlaceOre { get => connector1.CheckNexusConnectToBase(); }
+        public bool canPlaceOre { get => connector1.CheckNexusConnectToBase(this); }
     }
     [SerializeField]
     public List<Nexus> nexus;
@@ -51,14 +51,27 @@ public class TurretUpgradeConnector1 : MonoBehaviour
         enabled = false;
     }
 
-    bool CheckNexusConnectToBase()
+    bool CheckNexusConnectToBase(Nexus n)
     {
         if (isBase)
+        {
+            Debug.Log("C1");
             return true;
+        }
 
-        else if (connectorDown.connected)
-            return connectorDown.connectedConnector2.parentConnector.CheckNexusConnectToBase();
+        if (n.inConnector.connected)
+        {
+            Debug.Log("C2.1");
+            Nexus nextN = n.inConnector.connectedConnector3.parentConnector.parentConnector.GetNexusByConnector(n.inConnector.connectedConnector3);
+            if (nextN != null)
+            {
+                Debug.Log("C2.2");
+                return nextN.outConnector.parentConnector.parentConnector.CheckNexusConnectToBase(nextN);
+            }
 
+        }
+
+        Debug.Log("C3");
         return false;
     }
 
@@ -81,5 +94,29 @@ public class TurretUpgradeConnector1 : MonoBehaviour
     {
         connectorUp.ConnectionCheckOnOff(on);
         connectorDown.ConnectionCheckOnOff(on);
+    }
+
+    public TurretUpgradeConnector3 GetInConnectorByOutConnector(TurretUpgradeConnector3 OutConnector)
+    {
+        if (OutConnector == null)
+            return null;
+
+        foreach (Nexus n in nexus)
+            if (n.outConnector == OutConnector)
+                return n.inConnector;
+
+        return null;
+    }
+
+    public Nexus GetNexusByConnector(TurretUpgradeConnector3 connector)
+    {
+        if (connector == null)
+            return null;
+
+        foreach (Nexus n in nexus)
+            if (n.outConnector == connector || n.inConnector == connector)
+                return n;
+
+        return null;
     }
 }

@@ -178,9 +178,14 @@ namespace FYP2A.VR.PlaceTurrent
             turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
             yield return null;
             yield return null;
+            yield return null;
             TurretUpgradeConnector1 tuc1;
             if (turret.TryGetComponent(out tuc1) && tuc1.connectorDown != null)
                 tuc1.connectorDown.ConfirmConnection();
+
+            yield return null;
+            yield return null;
+            yield return null;
 
             float heightNow;
             while (t < 1)
@@ -194,7 +199,13 @@ namespace FYP2A.VR.PlaceTurrent
             turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
             yield return null;
             yield return null;
-            Debug.Log("can place ore: " + tuc1.nexus[0].canPlaceOre);
+            yield return null;
+            yield return null;
+            if (tuc1.nexus[0].canPlaceOre && tuc1.nexus[0].inConnector != null)
+            {
+                tuc1.nexus[0].inConnector.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
+                tuc1.nexus[0].inConnector.connectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
+            }
         }
 
         bool CheckEnoughResources(TurrentPrefabIndex.Resources neededResources)
