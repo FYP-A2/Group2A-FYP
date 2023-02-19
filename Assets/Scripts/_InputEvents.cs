@@ -37,7 +37,7 @@ public class _InputEvents : MonoBehaviour, IPlayerMovements_WithCamRotations
         
         Vector2 temp = rightness_n_forwardness;
         player_RB.MovePosition(player_RB.position + player_RB.rotation * transform.forward * temp.y * Time.fixedDeltaTime * moveSpeedFactor);
-
+        
         Vector3 rotEulerVelocity = new Vector3(0, rotSpeedFactor, 0) * temp.x;
         Quaternion deltaRotation = Quaternion.Euler(rotEulerVelocity * Time.fixedDeltaTime);
         player_RB.MoveRotation(player_RB.rotation * deltaRotation);

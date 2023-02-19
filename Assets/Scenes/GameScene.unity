@@ -38280,6 +38280,9 @@ MonoBehaviour:
   player_RB: {fileID: 1295434902}
   cam: {fileID: 509010446}
   player_AN: {fileID: 1295434904}
+  moveSpeedFactor: 13
+  rotSpeedFactor: 80
+  jumpHeightFactor: 600
 --- !u!1001 &1836298222
 PrefabInstance:
   m_ObjectHideFlags: 0
