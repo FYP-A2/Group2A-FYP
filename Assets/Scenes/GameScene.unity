@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37574092, g: 0.6143974, b: 0.8668542, a: 1}
+  m_IndirectSpecularColor: {r: 0.37574065, g: 0.61439896, b: 0.8668558, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -38300,6 +38300,9 @@ MonoBehaviour:
   player_RB: {fileID: 1295434902}
   cam: {fileID: 509010446}
   player_AN: {fileID: 1295434904}
+  moveSpeedFactor: 13
+  rotSpeedFactor: 80
+  jumpHeightFactor: 600
 --- !u!1001 &1836298222
 PrefabInstance:
   m_ObjectHideFlags: 0
