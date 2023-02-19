@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,3 +45,4 @@ public class PlayerMovement : MonoBehaviour
        //rb.angularVelocity= new Vector3(inputVector.x*-1,0,inputVector.y*-1);
     }
 }
+*/
