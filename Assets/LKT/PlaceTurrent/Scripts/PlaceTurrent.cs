@@ -96,7 +96,7 @@ namespace FYP2A.VR.PlaceTurrent
             if (CheckEnoughResources(turrentType.neededResources))
             {
 
-                CreatePreview(turrentType.preview);
+                CreatePreview(turrentType.preview,turrentType.tier);
 
                 return true;
             }
@@ -104,15 +104,13 @@ namespace FYP2A.VR.PlaceTurrent
             return false;
         }
 
-        void CreatePreview(GameObject previewPrefab)
+        void CreatePreview(GameObject previewPrefab, int tier)
         {
             DeletePreview();
 
             nowPreview = Instantiate(previewPrefab).GetComponent<TurrentPreview>();
+            nowPreview.Initialize(gameObject, tier);
             isPreviewing = true;
-
-            Debug.Log("Create");
-
         }
 
         void DeletePreview()
@@ -123,7 +121,6 @@ namespace FYP2A.VR.PlaceTurrent
             nowPreview = null;
             isPreviewing = false;
 
-            Debug.Log("Delete");
         }
 
         void SetPreviewPosition()
@@ -142,14 +139,20 @@ namespace FYP2A.VR.PlaceTurrent
                 lm |= (1 << 12);
                 Physics.Raycast(ray, out hit, 100, lm);
                 TurretUpgradeConnector2 tupc;
-                if (hit.transform != null && hit.transform.TryGetComponent(out tupc))
+                if (hit.transform != null && hit.transform.TryGetComponent(out tupc) && tupc.confirmedConnection == false)
                 {
-                    nowPreview.canPlaceUpgrade = true;
+                    if (nowPreview.tier == tupc.parentConnector.DistanceToBase() + 1)
+                    {
+                        nowPreview.SetCanUpgrade();
+                    }
+                    else
+                        nowPreview.SetCannotUpgrade("Place this upgrade on floor " + (nowPreview.tier+1));
+
                     nowPreview.SetPosition(tupc.transform.position);
                 }
                 else
                 {
-                    nowPreview.canPlaceUpgrade = false;
+                    nowPreview.SetCannotUpgrade("Place this upgrade on a building");
                     nowPreview.SetPosition(hit.point);
                 }
             }
@@ -161,7 +164,6 @@ namespace FYP2A.VR.PlaceTurrent
         {
             if (nowPreview.canPlace)
             {
-                //if (nowPreview.placeType==TurrentPreview.PlaceType.baseT)
                 Transform turret = Instantiate(nowPreview.TurrentPrefab, nowPreview.gameObject.transform.position + new Vector3(0,nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation).transform;
                 StartCoroutine(PlaceDownTurrentAnimation(turret, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
@@ -172,6 +174,14 @@ namespace FYP2A.VR.PlaceTurrent
         {
             float t = 0;
             float originHeight = turret.position.y - height;
+
+            turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
+            yield return null;
+            yield return null;
+            TurretUpgradeConnector1 tuc1;
+            if (turret.TryGetComponent(out tuc1) && tuc1.connectorDown != null)
+                tuc1.connectorDown.ConfirmConnection();
+
             float heightNow;
             while (t < 1)
             {
@@ -181,8 +191,10 @@ namespace FYP2A.VR.PlaceTurrent
                 t += Time.deltaTime / duration;
                 yield return null;
             }
-            heightNow = Mathf.Lerp(originHeight + height, originHeight, t);
-            turret.position = new Vector3(turret.position.x, heightNow, turret.position.z);
+            turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
+            yield return null;
+            yield return null;
+            Debug.Log("can place ore: " + tuc1.nexus[0].canPlaceOre);
         }
 
         bool CheckEnoughResources(TurrentPrefabIndex.Resources neededResources)

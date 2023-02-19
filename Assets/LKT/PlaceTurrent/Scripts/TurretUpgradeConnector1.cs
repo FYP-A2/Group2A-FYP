@@ -63,16 +63,16 @@ public class TurretUpgradeConnector1 : MonoBehaviour
     }
 
 
-    int DistanceToBase() { return DistanceToBase(0); }
+    public int DistanceToBase() { return DistanceToBase(0); }
 
-    int DistanceToBase(int n)
+    public int DistanceToBase(int n)
     {
         return isBase ? n : connectorDown.connectedConnector2.parentConnector.DistanceToBase(n + 1);
     }
 
-    int DistanceToTop() { return DistanceToTop(0); }
+    public int DistanceToTop() { return DistanceToTop(0); }
 
-    int DistanceToTop(int n)
+    public int DistanceToTop(int n)
     {
         return connectorUp == null ? n : connectorUp.connectedConnector2.parentConnector.DistanceToTop(n + 1);
     }

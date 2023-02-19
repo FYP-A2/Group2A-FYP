@@ -265,6 +265,7 @@ Transform:
   m_Children:
   - {fileID: 2942873755447575009}
   - {fileID: 491973349536478333}
+  - {fileID: 4639616584777497993}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,12 +298,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurrentPrefab: {fileID: 688548838375289791, guid: fd1447d3f59b6eb4a9d8bd798f240287, type: 3}
+  layerNotCheckCollision:
+    serializedVersion: 2
+    m_Bits: 0
   canPlace: 0
   canPlaceUpgrade: 0
+  tier: 0
   colorCanPlace: {fileID: 3216594632302140703}
   colorCannotPlace: {fileID: 191197339293935747}
   offsetY: 0
   autoSetOffsetY: 1
+  hint: {fileID: 9129834491817858160}
+  previewCreator: {fileID: 0}
   overlappedGameobject: []
   placeType: 0
 --- !u!65 &1993943916940461400
@@ -331,3 +338,76 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.37
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &7309619922239677250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4236037153151158777}
+    m_Modifications:
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500980724030718388, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_Name
+      value: HintOrbit
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+--- !u!4 &4639616584777497993 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+  m_PrefabInstance: {fileID: 7309619922239677250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9129834491817858160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2000526834178946866, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+  m_PrefabInstance: {fileID: 7309619922239677250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97aaa5234d9f4304ea59b05604f7019c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

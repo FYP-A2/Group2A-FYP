@@ -8,6 +8,7 @@ public class TurrentPrefabIndex : MonoBehaviour
     [Serializable]
     public struct Turrent
     {
+        public int tier;
         public string name;
         public string description;
         public GameObject prefab;
