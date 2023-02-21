@@ -10,7 +10,6 @@ namespace FYP2A.VR.PlaceTurrent
 {
     public class TurrentPreview : MonoBehaviour
     {
-        public GameObject TurrentPrefab;
         public LayerMask layerNotCheckCollision;
 
 
@@ -39,8 +38,6 @@ namespace FYP2A.VR.PlaceTurrent
         public bool canPlace = false;
         [HideInInspector]
         public bool canPlaceUpgrade = false;
-        [HideInInspector]
-        public int tier;
 
         [HideInInspector]
         public GameObject previewCreator;
@@ -49,9 +46,12 @@ namespace FYP2A.VR.PlaceTurrent
         [SerializeField]
         List<GameObject> overlappedGameobject = new List<GameObject>();
 
+
+        public TowerScriptableObject towerSO;
+        public int tier { get => towerSO.level; }
         public enum PlaceType { baseT, upgradeT }
         [HideInInspector]
-        public PlaceType placeType = PlaceType.baseT;
+        public PlaceType placeType { get => tier == 0? PlaceType.baseT: PlaceType.upgradeT; }
 
         // Start is called before the first frame update
         void Start()
@@ -76,11 +76,10 @@ namespace FYP2A.VR.PlaceTurrent
             DisplayHint(!canPlace);
         }
 
-        public void Initialize(GameObject previewCreator,int tier)
+        public void Initialize(GameObject previewCreator,TowerScriptableObject towerScriptableObject)
         {
             this.previewCreator = previewCreator;
-            this.tier = tier;
-            placeType = ((tier == 0) ? TurrentPreview.PlaceType.baseT : TurrentPreview.PlaceType.upgradeT);
+            this.towerSO = towerScriptableObject;
         }
 
         IEnumerator AutoRotate()

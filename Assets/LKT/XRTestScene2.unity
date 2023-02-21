@@ -1610,7 +1610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 262.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1618,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 147.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1940,36 +1940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed655ad94b5095c43870250c7b08f001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turrentsBase:
-  - tier: 0
-    name: T1
-    description: haha
-    prefab: {fileID: 688548838375289791, guid: fd1447d3f59b6eb4a9d8bd798f240287, type: 3}
-    preview: {fileID: 7110999667277423892, guid: 4fbe55a8aa7725d4da7b4b4b963c6edb, type: 3}
-    neededResources:
-      woodAmount: 0
-      stoneAmount: 0
-      coinAmount: 0
-      fireOreAmount: 0
-      iceOreAmount: 0
-      toxicOreAmount: 0
-      physicalOreAmount: 0
-      lightningOreAmount: 0
-  turrentsUpgrade:
-  - tier: 1
-    name: ss
-    description: d
-    prefab: {fileID: 8766460034064593260, guid: 5c161ba428535d146baf9f2d30054ae7, type: 3}
-    preview: {fileID: 5200336980493814201, guid: 06c4f774bf5b2c5489107a8ecefaa016, type: 3}
-    neededResources:
-      woodAmount: 0
-      stoneAmount: 0
-      coinAmount: 0
-      fireOreAmount: 0
-      iceOreAmount: 0
-      toxicOreAmount: 0
-      physicalOreAmount: 0
-      lightningOreAmount: 0
+  towerBuildSOs:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1021619523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,7 +2425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329764290
 Transform:
   m_ObjectHideFlags: 0
@@ -3325,7 +3298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1902928839
 Transform:
   m_ObjectHideFlags: 0
@@ -3593,6 +3566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4c6a2593a3c44f8512ea0164dc51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerManagerPrefab: {fileID: 0}
   xrRayInteractor: {fileID: 1822787742}
   turrentPrefabIndex: {fileID: 1014100640}
   inputConfirm:
@@ -4369,11 +4343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1567475924531792102, guid: 617331e89e1cf40458c2e7c0231ed98c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 1567475924531792102, guid: 617331e89e1cf40458c2e7c0231ed98c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1826629680810794398, guid: 617331e89e1cf40458c2e7c0231ed98c, type: 3}
       propertyPath: m_AnchorMax.x

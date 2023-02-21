@@ -9,10 +9,13 @@ namespace FYP2A.VR.PlaceTurrent
 {
     public class PlaceTurrent : MonoBehaviour
     {
+        public GameObject towerManagerPrefab;
+
         float placeAnimationHeight = 10f;
         float placeAnimationduration = 0.3f;
 
         TurrentPreview nowPreview;
+        TowerBuildSO nowBuild;
         bool isPreviewing;
         [SerializeField]
         XRRayInteractor xrRayInteractor;
@@ -60,11 +63,13 @@ namespace FYP2A.VR.PlaceTurrent
 
         private void Test_Action_performed(InputAction.CallbackContext obj)
         {
-            SetPreviewTurrent(turrentPrefabIndex.turrentsBase[0]);
+            nowBuild = turrentPrefabIndex.towerBuildSOs[0];
+            SetPreviewTurrent(nowBuild);
         }
         private void Test2_Action_performed(InputAction.CallbackContext obj)
         {
-            SetPreviewTurrent(turrentPrefabIndex.turrentsUpgrade[0]);
+            nowBuild = turrentPrefabIndex.towerBuildSOs[1];
+            SetPreviewTurrent(nowBuild);
         }
 
         // Update is called once per frame
@@ -90,13 +95,13 @@ namespace FYP2A.VR.PlaceTurrent
             }
         }
 
-        bool SetPreviewTurrent(TurrentPrefabIndex.Turrent turrentType)
+        bool SetPreviewTurrent(TowerBuildSO turrentType)
         {
             Debug.Log("Set preview");
             if (CheckEnoughResources(turrentType.neededResources))
             {
 
-                CreatePreview(turrentType.preview,turrentType.tier);
+                CreatePreview(turrentType.towerPreview, turrentType.Tower.level);
 
                 return true;
             }
@@ -109,7 +114,7 @@ namespace FYP2A.VR.PlaceTurrent
             DeletePreview();
 
             nowPreview = Instantiate(previewPrefab).GetComponent<TurrentPreview>();
-            nowPreview.Initialize(gameObject, tier);
+            nowPreview.Initialize(gameObject, nowBuild.Tower);
             isPreviewing = true;
         }
 
@@ -164,8 +169,10 @@ namespace FYP2A.VR.PlaceTurrent
         {
             if (nowPreview.canPlace)
             {
-                Transform turret = Instantiate(nowPreview.TurrentPrefab, nowPreview.gameObject.transform.position + new Vector3(0,nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation).transform;
-                StartCoroutine(PlaceDownTurrentAnimation(turret, placeAnimationHeight, placeAnimationduration));
+                GameObject tm = Instantiate(towerManagerPrefab,nowPreview.gameObject.transform.position + new Vector3(0, nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation);
+                tm.GetComponent<TowerManager>().BuildTower(nowBuild.Tower);
+
+                StartCoroutine(PlaceDownTurrentAnimation(tm.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
             }
         }
@@ -208,7 +215,7 @@ namespace FYP2A.VR.PlaceTurrent
             }
         }
 
-        bool CheckEnoughResources(TurrentPrefabIndex.Resources neededResources)
+        bool CheckEnoughResources(TowerBuildSO.Resources neededResources)
         {
             return true;
             //Check player has enough resources
