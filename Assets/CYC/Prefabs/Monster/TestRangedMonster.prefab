@@ -326,9 +326,14 @@ MonoBehaviour:
   enemyScriptable: {fileID: 11400000, guid: 76da76be9dcc0ba40a59600108164a9f, type: 2}
   hp: 0
   damage: 0
+  defense: 0
+  resistance: 0
   sphereCollider: {fileID: 341612712531866360}
   target: {fileID: 0}
   slider: {fileID: 5663352590520353647}
+  fireEffect: {fileID: 0}
+  slowEffect: {fileID: 0}
+  toxicEffect: {fileID: 0}
 --- !u!135 &4267623551590543091
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -368,14 +373,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5383211158602094149}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children:
   - {fileID: 7449571427146004378}
   m_Father: {fileID: 4267623551590543094}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.1659999}

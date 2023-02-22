@@ -38,6 +38,78 @@ public class Tower : MonoBehaviour
                         m.DefenseReduction(towerScriptable.penetrationRatio, towerScriptable.penetrationTime);
                 }
             }
+            else if(towerScriptable.towerType.ToString() == "Ice")
+            {
+                if (!isAttacked)
+                {
+                    for (int i = 0; i < monsters.Count; i++)
+                    {
+                        RaycastHit hit;
+                        Physics.Raycast(transform.position, (monsters[i].position - transform.position).normalized, out hit, towerScriptable.attackRange, layer);
+                        if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow)
+                        {
+                            isAttacked = true;
+                            Shoot(monsters[i]);
+                            return;
+                        }
+                    }
+                    if (!isAttacked)
+                    {
+                        RaycastHit hit;
+                        Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, towerScriptable.attackRange, layer);
+                        if (hit.transform != null && hit.transform.tag == "Monster")
+                        {
+                            isAttacked = true;
+                            Shoot(monsters[0]);
+                        }
+                    }
+                }
+            }
+            else if (towerScriptable.towerType.ToString() == "Electro")
+            {
+                if (!isAttacked)
+                {
+                    int i = 0;
+                    if(i < towerScriptable.jumpCount)
+                    {
+                        
+                        if (monsters.Count > 1)
+                        {
+                            List<GameObject> bulletGO = new List<GameObject>();
+                            bulletGO.Add(Instantiate(towerScriptable.bulletPrefab, transform.position,transform.rotation));
+                            TestVFX bullet;
+                            bulletGO[0].TryGetComponent<TestVFX>(out bullet);
+                            if (bullet != null)
+                            {
+                                bullet.SetPos(transform.gameObject, monsters[0].gameObject);
+                                monsters[0].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                            }
+                            i++;
+                            for (int j = 1; j < monsters.Count; j++)
+                            {
+                                bulletGO.Add(Instantiate(towerScriptable.bulletPrefab, monsters[j].position, monsters[j].rotation));
+                                bulletGO[j].TryGetComponent<TestVFX>(out bullet);
+                                bullet.SetPos(monsters[i-1].gameObject, monsters[i].gameObject);
+                                monsters[j].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            GameObject bulletGO = Instantiate(towerScriptable.bulletPrefab);
+                            TestVFX bullet;
+                            bulletGO.TryGetComponent<TestVFX>(out bullet);
+                            if(bullet != null)
+                            {
+                                bullet.SetPos(transform.gameObject, monsters[0].gameObject);
+                                monsters[0].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                            }     
+                        }
+                        isAttacked = true;
+                        StartCoroutine(ResetAttack(towerScriptable.fireRate));
+                    }
+                }
+            }
             else
             {
                 if (!isAttacked)
@@ -57,29 +129,29 @@ public class Tower : MonoBehaviour
     void Shoot(Transform m)
     {
         GameObject bulletGO = (GameObject)Instantiate(towerScriptable.bulletPrefab, transform.position, transform.rotation);
-        TowerBullet bullet = bulletGO.GetComponent<TowerBullet>();
+        TowerBullet bullet;
+        bulletGO.TryGetComponent<TowerBullet>(out bullet);
 
         if (bullet != null)
         {
             switch (towerScriptable.towerType.ToString())
             {
                 case "Phy":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.phyDamage);
+                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.phyDamage, towerScriptable.magicDamage);
+                    break;
+                case "Magic":
+                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.phyDamage, towerScriptable.magicDamage);
                     break;
                 case "Fire":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, burntDamage:towerScriptable.burntDamage,burntTime:towerScriptable.burntTime);
+                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, towerScriptable.burntDamage,towerScriptable.burntTime, towerScriptable.exposionRadius);
                     break;
                 case "Ice":
                     bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, slowRatio:towerScriptable.slowRatio, slowTime:towerScriptable.slowTime);
-                    break;
-                case "Electro":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, jumpCount:towerScriptable.jumpCount);
-                    break;
+                    break;              
             }
         }
         StartCoroutine(ResetAttack(towerScriptable.fireRate));
     }
-
     IEnumerator ResetAttack(float attackDelay)
     {
         while (isAttacked)

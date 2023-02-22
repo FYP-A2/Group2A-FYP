@@ -22,6 +22,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
   burntDamage: 5
   burntTime: 5
+  exposionRadius: 6
   slowRatio: 0
   slowTime: 0
   penetrationRatio: 0

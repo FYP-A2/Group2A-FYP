@@ -9,9 +9,10 @@ public class Monster : MonoBehaviour, IMonster
     [SerializeField] EnemyScriptableObject enemyScriptable;
     NavMeshAgent agent;
     public int hp, damage;
-    [SerializeField]float defense, resistance;
+    [SerializeField] float defense, resistance;
     float attackDelay, burntTime, slowTime, reductionTime;
-    bool isBurnt, isSlow, isDefenseBreak, isAttacked;
+    bool isBurnt, isDefenseBreak, isAttacked;
+    public bool isSlow { get; private set; }
     public SphereCollider sphereCollider;
     public Transform target;
     List<Transform> hitTargets;
@@ -67,7 +68,7 @@ public class Monster : MonoBehaviour, IMonster
 
     public void TakeDamage(int phyDamage, int magicDamage)
     {
-        hp -= (int)(phyDamage * defense  + magicDamage * resistance);
+        hp -= (int)(phyDamage * (1-defense)  + magicDamage * (1-resistance));
         if (hp <= 0)
         {
             Dead();
@@ -76,7 +77,7 @@ public class Monster : MonoBehaviour, IMonster
 
     public void GetBurnt(int phyDamage, int magicDamage, int burntDamage, float burntTime)
     {
-        hp -= (int)(phyDamage * defense + magicDamage * resistance);
+        hp -= (int)(phyDamage * (1-defense) + magicDamage * (1-resistance));
         if (hp <= 0)
         {
             Dead();
@@ -99,7 +100,7 @@ public class Monster : MonoBehaviour, IMonster
 
     public void GetSlow(int phyDamage, int magicDamage, float slowRatio, float slowTime)
     {
-        hp -= (int)(phyDamage * defense + magicDamage * resistance);
+        hp -= (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
         if (hp <= 0)
         {
             Dead();
@@ -111,15 +112,15 @@ public class Monster : MonoBehaviour, IMonster
             slowEffect.transform.localPosition = new Vector3(0, -enemyScriptable.height / 2, 0);
             slowEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
-        agent.speed = enemyScriptable.speed * slowRatio;
+        agent.speed = enemyScriptable.speed * (1 - slowRatio);
         this.slowTime= slowTime;
         isSlow = true;
     }
 
     public void DefenseReduction(float value, float reductionTime)
     {
-        defense = enemyScriptable.defense * value;
-        resistance = enemyScriptable.resistance * value;
+        defense = enemyScriptable.defense * (1 - value);
+        resistance = enemyScriptable.resistance * (1 - value);
         if (toxicEffect == null)
         {
             toxicEffect = Instantiate(enemyScriptable.toxicEffect, transform);

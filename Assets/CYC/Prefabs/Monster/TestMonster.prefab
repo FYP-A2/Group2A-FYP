@@ -26,14 +26,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200377299462801680}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children:
   - {fileID: 5831092094033897713}
   m_Father: {fileID: 2182106862086260146}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.166}
@@ -390,11 +390,14 @@ MonoBehaviour:
   enemyScriptable: {fileID: 11400000, guid: 8ebdba6fa807dfd4592bd5813930f922, type: 2}
   hp: 0
   damage: 0
+  defense: 0
+  resistance: 0
   sphereCollider: {fileID: 3685794650754097534}
   target: {fileID: 0}
   slider: {fileID: 7269696463079885868}
   fireEffect: {fileID: 0}
   slowEffect: {fileID: 0}
+  toxicEffect: {fileID: 0}
 --- !u!135 &2182106862086260151
 SphereCollider:
   m_ObjectHideFlags: 0

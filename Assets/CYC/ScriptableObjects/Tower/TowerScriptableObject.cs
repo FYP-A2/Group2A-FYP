@@ -15,6 +15,7 @@ public class TowerScriptableObject : ScriptableObject
     [Header("Fire")]
     public int burntDamage = 0;
     public float burntTime = 0;
+    public float exposionRadius = 0;
     [Header("Ice")]
     [Range(0, 1)] public float slowRatio = 0;
     public float slowTime = 0;
