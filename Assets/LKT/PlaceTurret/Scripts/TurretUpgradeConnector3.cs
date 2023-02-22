@@ -6,8 +6,8 @@ public class TurretUpgradeConnector3 : MonoBehaviour
 {
     [HideInInspector]
     public TurretUpgradeConnector2 parentConnector;
-    public bool connected { get => _connectedConnector3.Count >= 1; }
-    public TurretUpgradeConnector3 connectedConnector3 { get => _connectedConnector3.Count > 0 ? _connectedConnector3[_connectedConnector3.Count - 1] : null; }
+    public bool Connected { get => _connectedConnector3.Count >= 1; }
+    public TurretUpgradeConnector3 ConnectedConnector3 { get => _connectedConnector3.Count > 0 ? _connectedConnector3[_connectedConnector3.Count - 1] : null; }
     public List<TurretUpgradeConnector3> _connectedConnector3 = new List<TurretUpgradeConnector3>();
     //public OreSlot oreSlot;
 

@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretUpgradeConnector1 : MonoBehaviour
+public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
 {
     public bool isBase = false;
 
     public TurretUpgradeConnector2 connectorUp;
 
     public TurretUpgradeConnector2 connectorDown;
+
+    TowerScriptableObject towerSO;
 
     [Serializable]
     public class Nexus
@@ -19,9 +21,9 @@ public class TurretUpgradeConnector1 : MonoBehaviour
         public TurretUpgradeConnector3 inConnector;
         public TurretUpgradeConnector3 outConnector;
 
-        //public orbSlot;
-
-        public bool canPlaceOre { get => connector1.CheckNexusConnectToBase(this); }
+        public TowerPearlSlot towerPearlSlot;
+        
+        public bool Active { get => connector1.CheckNexusConnectToBase(this); }
     }
     [SerializeField]
     public List<Nexus> nexus;
@@ -58,9 +60,9 @@ public class TurretUpgradeConnector1 : MonoBehaviour
             return true;
         }
 
-        if (n.inConnector.connected)
+        if (n.inConnector.Connected)
         {
-            Nexus nextN = n.inConnector.connectedConnector3.parentConnector.parentConnector.GetNexusByConnector(n.inConnector.connectedConnector3);
+            Nexus nextN = n.inConnector.ConnectedConnector3.parentConnector.parentConnector.GetNexusByConnector(n.inConnector.ConnectedConnector3);
             if (nextN != null)
             {
                 return nextN.outConnector.parentConnector.parentConnector.CheckNexusConnectToBase(nextN);
@@ -71,18 +73,18 @@ public class TurretUpgradeConnector1 : MonoBehaviour
     }
 
 
-    public int DistanceToBase() { return DistanceToBase(0); }
+
 
     public int DistanceToBase(int n)
     {
-        return isBase ? n : connectorDown.connectedConnector2.parentConnector.DistanceToBase(n + 1);
+        return isBase ? n : connectorDown.ConnectedConnector2.parentConnector.DistanceToBase(n + 1);
     }
 
-    public int DistanceToTop() { return DistanceToTop(0); }
+    
 
     public int DistanceToTop(int n)
     {
-        return connectorUp == null ? n : connectorUp.connectedConnector2.parentConnector.DistanceToTop(n + 1);
+        return connectorUp == null ? n : connectorUp.ConnectedConnector2.parentConnector.DistanceToTop(n + 1);
     }
 
     public void ConnectionCheckOnOff(bool on)
@@ -114,4 +116,71 @@ public class TurretUpgradeConnector1 : MonoBehaviour
 
         return null;
     }
+
+    
+
+    #region ITurretConnector;
+
+    public void SetTowerSO(TowerScriptableObject tso)
+    {
+        towerSO = tso;
+    }
+
+    public TowerScriptableObject GetTowerSO()
+    {
+        return towerSO;
+    }
+
+    public TurretUpgradeConnector1 GetLowerConnector()
+    {
+        return connectorDown.ConnectedConnector2.parentConnector;
+    }
+
+    public TurretUpgradeConnector1 GetUpperConnector()
+    {
+        return connectorUp.ConnectedConnector2.parentConnector;
+    }
+
+    public TurretUpgradeConnector1 GetBaseConnector()
+    {
+        if (isBase)
+            return this;
+        return GetLowerConnector().GetBaseConnector();
+    }
+
+    public TurretUpgradeConnector1 GetTopConnector()
+    {
+        if (connectorUp == null)
+            return this;
+        if (!connectorUp.Connected)
+            return this;
+        return GetUpperConnector().GetTopConnector();
+    }
+
+    public int GetDistanceToTop() 
+    { 
+        return DistanceToTop(0); 
+    }
+
+    public int GetDistanceToBase() 
+    { 
+        return DistanceToBase(0); 
+    }
+
+    public List<TowerPearlSlot.PearlType> GetActivatedPearl()
+    {
+        List<TowerPearlSlot.PearlType> result = new List<TowerPearlSlot.PearlType>();
+    
+        foreach (Nexus n in nexus)
+            if (n.Active)
+                result.Add(n.towerPearlSlot.slot);
+        
+        return result;
+    }
+
+
+
+    #endregion
+
+
 }

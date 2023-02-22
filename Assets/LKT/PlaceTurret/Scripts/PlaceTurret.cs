@@ -177,7 +177,7 @@ namespace FYP2A.VR.PlaceTurrent
                 TurretUpgradeConnector2 tupc;
                 if (hit.transform != null && hit.transform.TryGetComponent(out tupc) && tupc.confirmedConnection == false)
                 {
-                    if (nowPreview.tier == tupc.parentConnector.DistanceToBase() + 1)
+                    if (nowPreview.tier == tupc.parentConnector.GetDistanceToBase() + 1)
                     {
                         nowPreview.SetCanUpgrade();
                     }
@@ -202,6 +202,7 @@ namespace FYP2A.VR.PlaceTurrent
             {
                 GameObject tm = Instantiate(towerManagerPrefab,nowPreview.gameObject.transform.position + new Vector3(0, nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation);
                 tm.GetComponent<TowerManager>().BuildTower(nowBuild.Tower);
+                tm.transform.GetChild(0).GetComponent<TurretUpgradeConnector1>().SetTowerSO(nowBuild.Tower);
 
                 StartCoroutine(PlaceDownTurrentAnimation(tm.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
@@ -248,10 +249,10 @@ namespace FYP2A.VR.PlaceTurrent
             yield return null;
             
             foreach (TurretUpgradeConnector1.Nexus tucNex in tuc1.nexus)
-                if (tucNex.canPlaceOre && tucNex.inConnector != null)
+                if (tucNex.Active && tucNex.inConnector != null)
                 {
                     tucNex.inConnector.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
-                    tucNex.inConnector.connectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
+                    tucNex.inConnector.ConnectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
                 }
         }
 
