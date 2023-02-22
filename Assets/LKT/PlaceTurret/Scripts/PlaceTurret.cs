@@ -7,21 +7,22 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace FYP2A.VR.PlaceTurrent
 {
-    public class PlaceTurrent : MonoBehaviour
+    public class PlaceTurret : MonoBehaviour
     {
+        [Header("Place Turret")]
         public GameObject towerManagerPrefab;
 
         float placeAnimationHeight = 10f;
         float placeAnimationduration = 0.3f;
 
-        TurrentPreview nowPreview;
+        TurretPreview nowPreview;
         TowerBuildSO nowBuild;
         bool isPreviewing;
         [SerializeField]
         XRRayInteractor xrRayInteractor;
 
         [SerializeField]
-        TurrentPrefabIndex turrentPrefabIndex;
+        TurretPrefabIndex turrentPrefabIndex;
 
         [SerializeField]
         InputActionProperty inputConfirm;
@@ -113,7 +114,7 @@ namespace FYP2A.VR.PlaceTurrent
         {
             DeletePreview();
 
-            nowPreview = Instantiate(previewPrefab).GetComponent<TurrentPreview>();
+            nowPreview = Instantiate(previewPrefab).GetComponent<TurretPreview>();
             nowPreview.Initialize(gameObject, nowBuild.Tower);
             isPreviewing = true;
         }
@@ -128,12 +129,18 @@ namespace FYP2A.VR.PlaceTurrent
 
         }
 
+        protected virtual Ray GetRay()
+        {
+            return new Ray(xrRayInteractor.rayOriginTransform.position, xrRayInteractor.rayOriginTransform.rotation * Vector3.forward); ;
+        }
+
         void SetPreviewPosition()
         {
             RaycastHit hit;
-            Ray ray = new Ray(xrRayInteractor.rayOriginTransform.position, xrRayInteractor.rayOriginTransform.rotation * Vector3.forward);
- 
-            if (nowPreview.placeType == TurrentPreview.PlaceType.baseT)
+            Ray ray = GetRay();
+
+
+            if (nowPreview.placeType == TurretPreview.PlaceType.baseT)
             {
                 Physics.Raycast(ray, out hit, 100, 1 << 10);
                 nowPreview.SetPosition(hit.point);

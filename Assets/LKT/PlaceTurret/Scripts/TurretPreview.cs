@@ -8,7 +8,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace FYP2A.VR.PlaceTurrent
 {
-    public class TurrentPreview : MonoBehaviour
+    public class TurretPreview : MonoBehaviour
     {
         public LayerMask layerNotCheckCollision;
 
