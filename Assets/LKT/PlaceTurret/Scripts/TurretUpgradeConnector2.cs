@@ -16,7 +16,7 @@ public class TurretUpgradeConnector2 : MonoBehaviour
     public Connector2Type connectorType = Connector2Type.UP;
 
     public bool Connected { get => _connectedConnector2.Count >= 1; }
-    public TurretUpgradeConnector2 ConnectedConnector2 { get => _connectedConnector2.Count > 0 ? _connectedConnector2[_connectedConnector2.Count-1] : null; }
+    public TurretUpgradeConnector2 ConnectedConnector2 { get => _connectedConnector2.Count > 0 ? _connectedConnector2[0] : null; }
     public List<TurretUpgradeConnector2> _connectedConnector2 = new List<TurretUpgradeConnector2>();
     public List<TurretUpgradeConnector2> connectedConnector2_unconfirm = new List<TurretUpgradeConnector2>();
 
@@ -66,6 +66,8 @@ public class TurretUpgradeConnector2 : MonoBehaviour
         ConnectionCheckOnOff(false);
         ConnectedConnector2.confirmedConnection = true;
         ConnectedConnector2.ConnectionCheckOnOff(false);
+
+        parentConnector.NexusPearlDisplay();
 
         Debug.Log("Turret:  connection done, time: " + i);
     }

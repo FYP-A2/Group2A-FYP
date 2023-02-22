@@ -175,10 +175,13 @@ namespace FYP2A.VR.PlaceTurrent
                 lm |= (1 << 12);
                 Physics.Raycast(ray, out hit, 100, lm);
                 TurretUpgradeConnector2 tupc;
-                if (hit.transform != null && hit.transform.TryGetComponent(out tupc) && tupc.confirmedConnection == false)
+                if (hit.transform != null && hit.transform.TryGetComponent(out tupc) && tupc.confirmedConnection == false && tupc.parentConnector != null)
                 {
                     if (nowPreview.tier == tupc.parentConnector.GetDistanceToBase() + 1)
                     {
+                        //
+                        //if For required Base type (arrow or magic)
+                        //
                         nowPreview.SetCanUpgrade();
                     }
                     else
@@ -225,11 +228,29 @@ namespace FYP2A.VR.PlaceTurrent
             yield return null;
             yield return null;
             yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+
 
             TurretUpgradeConnector1 tuc1;
             if (turret.GetChild(0).TryGetComponent(out tuc1) && tuc1.connectorDown != null)
                 tuc1.connectorDown.ConfirmConnection();
 
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
             yield return null;
             yield return null;
 
@@ -247,13 +268,29 @@ namespace FYP2A.VR.PlaceTurrent
             yield return null;
             yield return null;
             yield return null;
+
+            //Debug Start
             
             foreach (TurretUpgradeConnector1.Nexus tucNex in tuc1.nexus)
+            {
                 if (tucNex.Active && tucNex.inConnector != null)
                 {
                     tucNex.inConnector.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
                     tucNex.inConnector.ConnectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
                 }
+
+                tucNex.towerPearlSlot.SetPearl(TowerPearlSlot.PearlType.Fire);
+            }
+
+
+            string debugMsg = "tc";
+            List<TurretUpgradeConnector1> tuc1List = tuc1.GetBaseConnector().GetAllConnector();
+            foreach (TurretUpgradeConnector1 a in tuc1List)
+                if (a!=null)
+                    debugMsg += "Tower" + a.GetTowerSO().ToString() + "\n";
+            Debug.Log(debugMsg);
+
+            Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
         }
 
         bool CheckEnoughResources(TowerBuildSO.Resources neededResources)

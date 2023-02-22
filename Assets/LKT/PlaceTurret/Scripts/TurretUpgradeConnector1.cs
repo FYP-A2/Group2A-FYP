@@ -53,6 +53,15 @@ public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
         enabled = false;
     }
 
+    public void NexusPearlDisplay()
+    {
+        foreach (Nexus n in nexus)
+            if (n.Active)
+                n.towerPearlSlot.gameObject.SetActive(true);
+            else
+                n.towerPearlSlot.gameObject.SetActive(false);
+    }
+
     bool CheckNexusConnectToBase(Nexus n)
     {
         if (isBase)
@@ -84,7 +93,7 @@ public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
 
     public int DistanceToTop(int n)
     {
-        return connectorUp == null ? n : connectorUp.ConnectedConnector2.parentConnector.DistanceToTop(n + 1);
+        return (connectorUp == null)||(!connectorUp.Connected) ? n : connectorUp.ConnectedConnector2.parentConnector.DistanceToTop(n + 1);
     }
 
     public void ConnectionCheckOnOff(bool on)
@@ -157,8 +166,25 @@ public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
         return GetUpperConnector().GetTopConnector();
     }
 
+    public List<TurretUpgradeConnector1> GetAllConnector()
+    {
+        List<TurretUpgradeConnector1> result = new List<TurretUpgradeConnector1>();
+        GetBaseConnector().GetAllConnector(result,out result);
+
+        return result;
+    }
+
+    void GetAllConnector(List<TurretUpgradeConnector1> tuclIn, out List<TurretUpgradeConnector1> tuclOut)
+    {
+        List<TurretUpgradeConnector1> temp = new List<TurretUpgradeConnector1>(tuclIn);
+        temp.Add(this);
+        if (GetDistanceToTop() != 0)
+            GetUpperConnector().GetAllConnector(temp, out temp);
+        tuclOut = temp;
+    }
+
     public int GetDistanceToTop() 
-    { 
+    {
         return DistanceToTop(0); 
     }
 
@@ -178,6 +204,21 @@ public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
         return result;
     }
 
+    public List<TowerPearlSlot.PearlType> GetAllActivatedPearl()
+    {
+        List<TowerPearlSlot.PearlType> result = new List<TowerPearlSlot.PearlType>();
+        GetBaseConnector().GetAllActivatedPearl(result, out result);
+
+        return result;
+    }
+    void GetAllActivatedPearl(List<TowerPearlSlot.PearlType> _in,out List<TowerPearlSlot.PearlType> _out)
+    {
+        List<TowerPearlSlot.PearlType> temp = new List<TowerPearlSlot.PearlType>(_in);
+        temp.AddRange(GetActivatedPearl());
+        if (GetDistanceToTop() != 0)
+            GetUpperConnector().GetAllActivatedPearl(temp, out temp);
+        _out = temp;
+    }
 
 
     #endregion
