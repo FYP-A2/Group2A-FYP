@@ -279,7 +279,7 @@ namespace FYP2A.VR.PlaceTurrent
                     tucNex.inConnector.ConnectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
                 }
 
-                tucNex.towerPearlSlot.SetPearl(TowerPearlSlot.PearlType.Fire);
+                tucNex.towerPearlSlot.SetPearl(TowerPearlSlot.PearlType.Speed);
             }
 
 
