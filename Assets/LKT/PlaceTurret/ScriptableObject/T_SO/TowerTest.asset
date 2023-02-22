@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df8800e128147d44b5843f0c56cc3d0, type: 3}
   m_Name: TowerTest
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 688548838375289791, guid: fd1447d3f59b6eb4a9d8bd798f240287, type: 3}
   phyDamage: 20
   magicDamage: 0
   fireRate: 2

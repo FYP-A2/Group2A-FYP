@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df8800e128147d44b5843f0c56cc3d0, type: 3}
   m_Name: TowerTest 2
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 8766460034064593260, guid: 318160eb709ca1e4fa8752667857caf8, type: 3}
   phyDamage: 20
   magicDamage: 0
   fireRate: 2
   attackRange: 10
   towerType: 0
-  level: 0
+  level: 2
   bulletPrefab: {fileID: 0}
   burntDamage: 0
   burntTime: 0

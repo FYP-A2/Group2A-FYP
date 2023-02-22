@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73748e235b06b12409d4d440b4f79316, type: 3}
   m_Name: BuildTest
   m_EditorClassIdentifier: 
-  Tower: {fileID: 0}
-  towerPreview: {fileID: 0}
+  Tower: {fileID: 11400000, guid: 9d67de4dc3dc7ac49aa1eb80c68f7c81, type: 2}
+  towerPreview: {fileID: 7110999667277423892, guid: 4fbe55a8aa7725d4da7b4b4b963c6edb, type: 3}
   neededResources:
     wood: 0
     stone: 0

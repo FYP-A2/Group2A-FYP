@@ -47,7 +47,7 @@ namespace FYP2A.VR.PlaceTurrent
         List<GameObject> overlappedGameobject = new List<GameObject>();
 
 
-        public TowerScriptableObject towerSO;
+        TowerScriptableObject towerSO;
         public int tier { get => towerSO.level; }
         public enum PlaceType { baseT, upgradeT }
         [HideInInspector]

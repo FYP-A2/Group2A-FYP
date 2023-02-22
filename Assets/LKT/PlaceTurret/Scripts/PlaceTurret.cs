@@ -73,7 +73,6 @@ namespace FYP2A.VR.PlaceTurrent
 
         private void Test_Action_performed(InputAction.CallbackContext obj)
         {
-            Debug.Log(test1TowerID);
             SetPreviewTurret(test1TowerID);
         }
         private void Test2_Action_performed(InputAction.CallbackContext obj)
@@ -247,11 +246,13 @@ namespace FYP2A.VR.PlaceTurrent
             yield return null;
             yield return null;
             yield return null;
-            if (tuc1.nexus[0].canPlaceOre && tuc1.nexus[0].inConnector != null)
-            {
-                tuc1.nexus[0].inConnector.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
-                tuc1.nexus[0].inConnector.connectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
-            }
+            
+            foreach (TurretUpgradeConnector1.Nexus tucNex in tuc1.nexus)
+                if (tucNex.canPlaceOre && tucNex.inConnector != null)
+                {
+                    tucNex.inConnector.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
+                    tucNex.inConnector.connectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
+                }
         }
 
         bool CheckEnoughResources(TowerBuildSO.Resources neededResources)

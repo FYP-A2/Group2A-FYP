@@ -74,7 +74,8 @@ public class TurretUpgradeConnector2 : MonoBehaviour
     {
         if (_childrenConnector3 != null && _childrenConnector3.Count > 0)
             foreach (TurretUpgradeConnector3 tuc3 in _childrenConnector3)
-                tuc3.enabled = on;
+                if (tuc3 != null)
+                    tuc3.enabled = on;
 
         enabled = on;
     }
