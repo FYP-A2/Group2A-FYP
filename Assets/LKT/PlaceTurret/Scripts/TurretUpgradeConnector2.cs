@@ -18,6 +18,7 @@ public class TurretUpgradeConnector2 : MonoBehaviour
     public bool connected { get => _connectedConnector2.Count >= 1; }
     public TurretUpgradeConnector2 connectedConnector2 { get => _connectedConnector2.Count > 0 ? _connectedConnector2[_connectedConnector2.Count-1] : null; }
     public List<TurretUpgradeConnector2> _connectedConnector2 = new List<TurretUpgradeConnector2>();
+    public List<TurretUpgradeConnector2> connectedConnector2_unconfirm = new List<TurretUpgradeConnector2>();
 
     [HideInInspector]
     public bool confirmedConnection = false;
@@ -47,10 +48,26 @@ public class TurretUpgradeConnector2 : MonoBehaviour
 
     public void ConfirmConnection()
     {
+        StartCoroutine(KeepConfirmConnection());
+    }
+
+    IEnumerator KeepConfirmConnection()
+    {
+        Debug.Log("Turret:  connection start");
+        int i = 0;
+        while (connectedConnector2 == null)
+        {
+            yield return null;
+
+            i++;
+        }
+
         confirmedConnection = true;
         ConnectionCheckOnOff(false);
         connectedConnector2.confirmedConnection = true;
         connectedConnector2.ConnectionCheckOnOff(false);
+
+        Debug.Log("Turret:  connection done, time: " + i);
     }
 
     public void ConnectionCheckOnOff(bool on)

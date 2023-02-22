@@ -29,13 +29,16 @@ namespace FYP2A.VR.PlaceTurrent
         [SerializeField]
         InputActionProperty inputCancel;
 
-        [SerializeField]
-        InputActionProperty testSelect;
 
-        [SerializeField]
-        InputActionProperty testSelect2;
-
-
+        [Header("Test Input")]
+        public InputActionProperty testSelect;
+        public int test1TowerID;
+        public InputActionProperty testSelect2;
+        public int test2TowerID;
+        public InputActionProperty testSelect3;
+        public int test3TowerID;
+        public InputActionProperty testSelect4;
+        public int test4TowerID;
 
 
         private void OnEnable()
@@ -44,6 +47,8 @@ namespace FYP2A.VR.PlaceTurrent
             inputCancel.EnableDirectAction();
             testSelect.EnableDirectAction();
             testSelect2.EnableDirectAction();
+            testSelect3.EnableDirectAction();
+            testSelect4.EnableDirectAction();
         }
         private void OnDisable()
         {
@@ -51,26 +56,39 @@ namespace FYP2A.VR.PlaceTurrent
             inputCancel.DisableDirectAction();
             testSelect.DisableDirectAction();
             testSelect2.DisableDirectAction();
+            testSelect3.DisableDirectAction();
+            testSelect4.DisableDirectAction();
         }
 
         // Start is called before the first frame update
-        void Start()
+        protected void Start()
         {
             inputConfirm.action.performed += InputConfirm_Action_performed;
             inputCancel.action.performed += InputCancel_Action_performed;
             testSelect.action.performed += Test_Action_performed;
             testSelect2.action.performed += Test2_Action_performed;
+            testSelect3.action.performed += Test3_Action_performed;
+            testSelect4.action.performed += Test4_Action_performed;
         }
 
         private void Test_Action_performed(InputAction.CallbackContext obj)
         {
-            nowBuild = turrentPrefabIndex.towerBuildSOs[0];
-            SetPreviewTurrent(nowBuild);
+            Debug.Log(test1TowerID);
+            SetPreviewTurret(test1TowerID);
         }
         private void Test2_Action_performed(InputAction.CallbackContext obj)
         {
-            nowBuild = turrentPrefabIndex.towerBuildSOs[1];
-            SetPreviewTurrent(nowBuild);
+            SetPreviewTurret(test2TowerID);
+        }
+
+        private void Test3_Action_performed(InputAction.CallbackContext obj)
+        {
+            SetPreviewTurret(test3TowerID);
+        }
+
+        private void Test4_Action_performed(InputAction.CallbackContext obj)
+        {
+            SetPreviewTurret(test4TowerID);
         }
 
         // Update is called once per frame
@@ -96,13 +114,20 @@ namespace FYP2A.VR.PlaceTurrent
             }
         }
 
-        bool SetPreviewTurrent(TowerBuildSO turrentType)
+        public void SetPreviewTurret(int towerID)
         {
-            Debug.Log("Set preview");
-            if (CheckEnoughResources(turrentType.neededResources))
+            nowBuild = turrentPrefabIndex.towerBuildSOs[towerID];
+            SetPreviewTurret(nowBuild);
+        }
+
+
+        bool SetPreviewTurret(TowerBuildSO turretType)
+        {
+            Debug.Log("Turret:  Set preview :" + turretType.ToString());
+            if (CheckEnoughResources(turretType.neededResources))
             {
 
-                CreatePreview(turrentType.towerPreview, turrentType.Tower.level);
+                CreatePreview(turretType.towerPreview, turretType.Tower.level);
 
                 return true;
             }
@@ -190,14 +215,21 @@ namespace FYP2A.VR.PlaceTurrent
             float originHeight = turret.position.y - height;
 
             turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
-            yield return null;
-            yield return null;
-            yield return null;
-            TurretUpgradeConnector1 tuc1;
-            if (turret.TryGetComponent(out tuc1) && tuc1.connectorDown != null)
-                tuc1.connectorDown.ConfirmConnection();
 
             yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+
+            TurretUpgradeConnector1 tuc1;
+            if (turret.GetChild(0).TryGetComponent(out tuc1) && tuc1.connectorDown != null)
+                tuc1.connectorDown.ConfirmConnection();
+
             yield return null;
             yield return null;
 

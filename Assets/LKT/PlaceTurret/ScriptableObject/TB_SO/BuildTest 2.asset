@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73748e235b06b12409d4d440b4f79316, type: 3}
-  m_Name: tb
+  m_Name: BuildTest 2
   m_EditorClassIdentifier: 
-  Tower: {fileID: 11400000, guid: 92faba155c3b902478b20b8bb66f3ab4, type: 2}
+  Tower: {fileID: 0}
   towerPreview: {fileID: 0}
   neededResources:
     wood: 0

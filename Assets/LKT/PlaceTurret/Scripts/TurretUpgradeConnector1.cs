@@ -55,23 +55,18 @@ public class TurretUpgradeConnector1 : MonoBehaviour
     {
         if (isBase)
         {
-            Debug.Log("C1");
             return true;
         }
 
         if (n.inConnector.connected)
         {
-            Debug.Log("C2.1");
             Nexus nextN = n.inConnector.connectedConnector3.parentConnector.parentConnector.GetNexusByConnector(n.inConnector.connectedConnector3);
             if (nextN != null)
             {
-                Debug.Log("C2.2");
                 return nextN.outConnector.parentConnector.parentConnector.CheckNexusConnectToBase(nextN);
             }
 
         }
-
-        Debug.Log("C3");
         return false;
     }
 
