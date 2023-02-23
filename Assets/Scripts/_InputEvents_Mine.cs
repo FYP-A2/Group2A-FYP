@@ -12,9 +12,7 @@ public class _InputEvents_Mine : MonoBehaviour
    
    [Header("Game Components")]
    public Player __Player;
-   public Rigidbody player_RB;
    public Camera cam;
-   public Animator player_AN;
 
    [Header("HUD")]
    public HUD __HUD;

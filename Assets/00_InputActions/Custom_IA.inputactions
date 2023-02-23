@@ -30,20 +30,12 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HUD",
-                    "type": "Button",
-                    "id": "9219f8a5-e0df-425e-a605-97814a0c4fc6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Space",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "dd7892bc-2eca-486f-a44e-7cce7f9b6d52",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -126,67 +118,207 @@
                 },
                 {
                     "name": "",
-                    "id": "da942760-0591-4404-836e-6615123fdeef",
-                    "path": "<Keyboard>/f1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HUD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7ca0cea-02af-486f-aab0-c1af4ea24f09",
-                    "path": "<Keyboard>/f2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HUD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ea83d080-0db5-49d4-9abc-131a9ad87259",
-                    "path": "<Keyboard>/f3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HUD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "74dc4bd5-dd16-4c26-b6db-e190c104532f",
-                    "path": "<Keyboard>/f4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HUD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d44e428-2d97-46e7-b188-7e6b136dd04b",
-                    "path": "<Keyboard>/f12",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HUD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "77a0b28b-8e52-4847-a581-5085014f7a86",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Space",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "HUD",
+            "id": "af243b54-ab7b-4870-87f9-8a11b35fbbf0",
+            "actions": [
+                {
+                    "name": "F1",
+                    "type": "Button",
+                    "id": "3965e7b7-2d6a-4f3b-be8c-80e086b23bbc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F2",
+                    "type": "Button",
+                    "id": "6be59c38-e5a2-44ae-aa88-ae2ad7342a3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F3",
+                    "type": "Button",
+                    "id": "c69b5ace-2e98-4665-850b-825fee03deb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F4",
+                    "type": "Button",
+                    "id": "dd6ada26-a13f-4225-8623-a58d0054d453",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ee005b4e-abcc-48e6-a1ac-cea401ae3731",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2848d82a-b80f-47e2-8fc2-7b48a88b5cee",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26a28371-4dc2-469a-8729-f0be261b55b1",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce8e6d79-ffa7-4e43-b25a-c2db739b87b8",
+                    "path": "<Keyboard>/f4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TP",
+            "id": "5d73636f-6062-4d5d-af6d-f7c9b8f99499",
+            "actions": [
+                {
+                    "name": "F5",
+                    "type": "Button",
+                    "id": "95211d22-00c4-419c-8858-4b4afd9aab78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F6",
+                    "type": "Button",
+                    "id": "0ac30b50-f0f5-4aad-8ed8-e5aec6fcd730",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F7",
+                    "type": "Button",
+                    "id": "ab288755-d3a7-4e75-82fa-ba11d1443f80",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "F8",
+                    "type": "Button",
+                    "id": "f5efd761-27e1-46cf-83f8-06accc2d53aa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b21f7416-5390-4d15-a8e7-3e6c5b968ef7",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1056e32e-0a2e-498b-b112-3168123b2d3c",
+                    "path": "<Keyboard>/f6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5656c2d2-af1b-4ff8-b621-c6883737ceae",
+                    "path": "<Keyboard>/f7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab30d169-4bfd-40f8-baa7-6ab7d1059e71",
+                    "path": "<Keyboard>/f8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F8",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Start Menu",
+            "id": "8e42bfe7-190f-40a5-84fd-44115d2c1c6c",
+            "actions": [
+                {
+                    "name": "Any",
+                    "type": "Button",
+                    "id": "79805b47-5238-4bf4-9eb6-23dc51b7b4f2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d031a815-f108-4664-b709-808ae7ae8eca",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
