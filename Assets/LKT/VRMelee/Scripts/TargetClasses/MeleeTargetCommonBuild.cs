@@ -217,7 +217,7 @@ namespace FYP2A.VR.Melee.Target
         {
             float t = 0;
 
-            while (t < 1)
+            while (t < 1 && xrbc != null)
             {
                 xrbc.SendHapticImpulse(WitchOfAgnesi(1f,0.26f,0.05f,t), Time.deltaTime);
 
