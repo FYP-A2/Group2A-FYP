@@ -56,9 +56,10 @@ public class GrabbingPC : MonoBehaviour
             RaycastHit hit;
             XRGrabInteractable interactable;
             Physics.Raycast(new Ray(raySource.position, raySource.forward),out hit);
-            Debug.Log("GrabbingPC :   hit name :" + hit.transform.name.ToString());
+            
             if(hit.transform != null && hit.transform.TryGetComponent<XRGrabInteractable>(out interactable))
             {
+                Debug.Log("GrabbingPC :   hit name :" + hit.transform.name.ToString());
                 SetItem(hit.transform);
                 isGrabbing = true;
             }
