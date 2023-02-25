@@ -8,7 +8,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace FYP2A.VR.PlaceTurrent
 {
-    public class TurretPreview : MonoBehaviour
+    public class TurretPreview : MonoBehaviour , ITurretPreview
     {
         public LayerMask layerNotCheckCollision;
 
@@ -166,7 +166,7 @@ namespace FYP2A.VR.PlaceTurrent
             SetDisplayHint(reason);
         }
 
-        private void SetDisplayHint(string msg)
+        public void SetDisplayHint(string msg)
         {
             hint.SetDisplayHint(msg);
         }

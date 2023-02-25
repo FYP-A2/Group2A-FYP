@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace FYP2A.VR.PlaceTurrent
 {
-    public class PlaceTurret : MonoBehaviour
+    public class PlaceTurret : MonoBehaviour, IPlaceTurret
     {
         [Header("Place Turret")]
         public GameObject towerManagerPrefab;
@@ -111,6 +111,11 @@ namespace FYP2A.VR.PlaceTurrent
             {
                 DeletePreview();
             }
+        }
+
+        public void SetTurrentPrefabIndex(TurretPrefabIndex tpi)
+        {
+            turrentPrefabIndex = tpi;
         }
 
         public void SetPreviewTurret(int towerID)

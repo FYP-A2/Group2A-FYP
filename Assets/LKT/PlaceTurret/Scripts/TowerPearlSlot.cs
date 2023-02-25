@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerPearlSlot : MonoBehaviour
+public class TowerPearlSlot : MonoBehaviour , ITowerPearlSlot
 {
     public enum PearlType { Empty = 0, Speed = 1, Range = 2, AOE = 3, Phy = 4, Magic = 5 }
     public PearlType slot = PearlType.Empty;
