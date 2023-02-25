@@ -9,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace FYP2A.VR.Melee
 {
-    public class MeleeSource : MonoBehaviour
+    public class MeleeSource : MonoBehaviour , IMeleeSource
     {
         
         [Header("Melee Source Property")]
@@ -43,7 +43,7 @@ namespace FYP2A.VR.Melee
 
         [SerializeField]
         protected GameObject _owner;
-        public GameObject owner { get { return _owner; } }
+        public GameObject Owner { get { return _owner; } }
 
 
         [Serializable]

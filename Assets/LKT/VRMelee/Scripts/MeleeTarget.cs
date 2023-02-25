@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FYP2A.VR.Melee
 {
-    public class MeleeTarget : MonoBehaviour
+    public class MeleeTarget : MonoBehaviour , IMeleeTarget
     {
 
         [Header("Melee Target Property")]
@@ -85,7 +85,7 @@ namespace FYP2A.VR.Melee
         }
 
 
-        public void TakeFightDamageCheck(float damage)
+        public void TakeFightDamageAfterCheck(float damage)
         {
             if (fightable)
                 TakeFightDamage(damage);
@@ -98,7 +98,7 @@ namespace FYP2A.VR.Melee
         }
 
 
-        public void TakeHewDamageCheck(float damage)
+        public void TakeHewDamageAfterCheck(float damage)
         {
             if (hewable)
                 TakeHewDamage(damage);
