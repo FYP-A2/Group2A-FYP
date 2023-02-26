@@ -22,6 +22,7 @@ public class Monster : MonoBehaviour, IMonster
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Core").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         Initialization();
         burntTime = slowTime = reductionTime = 0;
