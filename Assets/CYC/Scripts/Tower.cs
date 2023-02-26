@@ -6,22 +6,29 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] TowerScriptableObject towerScriptable;
+    [SerializeField] TowerScriptableObject towerSO;
+    List<TowerScriptableObject> allTowerSO = new List<TowerScriptableObject>();
     List<Transform> monsters;
     public SphereCollider sphereCollider;
     bool isAttacked;
     public LayerMask layer;
     public NavMeshModifierVolume modifierVolume;
-
+    int phyDamage, magicDamage, attackRange, fireRate;
+    float upgradeAOE;
     void Start()
     {
-        //Debug.Log(gameObject.name);
-        sphereCollider.radius = towerScriptable.attackRange;
+        allTowerSO.Add(towerSO);
+        sphereCollider.radius = towerSO.attackRange;
         monsters = sphereCollider.transform.GetComponent<AttackArea>().targets;
         if(modifierVolume != null)
         {
-            modifierVolume.size = new Vector3(towerScriptable.attackRange*2, towerScriptable.attackRange*2, towerScriptable.attackRange*2);
+            modifierVolume.size = new Vector3(towerSO.attackRange*2, towerSO.attackRange*2, towerSO.attackRange*2);
         }
+        phyDamage = towerSO.phyDamage;
+        magicDamage = towerSO.magicDamage;
+        attackRange = towerSO.attackRange;
+        fireRate = towerSO.fireRate;
+        upgradeAOE = 0;
     }
 
     // Update is called once per frame
@@ -29,23 +36,23 @@ public class Tower : MonoBehaviour
     {
         if (monsters.Count>0)
         {
-            if (towerScriptable.towerType.ToString() == "Toxic")
+            if (towerSO.towerType.ToString() == "Toxic")
             {
                 foreach (Transform t in monsters) {
                     IMonster m;
                     t.TryGetComponent<IMonster>(out m);
                     if (m != null)
-                        m.DefenseReduction(towerScriptable.penetrationRatio, towerScriptable.penetrationTime);
+                        m.DefenseReduction(towerSO.penetrationRatio, towerSO.penetrationTime);
                 }
             }
-            else if(towerScriptable.towerType.ToString() == "Ice")
+            else if(towerSO.towerType.ToString() == "Ice")
             {
                 if (!isAttacked)
                 {
                     for (int i = 0; i < monsters.Count; i++)
                     {
                         RaycastHit hit;
-                        Physics.Raycast(transform.position, (monsters[i].position - transform.position).normalized, out hit, towerScriptable.attackRange, layer);
+                        Physics.Raycast(transform.position, (monsters[i].position - transform.position).normalized, out hit, attackRange, layer);
                         if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow)
                         {
                             isAttacked = true;
@@ -56,7 +63,7 @@ public class Tower : MonoBehaviour
                     if (!isAttacked)
                     {
                         RaycastHit hit;
-                        Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, towerScriptable.attackRange, layer);
+                        Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, attackRange, layer);
                         if (hit.transform != null && hit.transform.tag == "Monster")
                         {
                             isAttacked = true;
@@ -65,48 +72,48 @@ public class Tower : MonoBehaviour
                     }
                 }
             }
-            else if (towerScriptable.towerType.ToString() == "Electro")
+            else if (towerSO.towerType.ToString() == "Electro")
             {
                 if (!isAttacked)
                 {
                     int i = 0;
-                    if(i < towerScriptable.jumpCount)
+                    if(i < towerSO.jumpCount)
                     {
                         
                         if (monsters.Count > 1)
                         {
                             List<GameObject> bulletGO = new List<GameObject>();
-                            bulletGO.Add(Instantiate(towerScriptable.bulletPrefab, transform.position,transform.rotation));
+                            bulletGO.Add(Instantiate(towerSO.bulletPrefab, transform.position,transform.rotation));
                             TestVFX bullet;
                             bulletGO[0].TryGetComponent<TestVFX>(out bullet);
                             if (bullet != null)
                             {
                                 bullet.SetPos(transform.gameObject, monsters[0].gameObject);
-                                monsters[0].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                                monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                             }
                             i++;
                             for (int j = 1; j < monsters.Count; j++)
                             {
-                                bulletGO.Add(Instantiate(towerScriptable.bulletPrefab, monsters[j].position, monsters[j].rotation));
+                                bulletGO.Add(Instantiate(towerSO.bulletPrefab, monsters[j].position, monsters[j].rotation));
                                 bulletGO[j].TryGetComponent<TestVFX>(out bullet);
                                 bullet.SetPos(monsters[i-1].gameObject, monsters[i].gameObject);
-                                monsters[j].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                                monsters[j].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                                 i++;
                             }
                         }
                         else
                         {
-                            GameObject bulletGO = Instantiate(towerScriptable.bulletPrefab);
+                            GameObject bulletGO = Instantiate(towerSO.bulletPrefab);
                             TestVFX bullet;
                             bulletGO.TryGetComponent<TestVFX>(out bullet);
                             if(bullet != null)
                             {
                                 bullet.SetPos(transform.gameObject, monsters[0].gameObject);
-                                monsters[0].GetComponent<Monster>().TakeDamage(towerScriptable.phyDamage, towerScriptable.magicDamage);
+                                monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                             }     
                         }
                         isAttacked = true;
-                        StartCoroutine(ResetAttack(towerScriptable.fireRate));
+                        StartCoroutine(ResetAttack(fireRate));
                     }
                 }
             }
@@ -115,7 +122,7 @@ public class Tower : MonoBehaviour
                 if (!isAttacked)
                 {
                     RaycastHit hit;
-                    Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, towerScriptable.attackRange, layer);
+                    Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, attackRange, layer);
                     if (hit.transform != null && hit.transform.tag == "Monster")
                     {
                         isAttacked = true;
@@ -128,29 +135,29 @@ public class Tower : MonoBehaviour
 
     void Shoot(Transform m)
     {
-        GameObject bulletGO = (GameObject)Instantiate(towerScriptable.bulletPrefab, transform.position, transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(towerSO.bulletPrefab, transform.position, transform.rotation);
         TowerBullet bullet;
         bulletGO.TryGetComponent<TowerBullet>(out bullet);
 
         if (bullet != null)
         {
-            switch (towerScriptable.towerType.ToString())
+            switch (towerSO.towerType.ToString())
             {
                 case "Phy":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.phyDamage, towerScriptable.magicDamage);
+                    bullet.Seek(m.transform, towerSO.towerType.ToString(), phyDamage, magicDamage);
                     break;
                 case "Magic":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.phyDamage, towerScriptable.magicDamage);
+                    bullet.Seek(m.transform, towerSO.towerType.ToString(), phyDamage, magicDamage);
                     break;
                 case "Fire":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, towerScriptable.burntDamage,towerScriptable.burntTime, towerScriptable.exposionRadius);
+                    bullet.Seek(m.transform, towerSO.towerType.ToString(), magicDamage, towerSO.burntDamage,towerSO.burntTime, towerSO.exposionRadius);
                     break;
                 case "Ice":
-                    bullet.Seek(m.transform, towerScriptable.towerType.ToString(), towerScriptable.magicDamage, slowRatio:towerScriptable.slowRatio, slowTime:towerScriptable.slowTime);
+                    bullet.Seek(m.transform, towerSO.towerType.ToString(), magicDamage, slowRatio:towerSO.slowRatio, slowTime:towerSO.slowTime);
                     break;              
             }
         }
-        StartCoroutine(ResetAttack(towerScriptable.fireRate));
+        StartCoroutine(ResetAttack(fireRate));
     }
     IEnumerator ResetAttack(float attackDelay)
     {
@@ -159,5 +166,25 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(attackDelay);
             isAttacked = false;
         }
+    }
+
+    public void UpdateTowerSO(TowerScriptableObject towerSO)
+    {
+        allTowerSO.Add(towerSO);
+        this.towerSO = towerSO;
+        sphereCollider.radius = towerSO.attackRange;
+        if (modifierVolume != null)
+        {
+            modifierVolume.size = new Vector3(towerSO.attackRange * 2, towerSO.attackRange * 2, towerSO.attackRange * 2);
+        }
+        phyDamage = 0;
+        magicDamage= 0;
+        for(int i=0; i<allTowerSO.Count; i++)
+        {
+            phyDamage += allTowerSO[i].phyDamage;
+            magicDamage += allTowerSO[i].magicDamage;
+        }
+        attackRange = towerSO.attackRange;
+        fireRate = towerSO.fireRate;
     }
 }

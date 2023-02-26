@@ -31,6 +31,7 @@ public class TowerScriptableObject : ScriptableObject
         Fire,
         Ice,
         Toxic,
-        Electro
+        Electro,
+        Magic
     }
 }
