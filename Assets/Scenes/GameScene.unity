@@ -38509,9 +38509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __Player: {fileID: 919132148168653249}
-  player_RB: {fileID: 1295434902}
   cam: {fileID: 509010446}
-  player_AN: {fileID: 1295434904}
   __HUD: {fileID: 2141283653}
   __Announcer: {fileID: 937934256}
 --- !u!1001 &1836298222

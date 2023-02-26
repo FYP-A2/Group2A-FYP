@@ -8,7 +8,7 @@ public class Player : MonoBehaviour,IPlayer
    public GameObject GO;
 
    [Header("Attributes")]
-   [SerializeField]public int HP=100;
+   [SerializeReference] public ResourceGroupType resourceGroup = new ResourceGroupType();
    
    [Header("Movement Multipliers")]
    public float movementSpeed=15;
