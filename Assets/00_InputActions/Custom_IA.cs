@@ -49,6 +49,14 @@ public class @Custom_IA : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""LookAt"",
+                    ""type"": ""Value"",
+                    ""id"": ""b01fb72e-1c5d-43f6-8877-5a8c406d9333"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -137,6 +145,17 @@ public class @Custom_IA : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8cd6546-c7ce-44ba-8700-f6d06218a3e0"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -346,6 +365,7 @@ public class @Custom_IA : IInputActionCollection, IDisposable
         m_Player_MouseX = m_Player.FindAction("MouseX", throwIfNotFound: true);
         m_Player_MouseY = m_Player.FindAction("MouseY", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_LookAt = m_Player.FindAction("LookAt", throwIfNotFound: true);
         // HUD
         m_HUD = asset.FindActionMap("HUD", throwIfNotFound: true);
         m_HUD_F1 = m_HUD.FindAction("F1", throwIfNotFound: true);
@@ -414,6 +434,7 @@ public class @Custom_IA : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MouseX;
     private readonly InputAction m_Player_MouseY;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_LookAt;
     public struct PlayerActions
     {
         private @Custom_IA m_Wrapper;
@@ -422,6 +443,7 @@ public class @Custom_IA : IInputActionCollection, IDisposable
         public InputAction @MouseX => m_Wrapper.m_Player_MouseX;
         public InputAction @MouseY => m_Wrapper.m_Player_MouseY;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @LookAt => m_Wrapper.m_Player_LookAt;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +465,9 @@ public class @Custom_IA : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @LookAt.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
+                @LookAt.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
+                @LookAt.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -459,6 +484,9 @@ public class @Custom_IA : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @LookAt.started += instance.OnLookAt;
+                @LookAt.performed += instance.OnLookAt;
+                @LookAt.canceled += instance.OnLookAt;
             }
         }
     }
@@ -616,6 +644,7 @@ public class @Custom_IA : IInputActionCollection, IDisposable
         void OnMouseX(InputAction.CallbackContext context);
         void OnMouseY(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLookAt(InputAction.CallbackContext context);
     }
     public interface IHUDActions
     {

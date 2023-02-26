@@ -17,6 +17,9 @@ public class _InputEvents_Mine : MonoBehaviour
    [Header("HUD")]
    public HUD __HUD;
 
+   [Header("TP")]
+   public Teleport __TP;
+
    [Header("Announcer")]
    public GameObject __Announcer;
 
@@ -29,7 +32,7 @@ public class _InputEvents_Mine : MonoBehaviour
    void Start(){ CIA.Player.Jump.performed+=JumpCall; CIA.HUD.F1.performed+=F1Call; CIA.HUD.F2.performed+=F2Call; CIA.HUD.F3.performed+=F3Call; CIA.HUD.F4.performed+=F4Call;
       CIA.TP.F5.performed+=F5Call;CIA.TP.F6.performed+=F6Call;CIA.TP.F7.performed+=F7Call;CIA.TP.F8.performed+=F8Call;
    }
-   void FixedUpdate() { MoveCall(CIA.Player.WASD.ReadValue<Vector2>()); CamRotate(CIA.Player.MouseX.ReadValue<float>(),CIA.Player.MouseY.ReadValue<float>()); }
+   void FixedUpdate() { MoveCall(CIA.Player.WASD.ReadValue<Vector2>()); CamRotate(CIA.Player.MouseX.ReadValue<float>(),CIA.Player.MouseY.ReadValue<float>()); __Player.ShowTargetPoint(CIA.Player.LookAt.ReadValue<Vector2>());}
    #endregion
 
    #region Our custom-defined events based on data.
@@ -40,9 +43,9 @@ public class _InputEvents_Mine : MonoBehaviour
    public void F3Call(X x){F3Call();} public void F3Call(){}
    public void F4Call(X x){F4Call();} public void F4Call(){}
 
-   public void F5Call(X x){F5Call();} public void F5Call(){}
-   public void F6Call(X x){F6Call();} public void F6Call(){}
-   public void F7Call(X x){F7Call();} public void F7Call(){}
+   public void F5Call(X x){F5Call();} public void F5Call(){__TP.F5();}
+   public void F6Call(X x){F6Call();} public void F6Call(){__TP.F6();}
+   public void F7Call(X x){F7Call();} public void F7Call(){__TP.F7();}
    public void F8Call(X x){F8Call();} public void F8Call(){}
 
    //Larger rotation included.
