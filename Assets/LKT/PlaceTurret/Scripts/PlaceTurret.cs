@@ -179,20 +179,32 @@ namespace FYP2A.VR.PlaceTurrent
                 LayerMask lm = 1 << 10;
                 lm |= (1 << 12);
                 Physics.Raycast(ray, out hit, 100, lm);
-                TurretUpgradeConnector2 tupc;
-                if (hit.transform != null && hit.transform.TryGetComponent(out tupc) && tupc.confirmedConnection == false && tupc.parentConnector != null)
+                TurretUpgradeConnector2 hittedTuc2;
+                if (hit.transform != null && hit.transform.TryGetComponent(out hittedTuc2) && hittedTuc2.confirmedConnection == false && hittedTuc2.parentConnector != null)
                 {
-                    if (nowPreview.tier == tupc.parentConnector.GetDistanceToBase() + 1)
+                    if (nowPreview.tier == hittedTuc2.parentConnector.GetDistanceToBase() + 1)
                     {
-                        //
+                        if (nowBuild.requiredBaseType == TowerBuildSO.RequiredBaseType.NoRequired)
+                            nowPreview.SetCanUpgrade();
                         //if For required Base type (arrow or magic)
-                        //
-                        nowPreview.SetCanUpgrade();
+                        if (nowBuild.requiredBaseType == TowerBuildSO.RequiredBaseType.Phy)
+                            if (hittedTuc2.parentConnector.GetTowerSO().towerType == TowerScriptableObject.TowerType.Phy)
+                                nowPreview.SetCanUpgrade();
+                            else
+                                nowPreview.SetCannotUpgrade("Place this upgrade on Phy base");
+
+                        if (nowBuild.requiredBaseType == TowerBuildSO.RequiredBaseType.Magic)
+                            if (hittedTuc2.parentConnector.GetTowerSO().towerType == TowerScriptableObject.TowerType.Magic)
+                                nowPreview.SetCanUpgrade();
+                            else
+                                nowPreview.SetCannotUpgrade("Place this upgrade on Magic base");
+
+
                     }
                     else
                         nowPreview.SetCannotUpgrade("Place this upgrade on floor " + (nowPreview.tier+1));
 
-                    nowPreview.SetPosition(tupc.transform.position);
+                    nowPreview.SetPosition(hittedTuc2.transform.position);
                 }
                 else
                 {
@@ -200,19 +212,17 @@ namespace FYP2A.VR.PlaceTurrent
                     nowPreview.SetPosition(hit.point);
                 }
             }
-
-            
         }
+       
 
         void PlaceDownTurrent()
         {
             if (nowPreview.canPlace)
             {
-                GameObject tm = Instantiate(towerManagerPrefab,nowPreview.gameObject.transform.position + new Vector3(0, nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation);
-                tm.GetComponent<TowerManager>().BuildTower(nowBuild.Tower);
-                tm.transform.GetChild(0).GetComponent<TurretUpgradeConnector1>().SetTowerSO(nowBuild.Tower);
-
-                StartCoroutine(PlaceDownTurrentAnimation(tm.transform, placeAnimationHeight, placeAnimationduration));
+                GameObject go = Instantiate(nowBuild.Tower.towerPrefab,nowPreview.gameObject.transform.position + new Vector3(0, nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation);
+                go.GetComponent<TurretUpgradeConnector1>().SetTowerSO(nowBuild.Tower);
+                
+                StartCoroutine(PlaceDownTurrentAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
             }
         }
@@ -241,8 +251,13 @@ namespace FYP2A.VR.PlaceTurrent
 
 
             TurretUpgradeConnector1 tuc1;
-            if (turret.GetChild(0).TryGetComponent(out tuc1) && tuc1.connectorDown != null)
+            if (turret.TryGetComponent(out tuc1) && tuc1.connectorDown != null)
+            {
                 tuc1.connectorDown.ConfirmConnection();
+                tuc1.GetBaseConnector().GetComponent<Tower>().UpdateTowerSO(nowBuild.Tower);
+            }
+
+
 
             yield return null;
             yield return null;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9189743262578933849}
   - component: {fileID: 6237081699861190531}
   - component: {fileID: 312030415995020265}
+  - component: {fileID: 285632731827782028}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -119,6 +120,18 @@ MonoBehaviour:
     inConnector: {fileID: 0}
     outConnector: {fileID: 5300245076068119477}
     towerPearlSlot: {fileID: 2487958774123553466}
+--- !u!114 &285632731827782028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688548838375289791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d01b69b67ebd0499b2cbc4ff566908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &617721431718867992
 PrefabInstance:
   m_ObjectHideFlags: 0

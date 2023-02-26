@@ -9,6 +9,8 @@ public class TowerBuildSO : ScriptableObject
     public TowerScriptableObject Tower;
     public GameObject towerPreview;
     public Resources neededResources;
+    public enum RequiredBaseType { NoRequired, Phy, Magic }
+    public RequiredBaseType requiredBaseType = RequiredBaseType.NoRequired;
 
     [Serializable]
     public struct Resources {
