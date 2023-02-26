@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-namespace FYP2A.VR.PlaceTurrent
+namespace FYP2A.VR.PlaceTurret
 {
     public class TurretPreview : MonoBehaviour , ITurretPreview
     {

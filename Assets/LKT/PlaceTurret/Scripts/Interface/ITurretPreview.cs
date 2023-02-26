@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static FYP2A.VR.PlaceTurrent.TurretPreview;
+using static FYP2A.VR.PlaceTurret.TurretPreview;
 
 public interface ITurretPreview
 {

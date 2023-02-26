@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
-namespace FYP2A.VR.PlaceTurrent
+namespace FYP2A.VR.PlaceTurret
 {
     public class PlaceTurret : MonoBehaviour, IPlaceTurret
     {
@@ -22,7 +22,7 @@ namespace FYP2A.VR.PlaceTurrent
         XRRayInteractor xrRayInteractor;
 
         [SerializeField]
-        TurretPrefabIndex turrentPrefabIndex;
+        TurretPrefabIndex turretPrefabIndex;
 
         [SerializeField]
         InputActionProperty inputConfirm;
@@ -101,7 +101,7 @@ namespace FYP2A.VR.PlaceTurrent
         {
             if (inputConfirm.action.ReadValue<float>() > 0.3f && isPreviewing && nowPreview.canPlace)
             {
-                PlaceDownTurrent();
+                PlaceDownTurret();
             }
         }
 
@@ -113,14 +113,14 @@ namespace FYP2A.VR.PlaceTurrent
             }
         }
 
-        public void SetTurrentPrefabIndex(TurretPrefabIndex tpi)
+        public void SetTurretPrefabIndex(TurretPrefabIndex tpi)
         {
-            turrentPrefabIndex = tpi;
+            turretPrefabIndex = tpi;
         }
 
         public void SetPreviewTurret(int towerID)
         {
-            nowBuild = turrentPrefabIndex.towerBuildSOs[towerID];
+            nowBuild = turretPrefabIndex.towerBuildSOs[towerID];
             SetPreviewTurret(nowBuild);
         }
 
@@ -160,7 +160,8 @@ namespace FYP2A.VR.PlaceTurrent
 
         protected virtual Ray GetRay()
         {
-            return new Ray(xrRayInteractor.rayOriginTransform.position, xrRayInteractor.rayOriginTransform.rotation * Vector3.forward); ;
+            return new Ray(xrRayInteractor.rayOriginTransform.position, xrRayInteractor.rayOriginTransform.rotation * Vector3.forward);
+            //important
         }
 
         void SetPreviewPosition()
@@ -215,19 +216,19 @@ namespace FYP2A.VR.PlaceTurrent
         }
        
 
-        void PlaceDownTurrent()
+        void PlaceDownTurret()
         {
             if (nowPreview.canPlace)
             {
                 GameObject go = Instantiate(nowBuild.Tower.towerPrefab,nowPreview.gameObject.transform.position + new Vector3(0, nowPreview.offsetY + placeAnimationHeight, 0), nowPreview.gameObject.transform.rotation);
                 go.GetComponent<TurretUpgradeConnector1>().SetTowerSO(nowBuild.Tower);
                 
-                StartCoroutine(PlaceDownTurrentAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
+                StartCoroutine(PlaceDownTurretAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
             }
         }
 
-        IEnumerator PlaceDownTurrentAnimation(Transform turret,float height,float duration)
+        IEnumerator PlaceDownTurretAnimation(Transform turret,float height,float duration)
         {
             float t = 0;
             float originHeight = turret.position.y - height;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPlaceTurret
 {
-    public void SetTurrentPrefabIndex(TurretPrefabIndex tpi);
+    public void SetTurretPrefabIndex(TurretPrefabIndex tpi);
     public void SetPreviewTurret(int towerID);
     //towerID is the index of an TowerBuildScriptableObject in TurretPrefabIndex.
     //In order to get the towerID and use this method,

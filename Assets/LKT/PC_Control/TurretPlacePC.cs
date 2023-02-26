@@ -1,10 +1,10 @@
-using FYP2A.VR.PlaceTurrent;
+using FYP2A.VR.PlaceTurret;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace FYP2A.VR.PlaceTurrent
+namespace FYP2A.VR.PlaceTurret
 {
     public class TurretPlacePC : PlaceTurret
     {
