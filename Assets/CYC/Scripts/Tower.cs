@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     List<TowerScriptableObject> allTowerSO = new List<TowerScriptableObject>();
     List<Transform> monsters;
     public SphereCollider sphereCollider;
+    public Transform firePoint;
     bool isAttacked;
     public LayerMask layer;
     public NavMeshModifierVolume modifierVolume;
@@ -28,6 +29,8 @@ public class Tower : MonoBehaviour
         magicDamage = towerSO.magicDamage;
         attackRange = towerSO.attackRange;
         fireRate = towerSO.fireRate;
+        if (firePoint == null)
+            firePoint = transform;
         upgradeAOE = 0;
     }
 
@@ -52,7 +55,7 @@ public class Tower : MonoBehaviour
                     for (int i = 0; i < monsters.Count; i++)
                     {
                         RaycastHit hit;
-                        Physics.Raycast(transform.position, (monsters[i].position - transform.position).normalized, out hit, attackRange, layer);
+                        Physics.Raycast(firePoint.position, (monsters[i].position - firePoint.position).normalized, out hit, attackRange, layer);
                         if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow)
                         {
                             isAttacked = true;
@@ -63,7 +66,7 @@ public class Tower : MonoBehaviour
                     if (!isAttacked)
                     {
                         RaycastHit hit;
-                        Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, attackRange, layer);
+                        Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
                         if (hit.transform != null && hit.transform.tag == "Monster")
                         {
                             isAttacked = true;
@@ -83,12 +86,12 @@ public class Tower : MonoBehaviour
                         if (monsters.Count > 1)
                         {
                             List<GameObject> bulletGO = new List<GameObject>();
-                            bulletGO.Add(Instantiate(towerSO.bulletPrefab, transform.position,transform.rotation));
+                            bulletGO.Add(Instantiate(towerSO.bulletPrefab, firePoint.position,firePoint.rotation));
                             TestVFX bullet;
                             bulletGO[0].TryGetComponent<TestVFX>(out bullet);
                             if (bullet != null)
                             {
-                                bullet.SetPos(transform.gameObject, monsters[0].gameObject);
+                                bullet.SetPos(firePoint.gameObject, monsters[0].gameObject);
                                 monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                             }
                             i++;
@@ -108,7 +111,7 @@ public class Tower : MonoBehaviour
                             bulletGO.TryGetComponent<TestVFX>(out bullet);
                             if(bullet != null)
                             {
-                                bullet.SetPos(transform.gameObject, monsters[0].gameObject);
+                                bullet.SetPos(firePoint.gameObject, monsters[0].gameObject);
                                 monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                             }     
                         }
@@ -122,7 +125,7 @@ public class Tower : MonoBehaviour
                 if (!isAttacked)
                 {
                     RaycastHit hit;
-                    Physics.Raycast(transform.position, (monsters[0].position - transform.position).normalized, out hit, attackRange, layer);
+                    Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
                     if (hit.transform != null && hit.transform.tag == "Monster")
                     {
                         isAttacked = true;
@@ -135,7 +138,7 @@ public class Tower : MonoBehaviour
 
     void Shoot(Transform m)
     {
-        GameObject bulletGO = (GameObject)Instantiate(towerSO.bulletPrefab, transform.position, transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(towerSO.bulletPrefab, firePoint.position, firePoint.rotation);
         TowerBullet bullet;
         bulletGO.TryGetComponent<TowerBullet>(out bullet);
 
