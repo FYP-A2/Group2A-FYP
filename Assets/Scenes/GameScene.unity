@@ -10767,18 +10767,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label1: {fileID: 2114014232}
-  label2: {fileID: 0}
-  label3: {fileID: 0}
-  label4: {fileID: 0}
-  label5: {fileID: 0}
-  label6: {fileID: 0}
-  label7: {fileID: 0}
-  label8: {fileID: 0}
-  label9: {fileID: 0}
-  label10: {fileID: 0}
-  label11: {fileID: 0}
-  label12: {fileID: 0}
-  label13: {fileID: 0}
+  label2: {fileID: 1628789904}
+  label3: {fileID: 534115741}
+  label4: {fileID: 179842523}
+  label5: {fileID: 288905360}
+  label6: {fileID: 1717819353}
+  label7: {fileID: 634210675}
+  label8: {fileID: 221859387}
+  label9: {fileID: 492099300}
+  label10: {fileID: 297435291}
+  label11: {fileID: 672583986}
+  label12: {fileID: 1146668874}
+  label13: {fileID: 1934032378}
   __Player: {fileID: 919132148168653249}
 --- !u!1 &433003063
 GameObject:
