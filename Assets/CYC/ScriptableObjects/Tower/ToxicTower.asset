@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
+  m_Name: ToxicTower
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 312291994173469593, guid: 84cdd636ac5a13e4caba34d12aebe36a, type: 3}
+  phyDamage: 0
+  magicDamage: 0
+  fireRate: 0
+  attackRange: 15
+  towerType: 3
+  level: 0
+  bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
+  burntDamage: 0
+  burntTime: 0
+  slowRatio: 0
+  slowTime: 0
+  penetrationRatio: 1.5
+  penetrationTime: 2
+  jumpCount: 0

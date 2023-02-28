@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: da9391b5a0a12a54ca411a703defd06e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fireEffect: {instanceID: 0}
+  - slowEffect: {instanceID: 0}
+  - toxicEffect: {instanceID: 0}
+  - bullet: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
