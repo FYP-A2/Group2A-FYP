@@ -193,4 +193,9 @@ public class Tower : MonoBehaviour
         attackRange = towerSO.attackRange;
         fireRate = towerSO.fireRate;
     }
+
+    public void UpdatePearl()
+    {
+
+    }
 }
