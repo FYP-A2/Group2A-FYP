@@ -235,8 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c036232864b744695dde770ac7200e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerScriptable: {fileID: 11400000, guid: 917dec12d6a8b81439406c94aae15f2e, type: 2}
+  towerSO: {fileID: 11400000, guid: 917dec12d6a8b81439406c94aae15f2e, type: 2}
   sphereCollider: {fileID: 2276229018621976206}
+  firePoint: {fileID: 0}
   layer:
     serializedVersion: 2
     m_Bits: 55

@@ -42,10 +42,13 @@ public class Tower : MonoBehaviour
             if (towerSO.towerType.ToString() == "Toxic")
             {
                 foreach (Transform t in monsters) {
-                    IMonster m;
-                    t.TryGetComponent<IMonster>(out m);
-                    if (m != null)
-                        m.DefenseReduction(towerSO.penetrationRatio, towerSO.penetrationTime);
+                    if (t != null)
+                    {
+                        IMonster m;
+                        t.TryGetComponent<IMonster>(out m);
+                        if (m != null)
+                            m.DefenseReduction(towerSO.penetrationRatio, towerSO.penetrationTime);
+                    }
                 }
             }
             else if(towerSO.towerType.ToString() == "Ice")

@@ -111,11 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c036232864b744695dde770ac7200e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerScriptable: {fileID: 11400000, guid: 2c65d5d0b10648342b021b65c0ac3958, type: 2}
+  towerSO: {fileID: 11400000, guid: 2c65d5d0b10648342b021b65c0ac3958, type: 2}
   sphereCollider: {fileID: 7099558845500050807}
+  firePoint: {fileID: 0}
   layer:
     serializedVersion: 2
     m_Bits: 55
+  modifierVolume: {fileID: 0}
 --- !u!1 &7099558845500050806
 GameObject:
   m_ObjectHideFlags: 0
