@@ -300,18 +300,18 @@ namespace FYP2A.VR.PlaceTurret
                     tucNex.inConnector.ConnectedConnector3.GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.5f);
                 }
 
-                tucNex.towerPearlSlot.SetPearl(TowerPearlSlot.PearlType.Speed);
+                //tucNex.towerPearlSlot.SetPearl(TowerPearlSlot.PearlType.Speed);
             }
 
 
-            string debugMsg = "tc";
-            List<TurretUpgradeConnector1> tuc1List = tuc1.GetBaseConnector().GetAllConnector();
-            foreach (TurretUpgradeConnector1 a in tuc1List)
-                if (a!=null)
-                    debugMsg += "Tower" + a.GetTowerSO().ToString() + "\n";
-            Debug.Log(debugMsg);
-
-            Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
+            //string debugMsg = "tc";
+            //List<TurretUpgradeConnector1> tuc1List = tuc1.GetBaseConnector().GetAllConnector();
+            //foreach (TurretUpgradeConnector1 a in tuc1List)
+            //    if (a!=null)
+            //        debugMsg += "Tower" + a.GetTowerSO().ToString() + "\n";
+            //Debug.Log(debugMsg);
+            //
+            //Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
         }
 
         bool CheckEnoughResources(TowerBuildSO.Resources neededResources)

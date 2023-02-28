@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73748e235b06b12409d4d440b4f79316, type: 3}
   m_Name: BuildTest 2
   m_EditorClassIdentifier: 
-  Tower: {fileID: 11400000, guid: 37156b013010e97478e1e8caef7f6607, type: 2}
+  Tower: {fileID: 11400000, guid: ee41a6d1dace11b4299e4bcf1e49de95, type: 2}
   towerPreview: {fileID: 9218710418441571514, guid: abbb9d4168af4b643b6d0f228acadd5a, type: 3}
   neededResources:
     wood: 0
@@ -22,3 +22,4 @@ MonoBehaviour:
     Ice: 0
     Toxic: 0
     Electro: 0
+  requiredBaseType: 0

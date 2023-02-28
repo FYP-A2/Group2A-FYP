@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73748e235b06b12409d4d440b4f79316, type: 3}
-  m_Name: BuildTest 1
+  m_Name: Phy
   m_EditorClassIdentifier: 
-  Tower: {fileID: 11400000, guid: f26892bca97510145ac1b8226d997b75, type: 2}
-  towerPreview: {fileID: 5200336980493814201, guid: 06c4f774bf5b2c5489107a8ecefaa016, type: 3}
+  Tower: {fileID: 11400000, guid: 54618436bcda9fe4fa0c362ed3b30236, type: 2}
+  towerPreview: {fileID: 6229337950401976113, guid: e250df3da2b67ef4aadbfe5c4fcd8dab, type: 3}
   neededResources:
     wood: 0
     stone: 0
