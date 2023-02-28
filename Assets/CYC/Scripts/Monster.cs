@@ -19,6 +19,7 @@ public class Monster : MonoBehaviour, IMonster
     GameObject bulletPrefab;
     public Slider slider;
     [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
+    public GameObject displayDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +71,9 @@ public class Monster : MonoBehaviour, IMonster
 
     public void TakeDamage(int phyDamage, int magicDamage)
     {
-        hp -= (int)(phyDamage * (1-defense)  + magicDamage * (1-resistance));
+        int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
+        hp -= finalDamage;
+        ShowDamage(finalDamage,Color.black);
         if (hp <= 0)
         {
             Dead();
@@ -221,6 +224,7 @@ public class Monster : MonoBehaviour, IMonster
         {
             //Debug.Log("burnt");
             hp -= damage;
+            ShowDamage(damage, Color.red);
             if (hp <= 0)
             {
                 Dead();
@@ -260,5 +264,13 @@ public class Monster : MonoBehaviour, IMonster
             transform.LookAt(hitTargets[0].position);
             bullet.Shoot(transform.forward,damage,gameObject);
         }
+    }
+
+    public void ShowDamage(int DamageShow, Color color)
+    {
+        GameObject x = Instantiate(displayDamage, slider.transform.position, slider.transform.rotation,transform);
+        x.GetComponent<TextMove>().text.color = color;
+        x.GetComponent<TextMove>().SetDamage(DamageShow);
+        Destroy(x, 1f);
     }
 }

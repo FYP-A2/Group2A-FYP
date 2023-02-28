@@ -398,6 +398,8 @@ MonoBehaviour:
   fireEffect: {fileID: 0}
   slowEffect: {fileID: 0}
   toxicEffect: {fileID: 0}
+  displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &2182106862086260151
 SphereCollider:
   m_ObjectHideFlags: 0
