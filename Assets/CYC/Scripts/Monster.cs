@@ -22,7 +22,8 @@ public class Monster : MonoBehaviour, IMonster
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Core").GetComponent<Transform>();
+        if(target== null)
+            target = GameObject.Find("Core").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         Initialization();
         burntTime = slowTime = reductionTime = 0;
@@ -78,12 +79,7 @@ public class Monster : MonoBehaviour, IMonster
 
     public void GetBurnt(int phyDamage, int magicDamage, int burntDamage, float burntTime)
     {
-        hp -= (int)(phyDamage * (1-defense) + magicDamage * (1-resistance));
-        if (hp <= 0)
-        {
-            Dead();
-            return;
-        }
+        TakeDamage(phyDamage, magicDamage);
         if (fireEffect == null)
         {
             fireEffect = Instantiate(enemyScriptable.fireEffect, transform);
@@ -101,12 +97,7 @@ public class Monster : MonoBehaviour, IMonster
 
     public void GetSlow(int phyDamage, int magicDamage, float slowRatio, float slowTime)
     {
-        hp -= (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
-        if (hp <= 0)
-        {
-            Dead();
-            return;
-        }
+        TakeDamage(phyDamage, magicDamage);
         if (slowEffect == null)
         {
             slowEffect = Instantiate(enemyScriptable.slowEffect, transform);
