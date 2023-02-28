@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 20
   defense: 1
   resistance: 1
-  attackRange: 5
+  attackRange: 10
   attackDelay: 2
   isRanged: 1
   fireEffect: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}

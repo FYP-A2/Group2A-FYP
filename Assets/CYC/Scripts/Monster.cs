@@ -136,7 +136,8 @@ public class Monster : MonoBehaviour, IMonster
         else
         {
             //Debug.Log("Move");
-            agent.SetDestination(target.position);
+            if(!agent.hasPath)
+                agent.SetDestination(target.position);
         }
     }
 

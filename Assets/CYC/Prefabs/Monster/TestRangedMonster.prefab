@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 4267623551590542991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 466128802414325189}
   - {fileID: 4079670565956542515}
@@ -335,7 +335,6 @@ MonoBehaviour:
   slowEffect: {fileID: 0}
   toxicEffect: {fileID: 0}
   displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
-  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4267623551590543091
 SphereCollider:
   m_ObjectHideFlags: 0
