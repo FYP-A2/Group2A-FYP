@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 7701442}
   - component: {fileID: 7701441}
   m_Layer: 5
-  m_Name: PearlRedIcon
+  m_Name: FirePearlIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5494,7 +5494,7 @@ GameObject:
   - component: {fileID: 221859388}
   - component: {fileID: 221859387}
   m_Layer: 5
-  m_Name: OreYellowText
+  m_Name: ElectroOreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7104,7 +7104,7 @@ GameObject:
   - component: {fileID: 297435292}
   - component: {fileID: 297435291}
   m_Layer: 5
-  m_Name: PearlGreenText
+  m_Name: ToxicPearlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8832,7 +8832,7 @@ GameObject:
   - component: {fileID: 341860449}
   - component: {fileID: 341860448}
   m_Layer: 5
-  m_Name: OrePurpleIcon
+  m_Name: PhysicalOreIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9053,7 +9053,7 @@ GameObject:
   - component: {fileID: 349904671}
   - component: {fileID: 349904670}
   m_Layer: 5
-  m_Name: PearlPurpleIcon
+  m_Name: PhysicalPearlIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10852,7 +10852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 466.2, y: -80.9}
+  m_AnchoredPosition: {x: 389.9, y: -80.9}
   m_SizeDelta: {x: 100, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &436731708
@@ -11841,7 +11841,7 @@ GameObject:
   - component: {fileID: 492099301}
   - component: {fileID: 492099300}
   m_Layer: 5
-  m_Name: PearlBlueText
+  m_Name: IcePearlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14512,7 +14512,7 @@ GameObject:
   - component: {fileID: 634210676}
   - component: {fileID: 634210675}
   m_Layer: 5
-  m_Name: OreRedText
+  m_Name: FireOreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15343,7 +15343,7 @@ GameObject:
   - component: {fileID: 672583987}
   - component: {fileID: 672583986}
   m_Layer: 5
-  m_Name: PearlPurpleText
+  m_Name: PhysicalPearlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22321,7 +22321,7 @@ GameObject:
   - component: {fileID: 976465852}
   - component: {fileID: 976465851}
   m_Layer: 5
-  m_Name: PearlGreenIcon
+  m_Name: ToxicPearlIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24149,7 +24149,7 @@ GameObject:
   - component: {fileID: 1070756032}
   - component: {fileID: 1070756031}
   m_Layer: 5
-  m_Name: OreYellowIcon
+  m_Name: ElectroOreIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26139,7 +26139,7 @@ GameObject:
   - component: {fileID: 1146668875}
   - component: {fileID: 1146668874}
   m_Layer: 5
-  m_Name: PearlRedText
+  m_Name: FirePearlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27054,7 +27054,7 @@ GameObject:
   - component: {fileID: 1177710405}
   - component: {fileID: 1177710404}
   m_Layer: 5
-  m_Name: PearlYellowIcon
+  m_Name: ElectroPearlIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35132,7 +35132,7 @@ GameObject:
   - component: {fileID: 1531610040}
   - component: {fileID: 1531610039}
   m_Layer: 5
-  m_Name: PearlBlueIcon
+  m_Name: IcePearlIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36574,7 +36574,7 @@ GameObject:
   - component: {fileID: 1606597386}
   - component: {fileID: 1606597385}
   m_Layer: 5
-  m_Name: OreRedIcon
+  m_Name: FireOreIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38648,7 +38648,7 @@ GameObject:
   - component: {fileID: 1717819354}
   - component: {fileID: 1717819353}
   m_Layer: 5
-  m_Name: OrePurpleText
+  m_Name: PhysicalOreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43693,7 +43693,7 @@ GameObject:
   - component: {fileID: 1934032379}
   - component: {fileID: 1934032378}
   m_Layer: 5
-  m_Name: PearlYellowText
+  m_Name: ElectroPearlText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

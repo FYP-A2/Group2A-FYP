@@ -20,5 +20,19 @@ public class HUD_TopBar : MonoBehaviour
     void Update()
     {
        label1.SetText(__Player.resourceGroup.woodAmount.ToString());
+       label2.SetText(__Player.resourceGroup.stoneAmount.ToString());
+       label3.SetText(__Player.resourceGroup.coinAmount.ToString());
+
+       label4.SetText(__Player.resourceGroup.iceOreAmount.ToString());
+       label5.SetText(__Player.resourceGroup.fireOreAmount.ToString());
+       label6.SetText(__Player.resourceGroup.toxicOreAmount.ToString());
+       label7.SetText(__Player.resourceGroup.physicalOreAmount.ToString());
+       label8.SetText(__Player.resourceGroup.electroOreAmount.ToString());
+
+       label9.SetText(__Player.resourceGroup.icePearlAmount.ToString());
+       label10.SetText(__Player.resourceGroup.firePearlAmount.ToString());
+       label11.SetText(__Player.resourceGroup.toxicPearlAmount.ToString());
+       label12.SetText(__Player.resourceGroup.physicalPearlAmount.ToString());
+       label13.SetText(__Player.resourceGroup.electroPearlAmount.ToString());
     }
 }

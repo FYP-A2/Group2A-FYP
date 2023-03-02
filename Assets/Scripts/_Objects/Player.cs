@@ -27,7 +27,24 @@ public class Player : MonoBehaviour,IPlayer
       this.GetComponent<Rigidbody>().AddForce(Vector3.up*1000);
    }
 
+   #region Setter
+   //Support negative numbers for using resources.
+   public void AddWood(int addAmount){ resourceGroup.woodAmount+=addAmount; }
+   public void AddStone(int addAmount){ resourceGroup.stoneAmount+=addAmount; }
+   public void AddCoin(int addAmount){ resourceGroup.coinAmount+=addAmount; }
 
+   public void AddIceOre(int addAmount){ resourceGroup.iceOreAmount+=addAmount; }
+   public void AddFireOre(int addAmount){ resourceGroup.fireOreAmount+=addAmount; }
+   public void AddPhysicalOre(int addAmount){ resourceGroup.physicalOreAmount+=addAmount; }
+   public void AddElectroOre(int addAmount){ resourceGroup.electroOreAmount+=addAmount; }
+   public void AddToxicOre(int addAmount){ resourceGroup.toxicOreAmount+=addAmount; }
+
+   public void AddIcePearl(int addAmount){ resourceGroup.icePearlAmount+=addAmount; }
+   public void AddFirePearl(int addAmount){ resourceGroup.firePearlAmount+=addAmount; }
+   public void AddPhysicalPearl(int addAmount){ resourceGroup.physicalPearlAmount+=addAmount; }
+   public void AddElectroPearl(int addAmount){ resourceGroup.electroPearlAmount+=addAmount; }
+   public void AddToxicPearl(int addAmount){ resourceGroup.toxicPearlAmount+=addAmount; }
+   #endregion
 
 
    #region TargetPointVisualization
