@@ -56,10 +56,13 @@ public class TurretUpgradeConnector1 : MonoBehaviour, ITurretConnector
     public void NexusPearlDisplay()
     {
         foreach (Nexus n in nexus)
-            if (n.Active)
-                n.towerPearlSlot.gameObject.SetActive(true);
-            else
-                n.towerPearlSlot.gameObject.SetActive(false);
+            if (n.towerPearlSlot != null)
+            {
+                if (n.Active)
+                    n.towerPearlSlot.gameObject.SetActive(true);
+                else
+                    n.towerPearlSlot.gameObject.SetActive(false);
+            }
     }
 
     bool CheckNexusConnectToBase(Nexus n)

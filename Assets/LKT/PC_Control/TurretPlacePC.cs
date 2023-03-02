@@ -3,13 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace FYP2A.VR.PlaceTurret
 {
     public class TurretPlacePC : PlaceTurret
     {
         [Header("PC control")]
-        public Transform rayDirection;
+        public InputActionProperty mousePos;
+
+        new void OnEnable()
+        {
+            base.OnEnable();
+            mousePos.action.Enable();
+        }
+
+        new void OnDisable()
+        {
+            base.OnDisable();
+            mousePos.action.Disable();
+        }
 
         new void Start()
         {
@@ -18,9 +31,7 @@ namespace FYP2A.VR.PlaceTurret
 
         protected override Ray GetRay()
         {
-            //Debug.Log("in pc: " + rayDirectionposition);
-            Debug.DrawRay(rayDirection.position, rayDirection.forward, Color.yellow, 0.3f);
-            return new Ray(rayDirection.position, rayDirection.forward);
+            return Camera.main.ScreenPointToRay(mousePos.action.ReadValue<Vector2>());
         }
     }
 }

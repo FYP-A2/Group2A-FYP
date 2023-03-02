@@ -41,7 +41,7 @@ namespace FYP2A.VR.PlaceTurret
         public int test4TowerID;
 
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             inputConfirm.EnableDirectAction();
             inputCancel.EnableDirectAction();
@@ -50,7 +50,7 @@ namespace FYP2A.VR.PlaceTurret
             testSelect3.EnableDirectAction();
             testSelect4.EnableDirectAction();
         }
-        private void OnDisable()
+        protected void OnDisable()
         {
             inputConfirm.DisableDirectAction();
             inputCancel.DisableDirectAction();
