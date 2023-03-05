@@ -2292,6 +2292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GO: {fileID: 9049569822728526300}
   targetPointVisualization: {fileID: 8167258266802498685}
+  resourceGroupDefault: {fileID: 11400000, guid: 3ab8899367d66ec47902f139bd32adbb, type: 2}
   resourceGroup:
     id: 0
   movementSpeed: 15
@@ -2301,19 +2302,7 @@ MonoBehaviour:
     00000000:
       type: {class: ResourceGroupType, ns: , asm: Assembly-CSharp}
       data:
-        woodAmount: 0
-        stoneAmount: 0
-        coinAmount: 0
-        fireOreAmount: 0
-        iceOreAmount: 0
-        toxicOreAmount: 0
-        physicalOreAmount: 0
-        electroOreAmount: 0
-        firePearlAmount: 0
-        icePearlAmount: 0
-        toxicPearlAmount: 0
-        physicalPearlAmount: 0
-        electroPearlAmount: 0
+        resources: []
 --- !u!114 &1836722538394661776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2405,7 +2394,18 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   test4TowerID: 0
-  rayDirection: {fileID: 8167258266887848467}
+  mousePos:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!114 &107112512725102373
 MonoBehaviour:
   m_ObjectHideFlags: 0

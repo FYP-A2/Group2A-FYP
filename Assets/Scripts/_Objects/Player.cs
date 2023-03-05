@@ -8,14 +8,13 @@ public class Player : MonoBehaviour,IPlayer
    public GameObject GO;
    public GameObject targetPointVisualization;
 
-   [Header("Attributes")]
-   [SerializeReference] public ResourceGroupType resourceGroup = new ResourceGroupType();
+    [Header("Attributes")]
+    [SerializeReference] public ResourceGroupType resourceGroup;
 
    
    [Header("Movement Multipliers")]
    public float movementSpeed=15;
    public float rotationSpeed=50;
-
 
 
    public void Move(Vector2 rightness_n_forwardness_R){
@@ -27,28 +26,38 @@ public class Player : MonoBehaviour,IPlayer
       this.GetComponent<Rigidbody>().AddForce(Vector3.up*1000);
    }
 
-   #region Setter
-   //Support negative numbers for using resources.
-   public void AddWood(int addAmount){ resourceGroup.woodAmount+=addAmount; }
-   public void AddStone(int addAmount){ resourceGroup.stoneAmount+=addAmount; }
-   public void AddCoin(int addAmount){ resourceGroup.coinAmount+=addAmount; }
+    #region Setter
+    //Support negative numbers for using resources.
+    //public void AddWood(int addAmount){ resourceGroup.woodAmount+=addAmount; }
+    //public void AddStone(int addAmount){ resourceGroup.stoneAmount+=addAmount; }
+    //public void AddCoin(int addAmount){ resourceGroup.coinAmount+=addAmount; }
+    //
+    //public void AddIceOre(int addAmount){ resourceGroup.iceOreAmount+=addAmount; }
+    //public void AddFireOre(int addAmount){ resourceGroup.fireOreAmount+=addAmount; }
+    //public void AddPhysicalOre(int addAmount){ resourceGroup.physicalOreAmount+=addAmount; }
+    //public void AddElectroOre(int addAmount){ resourceGroup.electroOreAmount+=addAmount; }
+    //public void AddToxicOre(int addAmount){ resourceGroup.toxicOreAmount+=addAmount; }
+    //
+    //public void AddIcePearl(int addAmount){ resourceGroup.icePearlAmount+=addAmount; }
+    //public void AddFirePearl(int addAmount){ resourceGroup.firePearlAmount+=addAmount; }
+    //public void AddPhysicalPearl(int addAmount){ resourceGroup.physicalPearlAmount+=addAmount; }
+    //public void AddElectroPearl(int addAmount){ resourceGroup.electroPearlAmount+=addAmount; }
+    //public void AddToxicPearl(int addAmount){ resourceGroup.toxicPearlAmount+=addAmount; }
 
-   public void AddIceOre(int addAmount){ resourceGroup.iceOreAmount+=addAmount; }
-   public void AddFireOre(int addAmount){ resourceGroup.fireOreAmount+=addAmount; }
-   public void AddPhysicalOre(int addAmount){ resourceGroup.physicalOreAmount+=addAmount; }
-   public void AddElectroOre(int addAmount){ resourceGroup.electroOreAmount+=addAmount; }
-   public void AddToxicOre(int addAmount){ resourceGroup.toxicOreAmount+=addAmount; }
+    public void AddResource(string resourceName, int n)
+    {
+        resourceGroup.AddAmount(resourceName,n);
+    }
 
-   public void AddIcePearl(int addAmount){ resourceGroup.icePearlAmount+=addAmount; }
-   public void AddFirePearl(int addAmount){ resourceGroup.firePearlAmount+=addAmount; }
-   public void AddPhysicalPearl(int addAmount){ resourceGroup.physicalPearlAmount+=addAmount; }
-   public void AddElectroPearl(int addAmount){ resourceGroup.electroPearlAmount+=addAmount; }
-   public void AddToxicPearl(int addAmount){ resourceGroup.toxicPearlAmount+=addAmount; }
-   #endregion
+    public void AddResource(int resourceIndex, int n)
+    {
+        resourceGroup.AddAmount(resourceIndex, n);
+    }
+    #endregion
 
 
-   #region TargetPointVisualization
-   public void ShowTargetPoint(Vector2 mousePosition){
+    #region TargetPointVisualization
+    public void ShowTargetPoint(Vector2 mousePosition){
       RaycastHit rayCastHitInfo;
       Ray ray = Camera.main.ScreenPointToRay(mousePosition);
       if(Physics.Raycast(ray, out rayCastHitInfo))
