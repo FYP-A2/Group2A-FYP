@@ -13,7 +13,42 @@ MonoBehaviour:
   m_Name: DefaultResources
   m_EditorClassIdentifier: 
   resources:
-  - name: dfsf
-    amount: 10
-  - name: sa
+  - name: Wood
+    icon: {fileID: 21300000, guid: 8c34a53d4ddc98c44a09025377f4b525, type: 3}
+    amount: 2
+  - name: Stone
+    icon: {fileID: 21300000, guid: 4e884ecc783e4d849a97463dd6a9a68f, type: 3}
     amount: 20
+  - name: Coin
+    icon: {fileID: 21300000, guid: cca1a58e84e71074aa0722fd33d7e119, type: 3}
+    amount: 0
+  - name: Fire Ore
+    icon: {fileID: 21300000, guid: 1093d4841a9ee6c4c9b01bcbc205991c, type: 3}
+    amount: 0
+  - name: Ice Ore
+    icon: {fileID: 21300000, guid: f7f3d67a59c4cb14cbcb46d43aa2e2e6, type: 3}
+    amount: 0
+  - name: Toxic Ore
+    icon: {fileID: 21300000, guid: d86c8a911e0806c459a7d2a84abcd57b, type: 3}
+    amount: 0
+  - name: Physical Ore
+    icon: {fileID: 21300000, guid: 2f9f055bd86785d4ba6c7538cbdd1ee0, type: 3}
+    amount: 0
+  - name: Magical Ore
+    icon: {fileID: 21300000, guid: b43bf6273cb9e7b448756d62ca290700, type: 3}
+    amount: 0
+  - name: Speed Pearl
+    icon: {fileID: 21300000, guid: f27fa094925e45249976c3c477fec1a9, type: 3}
+    amount: 0
+  - name: Range Pearl
+    icon: {fileID: 21300000, guid: 82aa6262ab255544a927b038afa7fc3e, type: 3}
+    amount: 0
+  - name: Scale Pearl
+    icon: {fileID: 21300000, guid: f53639b564c4dca479d984b37138051d, type: 3}
+    amount: 0
+  - name: Physical Pearl
+    icon: {fileID: 21300000, guid: e488e5f87eb0879408a68109da30f0ad, type: 3}
+    amount: 0
+  - name: Magical Pearl
+    icon: {fileID: 21300000, guid: fe2ecf13dea4eb949b60dc594a44984a, type: 3}
+    amount: 0

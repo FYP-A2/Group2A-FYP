@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HUD_TopBar : MonoBehaviour
 {
-    public TMP_Text label1,label2,label3;
-    public TMP_Text label4,label5,label6,label7,label8;
-    public TMP_Text label9,label10,label11,label12,label13;
+    //public TMP_Text label1,label2,label3;
+    //public TMP_Text label4,label5,label6,label7,label8;
+    //public TMP_Text label9,label10,label11,label12,label13;
+
+    public List<Transform> resourceDisplayList = new List<Transform>();
 
     public Player __Player;
     // Start is called before the first frame update
@@ -36,20 +39,10 @@ public class HUD_TopBar : MonoBehaviour
        //label13.SetText(__Player.resourceGroup.electroPearlAmount.ToString());
 
 
-        label1.SetText(__Player.resourceGroup.GetAmount("woodAmount").ToString());
-        label2.SetText(__Player.resourceGroup.GetAmount("stoneAmount").ToString());
-        label3.SetText(__Player.resourceGroup.GetAmount("coinAmount").ToString());
-
-        label4.SetText(__Player.resourceGroup.GetAmount("iceOreAmount").ToString());
-        label5.SetText(__Player.resourceGroup.GetAmount("fireOreAmount").ToString());
-        label6.SetText(__Player.resourceGroup.GetAmount("toxicOreAmount").ToString());
-        label7.SetText(__Player.resourceGroup.GetAmount("physicalOreAmount").ToString());
-        label8.SetText(__Player.resourceGroup.GetAmount("electroOreAmount").ToString());
-
-        label9.SetText(__Player.resourceGroup.GetAmount("icePearlAmount").ToString());
-        label10.SetText(__Player.resourceGroup.GetAmount("firePearlAmount").ToString());
-        label11.SetText(__Player.resourceGroup.GetAmount("toxicPearlAmount").ToString());
-        label12.SetText(__Player.resourceGroup.GetAmount("physicalPearlAmount").ToString());
-        label13.SetText(__Player.resourceGroup.GetAmount("electroPearlAmount").ToString());
+        for (int i = 0; i < resourceDisplayList.Count; i++)
+        {
+            resourceDisplayList[i].GetComponentInChildren<TMP_Text>().text = __Player.resourceGroup.GetAmount(i).ToString();
+            resourceDisplayList[i].GetComponentInChildren<Image>().sprite = __Player.resourceGroup.resources[i].icon;
+        }
     }
 }
