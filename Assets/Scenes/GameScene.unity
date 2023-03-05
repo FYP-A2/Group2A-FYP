@@ -27618,6 +27618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206644464}
+  - component: {fileID: 1206644465}
   m_Layer: 0
   m_Name: _Players
   m_TagString: Untagged
@@ -27640,6 +27641,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206644465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206644463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f6d74803fe3154fa56ffb43350ac52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceGroupDefault: {fileID: 11400000, guid: 3ab8899367d66ec47902f139bd32adbb, type: 2}
+  resources: []
 --- !u!1001 &1212767348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50270,6 +50285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bunny
       objectReference: {fileID: 0}
+    - target: {fileID: 9049569822728526301, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
+      propertyPath: resourceGroup
+      value: 
+      objectReference: {fileID: 1206644465}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
 --- !u!1 &8276836463922491643

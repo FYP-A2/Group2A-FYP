@@ -6,17 +6,24 @@ using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ResourceGroupType
+public class ResourceGroupType : MonoBehaviour
 {
-    //Fire Ice Toxic Normal Lightning
-   //[SerializeField] public int woodAmount,stoneAmount,coinAmount;
-   //[SerializeField] public int fireOreAmount,iceOreAmount,toxicOreAmount,physicalOreAmount,electroOreAmount;
-   //[SerializeField] public int firePearlAmount,icePearlAmount,toxicPearlAmount,physicalPearlAmount,electroPearlAmount;
+    //Fire Ice Toxic Normal Lightning
+    //[SerializeField] public int woodAmount,stoneAmount,coinAmount;
+    //[SerializeField] public int fireOreAmount,iceOreAmount,toxicOreAmount,physicalOreAmount,electroOreAmount;
+    //[SerializeField] public int firePearlAmount,icePearlAmount,toxicPearlAmount,physicalPearlAmount,electroPearlAmount;
+
+    public ResourceGroupTypeSO resourceGroupDefault;
 
     [SerializeField]
     public List<Resource> resources;
 
-    public ResourceGroupType(List<Resource> r = null)
+    private void Start()
+    {
+        Initialize(resourceGroupDefault.resources);
+    }
+
+    public void Initialize(List<Resource> r = null)
     {
         resources = new List<Resource>();
         if (r != null)

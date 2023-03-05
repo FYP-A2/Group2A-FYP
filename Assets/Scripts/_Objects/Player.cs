@@ -9,19 +9,12 @@ public class Player : MonoBehaviour,IPlayer
    public GameObject targetPointVisualization;
 
     [Header("Attributes")]
-    public ResourceGroupTypeSO resourceGroupDefault;
     [SerializeReference] public ResourceGroupType resourceGroup;
 
    
    [Header("Movement Multipliers")]
    public float movementSpeed=15;
    public float rotationSpeed=50;
-
-    void Start()
-    {
-        resourceGroup = new ResourceGroupType(resourceGroupDefault.resources);
-    }
-
 
 
    public void Move(Vector2 rightness_n_forwardness_R){
