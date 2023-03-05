@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : NetworkBehaviour
 {
     public static SpawnManager Instance;
 
@@ -13,12 +14,15 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] List<Transform> spawnPoints;
     [SerializeField] List<GameObject> prefabs;
 
-    private void Awake()
+    public override void OnNetworkSpawn()
     {
-        Instance = this;
-        spawnPoints.AddRange(GetComponentsInChildren<Transform>());
-        spawnPoints.Remove(transform);
-        StartCoroutine(SpawnEnemy(SpawnDelay, numToSpawn));
+        if (IsServer)
+        {
+            Instance = this;
+            spawnPoints.AddRange(GetComponentsInChildren<Transform>());
+            spawnPoints.Remove(transform);
+            StartCoroutine(SpawnEnemy(SpawnDelay, numToSpawn));
+        }
     }
     
     public IEnumerator SpawnEnemy(float delay, int numToSpawn)
@@ -31,7 +35,8 @@ public class SpawnManager : MonoBehaviour
             {
                 int SpawnIndex = Spawned % prefabs.Count;
                 //Debug.DrawRay(point, Vector3.up, Color.blue, 5.0f);
-                Instantiate(prefabs[SpawnIndex], point, Quaternion.identity);
+                Transform m = Instantiate(prefabs[SpawnIndex], point, Quaternion.identity).transform;
+                m.GetComponent<NetworkObject>().Spawn(true);
                 Spawned++;
                 yield return Wait;
             }

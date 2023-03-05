@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using Unity.Netcode;
 
-public class Tower : MonoBehaviour
+public class Tower : NetworkBehaviour
 {
     [SerializeField] TowerScriptableObject towerSO;
     List<TowerScriptableObject> allTowerSO = new List<TowerScriptableObject>();
@@ -16,8 +16,10 @@ public class Tower : MonoBehaviour
     public NavMeshModifierVolume modifierVolume;
     int phyDamage, magicDamage, attackRange, fireRate;
     float upgradeAOE;
-    void Start()
+
+    public override void OnNetworkSpawn()
     {
+        if (!IsServer) return;
         allTowerSO.Add(towerSO);
         sphereCollider.radius = towerSO.attackRange;
         monsters = sphereCollider.transform.GetComponent<AttackArea>().targets;
@@ -37,6 +39,7 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsServer) return;
         if (monsters.Count>0)
         {
             if (towerSO.towerType.ToString() == "Toxic")
@@ -138,10 +141,10 @@ public class Tower : MonoBehaviour
             }
         }
     }
-
     void Shoot(Transform m)
     {
         GameObject bulletGO = (GameObject)Instantiate(towerSO.bulletPrefab, firePoint.position, firePoint.rotation);
+        bulletGO.GetComponent<NetworkObject>().Spawn(true);
         TowerBullet bullet;
         bulletGO.TryGetComponent<TowerBullet>(out bullet);
 

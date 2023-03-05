@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-
-public class TowerBullet : MonoBehaviour
+using Unity.Netcode;
+public class TowerBullet : NetworkBehaviour
 {
     Transform target;
 
@@ -12,10 +12,12 @@ public class TowerBullet : MonoBehaviour
     float burntTime, slowRatio, slowTime;
     string towerType;
     public SphereCollider sphereCollider;
+    bool dead;
     List<Transform> targets;
 
     private void Start()
     {
+        dead= false;
         targets = sphereCollider.transform.GetComponent<AttackArea>().targets;
     }
 
@@ -48,8 +50,10 @@ public class TowerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
+        if (!IsServer) return;
+        if (target == null)
         {
+            GetComponent<NetworkObject>().Despawn();
             Destroy(gameObject);
             return;
         }
@@ -68,24 +72,26 @@ public class TowerBullet : MonoBehaviour
     void HitTarget()
     {
         //Debug.Log("Hit");
-        switch (towerType) {
-            case "Phy":
-                target.GetComponent<Monster>().TakeDamage(phyDamage, magDamage);
-                Destroy(gameObject);
-                break;
-            case "Magic":
-                target.GetComponent<Monster>().TakeDamage(phyDamage, magDamage);
-                Destroy(gameObject);
-                break;
-            case "Fire":
-                target.GetComponent<Monster>().GetBurnt(phyDamage, magDamage, burntDamage,burntTime);
-                Exposion();
-                Destroy(gameObject);
-                break;
-            case "Ice":
-                target.GetComponent<Monster>().GetSlow(phyDamage, magDamage,slowRatio,slowTime);
-                Destroy(gameObject);
-                break;           
+        if (!dead)
+        {
+            switch (towerType)
+            {
+                case "Phy":
+                    target.GetComponent<Monster>().TakeDamage(phyDamage, magDamage);
+                    break;
+                case "Magic":
+                    target.GetComponent<Monster>().TakeDamage(phyDamage, magDamage);
+                    break;
+                case "Fire":
+                    target.GetComponent<Monster>().GetBurnt(phyDamage, magDamage, burntDamage, burntTime);
+                    Exposion();
+                    break;
+                case "Ice":
+                    target.GetComponent<Monster>().GetSlow(phyDamage, magDamage, slowRatio, slowTime);
+                    break;
+            }
+            dead = true;
+            StartCoroutine("Despawn");
         }
     }
 
@@ -100,4 +106,10 @@ public class TowerBullet : MonoBehaviour
         }
     }
 
+    IEnumerable Despawn()
+    {       
+        Destroy(gameObject);
+        yield return new WaitForSeconds(5);
+        GetComponent<NetworkObject>().Despawn();
+    }
 }

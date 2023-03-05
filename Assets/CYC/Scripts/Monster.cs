@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class Monster : MonoBehaviour, IMonster
+public class Monster : NetworkBehaviour, IMonster
 {
     [SerializeField] EnemyScriptableObject enemyScriptable;
     NavMeshAgent agent;
-    public int hp, damage;
+    public NetworkVariable<int> hp;
+    public int damage;
     [SerializeField] float defense, resistance;
     float attackDelay, burntTime, slowTime, reductionTime;
     bool isBurnt, isDefenseBreak, isAttacked;
@@ -21,32 +23,36 @@ public class Monster : MonoBehaviour, IMonster
     [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
     // Start is called before the first frame update
-    void Start()
+    public override void OnNetworkSpawn()
     {
         if(target== null)
             target = GameObject.Find("Core").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
-        Initialization();
+        if (IsServer)
+        {
+            Initialization();
+        }
         burntTime = slowTime = reductionTime = 0;
         isBurnt = isSlow = isDefenseBreak = false;
         hitTargets = sphereCollider.GetComponent<AttackArea>().targets;
-        slider.maxValue = hp;
-        slider.value = hp;
+        slider.maxValue = hp.Value;
+        slider.value = hp.Value;
+        Debug.Log(NetworkObject.GetInstanceID() +":" +hp.Value);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target != null) Move();
+        if (target != null) Move();
         if(isBurnt) Burnt();
         if(isSlow) Slow();
         if(isDefenseBreak) DefenseBreak();
-        slider.value = hp;
+        slider.value = hp.Value;
     }
 
     void Initialization()
     {
-        hp = enemyScriptable.hp;
+        hp.Value = enemyScriptable.hp;
         damage = enemyScriptable.damage;
         defense = enemyScriptable.defense;
         resistance = enemyScriptable.resistance;
@@ -71,10 +77,12 @@ public class Monster : MonoBehaviour, IMonster
 
     public void TakeDamage(int phyDamage, int magicDamage)
     {
+        if (!IsServer) return;
         int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
-        hp -= finalDamage;
+        hp.Value -= finalDamage;
         ShowDamage(finalDamage,Color.black);
-        if (hp <= 0)
+        Debug.Log(NetworkObject.GetInstanceID() + ":" + hp.Value);
+        if (hp.Value <= 0)
         {
             Dead();
         }
@@ -127,7 +135,8 @@ public class Monster : MonoBehaviour, IMonster
     }
     void Move()
     {
-        if(hitTargets.Count>0)
+        if (!IsServer) return;
+        if (hitTargets.Count>0)
         {
             //Debug.Log("Attack");
             agent.SetDestination(transform.position);
@@ -164,6 +173,7 @@ public class Monster : MonoBehaviour, IMonster
     void Dead()
     {
         Destroy(gameObject);
+        GetComponent<NetworkObject>().Despawn();
     }
 
     void Burnt()
@@ -221,12 +231,13 @@ public class Monster : MonoBehaviour, IMonster
     }
     IEnumerator Ignite(int damage)
     {
+        if (!IsServer) yield return null;
         while (isBurnt)
         {
             //Debug.Log("burnt");
-            hp -= damage;
+            hp.Value -= damage;
             ShowDamage(damage, Color.red);
-            if (hp <= 0)
+            if (hp.Value <= 0)
             {
                 Dead();
                 yield return null;
