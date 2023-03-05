@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,12 +16,14 @@ public class ResourceGroupType
     [SerializeField]
     public List<Resource> resources;
 
-    public ResourceGroupType(List<Resource> r)
+    public ResourceGroupType(List<Resource> r = null)
     {
+        resources = new List<Resource>();
         if (r != null)
-            resources = r;
-        else
-            resources = new List<Resource>();
+        {
+            foreach (Resource rs in r)
+                resources.Add(new Resource(rs.name,rs.icon,rs.amount));
+        }
     }
 
     [Serializable]
@@ -29,6 +32,13 @@ public class ResourceGroupType
         public string name;
         public Sprite icon;
         public int amount;
+
+        public Resource(string name, Sprite icon, int amount = 0)
+        {
+            this.name = name;
+            this.icon = icon;
+            this.amount = amount;
+        }
     }
 
     public Resource FindResourceByName(string name)
