@@ -8,13 +8,22 @@ public class Player : MonoBehaviour,IPlayer
    public GameObject GO;
    public GameObject targetPointVisualization;
 
-   [Header("Attributes")]
-   [SerializeReference] public ResourceGroupType resourceGroup = new ResourceGroupType();
+    [Header("Attributes")]
+    public ResourceGroupTypeSO resourceGroupDefault;
+    [SerializeReference] public ResourceGroupType resourceGroup;
 
    
    [Header("Movement Multipliers")]
    public float movementSpeed=15;
    public float rotationSpeed=50;
+
+    void Start()
+    {
+        resourceGroup = new ResourceGroupType(resourceGroupDefault.resources);
+
+        resourceGroup.SetAmount("dfsf", 10);
+        resourceGroup.SetAmount(1, 20);
+    }
 
 
 
@@ -32,13 +41,13 @@ public class Player : MonoBehaviour,IPlayer
    public void AddWood(int addAmount){ resourceGroup.woodAmount+=addAmount; }
    public void AddStone(int addAmount){ resourceGroup.stoneAmount+=addAmount; }
    public void AddCoin(int addAmount){ resourceGroup.coinAmount+=addAmount; }
-
+   
    public void AddIceOre(int addAmount){ resourceGroup.iceOreAmount+=addAmount; }
    public void AddFireOre(int addAmount){ resourceGroup.fireOreAmount+=addAmount; }
    public void AddPhysicalOre(int addAmount){ resourceGroup.physicalOreAmount+=addAmount; }
    public void AddElectroOre(int addAmount){ resourceGroup.electroOreAmount+=addAmount; }
    public void AddToxicOre(int addAmount){ resourceGroup.toxicOreAmount+=addAmount; }
-
+   
    public void AddIcePearl(int addAmount){ resourceGroup.icePearlAmount+=addAmount; }
    public void AddFirePearl(int addAmount){ resourceGroup.firePearlAmount+=addAmount; }
    public void AddPhysicalPearl(int addAmount){ resourceGroup.physicalPearlAmount+=addAmount; }
