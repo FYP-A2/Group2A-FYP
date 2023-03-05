@@ -39,9 +39,9 @@ public class _InputEvents_Mine : MonoBehaviour
    public void JumpCall(X x){JumpCall();} public void JumpCall() { __Player.Jump(); }
 
    public void F1Call(X x){F1Call();} public void F1Call(){__HUD.F1();}
-   public void F2Call(X x){F2Call();} public void F2Call(){}
-   public void F3Call(X x){F3Call();} public void F3Call(){}
-   public void F4Call(X x){F4Call();} public void F4Call(){}
+   public void F2Call(X x){F2Call();} public void F2Call(){__HUD.F2();}
+   public void F3Call(X x){F3Call();} public void F3Call(){__HUD.F3();}
+   public void F4Call(X x){F4Call();} public void F4Call(){__HUD.F4();}
 
    public void F5Call(X x){F5Call();} public void F5Call(){__TP.F5();}
    public void F6Call(X x){F6Call();} public void F6Call(){__TP.F6();}
