@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace FYP2A.VR.PlaceTurret
 {
+    //This component is needed to set on player prefab
     public class PlaceTurret : MonoBehaviour, IPlaceTurret
     {
         [Header("Place Turret")]
@@ -164,6 +165,7 @@ namespace FYP2A.VR.PlaceTurret
             //important
         }
 
+        //server execute
         void SetPreviewPosition()
         {
             RaycastHit hit;
@@ -215,7 +217,7 @@ namespace FYP2A.VR.PlaceTurret
             }
         }
        
-
+        //server execute
         void PlaceDownTurret()
         {
             if (nowPreview.canPlace)
@@ -228,6 +230,7 @@ namespace FYP2A.VR.PlaceTurret
             }
         }
 
+        //server boardcast
         IEnumerator PlaceDownTurretAnimation(Transform turret,float height,float duration)
         {
             float t = 0;
@@ -314,6 +317,7 @@ namespace FYP2A.VR.PlaceTurret
             //Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
         }
 
+        //server execute
         bool CheckEnoughResources(TowerBuildSO.Resources neededResources)
         {
             return true;

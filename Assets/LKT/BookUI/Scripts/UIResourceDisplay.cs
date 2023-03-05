@@ -12,8 +12,8 @@ public class UIResourceDisplay : MonoBehaviour
     public Text textAmount;
     public Image imageIcon;
 
-    string resourceName;
-    int resourceIndex = 0;
+    public string resourceName;
+    public int resourceIndex = 0;
 
     private void Update()
     {
