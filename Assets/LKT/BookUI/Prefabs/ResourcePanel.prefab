@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerResource: {fileID: 0}
-  getByWhat: 0
+  getByWhat: 1
   textAmount: {fileID: 4334584378134600530}
   imageIcon: {fileID: 3817767490474399974}
   resourceName: 
