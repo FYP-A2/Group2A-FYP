@@ -15,6 +15,13 @@ public class UIResourceDisplay : MonoBehaviour
     public string resourceName;
     public int resourceIndex = 0;
 
+    private void Start()
+    {
+        if (playerResource== null)
+        {
+            playerResource = GameObject.FindObjectOfType<ResourceGroupType>();
+        }
+    }
     private void Update()
     {
         if (getByWhat == GetByWhat.NAME)

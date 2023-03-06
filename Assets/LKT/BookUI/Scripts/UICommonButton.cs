@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UICommonButton : MonoBehaviour
 {
+    public UIBook book;
     public Image backgroundCompon;
     public Text textSmall;
     public Text textBig;
@@ -73,7 +74,6 @@ public class UICommonButton : MonoBehaviour
     {
         if (!selecting)
             backgroundCompon.sprite = background;
-
     }
 
     public void OnSelectEnter()
