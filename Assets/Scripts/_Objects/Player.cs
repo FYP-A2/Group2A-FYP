@@ -28,8 +28,8 @@ public class Player : MonoBehaviour,IPlayerMovements,I_TPV
    #endregion
 
    #region Setter
-   public void AddResource(string resourceName, int n) { resourceGroup.A(resourceName,n); }
-   public void AddResource(int resourceIndex, int n) { resourceGroup.A(resourceIndex, n); }
+   public void AddResource(string resourceName, int n) { resourceGroup.Add(resourceName,n); }
+   public void AddResource(int resourceIndex, int n) { resourceGroup.Add(resourceIndex, n); }
    #endregion
 
 

@@ -43,15 +43,15 @@ public class ResourceGroupType : MonoBehaviour,I_GettersSetters_For_Resources
         return resources.Find(x => x.name == name);
     }
 
-    public int G(string name) { Resource r = resources.Find(x => x.name == name); if (r!=null) return r.amount; return 0; }
-    public int G(int index) { Resource r = resources[index]; if (r != null) return r.amount; return 0; }
+    public int GetAmount(string name) { Resource r = resources.Find(x => x.name == name); if (r!=null) return r.amount; return 0; }
+    public int GetAmount(int index) { Resource r = resources[index]; if (r != null) return r.amount; return 0; }
 
-    public void S(string name, int amount) { Resource r = resources.Find(x => x.name == name); if (r != null) r.amount = amount; }
-    public void S(int index, int amount) { Resource r = resources[index]; if (r != null) r.amount = amount; }
+    public void SetAmount(string name, int amount) { Resource r = resources.Find(x => x.name == name); if (r != null) r.amount = amount; }
+    public void SetAmount(int index, int amount) { Resource r = resources[index]; if (r != null) r.amount = amount; }
 
-    public void A(string name, int amount) { Resource r = resources.Find(x => x.name == name); if (r != null) r.amount += amount; }
-    public void A(int index, int amount) { Resource r = resources[index]; if (r != null) r.amount += amount; }
+    public void Add(string name, int amount) { Resource r = resources.Find(x => x.name == name); if (r != null) r.amount += amount; }
+    public void Add(int index, int amount) { Resource r = resources[index]; if (r != null) r.amount += amount; }
 
-    public void R(string name, int amount) { A(name, -amount); }
-    public void R(int index, int amount) { A(index, -amount); }
+    public void Reduce(string name, int amount) { Add(name, -amount); }
+    public void Reduce(int index, int amount) { Add(index, -amount); }
 }

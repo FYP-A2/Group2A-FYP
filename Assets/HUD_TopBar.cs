@@ -16,7 +16,7 @@ public class HUD_TopBar : MonoBehaviour
         for (int i = 0; i < list.Count; i++){
             //Implementation
             //Update Children's Comp's Text.
-            list[i].GetComponentInChildren<TMP_Text>().text = __Player.resourceGroup.G(i).ToString();
+            list[i].GetComponentInChildren<TMP_Text>().text = __Player.resourceGroup.GetAmount(i).ToString();
             list[i].GetComponentInChildren<Image>().sprite = __Player.resourceGroup.resources[i].icon;
         }
     }
