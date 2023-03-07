@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed = 70f;
     int damage;
     Vector3 direction;
-    GameObject parent;
+    string parentTag;
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     }
     public void Shoot(Vector3 dir,int damage, GameObject GO)
     {
-        parent = GO;
+        parentTag = GO.tag;
         direction= dir;
         this.damage = damage;
     }
@@ -27,21 +27,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamage Idamage;
-        other.TryGetComponent<IDamage>(out Idamage);
-        if (Idamage != null)
+        if (other != null)
         {
-            Idamage.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        else if (other.transform.tag == "AttackArea" || other.transform.tag == parent.tag)
-        {
-
-        }
-        else
-        {
-            //Debug.Log(other.name);
-            Destroy(gameObject);
+            if (other.transform.tag != "AttackArea" && other.transform.tag != parentTag)
+            {
+                if (other.TryGetComponent<IDamage>(out IDamage Idamage))
+                {
+                    Idamage.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+                else
+                    Destroy(gameObject);
+            }
         }
     }
 

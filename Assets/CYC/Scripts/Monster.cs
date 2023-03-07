@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour, IMonster
     public Slider slider;
     [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
+    public LayerMask layer;
     // Start is called before the first frame update
     void Start()
     {
@@ -127,36 +128,61 @@ public class Monster : MonoBehaviour, IMonster
     }
     void Move()
     {
-        if(hitTargets.Count>0)
+        if (hitTargets.Count > 0)
         {
-            //Debug.Log("Attack");
-            agent.SetDestination(transform.position);
-            Attack(hitTargets[0]);           
+            Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer);
+            //Debug.DrawRay(transform.position, transform.forward * enemyScriptable.attackRange, Color.black, 1f);
+            if (hit.transform != null && hit.transform.tag == "breakable")
+            {
+                //Debug.Log("Attack");
+                if (hitTargets.Find((x) => x == target) != null)
+                {
+                    agent.SetDestination(transform.position);
+                    Attack(target);
+                }
+                else
+                {
+                    agent.SetDestination(transform.position);
+                    Attack(hit.transform);
+                }
+            }
+            else
+            {
+                if (!agent.hasPath && !isAttacked)
+                {
+                    agent.SetDestination(target.position);
+                }
+            }
         }
         else
         {
             //Debug.Log("Move");
-            agent.SetDestination(target.position);
+            if (!agent.hasPath)
+            {
+                agent.SetDestination(target.position);
+            }
         }
     }
 
     void Attack(Transform target)
     {
-        IDamage Idamage = target.GetComponent<IDamage>();
-        if (Idamage != null && !isAttacked)
+        if (target != null)
         {
-            if (!enemyScriptable.isRanged)
+            if (target.TryGetComponent<IDamage>(out IDamage Idamage)  && !isAttacked)
             {
-                transform.LookAt(hitTargets[0].position);
-                Idamage.TakeDamage(damage);
-                isAttacked = true;
-                StartCoroutine(ResetAttack(attackDelay));
-            }
-            else
-            {
-                Shoot();
-                isAttacked = true;
-                StartCoroutine(ResetAttack(attackDelay));
+                if (!enemyScriptable.isRanged)
+                {
+                    transform.LookAt(target.position);
+                    Idamage.TakeDamage(damage);
+                    isAttacked = true;
+                    StartCoroutine(ResetAttack(attackDelay));
+                }
+                else
+                {
+                    Shoot(target);
+                    isAttacked = true;
+                    StartCoroutine(ResetAttack(attackDelay));
+                }
             }
         }
     }
@@ -254,14 +280,14 @@ public class Monster : MonoBehaviour, IMonster
     //    }
     //}
 
-    void Shoot()
+    void Shoot(Transform target)
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
         {
-            transform.LookAt(hitTargets[0].position);
+            transform.LookAt(target.position);
             bullet.Shoot(transform.forward,damage,gameObject);
         }
     }
