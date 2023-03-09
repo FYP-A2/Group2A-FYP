@@ -24,4 +24,14 @@ public class HPTest : MonoBehaviour,IHP
         max = this.max;
         now = this.now;
     }
+
+    public float GetHP()
+    {
+        return now;
+    }
+
+    public float GetMaxHP()
+    {
+        return max;
+    }
 }

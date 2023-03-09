@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TestScript1 : MonoBehaviour
 {
-    public UIMapHpBar m;
-    private void OnEnable()
-    {
-        m.AddAmount(4);
-    }
+   public UIMapHpBar m;
+   private void OnEnable()
+   {
+      m.AddAmount(4);
+   }
 }
