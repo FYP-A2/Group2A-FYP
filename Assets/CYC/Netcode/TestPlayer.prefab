@@ -760,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerManagerPrefab: {fileID: 0}
   xrRayInteractor: {fileID: 0}
-  turretPrefabIndex: {fileID: 0}
+  turretPrefabIndex: {fileID: 8252520905623984174, guid: a9d1f3e3bccd8f542921540713a2f216, type: 3}
   inputConfirm:
     m_UseReference: 0
     m_Action:
@@ -897,6 +897,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  cam: {fileID: 3339482328772187201}
 --- !u!114 &6572231148640938035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +913,7 @@ MonoBehaviour:
   grabbingNow: {fileID: 0}
   grabbingNowOriginParent: {fileID: 0}
   isGrabbing: 0
-  raySource: {fileID: 0}
+  raySource: {fileID: 1258824415074843687}
   primary:
     m_UseReference: 0
     m_Action:

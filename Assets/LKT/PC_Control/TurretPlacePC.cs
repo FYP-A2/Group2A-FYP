@@ -11,6 +11,7 @@ namespace FYP2A.VR.PlaceTurret
     {
         [Header("PC control")]
         public InputActionProperty mousePos;
+        public Camera cam;
 
         new void OnEnable()
         {
@@ -31,7 +32,7 @@ namespace FYP2A.VR.PlaceTurret
 
         protected override Ray GetRay()
         {
-            return Camera.main.ScreenPointToRay(mousePos.action.ReadValue<Vector2>());
+            return cam.ScreenPointToRay(mousePos.action.ReadValue<Vector2>());
         }
     }
 }
