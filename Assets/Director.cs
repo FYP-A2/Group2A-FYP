@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Director : MonoBehaviour
 {
-    public Timer timer;
-    public Announcer announcer;
-    public bool trigger=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  public Mode mode;
+  public Timer timer;
+  public Announcer announcer;
+  public bool triggered=false,started_once=false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(trigger==false){
-            trigger=true;
-            //timer.TimerStartToCountDown(70);
-            announcer.Announce("J");
-        }
-    }
+   void Update(){
+      if(!started_once){
+         if(mode.gameMode==Mode.GameMode.FULL_MODE){triggered=true;}
+      }
+      
+      if(triggered){
+         triggered=false;
+         announcer.Announce("Welcome");
+         started_once=true;
+
+      }
+      
+
+   }
+
+
+
 }

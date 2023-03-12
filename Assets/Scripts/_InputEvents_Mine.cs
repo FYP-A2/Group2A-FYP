@@ -14,6 +14,9 @@ public class _InputEvents_Mine : MonoBehaviour
    public Player __Player;
    public Camera cam;
 
+   [Header("Mode")]
+   public Mode __Mode;
+
    [Header("HUD")]
    public HUD __HUD;
 
@@ -28,9 +31,10 @@ public class _InputEvents_Mine : MonoBehaviour
    #endregion
 
    #region Unity Event Sequences (Callers)
-   void Awake(){ CIA = new Custom_IA(); CIA.Player.Enable(); CIA.HUD.Enable(); CIA.TP.Enable(); } 
+   void Awake(){ CIA = new Custom_IA(); CIA.Player.Enable(); CIA.HUD.Enable(); CIA.TP.Enable();CIA.Mode.Enable(); } 
    void Start(){ CIA.Player.Jump.performed+=JumpCall; CIA.HUD.F1.performed+=F1Call; CIA.HUD.F2.performed+=F2Call; CIA.HUD.F3.performed+=F3Call; CIA.HUD.F4.performed+=F4Call;
       CIA.TP.F5.performed+=F5Call;CIA.TP.F6.performed+=F6Call;CIA.TP.F7.performed+=F7Call;CIA.TP.F8.performed+=F8Call;
+      CIA.Mode.F12.performed+=F12Call;
    }
    void FixedUpdate() { MoveCall(CIA.Player.WASD.ReadValue<Vector2>()); CamRotate(CIA.Player.MouseX.ReadValue<float>(),CIA.Player.MouseY.ReadValue<float>()); __Player.ShowTargetPoint(CIA.Player.LookAt.ReadValue<Vector2>());}
    #endregion
@@ -47,6 +51,8 @@ public class _InputEvents_Mine : MonoBehaviour
    public void F6Call(X x){F6Call();} public void F6Call(){__TP.F6();}
    public void F7Call(X x){F7Call();} public void F7Call(){__TP.F7();}
    public void F8Call(X x){F8Call();} public void F8Call(){}
+
+   public void F12Call(X x){F12Call();} public void F12Call(){__Mode.F12();}
 
    //Larger rotation included.
    public void MoveCall(Vector2 rightness_n_forwardness){

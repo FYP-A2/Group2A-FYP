@@ -378,6 +378,34 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mode"",
+            ""id"": ""57a4c0b0-ac7a-4d44-9544-b6b38308a8db"",
+            ""actions"": [
+                {
+                    ""name"": ""F12"",
+                    ""type"": ""Button"",
+                    ""id"": ""6844609b-f26a-42ea-aae5-2fcda8d92ca7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dd4dc910-c50f-4791-888f-37a556ff423f"",
+                    ""path"": ""<Keyboard>/f12"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F12"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -404,6 +432,9 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
         // Start Menu
         m_StartMenu = asset.FindActionMap("Start Menu", throwIfNotFound: true);
         m_StartMenu_Any = m_StartMenu.FindAction("Any", throwIfNotFound: true);
+        // Mode
+        m_Mode = asset.FindActionMap("Mode", throwIfNotFound: true);
+        m_Mode_F12 = m_Mode.FindAction("F12", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -671,6 +702,39 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
         }
     }
     public StartMenuActions @StartMenu => new StartMenuActions(this);
+
+    // Mode
+    private readonly InputActionMap m_Mode;
+    private IModeActions m_ModeActionsCallbackInterface;
+    private readonly InputAction m_Mode_F12;
+    public struct ModeActions
+    {
+        private @Custom_IA m_Wrapper;
+        public ModeActions(@Custom_IA wrapper) { m_Wrapper = wrapper; }
+        public InputAction @F12 => m_Wrapper.m_Mode_F12;
+        public InputActionMap Get() { return m_Wrapper.m_Mode; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ModeActions set) { return set.Get(); }
+        public void SetCallbacks(IModeActions instance)
+        {
+            if (m_Wrapper.m_ModeActionsCallbackInterface != null)
+            {
+                @F12.started -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
+                @F12.performed -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
+                @F12.canceled -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
+            }
+            m_Wrapper.m_ModeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @F12.started += instance.OnF12;
+                @F12.performed += instance.OnF12;
+                @F12.canceled += instance.OnF12;
+            }
+        }
+    }
+    public ModeActions @Mode => new ModeActions(this);
     public interface IPlayerActions
     {
         void OnWASD(InputAction.CallbackContext context);
@@ -696,5 +760,9 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
     public interface IStartMenuActions
     {
         void OnAny(InputAction.CallbackContext context);
+    }
+    public interface IModeActions
+    {
+        void OnF12(InputAction.CallbackContext context);
     }
 }

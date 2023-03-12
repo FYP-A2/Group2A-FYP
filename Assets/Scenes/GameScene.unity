@@ -17809,7 +17809,7 @@ GameObject:
   - component: {fileID: 764705622}
   - component: {fileID: 764705621}
   m_Layer: 5
-  m_Name: Canvas 1
+  m_Name: Canvas 1 (TopBar)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

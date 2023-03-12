@@ -11,7 +11,8 @@
                     "id": "9d081ae0-deb4-4319-8967-953e2a8876a0",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MouseX",
@@ -19,7 +20,8 @@
                     "id": "147c6834-6d99-4ac4-be31-8087e063c1fa",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MouseY",
@@ -27,7 +29,8 @@
                     "id": "22b1ec75-1b7d-4702-bc45-16636ae022c9",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -35,7 +38,8 @@
                     "id": "dd7892bc-2eca-486f-a44e-7cce7f9b6d52",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "LookAt",
@@ -43,7 +47,8 @@
                     "id": "b01fb72e-1c5d-43f6-8877-5a8c406d9333",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -158,7 +163,8 @@
                     "id": "3965e7b7-2d6a-4f3b-be8c-80e086b23bbc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F2",
@@ -166,7 +172,8 @@
                     "id": "6be59c38-e5a2-44ae-aa88-ae2ad7342a3b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F3",
@@ -174,7 +181,8 @@
                     "id": "c69b5ace-2e98-4665-850b-825fee03deb2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F4",
@@ -182,7 +190,8 @@
                     "id": "dd6ada26-a13f-4225-8623-a58d0054d453",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -242,7 +251,8 @@
                     "id": "95211d22-00c4-419c-8858-4b4afd9aab78",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F6",
@@ -250,7 +260,8 @@
                     "id": "0ac30b50-f0f5-4aad-8ed8-e5aec6fcd730",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F7",
@@ -258,7 +269,8 @@
                     "id": "ab288755-d3a7-4e75-82fa-ba11d1443f80",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F8",
@@ -266,7 +278,8 @@
                     "id": "f5efd761-27e1-46cf-83f8-06accc2d53aa",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -326,7 +339,8 @@
                     "id": "79805b47-5238-4bf4-9eb6-23dc51b7b4f2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -338,6 +352,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Any",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Mode",
+            "id": "57a4c0b0-ac7a-4d44-9544-b6b38308a8db",
+            "actions": [
+                {
+                    "name": "F12",
+                    "type": "Button",
+                    "id": "6844609b-f26a-42ea-aae5-2fcda8d92ca7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd4dc910-c50f-4791-888f-37a556ff423f",
+                    "path": "<Keyboard>/f12",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F12",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
