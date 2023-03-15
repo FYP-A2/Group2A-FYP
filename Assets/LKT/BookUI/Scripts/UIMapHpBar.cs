@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,9 +36,9 @@ public class UIMapHpBar : MonoBehaviour
    bool display = true;
 
    bool groupMode = false;
-   bool groupModeIsLeader = false;
+   public bool groupModeIsLeader = false;
    UIMapHpBar groupLeader;
-   List<UIMapHpBar> groupMembers;
+   public List<UIMapHpBar> groupMembers;
 
    private void Start()
    {
@@ -54,7 +55,6 @@ public class UIMapHpBar : MonoBehaviour
    private void Update()
    {
       UpdateHP();
-
    }
 
    private void LateUpdate()
@@ -84,7 +84,7 @@ public class UIMapHpBar : MonoBehaviour
       float maxHP = 1;
       float nowHP = 0;
 
-      if (!groupMode || groupLeader)
+      if (!groupMode || groupModeIsLeader)
       {
         
          if (hpInterface != null)
@@ -92,7 +92,7 @@ public class UIMapHpBar : MonoBehaviour
             hpInterface.GetHP(out maxHP, out nowHP);
          }
       }
-      if (groupLeader)
+      if (groupModeIsLeader)
       {
          foreach (UIMapHpBar a in groupMembers)
          {
@@ -121,7 +121,25 @@ public class UIMapHpBar : MonoBehaviour
          }
          yield return new WaitForFixedUpdate();
 
-         UpdatePosition();
+         if (hpDisplayObject == null)
+         {
+            Destroy(gameObject);
+         }
+         else
+
+         //try
+         //{
+            UpdatePosition();
+         //}
+         //catch (MissingReferenceException e)
+         //{
+         //   Destroy(gameObject);
+         //}
+         //catch (NullReferenceException e)
+         //{
+         //   throw e;
+         //}
+         
          yield return new WaitForSeconds(0.03f);
       }
    }
@@ -135,12 +153,13 @@ public class UIMapHpBar : MonoBehaviour
 
          GetComponent<Rigidbody>().MovePosition(pos);
       }
-      else if (groupLeader)
+      else if (groupModeIsLeader)
       {
-         Vector3 avgPos = Vector3.zero;
-         foreach (UIMapHpBar a in groupMembers)
-            avgPos += a.hpDisplayObject.position;
-         avgPos /= groupMembers.Count;
+         Vector3 avgPos = new Vector3(hpDisplayObject.position.x, 512, hpDisplayObject.position.z);
+         for (int i = 0; i < groupMembers.Count; i++)
+            if (groupMembers[i] != null && groupMembers[i].hpDisplayObject != null)
+               avgPos += groupMembers[i].hpDisplayObject.position;
+         avgPos /= groupMembers.Count+1;
          avgPos.y = 512;
 
          Vector3 pos = transform.position + (avgPos - transform.position) / 10;
@@ -210,9 +229,10 @@ public class UIMapHpBar : MonoBehaviour
 
    void Display(bool condition)
    {
-      foreach (Transform t in transform.GetComponentsInChildren<Transform>())
-            t.gameObject.SetActive(condition);
-
+      for (int i = 0;i < transform.childCount;i++)
+      {
+         transform.GetChild(i).gameObject.SetActive(condition);
+      }
       display = condition;
 
    }
@@ -223,16 +243,20 @@ public class UIMapHpBar : MonoBehaviour
       groupModeIsLeader = true;
       groupLeader = this;
       groupMembers = new List<UIMapHpBar>();
+      Display(true);
    }
 
    void JoinGroup(UIMapHpBar leader)
    {
-      groupMode = true;
-      groupModeIsLeader = false;
-      groupLeader = leader;
-      groupLeader.groupMembers.Add(this);
-      groupLeader.AddAmount(1);
-      Display(false);
+      if (this != leader)
+      {
+         groupMode = true;
+         groupModeIsLeader = false;
+         groupLeader = leader;
+         groupLeader.groupMembers.Add(this);
+         groupLeader.AddAmount(1);
+         Display(false);
+      }
    }
 
    void LeaveGroup(bool turnOnDisplay = true)
@@ -249,6 +273,13 @@ public class UIMapHpBar : MonoBehaviour
          Display(true);
    }
 
+   void FindNewLeader()
+   {
+      groupMembers[0].LeaveGroup();
+      groupMembers[0].CreateGroup();
+      NotifyNewGroup(groupMembers[0]);
+   }
+
    void MergeGroup(UIMapHpBar other)
    {
       other.NotifyNewGroup(this);
@@ -259,18 +290,21 @@ public class UIMapHpBar : MonoBehaviour
    {
       foreach (UIMapHpBar a in groupMembers)
       {
-         a.LeaveGroup();
-         a.JoinGroup(newLeader);
+         if (a != newLeader)
+         {
+            a.LeaveGroup();
+            a.JoinGroup(newLeader);
+         }
       }
    }
 
    void NotifyDeleteGroup()
    {
       if (groupMembers == null) return;
-      for (int i = 0; i < groupMembers.Count; i++) 
+      while (groupMembers.Count > 0)
       {
-         if (groupMembers[i] != null)
-            groupMembers[i].LeaveGroup();
+         if (groupMembers[0] != null)
+            groupMembers[0].LeaveGroup();
       }
    }
 
@@ -278,7 +312,7 @@ public class UIMapHpBar : MonoBehaviour
    {
       if (groupMode)
       {
-         if (groupLeader)
+         if (groupModeIsLeader)
          {
             NotifyDeleteGroup();
          }
