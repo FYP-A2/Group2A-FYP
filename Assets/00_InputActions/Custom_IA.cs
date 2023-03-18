@@ -391,6 +391,15 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F11"",
+                    ""type"": ""Button"",
+                    ""id"": ""81cf252e-0b93-4d4b-a6ae-615fa8b282ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -402,6 +411,17 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""F12"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70733ad6-f353-4467-8aad-71ef6ed75986"",
+                    ""path"": ""<Keyboard>/f11"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F11"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -435,6 +455,7 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
         // Mode
         m_Mode = asset.FindActionMap("Mode", throwIfNotFound: true);
         m_Mode_F12 = m_Mode.FindAction("F12", throwIfNotFound: true);
+        m_Mode_F11 = m_Mode.FindAction("F11", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -707,11 +728,13 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Mode;
     private IModeActions m_ModeActionsCallbackInterface;
     private readonly InputAction m_Mode_F12;
+    private readonly InputAction m_Mode_F11;
     public struct ModeActions
     {
         private @Custom_IA m_Wrapper;
         public ModeActions(@Custom_IA wrapper) { m_Wrapper = wrapper; }
         public InputAction @F12 => m_Wrapper.m_Mode_F12;
+        public InputAction @F11 => m_Wrapper.m_Mode_F11;
         public InputActionMap Get() { return m_Wrapper.m_Mode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -724,6 +747,9 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
                 @F12.started -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
                 @F12.performed -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
                 @F12.canceled -= m_Wrapper.m_ModeActionsCallbackInterface.OnF12;
+                @F11.started -= m_Wrapper.m_ModeActionsCallbackInterface.OnF11;
+                @F11.performed -= m_Wrapper.m_ModeActionsCallbackInterface.OnF11;
+                @F11.canceled -= m_Wrapper.m_ModeActionsCallbackInterface.OnF11;
             }
             m_Wrapper.m_ModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -731,6 +757,9 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
                 @F12.started += instance.OnF12;
                 @F12.performed += instance.OnF12;
                 @F12.canceled += instance.OnF12;
+                @F11.started += instance.OnF11;
+                @F11.performed += instance.OnF11;
+                @F11.canceled += instance.OnF11;
             }
         }
     }
@@ -764,5 +793,6 @@ public partial class @Custom_IA : IInputActionCollection2, IDisposable
     public interface IModeActions
     {
         void OnF12(InputAction.CallbackContext context);
+        void OnF11(InputAction.CallbackContext context);
     }
 }
