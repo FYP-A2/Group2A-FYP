@@ -29,15 +29,25 @@ public class Director : MonoBehaviour
    public void Enter_FullMode(){
       fullModeTriggered=false;
       Time.timeScale=1;
-      announcer.Announce("Welcome to the Full Game Mode.");
+      FullModeContent();
+      
       started_once=true;
    }
    public void Enter_DevMode(){
       devModeTriggered= false;
       Time.timeScale=1;
+      DevModeContent();
       started_once=true;
    }
 
+   public void DevModeContent(){
+
+   }
+
+   public void FullModeContent(){
+      announcer.Announce("Welcome to the Full Game Mode.");
+      eventChecklist.SetText("1. Walk Around");
+   }
 
 
 }
