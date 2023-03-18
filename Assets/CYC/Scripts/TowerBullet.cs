@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityStandardAssets.Effects;
 
 public class TowerBullet : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TowerBullet : MonoBehaviour
     float burntTime, slowRatio, slowTime;
     string towerType;
     public SphereCollider sphereCollider;
+    public GameObject explosion;
     List<Transform> targets;
 
     private void Start()
@@ -56,7 +58,7 @@ public class TowerBullet : MonoBehaviour
 
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
-        //transform.rotation = Quaternion.LookRotation(Vector3.forward);
+        transform.rotation = Quaternion.LookRotation(transform.position-target.position);
         if (dir.magnitude <= distanceThisFrame )
         {
             HitTarget();
@@ -80,6 +82,7 @@ public class TowerBullet : MonoBehaviour
             case "Fire":
                 target.GetComponent<Monster>().GetBurnt(phyDamage, magDamage, burntDamage,burntTime);
                 Exposion();
+                Instantiate(explosion,transform.position,Quaternion.identity);
                 Destroy(gameObject);
                 break;
             case "Ice":

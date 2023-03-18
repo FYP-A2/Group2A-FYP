@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2182106862086260150}
   - component: {fileID: 2182106862086260148}
   - component: {fileID: 2182106862086260151}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TestMonster
   m_TagString: Monster
   m_Icon: {fileID: 0}
