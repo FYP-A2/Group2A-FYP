@@ -1677,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9b41051f243f14f9728f491987c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 11400000, guid: badb3125ed668924d8f2a275b4c51b0b, type: 2}
+  test: {fileID: 11400000, guid: 2eba35269884471448c806359405eb6c, type: 2}
   currentTower: {fileID: 0}
   currentTowerScriptable: {fileID: 0}
 --- !u!4 &1540368226
@@ -2471,7 +2471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8149818038839703811, guid: 6328067022830f74aa470da2d84198a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8149818038839703815, guid: 6328067022830f74aa470da2d84198a4, type: 3}
       propertyPath: m_RootOrder
