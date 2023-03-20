@@ -34,10 +34,14 @@ public class Bullet : MonoBehaviour
                 if (other.TryGetComponent<IDamage>(out IDamage Idamage))
                 {
                     Idamage.TakeDamage(damage);
+                    //Debug.Log("hit" + other.name);
                     Destroy(gameObject);
                 }
                 else
+                {
+                    //Debug.Log(other.name);
                     Destroy(gameObject);
+                }
             }
         }
     }

@@ -1678,11 +1678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 3
   SpawnDelay: 2
-  numToSpawn: 50
+  numToSpawn: 10
   spawnPoints: []
   prefabs:
-  - {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
-  - {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
+  - {fileID: 5626876224596996719, guid: d38e60411f61b6644aa946c4dd831fca, type: 3}
 --- !u!1 &1594621259
 GameObject:
   m_ObjectHideFlags: 0

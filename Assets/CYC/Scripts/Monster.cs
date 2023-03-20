@@ -21,6 +21,11 @@ public class Monster : MonoBehaviour, IMonster
     [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
     public LayerMask layer;
+
+    Animator animator;
+    const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
+    public Transform firePoint;
+    enum State{Move,Attack,Die};
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,10 @@ public class Monster : MonoBehaviour, IMonster
         hitTargets = sphereCollider.GetComponent<AttackArea>().targets;
         slider.maxValue = hp;
         slider.value = hp;
+
+        animator= GetComponent<Animator>();
+        if (firePoint == null)
+            firePoint = transform;
     }
 
     // Update is called once per frame
@@ -74,6 +83,8 @@ public class Monster : MonoBehaviour, IMonster
     {
         int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
         hp -= finalDamage;
+        if(animator!=null)
+            animator.SetTrigger(ani_GetHit);
         ShowDamage(finalDamage,Color.black);
         if (hp <= 0)
         {
@@ -136,12 +147,12 @@ public class Monster : MonoBehaviour, IMonster
             {
                 //Debug.Log("Attack");
                 if (hitTargets.Find((x) => x == target) != null)
-                {
+                {                   
                     agent.SetDestination(transform.position);
                     Attack(target);
                 }
                 else
-                {
+                {                   
                     agent.SetDestination(transform.position);
                     Attack(hit.transform);
                 }
@@ -150,6 +161,8 @@ public class Monster : MonoBehaviour, IMonster
             {
                 if (!agent.hasPath && !isAttacked)
                 {
+                    if (animator != null)
+                        animator.SetFloat(ani_Move, agent.velocity.magnitude);
                     agent.SetDestination(target.position);
                 }
             }
@@ -159,6 +172,8 @@ public class Monster : MonoBehaviour, IMonster
             //Debug.Log("Move");
             if (!agent.hasPath)
             {
+                if (animator != null)
+                    animator.SetFloat(ani_Move, agent.velocity.magnitude);
                 agent.SetDestination(target.position);
             }
         }
@@ -172,15 +187,19 @@ public class Monster : MonoBehaviour, IMonster
             {
                 if (!enemyScriptable.isRanged)
                 {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
                     transform.LookAt(target.position);
                     Idamage.TakeDamage(damage);
-                    isAttacked = true;
+                    isAttacked = true;                    
                     StartCoroutine(ResetAttack(attackDelay));
                 }
                 else
                 {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
                     Shoot(target);
-                    isAttacked = true;
+                    isAttacked = true;                   
                     StartCoroutine(ResetAttack(attackDelay));
                 }
             }
@@ -188,7 +207,9 @@ public class Monster : MonoBehaviour, IMonster
     }
     void Dead()
     {
-        Destroy(gameObject);
+        if (animator != null)
+            animator.SetTrigger(ani_Die);
+        Destroy(gameObject,3f);
     }
 
     void Burnt()
@@ -282,7 +303,7 @@ public class Monster : MonoBehaviour, IMonster
 
     void Shoot(Transform target)
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)

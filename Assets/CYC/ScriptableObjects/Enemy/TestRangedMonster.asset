@@ -23,7 +23,7 @@ MonoBehaviour:
   slowEffect: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
   toxicEffect: {fileID: 7758672653904282153, guid: 0ab14953843c6da4a8c32bec7287b1a4, type: 3}
   bullet: {fileID: 4936703170902901937, guid: c098ec0bf2b6ef74887dec8391e0ce68, type: 3}
-  baseOffset: 1
+  baseOffset: 0
   speed: 3
   angularSpeed: 120
   acceleration: 8
