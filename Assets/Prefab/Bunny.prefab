@@ -2292,17 +2292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GO: {fileID: 9049569822728526300}
   targetPointVisualization: {fileID: 8167258266802498685}
-  resourceGroupDefault: {fileID: 11400000, guid: 3ab8899367d66ec47902f139bd32adbb, type: 2}
-  resourceGroup:
-    id: 0
+  resourceGroup: {fileID: 0}
   movementSpeed: 15
   rotationSpeed: 50
-  references:
-    version: 1
-    00000000:
-      type: {class: ResourceGroupType, ns: , asm: Assembly-CSharp}
-      data:
-        resources: []
 --- !u!114 &1836722538394661776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2400,7 +2392,7 @@ MonoBehaviour:
       m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: d06f87fd-e2a0-4fd5-8b8f-28e39bd37086
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
