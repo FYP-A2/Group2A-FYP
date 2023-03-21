@@ -551,7 +551,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5274560180834625402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +590,9 @@ MonoBehaviour:
   fillColor: {r: 1, g: 0, b: 0, a: 1}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   baseScale: 0
+  groupChannel: 0
+  groupModeIsLeader: 0
+  groupMembers: []
 --- !u!65 &5274560180834625403
 BoxCollider:
   m_ObjectHideFlags: 0

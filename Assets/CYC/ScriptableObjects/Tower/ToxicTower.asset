@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: ToxicTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 312291994173469593, guid: 84cdd636ac5a13e4caba34d12aebe36a, type: 3}
+  towerPrefab: {fileID: 2765148239345663367, guid: 14b1d2174b5c3db4dbf32a2fa75bae50, type: 3}
   phyDamage: 0
   magicDamage: 0
   fireRate: 0

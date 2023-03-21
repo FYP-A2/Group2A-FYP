@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerBuildSOs:
-  - {fileID: 11400000, guid: e2c42fce78dd41d4d9c8501537196aaf, type: 2}
-  - {fileID: 11400000, guid: c70aeca67fbedbf448182843d536d0e8, type: 2}
-  - {fileID: 11400000, guid: 0810df150f575534dbec5da83d2e2442, type: 2}
+  - {fileID: 11400000, guid: 2e60c0555cc37ac40892137f5436c3b1, type: 2}
+  - {fileID: 11400000, guid: 5b5701ea98fbb12449f37f6335444222, type: 2}
+  - {fileID: 11400000, guid: c86755219ac492241a5823ea68a79399, type: 2}
+  - {fileID: 11400000, guid: 710892e7a56134d40b8c925494ee0ba2, type: 2}
+  - {fileID: 11400000, guid: a12ff746cd8b9d244bc5d7a8bb1751c2, type: 2}
+  - {fileID: 11400000, guid: fcf3960722adc964fa20e4b279f92636, type: 2}
+  - {fileID: 11400000, guid: c8dca3f12de6d034b82c74146de4059f, type: 2}
