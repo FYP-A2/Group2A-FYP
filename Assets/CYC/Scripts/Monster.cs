@@ -58,14 +58,13 @@ public class Monster : MonoBehaviour, IMonster
                 Move();
                 break;
             case State.Attack:
-                agent.SetDestination(transform.position);
                 Attack(currentTarget);
                 if (currentTarget == null)
                     state = State.Move;
                 break; 
             case State.Die:
                 Dead();
-                agent.SetDestination(transform.position);
+                agent.isStopped = true;
                 break;
         }
         //if(target != null) Move();
@@ -157,7 +156,7 @@ public class Monster : MonoBehaviour, IMonster
         this.reductionTime = reductionTime;
         isDefenseBreak = true;
     }
-    void Move()
+    /*void Move()
     {
         if (currentTarget != target && hitTargets.Count > 0)
         {
@@ -194,6 +193,65 @@ public class Monster : MonoBehaviour, IMonster
         else
         {
             //Debug.Log("Move");
+            if (!agent.hasPath)
+            {
+                if (animator != null)
+                    animator.SetFloat(ani_Move, agent.velocity.magnitude);
+                agent.SetDestination(target.position);
+            }
+        }
+    }*/
+
+    void Move()
+    {
+        if (currentTarget != target && hitTargets.Count > 0)
+        {
+            //bool targetIsBlocked = false;
+            bool obstacleInFront = false;
+            List <Transform> pathTarget = new List<Transform>();
+
+            NavMeshPath path = new NavMeshPath();
+            if (agent.CalculatePath(target.position, path))
+            {
+                for (int i = 1; i < path.corners.Length; i++)
+                {
+                    if (Physics.Linecast(path.corners[i - 1], path.corners[i], out RaycastHit hit1, layer) &&
+                        hit1.transform.CompareTag("breakable"))
+                    {
+                        //targetIsBlocked = true;
+                        if(!pathTarget.Contains(hit1.transform))
+                            pathTarget.Add(hit1.transform);
+                        break;
+                    }
+                }
+            }
+
+            if (Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
+            {
+                if (hit.transform.CompareTag("breakable"))
+                {
+                    obstacleInFront = true;
+                    currentTarget = hit.transform;
+                }
+            }
+
+            if (obstacleInFront && pathTarget.Contains(currentTarget) || currentTarget == target)
+            {             
+                agent.SetDestination(transform.position);
+                state = State.Attack;
+            }
+            else
+            {
+                if (!agent.hasPath)
+                {
+                    if (animator != null)
+                        animator.SetFloat(ani_Move, agent.velocity.magnitude);
+                    agent.SetDestination(target.position);
+                }
+            }
+        }
+        else
+        {
             if (!agent.hasPath)
             {
                 if (animator != null)
