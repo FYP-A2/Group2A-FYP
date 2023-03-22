@@ -103,7 +103,7 @@ public class Director : MonoBehaviour
       if(TNTModeTriggered){ Enter_TNTMode(); }
       if(devModeTriggered){ Enter_DevMode(); }
 
-      if(mode.gameMode==Mode.GameMode.FULL_MODE){
+      if(mode.gameMode==Mode.GameMode.TNT_MODE){
          TNTModeUpdate();
       }
 
