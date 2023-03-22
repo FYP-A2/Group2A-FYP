@@ -10,7 +10,8 @@ namespace FYP2A.VR.PlaceTurret
     //This component is needed to set on player prefab
     public class PlaceTurret : MonoBehaviour, IPlaceTurret
     {
-        
+        public Player player;
+
         TurretPreview nowPreview;
         TowerBuildSO nowBuild;
         bool isPreviewing;
@@ -131,7 +132,7 @@ namespace FYP2A.VR.PlaceTurret
         bool SetPreviewTurret(TowerBuildSO turretType)
         {
             Debug.Log("Turret:  Set preview :" + turretType.ToString());
-            if (CheckEnoughResources(turretType.neededResources))
+            if (CheckEnoughResources(turretType.resourceGroup))
             {
 
                 CreatePreview(turretType.towerPreview, turretType.Tower.level);
@@ -321,10 +322,19 @@ namespace FYP2A.VR.PlaceTurret
         }
 
         //server execute
-        bool CheckEnoughResources(TowerBuildSO.Resources neededResources)
+        bool CheckEnoughResources(ResourceGroupTypeSO neededResource)
         {
-            return true;
-            //Check player has enough resources
+            bool result = true;
+            for (int i = 0; i < neededResource.resources.Count; i++)
+                if (player.resourceGroup.GetAmount(i) < neededResource.resources[i].amount)
+                    result = false;
+
+            if (result)
+                for (int i = 0; i < neededResource.resources.Count; i++)
+                    player.resourceGroup.Add(i, -neededResource.resources[i].amount);
+
+
+            return result;
         }
     }
 }

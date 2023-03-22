@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ffb10b3f720bc448801c978a3b3758, type: 3}
-  m_Name: DefaultResources
+  m_Name: L2 Phy Needed Resource
   m_EditorClassIdentifier: 
   resources:
   - name: Wood
     icon: {fileID: 21300000, guid: 8c34a53d4ddc98c44a09025377f4b525, type: 3}
-    amount: 20
+    amount: 0
   - name: Stone
     icon: {fileID: 21300000, guid: 4e884ecc783e4d849a97463dd6a9a68f, type: 3}
-    amount: 10
+    amount: 0
   - name: Coin
     icon: {fileID: 21300000, guid: cca1a58e84e71074aa0722fd33d7e119, type: 3}
-    amount: 100
+    amount: 0
   - name: Physical Ore
     icon: {fileID: 21300000, guid: 2f9f055bd86785d4ba6c7538cbdd1ee0, type: 3}
     amount: 0

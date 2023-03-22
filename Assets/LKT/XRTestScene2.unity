@@ -2478,15 +2478,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 262.1
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2494,11 +2494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 147.05
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55.5
       objectReference: {fileID: 0}
     - target: {fileID: 4422659091188657070, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4731,6 +4731,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 372419448}
     - target: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 207715139}
+    - target: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
       propertyPath: test2TowerID
       value: 1
       objectReference: {fileID: 0}
@@ -4999,6 +5003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4c6a2593a3c44f8512ea0164dc51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   xrRayInteractor: {fileID: 1822787742}
   turretPrefabIndex: {fileID: 0}
   book: {fileID: 0}

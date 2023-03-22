@@ -6,11 +6,11 @@ using static UICommonButton;
 
 public class UIBook : MonoBehaviour
 {
-    List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
-
+    
     public Player player;
     public ResourceGroupType PlayerResource { get => player.resourceGroup; }
     public PlaceTurret placeTurret;
+    public List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
     public List<UICommonButton> uIButtons = new List<UICommonButton>();
 
     // Start is called before the first frame update

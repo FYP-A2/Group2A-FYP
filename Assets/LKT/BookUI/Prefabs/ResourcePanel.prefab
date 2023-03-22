@@ -181,11 +181,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerResource: {fileID: 0}
+  compareResource: {fileID: 0}
   getByWhat: 1
-  textAmount: {fileID: 4334584378134600530}
-  imageIcon: {fileID: 3817767490474399974}
   resourceName: 
   resourceIndex: 0
+  textAmount: {fileID: 4334584378134600530}
+  imageIcon: {fileID: 3817767490474399974}
+  colorNormal: {r: 0, g: 0, b: 0, a: 1}
+  colorAbnormal: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7666470119749195303
 GameObject:
   m_ObjectHideFlags: 0

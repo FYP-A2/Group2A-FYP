@@ -14,12 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tower: {fileID: 11400000, guid: 44e51ddb25650194f84a6fe8cf763bff, type: 2}
   towerPreview: {fileID: 407453727209528522, guid: a22c4106137f73a4faadcf31ad1c0351, type: 3}
-  neededResources:
-    wood: 0
-    stone: 0
-    Phy: 0
-    Fire: 0
-    Ice: 0
-    Toxic: 0
-    Electro: 0
   requiredBaseType: 1
+  resourceGroup: {fileID: 11400000, guid: 8d14a7c113c07644190cfd9ce2ab2d0c, type: 2}
