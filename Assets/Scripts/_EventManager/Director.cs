@@ -10,7 +10,7 @@ public class Director : MonoBehaviour
    public Announcer announcer;
    public bool announcer_triggered;
    public EventChecklist eventChecklist;
-   public bool fullModeTriggered=false,devModeTriggered=false,started_once=false;
+   public bool TNTModeTriggered=false,devModeTriggered=false,started_once=false;
    public enum State{Step0to1=0,Step1Finished=1,Step2Finished=2,Step3Finished=3,Step4Finished=4,
       Step5Finished=5,Step6Finished=6,Step7Finished=7,Step8Finished=8,Step9Finished=9}
 
