@@ -5,7 +5,7 @@ using TMPro;
 
 public class Mode : MonoBehaviour
 {
-    public enum GameMode {PAUSE=-1,DEV_MODE=0,FULL_MODE=1}
+    public enum GameMode {PAUSE=-1,DEV_MODE=0,TNT_MODE=1,FULL_MODE=2}
     public GameMode gameMode = GameMode.PAUSE;
     public TMP_Text TMP_Text;
 
