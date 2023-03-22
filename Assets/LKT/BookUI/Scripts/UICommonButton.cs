@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UICommonButton : MonoBehaviour
 {
-    public UIBook book;
     public Image backgroundCompon;
     public Text textSmall;
     public Text textBig;
@@ -23,6 +22,11 @@ public class UICommonButton : MonoBehaviour
 
     [Header("")]
     public bool selecting;
+
+    public delegate void Select(int n, SelectType t);
+    public event Select EventSelect;
+    public enum SelectType { tower, pearl}
+    public SelectType selectType = SelectType.tower;
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +96,11 @@ public class UICommonButton : MonoBehaviour
             backgroundCompon.sprite = background;
             selecting = false;
         }
+    }
+
+    public void SelectItem(int n)
+    {
+        EventSelect(n, selectType);
     }
 
     public void Debug1()

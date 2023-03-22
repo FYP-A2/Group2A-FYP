@@ -10,26 +10,27 @@ namespace FYP2A.VR.PlaceTurret
     //This component is needed to set on player prefab
     public class PlaceTurret : MonoBehaviour, IPlaceTurret
     {
-        [Header("Place Turret")]
-        public GameObject towerManagerPrefab;
-
-        float placeAnimationHeight = 10f;
-        float placeAnimationduration = 0.3f;
-
+        
         TurretPreview nowPreview;
         TowerBuildSO nowBuild;
         bool isPreviewing;
+
+        [Header("Place Turret")]
         [SerializeField]
         XRRayInteractor xrRayInteractor;
 
+        public TurretPrefabIndex turretPrefabIndex;
+
         [SerializeField]
-        TurretPrefabIndex turretPrefabIndex;
+        UIBook book;
 
         [SerializeField]
         InputActionProperty inputConfirm;
         [SerializeField]
         InputActionProperty inputCancel;
 
+        float placeAnimationHeight = 10f;
+        float placeAnimationduration = 0.3f;
 
         [Header("Test Input")]
         public InputActionProperty testSelect;
@@ -111,6 +112,7 @@ namespace FYP2A.VR.PlaceTurret
             if (isPreviewing)
             {
                 DeletePreview();
+                book.SelectExitAllButton();
             }
         }
 
@@ -227,6 +229,7 @@ namespace FYP2A.VR.PlaceTurret
                 
                 StartCoroutine(PlaceDownTurretAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
+                book.SelectExitAllButton();
             }
         }
 
