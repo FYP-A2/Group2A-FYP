@@ -19,9 +19,10 @@ MonoBehaviour:
   attackRange: 10
   towerType: 0
   level: 0
-  bulletPrefab: {fileID: 7140364812559797392, guid: 71fb3790fd8e8bc4782bf8e20269ae40, type: 3}
+  bulletPrefab: {fileID: 3949009865981011930, guid: fc6bebe06d2630249b2098f3239ce2ea, type: 3}
   burntDamage: 0
   burntTime: 0
+  exposionRadius: 0
   slowRatio: 0
   slowTime: 0
   penetrationRatio: 0

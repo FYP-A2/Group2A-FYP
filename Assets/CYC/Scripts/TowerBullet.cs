@@ -18,7 +18,8 @@ public class TowerBullet : MonoBehaviour
 
     private void Start()
     {
-        targets = sphereCollider.transform.GetComponent<AttackArea>().targets;
+        if(sphereCollider!=null)
+            targets = sphereCollider.transform.GetComponent<AttackArea>().targets;
     }
 
     public void Seek(Transform target, string towerType, int phyDamage = 0, int magDamage = 0)

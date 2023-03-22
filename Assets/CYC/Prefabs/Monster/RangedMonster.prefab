@@ -1075,6 +1075,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2293722986827265850, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697276146753556232, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2842659126611740761, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4330956839411000600, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -1087,9 +1099,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7077190922446482257, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8898318196429428754, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_Name
       value: MonsterHp_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898318196429428754, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe4a9657a200764da7c359163fb5930, type: 3}

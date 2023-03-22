@@ -25,7 +25,9 @@ public class Monster : MonoBehaviour, IMonster
     Animator animator;
     const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
     public Transform firePoint;
-    enum State{Move,Attack,Die};
+    public enum State{Move,Attack,Die};
+    public State state { get; private set; }
+    Transform currentTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,12 +44,31 @@ public class Monster : MonoBehaviour, IMonster
         animator= GetComponent<Animator>();
         if (firePoint == null)
             firePoint = transform;
+
+        if (target != null)
+            state = State.Move;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target != null) Move();
+        switch (state)
+        {
+            case State.Move:
+                Move();
+                break;
+            case State.Attack:
+                agent.SetDestination(transform.position);
+                Attack(currentTarget);
+                if (currentTarget == null)
+                    state = State.Move;
+                break; 
+            case State.Die:
+                Dead();
+                agent.SetDestination(transform.position);
+                break;
+        }
+        //if(target != null) Move();
         if(isBurnt) Burnt();
         if(isSlow) Slow();
         if(isDefenseBreak) DefenseBreak();
@@ -88,7 +109,7 @@ public class Monster : MonoBehaviour, IMonster
         ShowDamage(finalDamage,Color.black);
         if (hp <= 0)
         {
-            Dead();
+            state = State.Die;
         }
     }
 
@@ -106,8 +127,7 @@ public class Monster : MonoBehaviour, IMonster
             isBurnt = true;
             StartCoroutine(Ignite(burntDamage));
         }
-        this.burntTime = burntTime;
-                   
+        this.burntTime = burntTime;                  
     }
 
     public void GetSlow(int phyDamage, int magicDamage, float slowRatio, float slowTime)
@@ -139,22 +159,26 @@ public class Monster : MonoBehaviour, IMonster
     }
     void Move()
     {
-        if (hitTargets.Count > 0)
+        if (currentTarget != target && hitTargets.Count > 0)
         {
-            Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer);
+            Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer);
             //Debug.DrawRay(transform.position, transform.forward * enemyScriptable.attackRange, Color.black, 1f);
             if (hit.transform != null && hit.transform.tag == "breakable")
             {
                 //Debug.Log("Attack");
                 if (hitTargets.Find((x) => x == target) != null)
-                {                   
-                    agent.SetDestination(transform.position);
-                    Attack(target);
+                {
+                    //agent.SetDestination(transform.position);
+                    //Attack(target);
+                    currentTarget = target;
+                    state = State.Attack;
                 }
                 else
                 {                   
-                    agent.SetDestination(transform.position);
-                    Attack(hit.transform);
+                    //agent.SetDestination(transform.position);
+                    //Attack(hit.transform);
+                    currentTarget = hit.transform;
+                    state = State.Attack;
                 }
             }
             else
@@ -178,7 +202,6 @@ public class Monster : MonoBehaviour, IMonster
             }
         }
     }
-
     void Attack(Transform target)
     {
         if (target != null)
@@ -186,7 +209,7 @@ public class Monster : MonoBehaviour, IMonster
             if (target.TryGetComponent<IDamage>(out IDamage Idamage)  && !isAttacked)
             {
                 if (!enemyScriptable.isRanged)
-                {
+                {                    
                     if (animator != null)
                         animator.SetTrigger(ani_Attack);
                     transform.LookAt(target.position);
@@ -208,7 +231,7 @@ public class Monster : MonoBehaviour, IMonster
     void Dead()
     {
         if (animator != null)
-            animator.SetTrigger(ani_Die);
+            animator.SetBool(ani_Die,true);
         Destroy(gameObject,3f);
     }
 
@@ -274,7 +297,7 @@ public class Monster : MonoBehaviour, IMonster
             ShowDamage(damage, Color.red);
             if (hp <= 0)
             {
-                Dead();
+                state = State.Die;
                 yield return null;
             }
             yield return new WaitForSeconds(0.5f);

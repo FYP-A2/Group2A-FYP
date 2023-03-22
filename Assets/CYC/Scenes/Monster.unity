@@ -1205,6 +1205,10 @@ PrefabInstance:
       propertyPath: m_Area
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3871127593833662550, guid: 1dd7434569e57694f9000d973e943746, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8738393908247863392, guid: 1dd7434569e57694f9000d973e943746, type: 3}
       propertyPath: m_Name
       value: FireTower
