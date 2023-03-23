@@ -10,7 +10,7 @@ public class Mode : MonoBehaviour
     public TMP_Text TMP_Text;
 
     public void F11(){ gameMode=GameMode.DEV_MODE; TMP_Text.SetText("DEV MODE ON"); }
-    public void F12(){ gameMode=GameMode.FULL_MODE; TMP_Text.SetText("FULL MODE ON"); }
+    public void F12(){ gameMode=GameMode.TNT_MODE; TMP_Text.SetText("TNT MODE ON"); }
 
     
 }
