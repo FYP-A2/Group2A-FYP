@@ -21,10 +21,10 @@ public class Director : MonoBehaviour{
       Waiting_GoTreeArea=2,Waiting_CutTree=3,
       Waiting_GoStoneArea=4,Waiting_MineStone=5,
       Waiting_GoBuildArea=6,Waiting_BuildPhyTower=7,
-      Waiting_BuildFinished=8,WaitingReady=9,
-      Waiting_StartFirstRound=10,Waiting_AllMobsDown=11,
+      Waiting_BuildFinished=8
    }
-   public enum WinLoseContinue_State{ Continue=1, Won=2, Lost=3, }
+   public enum RoundState{WaitingReady=1, Waiting_StartRound=2,Waiting_AllMobsDown=3 }
+   public enum WinLoseContinue_State{ Continue=1, Won=2, Lost=3 }
 
    public enum Stage{ Stage_1=1, Stage_2=2 }
 
