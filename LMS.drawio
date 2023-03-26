@@ -1,9 +1,51 @@
-<mxfile host="app.diagrams.net" modified="2023-03-26T12:14:14.894Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51" version="21.1.1" etag="foXFPO1C2QTanGnAH3ZX" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-26T14:42:53.802Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51" etag="PXjEbZjakhgYFXo3WXAY" version="21.1.1" type="github">
   <diagram name="第 1 页" id="S1uV3VJw-9o8ewNzTQaw">
-    <mxGraphModel>
+    <mxGraphModel dx="1290" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="M4OT5LLSVtjhnGVdqXoC-1" target="M4OT5LLSVtjhnGVdqXoC-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-1" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/essential-app-2/16/record-round-circle-dot-128.png" vertex="1" parent="1">
+          <mxGeometry x="160" y="80" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="M4OT5LLSVtjhnGVdqXoC-2" target="M4OT5LLSVtjhnGVdqXoC-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-2" value="WaitingInitialize" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="114" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="M4OT5LLSVtjhnGVdqXoC-13" target="M4OT5LLSVtjhnGVdqXoC-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-13" value="Loading" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="76" y="255" width="196" height="90" as="geometry">
+            <mxRectangle x="314" y="280" width="80" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-20" value="LoadOnComboBoxChanged" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="M4OT5LLSVtjhnGVdqXoC-13">
+          <mxGeometry x="15" y="45" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="M4OT5LLSVtjhnGVdqXoC-18" target="M4OT5LLSVtjhnGVdqXoC-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-18" value="Writing" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="78" y="375" width="196" height="90" as="geometry">
+            <mxRectangle x="314" y="280" width="80" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-24" value="LocalUpdateRTB" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="M4OT5LLSVtjhnGVdqXoC-18">
+          <mxGeometry x="41" y="45" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-19" value="Not Writing" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="76" y="495" width="196" height="90" as="geometry">
+            <mxRectangle x="314" y="280" width="80" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M4OT5LLSVtjhnGVdqXoC-25" value="SaveOnComboBoxChanged" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="M4OT5LLSVtjhnGVdqXoC-19">
+          <mxGeometry x="15" y="40" width="170" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
