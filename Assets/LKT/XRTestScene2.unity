@@ -370,11 +370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fb7012a3c24664593f5490ac5c6477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __EventChecklist: {fileID: 0}
+  __Announcer: {fileID: 0}
   __Player: {fileID: 207715139}
   cam: {fileID: 1950962701}
+  __Mode: {fileID: 0}
   __HUD: {fileID: 0}
   __TP: {fileID: 0}
-  __Announcer: {fileID: 0}
 --- !u!114 &207715138 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
@@ -2478,11 +2480,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2498,7 +2500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422659090696076826, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -55.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422659091188657070, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
       propertyPath: m_SizeDelta.y

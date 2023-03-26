@@ -14,14 +14,16 @@ public class UIResourceDisplay : MonoBehaviour
    public string resourceName;
    public int resourceIndex = 0;
 
-   [Header("display")]
+   [Header("Display")]
    public Text textAmount;
    public Image imageIcon;
    public Color colorNormal;
    public Color colorAbnormal;
 
+    [Header("Cheat Mode")]
+    public bool cheatMode;
 
-   private void Start()
+    private void Start()
    {
       if (playerResource == null)
       {
@@ -60,4 +62,14 @@ public class UIResourceDisplay : MonoBehaviour
       }
 
    }
+
+    public void CheatAddResource()
+    {
+        if (!cheatMode)
+            return;
+        if (getByWhat == GetByWhat.NAME)
+            playerResource.Add(resourceName, 1);
+        else
+            playerResource.Add(resourceIndex, 1);
+    }
 }

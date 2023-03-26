@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4584911876580230315}
   - component: {fileID: 8136547218693513045}
   - component: {fileID: 3817767490474399974}
+  - component: {fileID: 1575043019439967864}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -75,6 +76,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1575043019439967864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875348283403828896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7931570699934421789}
+          m_TargetAssemblyTypeName: UIResourceDisplay, Assembly-CSharp
+          m_MethodName: CheatAddResource
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6277164150985657816
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +219,7 @@ MonoBehaviour:
   imageIcon: {fileID: 3817767490474399974}
   colorNormal: {r: 0, g: 0, b: 0, a: 1}
   colorAbnormal: {r: 1, g: 0, b: 0, a: 1}
+  cheatMode: 1
 --- !u!1 &7666470119749195303
 GameObject:
   m_ObjectHideFlags: 0
