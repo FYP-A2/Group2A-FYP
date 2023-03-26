@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Director : MonoBehaviour{
+   //SAFE?
    #region Scripts & Objects Binding;
    public GameObject _Player;
    public Mode mode;
