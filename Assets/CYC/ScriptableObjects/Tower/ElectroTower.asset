@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: ElectroTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 8149818038839703811, guid: 6328067022830f74aa470da2d84198a4, type: 3}
+  towerPrefab: {fileID: 2765148239345663367, guid: f3e6aae253d332a4b8fe1013e503ec4a, type: 3}
   phyDamage: 0
   magicDamage: 10
   fireRate: 1

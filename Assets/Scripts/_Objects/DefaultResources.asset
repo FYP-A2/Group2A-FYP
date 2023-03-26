@@ -22,6 +22,9 @@ MonoBehaviour:
   - name: Coin
     icon: {fileID: 21300000, guid: cca1a58e84e71074aa0722fd33d7e119, type: 3}
     amount: 100
+  - name: Physical Ore
+    icon: {fileID: 21300000, guid: 2f9f055bd86785d4ba6c7538cbdd1ee0, type: 3}
+    amount: 0
   - name: Fire Ore
     icon: {fileID: 21300000, guid: 1093d4841a9ee6c4c9b01bcbc205991c, type: 3}
     amount: 0
@@ -31,11 +34,11 @@ MonoBehaviour:
   - name: Toxic Ore
     icon: {fileID: 21300000, guid: d86c8a911e0806c459a7d2a84abcd57b, type: 3}
     amount: 0
-  - name: Physical Ore
-    icon: {fileID: 21300000, guid: 2f9f055bd86785d4ba6c7538cbdd1ee0, type: 3}
-    amount: 0
-  - name: Magical Ore
+  - name: Electro Ore
     icon: {fileID: 21300000, guid: b43bf6273cb9e7b448756d62ca290700, type: 3}
+    amount: 0
+  - name: Element Pearl
+    icon: {fileID: 21300000, guid: e488e5f87eb0879408a68109da30f0ad, type: 3}
     amount: 0
   - name: Speed Pearl
     icon: {fileID: 21300000, guid: f27fa094925e45249976c3c477fec1a9, type: 3}
@@ -46,9 +49,6 @@ MonoBehaviour:
   - name: Scale Pearl
     icon: {fileID: 21300000, guid: f53639b564c4dca479d984b37138051d, type: 3}
     amount: 0
-  - name: Physical Pearl
-    icon: {fileID: 21300000, guid: e488e5f87eb0879408a68109da30f0ad, type: 3}
-    amount: 0
-  - name: Magical Pearl
+  - name: Damage Pearl
     icon: {fileID: 21300000, guid: fe2ecf13dea4eb949b60dc594a44984a, type: 3}
     amount: 0

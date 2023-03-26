@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: IceTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 5650527309878815204, guid: 8b83ef968eecd7641bd520f384cb6ca7, type: 3}
+  towerPrefab: {fileID: 2765148239345663367, guid: aa1bf2939b0df634f90f985a63ca1ac5, type: 3}
   phyDamage: 0
   magicDamage: 20
   fireRate: 2

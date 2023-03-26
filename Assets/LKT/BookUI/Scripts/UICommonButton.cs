@@ -6,101 +6,124 @@ using UnityEngine.UI;
 
 public class UICommonButton : MonoBehaviour
 {
-    public Image backgroundCompon;
-    public Text textSmall;
-    public Text textBig;
-    public Transform previewSlot;
+   [HideInInspector]
+   public UIBook book;
 
-    [Header("")]
-    public GameObject previewPrefab;
-    public Vector3 previewAutoRotate;
-    public Sprite background;
-    public Sprite backgroundOnHover;
-    public Sprite backgroundOnSelect;
-    public string stringSmall;
-    public string stringBig;
+   public TowerBuildSO towerBuildSO;
 
-    [Header("")]
-    public bool selecting;
+   [Header("")]
+   public Image backgroundCompon;
+   public Text textSmall;
+   public Text textBig;
+   public Transform previewSlot;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //background += 
-        SetPreview(previewPrefab);
-        textSmall.text = stringSmall;
-        textBig.text = stringBig;
+   [Header("")]
+   public GameObject previewPrefab;
+   public Vector3 previewAutoRotate;
+   public Sprite background;
+   public Sprite backgroundOnHover;
+   public Sprite backgroundOnSelect;
+   public string stringSmall;
+   public string stringBig;
 
-        backgroundCompon.sprite = background;
-        backgroundCompon.preserveAspect = true;
-    }
+   [Header("")]
+   public bool selecting;
 
-    void Update()
-    {
-        AutoRotate();
-    }
+   [Header("")]
+   public RectTransform hoverPos;
+
+   public delegate void Select(int n, SelectType t);
+   public event Select EventSelect;
+   public enum SelectType { tower, pearl }
+   public SelectType selectType = SelectType.tower;
+
+   // Start is called before the first frame update
+   void Start()
+   {
+      //background += 
+      SetPreview(previewPrefab);
+      textSmall.text = stringSmall;
+      textBig.text = stringBig;
+
+      backgroundCompon.sprite = background;
+      backgroundCompon.preserveAspect = true;
+   }
+
+   void Update()
+   {
+      AutoRotate();
+   }
 
 
-    void SetPreview(GameObject previewPrefab)
-    {
-        ClearPreviewSlot();
-        Transform t = Instantiate(previewPrefab,previewSlot).transform;
-        t.localPosition = Vector3.zero;
-        t.localRotation = Quaternion.identity;
-        t.localScale = Vector3.one;
-    }
+   void SetPreview(GameObject previewPrefab)
+   {
+      ClearPreviewSlot();
+      Transform t = Instantiate(previewPrefab, previewSlot).transform;
+      t.localPosition = Vector3.zero;
+      t.localRotation = Quaternion.identity;
+      t.localScale = Vector3.one;
+   }
 
-    void ClearPreviewSlot()
-    {
-        if (previewSlot.childCount > 0)
-        {
-            Destroy(previewSlot.GetChild(0).gameObject);
-        }
-    }
+   void ClearPreviewSlot()
+   {
+      if (previewSlot.childCount > 0)
+      {
+         Destroy(previewSlot.GetChild(0).gameObject);
+      }
+   }
 
-    void AutoRotate()
-    {
-        previewSlot.Rotate(previewAutoRotate*Time.deltaTime,Space.Self);
-    }
+   void AutoRotate()
+   {
+      previewSlot.Rotate(previewAutoRotate * Time.deltaTime, Space.Self);
+   }
 
-    public void OnHoverEnter()
-    {
-        if (!selecting)
-            backgroundCompon.sprite = backgroundOnHover;
-    }
+   public void OnHoverEnter()
+   {
+      if (!selecting)
+         backgroundCompon.sprite = backgroundOnHover;
 
-    public void OnHoverExit()
-    {
-        if (!selecting)
-            backgroundCompon.sprite = background;
+      book.uiHover.DisplayOn( hoverPos.anchoredPosition /*+ hoverPos.GetComponentInParent<RectTransform>().anchoredPosition*/, towerBuildSO.resourceGroup);
+   }
 
-    }
+   public void OnHoverExit()
+   {
+      if (!selecting)
+         backgroundCompon.sprite = background;
 
-    public void OnSelectEnter()
-    {
-        if (!selecting)
-        {
-            backgroundCompon.sprite = backgroundOnSelect;
-            selecting = true;
-        }
-    }
+      book.uiHover.DisplayOff();
+   }
 
-    public void OnSelectExit()
-    {
-        if (selecting)
-        {
-            backgroundCompon.sprite = background;
-            selecting = false;
-        }
-    }
+   public void OnSelectEnter()
+   {
+      book.SelectExitAllButton();
+      if (!selecting)
+      {
+         backgroundCompon.sprite = backgroundOnSelect;
+         selecting = true;
+      }
+   }
 
-    public void Debug1()
-    {
-        Debug.Log("CommonButton: debug1");
-    }
+   public void OnSelectExit()
+   {
+      if (selecting)
+      {
+         backgroundCompon.sprite = background;
+         selecting = false;
+      }
+   }
 
-    public void Debug2()
-    {
-        Debug.Log("CommonButton: debug2");
-    }
+   public void SelectItem(int n)
+   {
+      EventSelect(n, selectType);
+   }
+
+   public void Debug1()
+   {
+      Debug.Log("CommonButton: debug1");
+   }
+
+   public void Debug2()
+   {
+      Debug.Log("CommonButton: debug2");
+   }
 }
