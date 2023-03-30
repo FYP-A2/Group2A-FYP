@@ -28,6 +28,9 @@ public class Monster : MonoBehaviour, IMonster
     public enum State{Move,Attack,Die};
     public State state { get; private set; }
     Transform currentTarget;
+
+    public float pathFrequency = 0.5f;
+    private float pathTimer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -257,6 +260,19 @@ public class Monster : MonoBehaviour, IMonster
                 if (animator != null)
                     animator.SetFloat(ani_Move, agent.velocity.magnitude);
                 agent.SetDestination(target.position);
+            }
+        }
+
+        pathTimer += Time.deltaTime;
+
+        if (pathTimer >= pathFrequency)
+        {
+            pathTimer = 0.0f;
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(target.position, path);
+            if(agent.path != path)
+            {
+                agent.path = path;
             }
         }
     }
