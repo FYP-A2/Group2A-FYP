@@ -8,6 +8,7 @@ public class UIBook : MonoBehaviour
 {
 
    public Player player;
+   public Camera playerCam;
    public ResourceGroupType PlayerResource { get => player.resourceGroup; }
    public PlaceTurret placeTurret;
    public List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
