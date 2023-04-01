@@ -2233,7 +2233,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -100
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -2261,7 +2261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836362494}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3499.49, y: 0, z: -8.44}
+  m_LocalPosition: {x: 0, y: 512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1631935371}
@@ -5518,7 +5518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1117071776656020571, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2065161174834025256, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
       propertyPath: previewPrefab
@@ -5648,6 +5648,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 207715139}
+    - target: {fileID: 7195763628071981100, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
+      propertyPath: uiMapCam
+      value: 
+      objectReference: {fileID: 836362497}
     - target: {fileID: 7195763628071981100, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
       propertyPath: placeTurret
       value: 

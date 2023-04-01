@@ -13,6 +13,8 @@ public class UIBook : MonoBehaviour
    public List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
    public List<UICommonButton> uIButtons = new List<UICommonButton>();
    public UIResourceDisplayHover uiHover;
+   public UIMap uiMap;
+   public Camera uiMapCam;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,9 @@ public class UIBook : MonoBehaviour
 
       uiHover.book = this;
       uiHover.ownedResource = PlayerResource;
+
+      uiMap.book = this;
+      uiMap.cam = uiMapCam;
    }
 
    // Update is called once per frame
