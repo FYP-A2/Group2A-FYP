@@ -14,6 +14,8 @@ public class _1st_Director : MonoBehaviour{
    [HideInInspector] public EventChecklist eventChecklist;
    [HideInInspector] public DA_State _DA_State;
    [HideInInspector] public Area_State_Script _Area_State;
+   [HideInInspector] public WLC_State_Script _WLC_State;
+   [HideInInspector] public Stage stage;
    #endregion
 
 
@@ -33,6 +35,51 @@ public class _1st_Director : MonoBehaviour{
 
 
    }
+
+   public void FullModeUpdate()
+   {
+      if (mode._FullMode_State == Mode.FullMode_State.RoundBeforeStart)
+      {
+         PrepareTimerStart();
+
+         if (timer.remaining_time <= 0)
+            mode._FullMode_State = Mode.FullMode_State.RoundStart;
+      }
+      else if(mode._FullMode_State == Mode.FullMode_State.RoundStart)
+      {
+
+
+         //if ()
+         // mode._FullMode_State = Mode.FullMode_State.RoundOutOfFinishTime;
+      }
+      else if (mode._FullMode_State == Mode.FullMode_State.RoundOutOfFinishTime)
+      {
+         DeliverExtraReward();
+
+         //if ()
+         // mode._FullMode_State = Mode.FullMode_State.RoundBeforeStart;
+      }
+   }
    #endregion
+
+   void PrepareTimerStart()
+   {
+      timer.TimerStartToCountDown(30);
+      _DA_State.AnimateOnce("Game will start in 30 seconds, press [button] to start now", announcer);
+   }
+
+   //when player input "Ready", call this
+   void StageReady()
+   {
+      if (mode._FullMode_State == Mode.FullMode_State.RoundBeforeStart)
+      {
+         mode._FullMode_State = Mode.FullMode_State.RoundStart;
+      }
+   }
+
+   void DeliverExtraReward()
+   {
+
+   }
 }
 

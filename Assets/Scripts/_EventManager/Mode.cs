@@ -20,6 +20,14 @@ public class Mode : MonoBehaviour
 
    public TNT_State _TNT_State = TNT_State.Waiting_GoTreeArea;
 
+   public enum FullMode_State
+   {
+      RoundBeforeStart = 0, RoundStart=1, RoundOutOfFinishTime = 2
+   }
+
+   public FullMode_State _FullMode_State = FullMode_State.RoundBeforeStart;
+
+
    public void F11(){ gameMode=GameMode.DEV_MODE; TMP_Text.SetText("DEV MODE ON"); }
    public void F12(){ gameMode=GameMode.TNT_MODE; TMP_Text.SetText("TNT MODE ON"); }
 
