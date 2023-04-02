@@ -42,7 +42,7 @@ public class Mode : MonoBehaviour
    public void Enter_TNTMode(){
       TNTModeTriggered=false;
       Time.timeScale=1;
-      //TNTModeUpdate();
+      _FirstDirector.TNTModeUpdate();
 
       started_once=true;
    }

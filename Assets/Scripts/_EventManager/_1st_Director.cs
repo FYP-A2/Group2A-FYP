@@ -6,14 +6,14 @@ using UnityEngine;
 public class _1st_Director : MonoBehaviour{
    //SAFE?
    #region Scripts & Objects Binding;
-   public GameObject _Player;
-   public Mode mode;
-   public Timer timer;
-   public Announcer announcer;
-   public bool announcer_triggered;
-   public EventChecklist eventChecklist;
-   public DA_State _DA_State;
-   public Area_State _Area_State;
+   [HideInInspector] public GameObject _Player;
+   [HideInInspector] public Mode mode;
+   [HideInInspector] public Timer timer;
+   [HideInInspector] public Announcer announcer;
+   [HideInInspector] public bool announcer_triggered;
+   [HideInInspector] public EventChecklist eventChecklist;
+   [HideInInspector] public DA_State _DA_State;
+   [HideInInspector] public Area_State_Script _Area_State;
    #endregion
 
 
@@ -28,7 +28,7 @@ public class _1st_Director : MonoBehaviour{
          _DA_State.AnimateOnce("Welcome to the Full Game Mode.",announcer);
          _DA_State.DrawOnce("1. Follow the Arrow & Go Outside of the Castle",eventChecklist);
 
-         //_Area_State.CheckIsInSquareArea(418,458,1722,1762,"Tree Zone");
+         _Area_State.CheckIsInSquareArea(418,458,1722,1762,"Tree Zone");
       };
 
 
