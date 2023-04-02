@@ -89,6 +89,7 @@ MonoBehaviour:
   scaleUITagFactor: 10
   book: {fileID: 0}
   cam: {fileID: 0}
+  DragPoint: {x: 0, y: 0}
 --- !u!1 &2951480820648227659
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerCam: {fileID: 0}
   placeTurret: {fileID: 0}
   uiResourceDisplays:
   - {fileID: 1295816396893203007}
@@ -386,6 +388,7 @@ MonoBehaviour:
   - {fileID: 4014052768330985621}
   uiHover: {fileID: 7812826872583334065}
   uiMap: {fileID: 3190434514539374731}
+  uiMapCamPrefab: {fileID: 2576845210706632404, guid: 7f5e1701107f2ae488ee0b9a1e1634c1, type: 3}
   uiMapCam: {fileID: 0}
 --- !u!1001 &1117071776933809551
 PrefabInstance:

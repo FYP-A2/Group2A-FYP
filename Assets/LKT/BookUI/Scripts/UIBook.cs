@@ -1,4 +1,5 @@
 using FYP2A.VR.PlaceTurret;
+using MiscUtil.Xml.Linq.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,20 @@ using static UICommonButton;
 
 public class UIBook : MonoBehaviour
 {
-
+   [Header("Player Info")]
    public Player player;
    public Camera playerCam;
    public ResourceGroupType PlayerResource { get => player.resourceGroup; }
    public PlaceTurret placeTurret;
+
+   [Header("Book")]
+   public List<GameObject> pages = new List<GameObject>();
+   public float pageNow = 0;
    public List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
    public List<UICommonButton> uIButtons = new List<UICommonButton>();
    public UIResourceDisplayHover uiHover;
    public UIMap uiMap;
+   public GameObject uiMapCamPrefab;
    public Camera uiMapCam;
 
     // Start is called before the first frame update
@@ -35,6 +41,12 @@ public class UIBook : MonoBehaviour
       uiHover.book = this;
       uiHover.ownedResource = PlayerResource;
 
+
+      if (uiMapCam == null)
+      {
+         uiMapCam = Instantiate(uiMapCamPrefab).GetComponent<Camera>();
+      }
+
       uiMap.book = this;
       uiMap.cam = uiMapCam;
    }
@@ -42,7 +54,7 @@ public class UIBook : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-
+      uiMapCam.transform.position = new Vector3(transform.position.x,512,transform.position.z);
    }
 
    public void SelectExitAllButton()
@@ -68,5 +80,16 @@ public class UIBook : MonoBehaviour
    public void SelectPearl(int n)
    {
 
+   }
+
+   public void ClearPage()
+   {
+      foreach (GameObject page in pages)
+         page.SetActive(false);
+   }
+
+   public void FlipPage(int n)
+   {
+      pages[n].gameObject.SetActive(true);
    }
 }
