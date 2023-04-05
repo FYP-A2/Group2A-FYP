@@ -33,11 +33,13 @@ public class ToolBar : MonoBehaviour
    IEnumerator ActivateAnimation()
    {
       transform.localScale = Vector3.one * 0.000001f;
+      transform.eulerAngles = new Vector3(0,45,0);
       float t = 0;
-      while (t<0.15f)
+      while (t<0.3f)
       {
          transform.localScale = Vector3.Lerp(transform.localScale, orignalScale, t);
-         t+= Time.deltaTime;
+         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0,0,0), t);
+         t += Time.deltaTime;
          yield return null;
       }
       transform.localScale = orignalScale;
@@ -55,10 +57,12 @@ public class ToolBar : MonoBehaviour
    {
       transform.localScale = orignalScale;
       Vector3 finalScale = Vector3.one * 0.000001f;
+      transform.eulerAngles = new Vector3(0, 0, 0);
       float t = 0;
-      while (t < 0.15f)
+      while (t < 0.3f)
       {
          transform.localScale = Vector3.Lerp(transform.localScale, finalScale, t);
+         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 45, 0), t);
          t += Time.deltaTime;
          yield return null;
       }
