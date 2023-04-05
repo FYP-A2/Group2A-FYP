@@ -58,6 +58,7 @@ public class _1st_Director : MonoBehaviour{
             //dosth();
          }
          else if(mode._FullMode_State == Mode.FullMode_State.RoundOutOfFinishTime){
+            director_SpawnManager.roundStartSpawned = false;
             dosth();
          }
       
@@ -109,7 +110,8 @@ public class _1st_Director : MonoBehaviour{
     public void SpawnMonsters(int level)
     {
         if (director_SpawnManager.roundStartSpawned == false)
-            StartCoroutine(newSpawnManager.NewSpawnPrefabs(level));
+            foreach(EnemyData e in newSpawnManager.enemySpawnData)
+                StartCoroutine(newSpawnManager.NewSpawnPrefabs(e,stage));
     }
     #endregion
 
