@@ -8707,15 +8707,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 413218, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 445.73
+      value: 432.4
       objectReference: {fileID: 0}
     - target: {fileID: 413218, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 57.2
+      value: 55.9
       objectReference: {fileID: 0}
     - target: {fileID: 413218, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1809.19
+      value: 1755.9
       objectReference: {fileID: 0}
     - target: {fileID: 413218, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28065,6 +28065,8 @@ GameObject:
   m_Component:
   - component: {fileID: 738889219}
   - component: {fileID: 738889220}
+  - component: {fileID: 738889222}
+  - component: {fileID: 738889221}
   m_Layer: 0
   m_Name: _Monsters
   m_TagString: Untagged
@@ -28098,8 +28100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2bd9c404164674ab623660c6fd70b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  spawnDelays:
+  type: Melee
+  prefab: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
+  RMP: {fileID: 738889221}
+  spawnDelays_WhereEachItemMeans_In_A_Level:
   - 0
   - 0
   - 0
@@ -28112,7 +28116,50 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  numToSpawn: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  numToSpawn_WhereEachItemMeans_In_A_Level: 
+--- !u!114 &738889221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738889218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026ce78a79feac745b2bdf18d3fee367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reg_Mon_Pref_1: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
+  reg_Mon_Pref_2: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
+--- !u!114 &738889222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738889218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2bd9c404164674ab623660c6fd70b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Ranged
+  prefab: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
+  RMP: {fileID: 738889221}
+  spawnDelays_WhereEachItemMeans_In_A_Level:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  numToSpawn_WhereEachItemMeans_In_A_Level: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &740021354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36761,6 +36808,25 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3786597ec8801b140bdd8bf63387448f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914008923a1f33345b91f7350da887df, type: 3}
+--- !u!1 &1004866560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 137650, guid: 826b6a0b570e8460990010fa615b5a2a, type: 3}
+  m_PrefabInstance: {fileID: 219106585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004866563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004866560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552ce3bec27d7304290e1d1dcc8e021c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceGroupType: {fileID: 1206644465}
+  TreeState: 3
 --- !u!1 &1007453985 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1804870530130026, guid: cdd6975bf4a38254ab60386c36a97a76, type: 3}
@@ -67212,6 +67278,7 @@ MonoBehaviour:
   __Mode: {fileID: 789230078}
   __HUD: {fileID: 2141283653}
   __TP: {fileID: 1527232525}
+  tree: {fileID: 1004866560}
 --- !u!1001 &1836298222
 PrefabInstance:
   m_ObjectHideFlags: 0
