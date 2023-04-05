@@ -678,8 +678,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091271035}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -954,6 +954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 30.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6939536594299727544, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2091271037}
     - target: {fileID: 6939536594299727558, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
       propertyPath: m_Name
       value: Toolbar

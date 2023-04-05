@@ -7,6 +7,7 @@ public class ToolBar : MonoBehaviour
 {
    public List<ToolBarSlot> slots = new List<ToolBarSlot>();
    Vector3 orignalScale;
+   public Camera cam;
 
    // Start is called before the first frame update
    void Start()
@@ -33,12 +34,12 @@ public class ToolBar : MonoBehaviour
    IEnumerator ActivateAnimation()
    {
       transform.localScale = Vector3.one * 0.000001f;
-      transform.eulerAngles = new Vector3(0,45,0);
+      transform.localEulerAngles = new Vector3(0,cam.transform.localEulerAngles.y+45,0);
       float t = 0;
       while (t<0.3f)
       {
          transform.localScale = Vector3.Lerp(transform.localScale, orignalScale, t);
-         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0,0,0), t);
+         transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, cam.transform.localEulerAngles, t);
          t += Time.deltaTime;
          yield return null;
       }
@@ -57,12 +58,12 @@ public class ToolBar : MonoBehaviour
    {
       transform.localScale = orignalScale;
       Vector3 finalScale = Vector3.one * 0.000001f;
-      transform.eulerAngles = new Vector3(0, 0, 0);
+      Vector3 finalRotation = new Vector3(0, cam.transform.localEulerAngles.y + 45, 0);
       float t = 0;
       while (t < 0.3f)
       {
          transform.localScale = Vector3.Lerp(transform.localScale, finalScale, t);
-         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 45, 0), t);
+         transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, finalRotation, t);
          t += Time.deltaTime;
          yield return null;
       }
