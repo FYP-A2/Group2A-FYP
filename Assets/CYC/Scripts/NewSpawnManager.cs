@@ -21,72 +21,78 @@ public class NewSpawnManager : MonoBehaviour
     public float stageDuration = 180.0f;
     private int currentStage = 0;
     public List<EnemyScriptableObject> enemyScriptableObjects;
+    bool spawned = false;
     private void Awake()
     {
         Instance = this;
         spawnPoints.AddRange(GetComponentsInChildren<Transform>());
         spawnPoints.Remove(transform);
         //StartCoroutine(SpawnPrefabs());
-        StartCoroutine(NewSpawnPrefabs(5));
+        //StartCoroutine(NewSpawnPrefabs(5));
     }
 
     private IEnumerator SpawnPrefabs()
     {
-        while (true)
+        if (spawned) { yield return null; }
+        else
         {
-            float stageStartTime = Time.time;
-            float stageEndTime = stageStartTime + stageDuration;
-            currentStage++;
-            if (currentStage > 1)
+            this.spawned = true;
+            while (true)
             {
-                foreach(EnemyScriptableObject e in enemyScriptableObjects)
+                float stageStartTime = Time.time;
+                float stageEndTime = stageStartTime + stageDuration;
+                currentStage++;
+                if (currentStage > 1)
                 {
-                    //e.hp = (int)(e.hp*1.1);//work
-                }
-            }
-
-            Debug.Log("Starting stage " + currentStage);
-
-            foreach (EnemySpawnData data in enemySpawnData)
-            {
-                if (data.numToSpawn[currentStage - 1] > 0)
-                {
-                    int numToSpawn = data.numToSpawn[currentStage - 1];
-                    float totalSpawnTime = stageDuration;
-                    float spawnRate = totalSpawnTime / numToSpawn;
-
-                    int numSpawned = 0;
-                    while (numSpawned < numToSpawn)
+                    foreach (EnemyScriptableObject e in enemyScriptableObjects)
                     {
-                        int numToBurst = Random.Range(2, 6);
-                        float burstDelay = Random.Range(0.1f, 1.0f);
-                        yield return new WaitForSeconds(burstDelay);
+                        //e.hp = (int)(e.hp*1.1);//work
+                    }
+                }
 
-                        Vector3 spawnPoint = GetSpawnpoint().position;
+                Debug.Log("Starting stage " + currentStage);
 
-                        for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
+                foreach (EnemySpawnData data in enemySpawnData)
+                {
+                    if (data.numToSpawn[currentStage - 1] > 0)
+                    {
+                        int numToSpawn = data.numToSpawn[currentStage - 1];
+                        float totalSpawnTime = stageDuration;
+                        float spawnRate = totalSpawnTime / numToSpawn;
+
+                        int numSpawned = 0;
+                        while (numSpawned < numToSpawn)
                         {
-                            if (RandomPoint(spawnPoint, range, out Vector3 point))
+                            int numToBurst = Random.Range(2, 6);
+                            float burstDelay = Random.Range(0.1f, 1.0f);
+                            yield return new WaitForSeconds(burstDelay);
+
+                            Vector3 spawnPoint = GetSpawnpoint().position;
+
+                            for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
                             {
-                                Instantiate(data.prefab, point, Quaternion.identity);
-                                numSpawned++;
+                                if (RandomPoint(spawnPoint, range, out Vector3 point))
+                                {
+                                    Instantiate(data.prefab, point, Quaternion.identity);
+                                    numSpawned++;
+                                }
+                            }
+
+                            if (numSpawned < numToSpawn)
+                            {
+                                float spawnDelay = Random.Range(spawnRate / 2, spawnRate);
+                                yield return new WaitForSeconds(spawnDelay);
                             }
                         }
-
-                        if (numSpawned < numToSpawn)
-                        {
-                            float spawnDelay = Random.Range(spawnRate / 2, spawnRate);
-                            yield return new WaitForSeconds(spawnDelay);
-                        }
-                    }    
+                    }
                 }
-            }
 
-            while (Time.time < stageEndTime)
-            {
-                yield return null;
+                while (Time.time < stageEndTime)
+                {
+                    yield return null;                    
+                }
+
             }
-            
         }
     }
 
@@ -124,7 +130,7 @@ public class NewSpawnManager : MonoBehaviour
                     while (numSpawned < numToSpawn)
                     {
                         int numToBurst = Random.Range(2, 6);
-                        float burstDelay = Random.Range(0.1f, 1.0f);
+                        float burstDelay = 1f;
                         yield return new WaitForSeconds(burstDelay);
 
                         Vector3 spawnPoint = GetSpawnpoint().position;
@@ -140,12 +146,12 @@ public class NewSpawnManager : MonoBehaviour
 
                         if (numSpawned < numToSpawn)
                         {
-                            float spawnDelay = Random.Range(spawnRate / 2, spawnRate);
+                            float spawnDelay = spawnRate;
                             yield return new WaitForSeconds(spawnDelay);
                         }
                     }
                 }
             }
             Debug.Log("End " + level);       
-    }
+    }  
 }

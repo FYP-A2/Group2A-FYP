@@ -40,7 +40,7 @@ public class Mode : MonoBehaviour
       if(devModeTriggered){ Enter_DevMode(); }
 
       if(gameMode==GameMode.TNT_MODE){
-         //TNTModeUpdate();
+         _FirstDirector.TNTModeUpdate();
       }
 
       

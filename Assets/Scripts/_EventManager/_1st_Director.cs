@@ -17,12 +17,13 @@ public class _1st_Director : MonoBehaviour{
    [HideInInspector] public WLC_State_Script _WLC_State;
    [HideInInspector] public Stage stage;
    public NewSpawnManager newSpawnManager;
-   #endregion
+    Director_SpawnManager director_SpawnManager = new Director_SpawnManager();
+    #endregion
 
 
 
-   
-   #region Game Start & By-Mode Updates
+
+    #region Game Start & By-Mode Updates
    void Start(){ Time.timeScale=0; }
 
    public void TNT1ModeUpdate(){
@@ -40,6 +41,7 @@ public class _1st_Director : MonoBehaviour{
    //Actually it's FullGameModeUpdate(), temp. changed to TNTModeUpdate for debugging.
    public void TNTModeUpdate()
    {
+        //Debug.Log("1");
       //PURPOSE: Big frame of Round Loop.
       if(_WLC_State._WLC_State == WLC_State_Script.WLC_State.Continuable){ 
          //State: RoundBeforeStart
@@ -49,8 +51,10 @@ public class _1st_Director : MonoBehaviour{
 
             } 
          }
-         else if(mode._FullMode_State == Mode.FullMode_State.RoundStart){
+         else if(mode._FullMode_State == Mode.FullMode_State.RoundStart){              
             SpawnMonsters(4);
+            director_SpawnManager.roundStartSpawned= true;
+            //Debug.Log("RoundStart");
             //dosth();
          }
          else if(mode._FullMode_State == Mode.FullMode_State.RoundOutOfFinishTime){
@@ -95,25 +99,27 @@ public class _1st_Director : MonoBehaviour{
       if(level>1 && level <13){}
       if(level==13){}
    }
-   #endregion
+    #endregion
 
 
 
 
 
-   #region  Event of State: RoundStart
-   public void SpawnMonsters(int level){
-      StartCoroutine(newSpawnManager.NewSpawnPrefabs(level));
-   }
-   #endregion
+    #region  Event of State: RoundStart
+    public void SpawnMonsters(int level)
+    {
+        if (director_SpawnManager.roundStartSpawned == false)
+            StartCoroutine(newSpawnManager.NewSpawnPrefabs(level));
+    }
+    #endregion
 
 
 
 
 
 
-   #region Event of State: RoundOutOfFinishTime
-   public void DeliverExtraReward(int level)
+    #region Event of State: RoundOutOfFinishTime
+    public void DeliverExtraReward(int level)
    {
 
    }
@@ -137,3 +143,7 @@ public class _1st_Director : MonoBehaviour{
    public void dosth(){}
 }
 
+public class Director_SpawnManager : MonoBehaviour
+{
+    public bool roundStartSpawned = false;
+}
