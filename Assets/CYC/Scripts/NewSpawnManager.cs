@@ -108,7 +108,7 @@ public class NewSpawnManager : MonoBehaviour
         return false;
     }
 
-    private IEnumerator NewSpawnPrefabs(int level)
+    public IEnumerator NewSpawnPrefabs(int level)
     {
             Debug.Log("Starting stage " + level);
 
