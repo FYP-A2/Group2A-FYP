@@ -962,6 +962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toolbar
       objectReference: {fileID: 0}
+    - target: {fileID: 6939536594299727558, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6939536594299727559, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
       propertyPath: m_RootOrder
       value: 0
