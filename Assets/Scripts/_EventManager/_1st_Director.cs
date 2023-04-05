@@ -26,7 +26,7 @@ public class _1st_Director : MonoBehaviour{
     #region Game Start & By-Mode Updates
    void Start(){ Time.timeScale=0; }
 
-   public void TNT1ModeUpdate(){
+   public void TNTModeUpdate(){
       if(mode._TNT_State==Mode.TNT_State.Waiting_GoTreeArea){
 
          _DA_State.AnimateOnce("Welcome to the Full Game Mode.",announcer);
@@ -39,7 +39,7 @@ public class _1st_Director : MonoBehaviour{
    }
 
    //Actually it's FullGameModeUpdate(), temp. changed to TNTModeUpdate for debugging.
-   public void TNTModeUpdate()
+   public void FullModeUpdate()
    {
         //Debug.Log("1");
       //PURPOSE: Big frame of Round Loop.
@@ -110,7 +110,7 @@ public class _1st_Director : MonoBehaviour{
     public void SpawnMonsters(int level)
     {
         if (director_SpawnManager.roundStartSpawned == false)
-            foreach(EnemyData e in newSpawnManager.enemySpawnData)
+            foreach(MonsterDictionary e in newSpawnManager.enemySpawnData)
                 StartCoroutine(newSpawnManager.NewSpawnPrefabs(e,stage));
     }
     #endregion
@@ -143,9 +143,4 @@ public class _1st_Director : MonoBehaviour{
 
    //dummy.
    public void dosth(){}
-}
-
-public class Director_SpawnManager : MonoBehaviour
-{
-    public bool roundStartSpawned = false;
 }

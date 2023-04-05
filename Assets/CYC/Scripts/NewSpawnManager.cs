@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[System.Serializable]
-public class EnemyData
-{
-    public GameObject prefab;
 
-    public List<float> spawnDelays;
-
-    public List<int> numToSpawn;
-}
 
 public class NewSpawnManager : MonoBehaviour
 {
@@ -19,7 +11,7 @@ public class NewSpawnManager : MonoBehaviour
 
     public float range = 5.0f;
     public List<Transform> spawnPoints;
-    public List<EnemyData> enemySpawnData;
+    public List<MonsterDictionary> enemySpawnData;
     public List<EnemyScriptableObject> enemyScriptableObjects;
     private void Awake()
     {
@@ -48,13 +40,13 @@ public class NewSpawnManager : MonoBehaviour
         return false;
     }
 
-    public IEnumerator NewSpawnPrefabs(EnemyData enemyData, Stage data)
+    public IEnumerator NewSpawnPrefabs(MonsterDictionary enemyData, Stage data)
     {
         Debug.Log("Starting stage " + data.currentStage);
 
-        if (enemyData.numToSpawn[data.currentStage - 1] > 0)
+        if (enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1] > 0)
         {
-            int numToSpawn = enemyData.numToSpawn[data.currentStage - 1];
+            int numToSpawn = enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1];
             //float spawnRate = data.stageDuration / numToSpawn;
 
             int numSpawned = 0;
