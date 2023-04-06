@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class RespawnGame : MonoBehaviour
 {
-   public Transform headTransform, handLeftTransform, handRightTransform;
+   Queue<Player> playersQueue = new Queue<Player>();
+   Queue<Vector3> playersQueueDeathPos = new Queue<Vector3>();
+   Player playerCurrent;
+   Vector3 DeathPosCurrent;
+   public Transform dollHead, dollHandLeft, dollHandRight;
+   public Transform playerHead, playerHandLeft, playerHandRight;
    public List<GameObject> shapeBoardPrefabs;
-   Queue<GameObject> spawnedBoard;
+   List<GameObject> spawnedBoard;
 
    bool respawnGameActive = false;
    int roundSpawned = 0;
-   int roundPassed = 0;
+   int roundCurrent = 0;
    int roundMax = 3;
    float spawnTimeSpacing = 2.5f;
 
-    // Start is called before the first frame update
+   public Transform boardSpawnPoint;
+   public Vector3 boardPushVelocity;
+   public Transform playerView;
+
+   // Start is called before the first frame update
    void Start()
    {
 
@@ -25,7 +34,64 @@ public class RespawnGame : MonoBehaviour
    {
       if (respawnGameActive)
       {
-         //gamelogic
+         //game logic
       }
+      else if (playersQueue.Count > 0)
+      {
+         NextPlayer();
+      }
+   }
+
+   void JoinGame(Player player,Vector3 deathPos)
+   {
+      playersQueue.Enqueue(player);
+      playersQueueDeathPos.Enqueue(deathPos);
+   }
+
+   void NextPlayer()
+   {
+      playerCurrent = playersQueue.Dequeue();
+      DeathPosCurrent = playersQueueDeathPos.Dequeue();
+
+      //get head and hand Transform;
+      //...
+
+      respawnGameActive = true;
+   }
+
+   void CreateBoard()
+   {
+
+   }
+
+   void PushBoard()
+   {
+      foreach (GameObject b in spawnedBoard)
+      {
+         b.transform.position += boardPushVelocity;
+      }
+   }
+
+   void ClearAllBoard()
+   {
+      for (int i = 0;i < spawnedBoard.Count;i++)
+      {
+         Destroy(spawnedBoard[i]);
+      }
+
+      spawnedBoard.Clear();
+   }
+
+
+
+
+   void Win()
+   {
+      //send back
+   }
+
+   void Lose()
+   {
+      //join queue to retry
    }
 }
