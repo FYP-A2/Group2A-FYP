@@ -24,14 +24,17 @@ namespace FYP2A.VR.Melee.Target
 
       bool isHitTime = false;
       float HitAccuracy = 0f;
+      bool hitThisRound = false;
+      bool failed = false;
+      bool end = false;
 
-      float inTimeRange = 0.1f;
-      float outTimeRange = 0.1f;
+      public float inTimeRange = 0.1f;
+      public float outTimeRange = 0.1f;
       float TimeRange { get => inTimeRange + outTimeRange; }
-      float timeMeter = 0.25f;
+      public float timeMeter = 0.25f;
 
       [SerializeField]
-      public Queue<bool> tablature;
+      public Queue<bool> tablature = new Queue<bool>();
       public int tablatureSize = 20;
       public GameObject meterHintPrefabs;
       public float meterHintScale = 1;
@@ -75,27 +78,32 @@ namespace FYP2A.VR.Melee.Target
             HitCorrect();
          }
 
-         //if (minigameOn && minigameCanInput && !isHitTime)
-         //{
-         //    StopAllMinigameCheckTimeOut();
-         //    MinigameFailed(targetHitbox);
-         //}
+         else if (minigameOn && minigameCanInput && !isHitTime)
+         {
+            HitMiss();
+         }
 
-         if (!minigameOn)
+         else if (!minigameOn)
             MinigameOn();
 
       }
 
       void HitCorrect()
       {
+         Debug.Log("correct,  accuracy: " + HitAccuracy +" || nowHP: "+ (nowHp- nowDamage));
+
          nowHp -= nowDamage;
-         if (nowHp == 0)
+         hitThisRound = true;
+         if (nowHp <= 0)
             MinigameSuccess();
       }
 
       void HitMiss()
       {
+         Debug.Log("miss");
 
+         failed = true;
+         MinigameFailed();
       }
 
 
@@ -109,13 +117,23 @@ namespace FYP2A.VR.Melee.Target
 
       void MinigameOff()
       {
+         Debug.Log("gameOff");
+
          minigameOn = false;
-         StopAllCoroutines();
+         end = true;
+         //StopAllCoroutines();
       }
 
       void MinigameStart()
       {
+         Debug.Log("game start");
+
          nowHp = hp;
+         isHitTime = false;
+         hitThisRound = false;
+         failed = false;
+         minigameCanInput = true;
+         end = false;
 
          StartCoroutine(PushLevel());
       }
@@ -128,17 +146,22 @@ namespace FYP2A.VR.Melee.Target
          //push one
          while (tablature.Count > 0)
          {
-            StartCoroutine(PushLevel2());
-            StartCoroutine(MeterHintAnimation(meterHintDisplayDuration));
-
             //stop push if failed
-            //break 
+            //break
+            if (failed || end)
+               yield break;
+
+            if (tablature.Dequeue() == true)
+            {
+               StartCoroutine(PushLevel2());
+               StartCoroutine(MeterHintAnimation(meterHintDisplayDuration));
+            }
 
             yield return new WaitForSeconds(timeMeter);
          }
       }
 
-      IEnumerator PushLevel2()
+      IEnumerator PushLevel2() //check can hit and cal accuracy
       {
          float time = 0;
 
@@ -147,25 +170,42 @@ namespace FYP2A.VR.Melee.Target
 
          //set isHitTime 
          isHitTime = true;
+         hitThisRound = false;
 
          //cal the accuracy
-         while(time < TimeRange)
+         while (time < TimeRange)
          {
+            //stop cal if failed
+            //set not isHitTime
+            //break
+            if (failed || end)
+            {
+               isHitTime = false;
+               yield break;
+            }
+
+            //break if hitThisRound
+            if (hitThisRound)
+            {
+               isHitTime = false;
+               yield break;
+            }
+
+            //cal accuracy
             if (time < inTimeRange)
                HitAccuracy = time / inTimeRange;
             else
                HitAccuracy = (time - inTimeRange) / outTimeRange;
 
-
-            //stop cal if failed
-            //set not isHitTime
-            //break 
-
+            time += Time.deltaTime;
             yield return null;
          }
 
          //set not isHitTime 
          isHitTime = false;
+
+         //miss
+         HitMiss();
       }
 
 
@@ -178,11 +218,17 @@ namespace FYP2A.VR.Melee.Target
          float time = 0f;
          while (time < 1)
          {
-            t1.localPosition = Vector3.Lerp(t1StartPos, Vector3.zero, Mathf.Pow(32, time-1));
-            t2.localPosition = Vector3.Lerp(t2StartPos, Vector3.zero, Mathf.Pow(32, time-1));
-
             //call DropMeterHint if failed
             //break 
+            if (failed || end)
+            {
+               StartCoroutine(DropMeterHint(t1));
+               StartCoroutine(DropMeterHint(t2));
+               yield break;
+            }
+
+            t1.localPosition = Vector3.Lerp(t1StartPos, Vector3.zero, Mathf.Pow(32, time-1));
+            t2.localPosition = Vector3.Lerp(t2StartPos, Vector3.zero, Mathf.Pow(32, time-1));
 
             time += Time.deltaTime/duration;
             yield return null;
@@ -196,7 +242,7 @@ namespace FYP2A.VR.Melee.Target
       {
          yield return null;
 
-
+         Destroy(mh.gameObject);
       }
 
       void CreateTablature(int size)
@@ -204,8 +250,6 @@ namespace FYP2A.VR.Melee.Target
          tablature.Clear();
          int randomMax = 2;
 
-         tablature.Enqueue(false);
-         tablature.Enqueue(false);
          tablature.Enqueue(true);
 
          for (int i = 0; i < size; i++)
@@ -228,23 +272,17 @@ namespace FYP2A.VR.Melee.Target
       }
 
 
-
-
-
-
-
-
       void MinigameSuccess()
       {
          minigameCanInput = false;
-
+         MinigameOff();
          //stone getitem
       }
 
       void MinigameFailed()
       {
          minigameCanInput = false;
-         Invoke("MinigameOff", 1);
+         MinigameOff();
       }
 
 
@@ -261,5 +299,23 @@ namespace FYP2A.VR.Melee.Target
          base.DisableHitboxs();
          MinigameOff();
       }
+
+      public void Debug1()
+      {
+         if (minigameOn && minigameCanInput && isHitTime)
+         {
+            StartCoroutine(SetNowDamage(1));
+            HitCorrect();
+         }
+
+         else if (minigameOn && minigameCanInput && !isHitTime)
+         {
+            HitMiss();
+         }
+
+         else if (!minigameOn)
+            MinigameOn();
+      }
+
    }
 }
