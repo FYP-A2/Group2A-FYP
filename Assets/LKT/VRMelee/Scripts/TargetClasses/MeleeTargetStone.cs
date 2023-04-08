@@ -249,8 +249,7 @@ namespace FYP2A.VR.Melee.Target
       {
          tablature.Clear();
          int randomMax = 2;
-
-         tablature.Enqueue(true);
+         int createdBeat = 0;
 
          for (int i = 0; i < size; i++)
          {
@@ -260,14 +259,17 @@ namespace FYP2A.VR.Melee.Target
             {
                result = true;
                randomMax+= 4;
+               createdBeat++;
             }
             else if (randomMax > 2)
                randomMax-= 4;
 
             tablature.Enqueue(result);
+
+            
+            if (createdBeat>=hp)
+               break;
          }
-         tablature.Enqueue(false);
-         tablature.Enqueue(true);
 
       }
 

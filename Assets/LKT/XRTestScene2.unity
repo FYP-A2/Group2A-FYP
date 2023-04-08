@@ -3113,7 +3113,7 @@ RectTransform:
   m_GameObject: {fileID: 1104758402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.7053, y: 2.7053, z: 2.7053}
   m_Children:
   - {fileID: 1020357340}
   m_Father: {fileID: 622893152}
@@ -3754,12 +3754,12 @@ MonoBehaviour:
   fightable: 0
   hewable: 1
   hp: 5
-  inTimeRange: 0.1
+  inTimeRange: 0.05
   outTimeRange: 0.2
-  timeMeter: 0.4
+  timeMeter: 0.35
   tablatureSize: 20
   meterHintPrefabs: {fileID: 6016781304884176323, guid: bd1cd4491fa8ffc40aecdf148f23bcbc, type: 3}
-  meterHintScale: 1
+  meterHintScale: 1.5
   meterHintDisplayDuration: 1.5
 --- !u!54 &1255868427
 Rigidbody:
