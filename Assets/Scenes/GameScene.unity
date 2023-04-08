@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29769343, g: 0.63403046, b: 0.993697, a: 1}
+  m_IndirectSpecularColor: {r: 0.29778832, g: 0.63406926, b: 0.9936959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28064,8 +28064,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738889219}
-  - component: {fileID: 738889220}
-  - component: {fileID: 738889222}
   - component: {fileID: 738889221}
   m_Layer: 0
   m_Name: _Monsters
@@ -28088,35 +28086,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &738889220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738889218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e2bd9c404164674ab623660c6fd70b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: Melee
-  prefab: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
-  RMP: {fileID: 738889221}
-  spawnDelays_WhereEachItemMeans_In_A_Level:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  numToSpawn_WhereEachItemMeans_In_A_Level: 
 --- !u!114 &738889221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28131,35 +28100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reg_Mon_Pref_1: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
   reg_Mon_Pref_2: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
---- !u!114 &738889222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738889218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e2bd9c404164674ab623660c6fd70b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: Ranged
-  prefab: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
-  RMP: {fileID: 738889221}
-  spawnDelays_WhereEachItemMeans_In_A_Level:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  numToSpawn_WhereEachItemMeans_In_A_Level: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1001 &740021354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47341,8 +47281,16 @@ MonoBehaviour:
   range: 5
   spawnPoints: []
   enemySpawnData:
-  - {fileID: 0}
-  - {fileID: 0}
+  - type: Melee
+    prefab: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
+    RMP: {fileID: 738889221}
+    spawnDelays_WhereEachItemMeans_In_A_Level: []
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  - type: Ranged
+    prefab: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
+    RMP: {fileID: 738889221}
+    spawnDelays_WhereEachItemMeans_In_A_Level: []
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   enemyScriptableObjects: []
 --- !u!4 &1253156056
 Transform:

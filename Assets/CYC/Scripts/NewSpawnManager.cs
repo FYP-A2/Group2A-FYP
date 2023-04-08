@@ -14,7 +14,7 @@ public class NewSpawnManager : MonoBehaviour
     public List<Transform> spawnPoints;
     public List<MonsterDictionary> enemySpawnData;
     public List<EnemyScriptableObject> enemyScriptableObjects;
-    public Stage stage;
+    //public Stage stage;
     private void Awake()
     {
         Instance = this;
@@ -22,8 +22,15 @@ public class NewSpawnManager : MonoBehaviour
         spawnPoints.Remove(transform);
         //StartCoroutine(SpawnPrefabs());
         //StartCoroutine(NewSpawnPrefabs(5));
-        foreach (MonsterDictionary e in enemySpawnData)
-            StartCoroutine(NewSpawnPrefabs(e, stage));
+        //for (int i = 0; i < enemySpawnData.Count; i++)
+        //{
+        //    if (enemySpawnData[i].prefab == null)
+        //        enemySpawnData[i].SetMonsterDictionary(enemySpawnData[i].type);
+        //}
+        //foreach (MonsterDictionary e in enemySpawnData)
+        //{            
+        //    StartCoroutine(NewSpawnPrefabs(e, stage));
+        //}
     }
    
     private Transform GetSpawnpoint()
@@ -47,7 +54,6 @@ public class NewSpawnManager : MonoBehaviour
     public IEnumerator NewSpawnPrefabs(MonsterDictionary enemyData, Stage data)
     {
         Debug.Log("Starting stage " + data.currentStage);
-        enemyData = new MonsterDictionary(enemyData.type);
         if (enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1] > 0)
         {
             int numToSpawn = enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1];
