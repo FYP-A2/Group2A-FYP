@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class MonsterDictionary : MonoBehaviour {
+public class MonsterDictionary{
 
     public string type;
     public GameObject prefab;
