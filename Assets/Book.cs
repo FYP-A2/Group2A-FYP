@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Book : MonoBehaviour
+{
+
+   public UIBook bookUI;
+   public Animator animator;
+   public UIBook flipUI;
+
+   // Start is called before the first frame update
+   void Start()
+   {
+      bookUI.gameObject.SetActive(false);
+   }
+
+   public void Open()
+   {
+      animator.SetTrigger("open");
+      bookUI.FlipPage(0);
+
+      Invoke("BookUIOn", 0.8f);
+   }
+
+   public void Flip()
+   {
+      animator.SetTrigger("flip");
+
+      StartCoroutine(Flip(0.2f, 1, 0.3f, 0.1f));
+   }
+
+   public void Close()
+   {
+      animator.SetTrigger("close");
+      Invoke("BookUIOff", 0.8f);
+   }
+
+   void BookUIOff()
+   {
+      bookUI.gameObject.SetActive(false);
+   }
+
+   void BookUIOn()
+   {
+      bookUI.gameObject.SetActive(true);
+   }
+
+   IEnumerator Flip(float delay1, int pageNumber, float delay2, float delay3)
+   {
+      flipUI.FlipPage(bookUI.pageNow);
+      flipUI.gameObject.SetActive(true);
+
+      yield return new WaitForSeconds(delay1);
+      BookUIOff();
+      bookUI.FlipPage(pageNumber);
+
+      yield return new WaitForSeconds(delay2);
+      BookUIOn();
+
+      yield return new WaitForSeconds(delay3);
+      flipUI.gameObject.SetActive(false);
+   }
+
+}

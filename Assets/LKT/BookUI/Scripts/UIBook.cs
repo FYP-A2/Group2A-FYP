@@ -15,7 +15,7 @@ public class UIBook : MonoBehaviour
 
    [Header("Book")]
    public List<GameObject> pages = new List<GameObject>();
-   public float pageNow = 0;
+   public int pageNow = 0;
    public List<UIResourceDisplay> uiResourceDisplays = new List<UIResourceDisplay>();
    public List<UICommonButton> uIButtons = new List<UICommonButton>();
    public UIResourceDisplayHover uiHover;
@@ -90,6 +90,8 @@ public class UIBook : MonoBehaviour
 
    public void FlipPage(int n)
    {
+      ClearPage();
       pages[n].gameObject.SetActive(true);
+      pageNow = n;
    }
 }
