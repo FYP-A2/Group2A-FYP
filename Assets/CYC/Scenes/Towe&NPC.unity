@@ -3398,7 +3398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657957315197132866, guid: 575e7e6ebe1622c44b6ef0366757cbd0, type: 3}
       propertyPath: moveRange
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7657957315197132866, guid: 575e7e6ebe1622c44b6ef0366757cbd0, type: 3}
       propertyPath: chaseDistance
@@ -3410,7 +3410,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8ebdba6fa807dfd4592bd5813930f922, type: 2}
     - target: {fileID: 7657957315197132866, guid: 575e7e6ebe1622c44b6ef0366757cbd0, type: 3}
       propertyPath: becomeMoveDistance
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575e7e6ebe1622c44b6ef0366757cbd0, type: 3}

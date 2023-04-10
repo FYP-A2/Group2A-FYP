@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,16 @@ public class WildMonster : Monster
     Vector3 originPos;
     public new enum State {Idle, Move, Chase, Attack, Die }
     public State wildState { get;private set; }
+
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(originPos, moveRange);
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(transform.position, chaseDistance);
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(originPos, becomeMoveDistance);
+    //}
     protected override void Start()
     {
         base.Start();
@@ -72,22 +83,29 @@ public class WildMonster : Monster
         {
             foreach (Transform t in players)
             {
-                if (Vector3.Distance(transform.position, t.position) < becomeMoveDistance)
+                if (Vector3.Distance(originPos, t.position) < becomeMoveDistance)
                 {
-                    currentTarget = t;
+                    //currentTarget = t;
                     wildState = State.Move;
                     break;
                 }
             }
         }
 
+        if (wildState == State.Move)
+        {
+            foreach (Transform t in players)
+            {
+                if (Vector3.Distance(transform.position, t.position) < chaseDistance)
+                {
+                    currentTarget = t;
+                    wildState = State.Chase;
+                }
+            }
+        }      
+
         if (currentTarget != null)
         {
-            if (Vector3.Distance(transform.position, currentTarget.position) < chaseDistance)
-            {
-                wildState = State.Chase;
-            }
-
             if (Vector3.Distance(transform.position, currentTarget.position) < enemyScriptable.attackRange)
             {
                 wildState = State.Attack;
@@ -95,6 +113,7 @@ public class WildMonster : Monster
 
             if (Vector3.Distance(originPos, currentTarget.position) > moveRange)
             {
+                currentTarget = null;
                 wildState = State.Idle;
             }
         }
