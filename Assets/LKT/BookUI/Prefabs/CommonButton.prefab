@@ -100,7 +100,7 @@ RectTransform:
   m_GameObject: {fileID: 7111213003241147356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 120, y: 120, z: 120}
+  m_LocalScale: {x: 129.79875, y: 129.79875, z: 129.79875}
   m_Children:
   - {fileID: 9126926398032641690}
   m_Father: {fileID: 8623961805934043350}
@@ -421,18 +421,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb4e8e9a7073b04887a067934bbca4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 0}
+  towerBuildSO: {fileID: 0}
   backgroundCompon: {fileID: 7873042803221367933}
   textSmall: {fileID: 1038168186905790423}
   textBig: {fileID: 8623961805650184039}
   previewSlot: {fileID: 7203751826221771471}
   previewPrefab: {fileID: 8039805116501498646, guid: 46368a8dc62daac428cce7328df3c53c, type: 3}
-  previewAutoRotate: {x: 0, y: 70, z: 0}
+  previewAutoRotate: {x: 0, y: 30, z: 0}
   background: {fileID: 21300000, guid: 12ef7cbdfe0e143fa858a324456c8979, type: 3}
   backgroundOnHover: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
   backgroundOnSelect: {fileID: 21300000, guid: 827c9cd4a3943534f909ac6473e17288, type: 3}
   stringSmall: Test item
   stringBig: Test Item 1
   selecting: 0
+  hoverPos: {fileID: 0}
   selectType: 0
 --- !u!114 &3850054657652655997
 MonoBehaviour:

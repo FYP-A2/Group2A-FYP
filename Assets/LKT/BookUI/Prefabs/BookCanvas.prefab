@@ -933,6 +933,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: a12ff746cd8b9d244bc5d7a8bb1751c2, type: 2}
+    - target: {fileID: 2252085216459286950, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 2765148239345663367, guid: 5f51856a9e6a6ac4196f02cce9590d2a, type: 3}
     - target: {fileID: 2252085216758919172, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: hoverPos
       value: 
@@ -949,6 +953,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: 710892e7a56134d40b8c925494ee0ba2, type: 2}
+    - target: {fileID: 2252085216758919172, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 2765148239345663367, guid: 77b6e26f61ce73e489559ef152b6f9e5, type: 3}
     - target: {fileID: 2252085217527873715, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: hoverPos
       value: 
@@ -969,6 +977,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: fcf3960722adc964fa20e4b279f92636, type: 2}
+    - target: {fileID: 2252085217831180488, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 2765148239345663367, guid: 1652a379355ad234d977bfb1ebea35d4, type: 3}
     - target: {fileID: 2252085218281584551, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: hoverPos
       value: 
@@ -985,6 +997,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: c8dca3f12de6d034b82c74146de4059f, type: 2}
+    - target: {fileID: 2252085218281584551, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 2765148239345663367, guid: 75e7dd3c28ff620479514c8245dcea3a, type: 3}
     - target: {fileID: 3106404693303514670, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1097,6 +1113,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: c86755219ac492241a5823ea68a79399, type: 2}
+    - target: {fileID: 7561389846850496289, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 2765148239345663367, guid: dbb919af0c17aec4080f97c4843ae555, type: 3}
     - target: {fileID: 7628105313657243280, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 6
@@ -1452,6 +1472,10 @@ PrefabInstance:
       propertyPath: towerBuildSO
       value: 
       objectReference: {fileID: 11400000, guid: 5b5701ea98fbb12449f37f6335444222, type: 2}
+    - target: {fileID: 2252085216758919172, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
+      propertyPath: previewPrefab
+      value: 
+      objectReference: {fileID: 6237713900703245859, guid: 68dcdb90a6bba8348b7c8ceffae6bc82, type: 3}
     - target: {fileID: 3106404692981899578, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1583,7 +1607,7 @@ PrefabInstance:
     - target: {fileID: 7561389846850496289, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: previewPrefab
       value: 
-      objectReference: {fileID: 6237713900703245859, guid: 78b966f9c35cd694593da6f1fba75a4b, type: 3}
+      objectReference: {fileID: 6237713900703245859, guid: 372f9ffbf14a20a4eaca8735e50de70f, type: 3}
     - target: {fileID: 7628105315414262067, guid: ea2a8537d6ef29a478db39286521bb36, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 1

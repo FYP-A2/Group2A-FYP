@@ -8,6 +8,7 @@ public class Book : MonoBehaviour
    public UIBook bookUI;
    public Animator animator;
    public UIBook flipUI;
+   public Transform pageTabs;
 
    // Start is called before the first frame update
    void Start()
@@ -23,11 +24,11 @@ public class Book : MonoBehaviour
       Invoke("BookUIOn", 0.8f);
    }
 
-   public void Flip()
+   public void Flip(int n)
    {
       animator.SetTrigger("flip");
 
-      StartCoroutine(Flip(0.2f, 1, 0.3f, 0.1f));
+      StartCoroutine(Flip(0.2f, n, 0.25f, 0.15f));
    }
 
    public void Close()
@@ -39,11 +40,13 @@ public class Book : MonoBehaviour
    void BookUIOff()
    {
       bookUI.gameObject.SetActive(false);
+      pageTabs.gameObject.SetActive(false);
    }
 
    void BookUIOn()
    {
       bookUI.gameObject.SetActive(true);
+      pageTabs.gameObject.SetActive(true);
    }
 
    IEnumerator Flip(float delay1, int pageNumber, float delay2, float delay3)
