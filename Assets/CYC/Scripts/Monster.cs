@@ -4,36 +4,34 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Monster : MonoBehaviour, IMonster
+public abstract class Monster : MonoBehaviour, IMonster
 {
-    [SerializeField] EnemyScriptableObject enemyScriptable;
-    NavMeshAgent agent;
+    [SerializeField] protected EnemyScriptableObject enemyScriptable;
+    protected NavMeshAgent agent;
     public int hp, damage;
     [SerializeField] float defense, resistance;
     float attackDelay, burntTime, slowTime, reductionTime;
-    bool isBurnt, isDefenseBreak, isAttacked;
+    bool isBurnt, isDefenseBreak, isAttacked;  
     public bool isSlow { get; private set; }
-    public SphereCollider sphereCollider;
-    public Transform target;
-    List<Transform> hitTargets;
+    public SphereCollider sphereCollider;    
+    protected List<Transform> hitTargets;
     GameObject bulletPrefab;
     public Slider slider;
     [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
     public LayerMask layer;
 
-    Animator animator;
-    const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
+    protected Animator animator;
+    protected const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
     public Transform firePoint;
-    public enum State{Move,Attack,Die};
-    public State state { get; private set; }
-    Transform currentTarget;
+
+    public enum State { Idle, Move, Attack, Die };
+    public State state { get; protected set; }
+    protected Transform currentTarget;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if(target== null)
-            target = GameObject.Find("Core").GetComponent<Transform>();
+    protected virtual void Start()
+    {      
         agent = GetComponent<NavMeshAgent>();
         Initialization();
         burntTime = slowTime = reductionTime = 0;
@@ -46,36 +44,25 @@ public class Monster : MonoBehaviour, IMonster
         if (firePoint == null)
             firePoint = transform;
 
-        if (target != null)
-            state = State.Move;
+        state = State.Idle;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        switch (state)
-        {
-            case State.Move:
-                Move();
-                break;
-            case State.Attack:
-                Attack(currentTarget);
-                if (currentTarget == null)
-                    state = State.Move;
-                break; 
-            case State.Die:
-                Dead();
-                agent.isStopped = true;
-                break;
-        }
-        //if(target != null) Move();
+    protected virtual void Update()
+    {       
         if(isBurnt) Burnt();
         if(isSlow) Slow();
         if(isDefenseBreak) DefenseBreak();
         slider.value = hp;
     }
 
-    void Initialization()
+    protected virtual void Idle()
+    {
+        if (!agent.pathPending)
+            state = State.Move;
+    }
+
+    protected virtual void Initialization()
     {
         hp = enemyScriptable.hp;
         damage = enemyScriptable.damage;
@@ -157,112 +144,15 @@ public class Monster : MonoBehaviour, IMonster
         this.reductionTime = reductionTime;
         isDefenseBreak = true;
     }
-    /*void Move()
+    protected virtual void Move()
     {
-        if (currentTarget != target && hitTargets.Count > 0)
-        {
-            Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer);
-            //Debug.DrawRay(transform.position, transform.forward * enemyScriptable.attackRange, Color.black, 1f);
-            if (hit.transform != null && hit.transform.tag == "breakable")
-            {
-                //Debug.Log("Attack");
-                if (hitTargets.Find((x) => x == target) != null)
-                {
-                    //agent.SetDestination(transform.position);
-                    //Attack(target);
-                    currentTarget = target;
-                    state = State.Attack;
-                }
-                else
-                {                   
-                    //agent.SetDestination(transform.position);
-                    //Attack(hit.transform);
-                    currentTarget = hit.transform;
-                    state = State.Attack;
-                }
-            }
-            else
-            {
-                if (!agent.hasPath && !isAttacked)
-                {
-                    if (animator != null)
-                        animator.SetFloat(ani_Move, agent.velocity.magnitude);
-                    agent.SetDestination(target.position);
-                }
-            }
-        }
-        else
-        {
-            //Debug.Log("Move");
-            if (!agent.hasPath)
-            {
-                if (animator != null)
-                    animator.SetFloat(ani_Move, agent.velocity.magnitude);
-                agent.SetDestination(target.position);
-            }
-        }
-    }*/
-
-    void Move()
-    {
-        if (currentTarget != target && hitTargets.Count > 0)
-        {
-            //bool targetIsBlocked = false;
-            bool obstacleInFront = false;
-            List <Transform> pathTarget = new List<Transform>();
-
-            NavMeshPath path = new NavMeshPath();
-            if (agent.CalculatePath(target.position, path))
-            {
-                for (int i = 1; i < path.corners.Length; i++)
-                {
-                    if (Physics.Linecast(path.corners[i - 1], path.corners[i], out RaycastHit hit1, layer) &&
-                        hit1.transform.CompareTag("breakable"))
-                    {
-                        //targetIsBlocked = true;
-                        if(!pathTarget.Contains(hit1.transform))
-                            pathTarget.Add(hit1.transform);
-                        break;
-                    }
-                }
-            }
-
-            if (Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
-            {
-                if (hit.transform.CompareTag("breakable"))
-                {
-                    obstacleInFront = true;
-                    currentTarget = hit.transform;
-                }
-            }
-
-            if (obstacleInFront && pathTarget.Contains(currentTarget) || currentTarget == target)
-            {             
-                agent.SetDestination(transform.position);
-                state = State.Attack;
-            }
-            else
-            {
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    if (animator != null)
-                        animator.SetFloat(ani_Move, agent.velocity.magnitude);
-                    agent.SetDestination(target.position);
-                }
-            }
-        }
-        else
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                if (animator != null)
-                    animator.SetFloat(ani_Move, agent.velocity.magnitude);
-                agent.SetDestination(target.position);
-            }
-        }
+        
     }
-    void Attack(Transform target)
+    protected virtual void Attack(Transform target)
     {
+        if (currentTarget == null)
+            state = State.Move;
+        
         if (target != null)
         {
             if (target.TryGetComponent<IDamage>(out IDamage Idamage)  && !isAttacked)
@@ -281,13 +171,13 @@ public class Monster : MonoBehaviour, IMonster
                     if (animator != null)
                         animator.SetTrigger(ani_Attack);
                     Shoot(target);
-                    isAttacked = true;                   
+                    isAttacked = true;
                     StartCoroutine(ResetAttack(attackDelay));
                 }
             }
         }
     }
-    void Dead()
+    protected virtual void Dead()
     {
         if (animator != null)
             animator.SetBool(ani_Die,true);
@@ -383,7 +273,7 @@ public class Monster : MonoBehaviour, IMonster
     //    }
     //}
 
-    void Shoot(Transform target)
+    protected virtual void Shoot(Transform target)
     {
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();

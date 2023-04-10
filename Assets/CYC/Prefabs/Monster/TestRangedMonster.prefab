@@ -320,7 +320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4267623551590542991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d729a446002364a84895f02b60a3c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 007c614cd12dd544cb08d78652f71688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScriptable: {fileID: 11400000, guid: 76da76be9dcc0ba40a59600108164a9f, type: 2}
@@ -338,6 +338,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 55
+  firePoint: {fileID: 0}
 --- !u!135 &4267623551590543091
 SphereCollider:
   m_ObjectHideFlags: 0

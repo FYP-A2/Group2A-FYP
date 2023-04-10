@@ -11,7 +11,9 @@ public class EnemyScriptableObject : ScriptableObject
     public float resistance = 0;
     public float attackRange;
     public float attackDelay;
-    public bool isRanged = false;
+    public bool isRanged;
+
+    [Header("Effect")]
     public GameObject fireEffect;
     public GameObject slowEffect;
     public GameObject toxicEffect;
