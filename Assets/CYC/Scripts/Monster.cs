@@ -91,7 +91,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         agent.areaMask = enemyScriptable.areaMask;
     }
 
-    public void TakeDamage(int phyDamage, int magicDamage)
+    public virtual void TakeDamage(int phyDamage, int magicDamage)
     {
         int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
         hp -= finalDamage;
