@@ -11,9 +11,9 @@ public abstract class Monster : MonoBehaviour, IMonster
     public int hp, damage;
     [SerializeField] float defense, resistance;
     float attackDelay, burntTime, slowTime, reductionTime;
-    bool isBurnt, isDefenseBreak, isAttacked;  
+    bool isBurnt, isDefenseBreak, isAttacked;
     public bool isSlow { get; private set; }
-    public SphereCollider sphereCollider;    
+    public SphereCollider sphereCollider;
     protected List<Transform> hitTargets;
     GameObject bulletPrefab;
     public Slider slider;
@@ -33,7 +33,7 @@ public abstract class Monster : MonoBehaviour, IMonster
 
     // Start is called before the first frame update
     protected virtual void Start()
-    {      
+    {
         agent = GetComponent<NavMeshAgent>();
         Initialization();
         burntTime = slowTime = reductionTime = 0;
@@ -42,7 +42,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         slider.maxValue = hp;
         slider.value = hp;
 
-        animator= GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         if (firePoint == null)
             firePoint = transform;
 
@@ -51,10 +51,10 @@ public abstract class Monster : MonoBehaviour, IMonster
 
     // Update is called once per frame
     protected virtual void Update()
-    {       
-        if(isBurnt) Burnt();
-        if(isSlow) Slow();
-        if(isDefenseBreak) DefenseBreak();
+    {
+        if (isBurnt) Burnt();
+        if (isSlow) Slow();
+        if (isDefenseBreak) DefenseBreak();
         slider.value = hp;
         if (animator != null)
             animator.SetFloat(ani_Move, agent.velocity.magnitude);
@@ -74,7 +74,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         resistance = enemyScriptable.resistance;
         sphereCollider.radius = enemyScriptable.attackRange;
         attackDelay = enemyScriptable.attackDelay;
-        if(enemyScriptable.isRanged)
+        if (enemyScriptable.isRanged)
         {
             bulletPrefab = enemyScriptable.bullet;
         }
@@ -95,9 +95,9 @@ public abstract class Monster : MonoBehaviour, IMonster
     {
         int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
         hp -= finalDamage;
-        if(animator!=null)
+        if (animator != null)
             animator.SetTrigger(ani_GetHit);
-        ShowDamage(finalDamage,Color.black);
+        ShowDamage(finalDamage, Color.black);
         if (hp <= 0)
         {
             state = State.Die;
@@ -110,7 +110,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         if (fireEffect == null)
         {
             fireEffect = Instantiate(enemyScriptable.fireEffect, transform);
-            fireEffect.transform.localPosition= new Vector3(0,-enemyScriptable.height/2,0);
+            fireEffect.transform.localPosition = new Vector3(0, -enemyScriptable.height / 2, 0);
             fireEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         if (!isBurnt)
@@ -118,7 +118,7 @@ public abstract class Monster : MonoBehaviour, IMonster
             isBurnt = true;
             StartCoroutine(Ignite(burntDamage));
         }
-        this.burntTime = burntTime;                  
+        this.burntTime = burntTime;
     }
 
     public void GetSlow(int phyDamage, int magicDamage, float slowRatio, float slowTime)
@@ -131,7 +131,7 @@ public abstract class Monster : MonoBehaviour, IMonster
             slowEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         agent.speed = enemyScriptable.speed * (1 - slowRatio);
-        this.slowTime= slowTime;
+        this.slowTime = slowTime;
         isSlow = true;
     }
 
@@ -150,24 +150,24 @@ public abstract class Monster : MonoBehaviour, IMonster
     }
     protected virtual void Move()
     {
-        
+
     }
     protected virtual void Attack(Transform target)
     {
         if (currentTarget == null)
             state = State.Move;
-        
+
         if (target != null)
         {
-            if (target.TryGetComponent<IDamage>(out IDamage Idamage)  && !isAttacked)
+            if (target.TryGetComponent<IDamage>(out IDamage Idamage) && !isAttacked)
             {
                 if (!enemyScriptable.isRanged)
-                {                    
+                {
                     if (animator != null)
                         animator.SetTrigger(ani_Attack);
                     transform.LookAt(target.position);
                     Idamage.TakeDamage(damage);
-                    isAttacked = true;                    
+                    isAttacked = true;
                     StartCoroutine(ResetAttack(attackDelay));
                 }
                 else
@@ -184,30 +184,30 @@ public abstract class Monster : MonoBehaviour, IMonster
     protected virtual void Dead()
     {
         if (animator != null)
-            animator.SetBool(ani_Die,true);
-        Destroy(gameObject,3f);
+            animator.SetBool(ani_Die, true);
+        Destroy(gameObject, 3f);
     }
 
     void Burnt()
     {
-        if(burntTime+0.5 > 0)
+        if (burntTime + 0.5 > 0)
         {
             burntTime -= Time.deltaTime;
         }
         else
         {
-            isBurnt= false;
+            isBurnt = false;
             if (fireEffect != null)
             {
                 Destroy(fireEffect);
-                fireEffect = null;             
+                fireEffect = null;
             }
-        }    
+        }
     }
 
     void Slow()
     {
-        if(slowTime > 0)
+        if (slowTime > 0)
         {
             slowTime -= Time.deltaTime;
         }
@@ -218,22 +218,22 @@ public abstract class Monster : MonoBehaviour, IMonster
             if (slowEffect != null)
             {
                 Destroy(slowEffect);
-                slowEffect = null;               
+                slowEffect = null;
             }
         }
     }
 
     void DefenseBreak()
     {
-        if(reductionTime>0)
+        if (reductionTime > 0)
         {
             reductionTime -= Time.deltaTime;
         }
         else
         {
-            isDefenseBreak= false;
-            defense= enemyScriptable.defense;
-            resistance= enemyScriptable.resistance;
+            isDefenseBreak = false;
+            defense = enemyScriptable.defense;
+            resistance = enemyScriptable.resistance;
             if (toxicEffect != null)
             {
                 Destroy(toxicEffect);
@@ -274,13 +274,13 @@ public abstract class Monster : MonoBehaviour, IMonster
         if (bullet != null)
         {
             transform.LookAt(target.position);
-            bullet.Shoot(transform.forward,damage,gameObject);
+            bullet.Shoot(transform.forward, damage, gameObject);
         }
     }
 
     public void ShowDamage(int DamageShow, Color color)
     {
-        GameObject x = Instantiate(displayDamage, slider.transform.position, slider.transform.rotation,transform);
+        GameObject x = Instantiate(displayDamage, slider.transform.position, slider.transform.rotation, transform);
         x.GetComponent<TextMove>().text.color = color;
         x.GetComponent<TextMove>().SetDamage(DamageShow);
         Destroy(x, 1f);

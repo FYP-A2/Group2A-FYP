@@ -3535,7 +3535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668634257833992, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: moveSpeed
@@ -3737,6 +3737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PolyArtWizardStandardMat
       objectReference: {fileID: 0}
+    - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1322346569522534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3747,7 +3751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.356
+      value: -6.91
       objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3790,8 +3794,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7f6d6677973398f43ac365534fd5cb26, type: 2}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412170519471985469, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
@@ -4380,6 +4392,10 @@ PrefabInstance:
     - target: {fileID: 3273737993833167925, guid: 8f2776f5e8a8dee48801f11a4938c653, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273737993833167927, guid: 8f2776f5e8a8dee48801f11a4938c653, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3273737993833167927, guid: 8f2776f5e8a8dee48801f11a4938c653, type: 3}
       propertyPath: waypoints.Array.size
