@@ -7,6 +7,7 @@ using System;
 public class Timer : MonoBehaviour
 {
    public TMP_Text TMP_Text;
+   public float remaining_time;
 
    public void TimerStartToCountDown(float timeSeconds){
       StartCoroutine(CountDown(timeSeconds));
@@ -18,6 +19,7 @@ public class Timer : MonoBehaviour
       while(accumTime<settedTime){
          yield return new WaitForSeconds(1);
          accumTime++;
+         remaining_time=settedTime-accumTime;
          TimeSpan timeSpan = new TimeSpan(0,0,(int)(settedTime-accumTime));
          TMP_Text.SetText(timeSpan.ToString(@"mm\:ss"));
 
