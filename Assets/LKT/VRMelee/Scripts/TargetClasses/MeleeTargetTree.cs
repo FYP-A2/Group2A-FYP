@@ -12,7 +12,7 @@ namespace FYP2A.VR.Melee.Target
 
         [Header("")]
         [Header("Melee Target Tree")]
-
+        Tree tree;
         [SerializeField]
         float hp = 5;
         float nowHp;
@@ -33,7 +33,7 @@ namespace FYP2A.VR.Melee.Target
         float difficultyFactorMin = 1;
         [SerializeField]
         float difficultyFactorMax = 1.2f;
-        float OneOverDifficultyFactor { get => 1/ UnityEngine.Random.Range(difficultyFactorMin, difficultyFactorMax); }
+        float OneOverDifficultyFactor { get => 1 / UnityEngine.Random.Range(difficultyFactorMin, difficultyFactorMax); }
 
 
 
@@ -92,7 +92,7 @@ namespace FYP2A.VR.Melee.Target
         // Update is called once per frame
         void Update()
         {
-            
+
         }
 
         public override void TakeHewDamage(float damage)
@@ -115,6 +115,9 @@ namespace FYP2A.VR.Melee.Target
 
         public override void HitBy(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
         {
+            if (tree.TreeState != Tree.State.Matured)
+                return;
+
             if (source.gameObject.name != "Axe")
                 return;
 
@@ -132,7 +135,7 @@ namespace FYP2A.VR.Melee.Target
 
             if (!minigameOn && hitbox.Equals(targetHitbox) && CheckTreeCanBeCollected())
                 MinigameOn();
-            
+
         }
 
 
@@ -265,7 +268,7 @@ namespace FYP2A.VR.Melee.Target
             minigameCanInput = false;
             LerpAllHitboxsColorTo(colorHitCorrect);
 
-            //CheckTreeGrow().Getitem();
+            tree.RewardPlayers();
 
             StartCoroutine(MinigameSuccessWait1sReset());
         }
@@ -336,7 +339,7 @@ namespace FYP2A.VR.Melee.Target
             if (colorCoroutineSingle != null)
                 StopCoroutine(colorCoroutineSingle);
 
-            colorCoroutineSingle = StartCoroutine(LerpHitboxColorCoroutine(hitbox,colorStart,colorEnd,duration));
+            colorCoroutineSingle = StartCoroutine(LerpHitboxColorCoroutine(hitbox, colorStart, colorEnd, duration));
         }
 
         IEnumerator LerpHitboxColorCoroutine(MeleeHitbox hitbox, Color colorStart, Color colorEnd, float duration)
@@ -347,8 +350,8 @@ namespace FYP2A.VR.Melee.Target
 
             while (t < 1)
             {
-                t += Time.deltaTime/duration;
-                hitbox.GetComponent<Renderer>().material.color = Color.Lerp(colorStart,colorEnd, t);
+                t += Time.deltaTime / duration;
+                hitbox.GetComponent<Renderer>().material.color = Color.Lerp(colorStart, colorEnd, t);
 
                 yield return null;
             }
