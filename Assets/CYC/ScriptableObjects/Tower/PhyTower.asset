@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
   m_Name: PhyTower
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 1713882689399762808, guid: b94320f3acf9baf449511074993327a6, type: 3}
+  towerPrefab: {fileID: 6237713900703245859, guid: 78b966f9c35cd694593da6f1fba75a4b, type: 3}
   phyDamage: 20
   magicDamage: 0
   fireRate: 1

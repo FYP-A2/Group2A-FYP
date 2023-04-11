@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73748e235b06b12409d4d440b4f79316, type: 3}
+  m_Name: BuildTest 2
+  m_EditorClassIdentifier: 
+  Tower: {fileID: 11400000, guid: ee41a6d1dace11b4299e4bcf1e49de95, type: 2}
+  towerPreview: {fileID: 9218710418441571514, guid: abbb9d4168af4b643b6d0f228acadd5a, type: 3}
+  neededResources:
+    wood: 0
+    stone: 0
+    Phy: 0
+    Fire: 0
+    Ice: 0
+    Toxic: 0
+    Electro: 0
+  requiredBaseType: 0

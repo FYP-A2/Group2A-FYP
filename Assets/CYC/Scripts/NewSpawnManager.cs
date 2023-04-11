@@ -1,15 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 
-[System.Serializable]
-public class EnemySpawnData
-{
-    public GameObject prefab;
-    public List<float> spawnDelays;
-    public List<int> numToSpawn;
-}
+
 
 public class NewSpawnManager : MonoBehaviour
 {
@@ -17,82 +12,27 @@ public class NewSpawnManager : MonoBehaviour
 
     public float range = 5.0f;
     public List<Transform> spawnPoints;
-    public List<EnemySpawnData> enemySpawnData;
-    public float stageDuration = 180.0f;
-    private int currentStage = 0;
+    public List<MonsterDictionary> enemySpawnData;
     public List<EnemyScriptableObject> enemyScriptableObjects;
+    //public Stage stage;
     private void Awake()
     {
         Instance = this;
         spawnPoints.AddRange(GetComponentsInChildren<Transform>());
         spawnPoints.Remove(transform);
         //StartCoroutine(SpawnPrefabs());
-        foreach (EnemySpawnData e in enemySpawnData)
-        {
-            StartCoroutine(NewSpawnPrefabs(e,5));
-        }
+        //StartCoroutine(NewSpawnPrefabs(5));
+        //for (int i = 0; i < enemySpawnData.Count; i++)
+        //{
+        //    if (enemySpawnData[i].prefab == null)
+        //        enemySpawnData[i].SetMonsterDictionary(enemySpawnData[i].type);
+        //}
+        //foreach (MonsterDictionary e in enemySpawnData)
+        //{            
+        //    StartCoroutine(NewSpawnPrefabs(e, stage));
+        //}
     }
-
-    private IEnumerator SpawnPrefabs()
-    {
-        while (true)
-        {
-            float stageStartTime = Time.time;
-            float stageEndTime = stageStartTime + stageDuration;
-            currentStage++;
-            if (currentStage > 1)
-            {
-                foreach(EnemyScriptableObject e in enemyScriptableObjects)
-                {
-                    //e.hp = (int)(e.hp*1.1);//work
-                }
-            }
-
-            Debug.Log("Starting stage " + currentStage);
-
-            foreach (EnemySpawnData data in enemySpawnData)
-            {
-                if (data.numToSpawn[currentStage - 1] > 0)
-                {
-                    int numToSpawn = data.numToSpawn[currentStage - 1];
-                    float totalSpawnTime = stageDuration;
-                    float spawnRate = totalSpawnTime / numToSpawn;
-
-                    int numSpawned = 0;
-                    while (numSpawned < numToSpawn)
-                    {
-                        int numToBurst = Random.Range(2, 6);
-                        float burstDelay = Random.Range(0.1f, 1.0f);
-                        yield return new WaitForSeconds(burstDelay);
-
-                        Vector3 spawnPoint = GetSpawnpoint().position;
-
-                        for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
-                        {
-                            if (RandomPoint(spawnPoint, range, out Vector3 point))
-                            {
-                                Instantiate(data.prefab, point, Quaternion.identity);
-                                numSpawned++;
-                            }
-                        }
-
-                        if (numSpawned < numToSpawn)
-                        {
-                            float spawnDelay = Random.Range(spawnRate / 2, spawnRate);
-                            yield return new WaitForSeconds(spawnDelay);
-                        }
-                    }    
-                }
-            }
-
-            while (Time.time < stageEndTime)
-            {
-                yield return null;
-            }
-            
-        }
-    }
-
+   
     private Transform GetSpawnpoint()
     {
         return spawnPoints[Random.Range(0, spawnPoints.Count)];
@@ -111,42 +51,40 @@ public class NewSpawnManager : MonoBehaviour
         return false;
     }
 
-    private IEnumerator NewSpawnPrefabs(EnemySpawnData data,int level)
+    public IEnumerator NewSpawnPrefabs(MonsterDictionary enemyData, Stage data)
     {
-            Debug.Log("Starting stage " + level);
+        Debug.Log("Starting stage " + data.currentStage);
+        if (enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1] > 0)
+        {
+            int numToSpawn = enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1];
+            //float spawnRate = data.stageDuration / numToSpawn;
 
-            if (data.numToSpawn[level - 1] > 0)
+            int numSpawned = 0;
+            while (numSpawned < numToSpawn)
             {
-                int numToSpawn = data.numToSpawn[level - 1];
-                float totalSpawnTime = stageDuration;
-                float spawnRate = totalSpawnTime / numToSpawn;
+                int numToBurst = Random.Range(2, 6);
+                //float burstDelay = 1f;
+                //yield return new WaitForSeconds(burstDelay);
 
-                int numSpawned = 0;
-                while (numSpawned < numToSpawn)
+                Vector3 spawnPoint = GetSpawnpoint().position;
+
+                for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
                 {
-                    int numToBurst = Random.Range(2, 6);
-                    float burstDelay = Random.Range(0.1f, 1.0f);
-                    yield return new WaitForSeconds(burstDelay);
-
-                    Vector3 spawnPoint = GetSpawnpoint().position;
-
-                    for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
+                    if (RandomPoint(spawnPoint, range, out Vector3 point))
                     {
-                        if (RandomPoint(spawnPoint, range, out Vector3 point))
-                        {
-                            Instantiate(data.prefab, point, Quaternion.identity);
-                            numSpawned++;
-                        }
-                    }
-
-                    if (numSpawned < numToSpawn)
-                    {
-                        float spawnDelay = Random.Range(spawnRate / 2, spawnRate);
-                        yield return new WaitForSeconds(spawnDelay);
+                        Instantiate(enemyData.prefab, point, Quaternion.identity);
+                        numSpawned++;
                     }
                 }
+
+                if (numSpawned < numToSpawn)
+                {
+                    //float spawnDelay = spawnRate;
+                    yield return new WaitForSeconds(2f);
+                }
             }
-            
-            Debug.Log("End " + level);       
-    }
+        }
+        Debug.Log("End " + data.currentStage);
+
+    }  
 }
