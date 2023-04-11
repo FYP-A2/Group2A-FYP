@@ -451,6 +451,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book Model and Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3842737844332866529, guid: 0da0d99651a7b5d47998620621541431, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842737844332866541, guid: 0da0d99651a7b5d47998620621541431, type: 3}
+      propertyPath: emptyPrefab
+      value: 
+      objectReference: {fileID: 2830370205417540730, guid: e7f8caf81009bf4448f5358d799d4006, type: 3}
     - target: {fileID: 4243769592900850544, guid: 0da0d99651a7b5d47998620621541431, type: 3}
       propertyPath: player
       value: 
@@ -521,6 +529,7 @@ MonoBehaviour:
   __Mode: {fileID: 0}
   __HUD: {fileID: 0}
   __TP: {fileID: 0}
+  tree: {fileID: 0}
 --- !u!114 &207715138 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
@@ -1077,17 +1086,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366228166}
   m_CullTransparentMesh: 1
---- !u!114 &372419448 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7195763628071981100, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
-  m_PrefabInstance: {fileID: 2951480820609236207}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2842cb3e3b806fb4da0b0f226582b29e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &401831697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5508,6 +5506,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8167258266887848466, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
   m_PrefabInstance: {fileID: 2076379224}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1989525357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4243769592900850544, guid: 0da0d99651a7b5d47998620621541431, type: 3}
+  m_PrefabInstance: {fileID: 173779664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2842cb3e3b806fb4da0b0f226582b29e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2033045647
 GameObject:
   m_ObjectHideFlags: 0
@@ -5615,7 +5624,7 @@ PrefabInstance:
     - target: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
       propertyPath: book
       value: 
-      objectReference: {fileID: 372419448}
+      objectReference: {fileID: 1989525357}
     - target: {fileID: 1836722538394661776, guid: c0d5f2a08023d28428a93645b7424065, type: 3}
       propertyPath: player
       value: 
@@ -5894,6 +5903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isPreviewing: 0
   xrRayInteractor: {fileID: 1822787742}
   turretPrefabIndex: {fileID: 0}
   book: {fileID: 0}

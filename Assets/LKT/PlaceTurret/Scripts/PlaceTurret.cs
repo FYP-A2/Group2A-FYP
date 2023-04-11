@@ -15,7 +15,7 @@ namespace FYP2A.VR.PlaceTurret
 
       TurretPreview nowPreview;
       TowerBuildSO nowBuild;
-      bool isPreviewing;
+      public bool isPreviewing;
 
       [Header("Place Turret")]
       [SerializeField]
@@ -149,7 +149,7 @@ namespace FYP2A.VR.PlaceTurret
          return false;
       }
 
-      void CreatePreview(GameObject previewPrefab, int tier)
+      public void CreatePreview(GameObject previewPrefab, int tier)
       {
          DeletePreview();
 
@@ -158,7 +158,7 @@ namespace FYP2A.VR.PlaceTurret
          isPreviewing = true;
       }
 
-      void DeletePreview()
+      public void DeletePreview()
       {
          if (nowPreview != null)
             Destroy(nowPreview.gameObject);

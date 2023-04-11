@@ -82,7 +82,7 @@ public class UICommonButton : MonoBehaviour
       if (!selecting)
          backgroundCompon.sprite = backgroundOnHover;
 
-      book.uiHover.DisplayOn( hoverPos.anchoredPosition /*+ hoverPos.GetComponentInParent<RectTransform>().anchoredPosition*/, towerBuildSO.resourceGroup);
+      book.uiHover.DisplayOn( hoverPos, towerBuildSO.resourceGroup);
    }
 
    public void OnHoverExit()

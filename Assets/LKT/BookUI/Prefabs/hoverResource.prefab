@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1131397618539664652}
   - component: {fileID: 1131397618539664649}
   - component: {fileID: 1131397618539664654}
+  - component: {fileID: 5397258326168182688}
   m_Layer: 5
   m_Name: hoverResource
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   book: {fileID: 0}
+  ownedResource: {fileID: 0}
   UIRDSingles:
   - {fileID: 5584088850730771297}
   - {fileID: 4122487943018787018}
@@ -116,6 +118,19 @@ MonoBehaviour:
   - {fileID: 4122487943958941356}
   - {fileID: 4122487943746890252}
   - {fileID: 4122487943024542636}
+  moveEndPos: {fileID: 0}
+--- !u!225 &5397258326168182688
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131397618539664642}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1131397618166042301
 PrefabInstance:
   m_ObjectHideFlags: 0
