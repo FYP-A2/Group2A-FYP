@@ -17,7 +17,8 @@ public abstract class Monster : MonoBehaviour, IMonster
     protected List<Transform> hitTargets;
     GameObject bulletPrefab;
     public Slider slider;
-    [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
+    //[SerializeField]
+    GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
     public LayerMask layer;
 
@@ -27,6 +28,7 @@ public abstract class Monster : MonoBehaviour, IMonster
 
     public enum State { Idle, Move, Attack, Die };
     public State state { get; protected set; }
+
     protected Transform currentTarget;
 
     // Start is called before the first frame update
@@ -54,6 +56,8 @@ public abstract class Monster : MonoBehaviour, IMonster
         if(isSlow) Slow();
         if(isDefenseBreak) DefenseBreak();
         slider.value = hp;
+        if (animator != null)
+            animator.SetFloat(ani_Move, agent.velocity.magnitude);
     }
 
     protected virtual void Idle()
@@ -261,17 +265,6 @@ public abstract class Monster : MonoBehaviour, IMonster
             isAttacked = false;
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other != null)
-    //    {
-    //        if (other.transform.tag == "breakable")
-    //        {
-    //            hitTargets = other.transform;
-    //        }
-    //    }
-    //}
 
     protected virtual void Shoot(Transform target)
     {

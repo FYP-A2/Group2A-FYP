@@ -77,8 +77,6 @@ public class StageMonster : Monster
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    if (animator != null)
-                        animator.SetFloat(ani_Move, agent.velocity.magnitude);
                     agent.SetDestination(target.position);
                 }
             }
@@ -86,9 +84,7 @@ public class StageMonster : Monster
         else
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                if (animator != null)
-                    animator.SetFloat(ani_Move, agent.velocity.magnitude);
+            {               
                 agent.SetDestination(target.position);
             }
         }

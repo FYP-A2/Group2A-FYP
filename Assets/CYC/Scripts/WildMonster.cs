@@ -11,7 +11,7 @@ public class WildMonster : Monster
     List<Transform> players = new List<Transform>();
     Vector3 originPos;
     public new enum State {Idle, Move, Chase, Attack, Die }
-    public State wildState { get;private set; }
+    public  State wildState { get;private set; }
 
     //void OnDrawGizmos()
     //{

@@ -14,9 +14,13 @@ public class NPCBehaviour : MonoBehaviour
     public bool isLastPoint = false;
     public enum Type{ Constant, Random }
     public Type type;
+
+    Animator animator;
+    const string ani_Move = "Animation_Move";
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         agent.speed = moveSpeed;
         currentWaypointIndex = 0;
         timer = stayTime;
@@ -34,6 +38,8 @@ public class NPCBehaviour : MonoBehaviour
                 RandomMove();
                 break;
         }
+        if(animator != null)
+            animator.SetFloat(ani_Move, agent.velocity.magnitude);
     }
 
     void SetDestination(Transform transform)
