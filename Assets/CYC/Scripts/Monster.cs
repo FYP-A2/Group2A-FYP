@@ -274,7 +274,8 @@ public abstract class Monster : MonoBehaviour, IMonster
         if (bullet != null)
         {
             transform.LookAt(target.position);
-            bullet.Shoot(transform.forward, damage, gameObject);
+            //bullet.Shoot(transform.forward, damage, gameObject);
+            bullet.Shoot((target.position - firePoint.position).normalized, damage, gameObject);
         }
     }
 

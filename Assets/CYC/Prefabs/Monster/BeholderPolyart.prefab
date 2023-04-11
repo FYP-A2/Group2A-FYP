@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 102013808138177035}
   m_Layer: 0
   m_Name: BeholderPolyart
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,9 +447,6 @@ MonoBehaviour:
   resistance: 0
   sphereCollider: {fileID: 66861156252293031}
   slider: {fileID: 6619829775179051145}
-  fireEffect: {fileID: 0}
-  slowEffect: {fileID: 0}
-  toxicEffect: {fileID: 0}
   displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
   layer:
     serializedVersion: 2

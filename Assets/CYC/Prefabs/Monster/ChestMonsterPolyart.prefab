@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 8764829180458672043}
   m_Layer: 0
   m_Name: ChestMonsterPolyart
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,9 +618,6 @@ MonoBehaviour:
   resistance: 0
   sphereCollider: {fileID: 1287778808740215448}
   slider: {fileID: 6285830846094873249}
-  fireEffect: {fileID: 0}
-  slowEffect: {fileID: 0}
-  toxicEffect: {fileID: 0}
   displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
   layer:
     serializedVersion: 2

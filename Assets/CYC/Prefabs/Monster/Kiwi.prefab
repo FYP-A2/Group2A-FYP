@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1274748864171427864}
   m_Layer: 0
   m_Name: Kiwi
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,6 +1164,10 @@ PrefabInstance:
     - target: {fileID: 469859860070502129, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330956839411000600, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5675716149444212756, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_AnchorMax.x

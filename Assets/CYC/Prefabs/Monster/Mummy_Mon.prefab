@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 4754280653643966979}
   m_Layer: 0
   m_Name: Mummy_Mon
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,14 +834,11 @@ MonoBehaviour:
   resistance: 0
   sphereCollider: {fileID: 7617465411685859083}
   slider: {fileID: 4090351975440249880}
-  fireEffect: {fileID: 0}
-  slowEffect: {fileID: 0}
-  toxicEffect: {fileID: 0}
   displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
   layer:
     serializedVersion: 2
     m_Bits: 55
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 2423190287669244820}
   moveRange: 50
   becomeMoveDistance: 50
   chaseDistance: 50

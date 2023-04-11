@@ -143,9 +143,6 @@ MonoBehaviour:
   resistance: 0
   sphereCollider: {fileID: 3685794650754097534}
   slider: {fileID: 7269696463079885868}
-  fireEffect: {fileID: 0}
-  slowEffect: {fileID: 0}
-  toxicEffect: {fileID: 0}
   displayDamage: {fileID: 5316360946463779195, guid: 1ee8576e626be304ca32f0289bd016dd, type: 3}
   layer:
     serializedVersion: 2
@@ -322,6 +319,10 @@ PrefabInstance:
     - target: {fileID: 469859860070502129, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114977944703081774, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5675716149444212756, guid: fbe4a9657a200764da7c359163fb5930, type: 3}
       propertyPath: m_AnchorMax.x

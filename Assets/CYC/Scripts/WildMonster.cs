@@ -102,14 +102,17 @@ public class WildMonster : Monster
                     wildState = State.Chase;
                 }
             }
-        }      
+        }    
+        
 
         if (currentTarget != null)
         {
             if (Vector3.Distance(transform.position, currentTarget.position) < enemyScriptable.attackRange)
             {
                 wildState = State.Attack;
-            }
+            } 
+            else if(wildState == State.Attack)
+                wildState= State.Chase;
 
             if (Vector3.Distance(originPos, currentTarget.position) > moveRange)
             {

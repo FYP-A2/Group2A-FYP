@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da9391b5a0a12a54ca411a703defd06e, type: 3}
-  m_Name: Mummy
+  m_Name: RangedMonster
   m_EditorClassIdentifier: 
   hp: 100
   damage: 20
-  defense: 0.5
-  resistance: 0.5
-  attackRange: 5
+  defense: 1
+  resistance: 1
+  attackRange: 10
   attackDelay: 2
   isRanged: 1
   fireEffect: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
-  slowEffect: {fileID: 2059965710140594545, guid: 5637123380e71504f821b5f96f911b02, type: 3}
+  slowEffect: {fileID: 1336276135992859751, guid: d9dc9622cbb9a4a4db3e907ff36bd75c, type: 3}
   toxicEffect: {fileID: 7758672653904282153, guid: 0ab14953843c6da4a8c32bec7287b1a4, type: 3}
   bullet: {fileID: 4936703170902901937, guid: c098ec0bf2b6ef74887dec8391e0ce68, type: 3}
   baseOffset: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   acceleration: 8
   stoppingDistance: 0.5
   radius: 0.5
-  height: 1
+  height: 2
   obstacleAvoidance: 1
   avoidancePriority: 50
   areaMask: -1
