@@ -17,14 +17,17 @@ public class _1st_Director : MonoBehaviour{
    [HideInInspector] public WLC_State_Script _WLC_State;
    [HideInInspector] public Stage stage;
    public NewSpawnManager newSpawnManager;
-    Director_SpawnManager director_SpawnManager = new Director_SpawnManager();
-    #endregion
+   Director_SpawnManager director_SpawnManager = new Director_SpawnManager();
+   #endregion
 
+   #region Event-once Booleans
+   bool _2_RunnedOnce=false;
+   #endregion
 
 
 
     #region Game Start & By-Mode Updates
-   void Start(){ Time.timeScale=0; }
+   void Start(){ Time.timeScale=0; _._1(symbol:"*",item_to_Test:"Start()",msg:null);}
 
    public void TNTModeUpdate(){
       if(mode._TNT_State==Mode.TNT_State.Waiting_GoTreeArea){
@@ -41,18 +44,23 @@ public class _1st_Director : MonoBehaviour{
    //Actually it's FullGameModeUpdate(), temp. changed to TNTModeUpdate for debugging.
    public void FullModeUpdate()
    {
+                                                   _._2(symbol:"!!!", item_to_Test:"FullModeUpdate()", msg:null, ref _2_RunnedOnce);
         //Debug.Log("1");
       //PURPOSE: Big frame of Round Loop.
-      if(_WLC_State._WLC_State == WLC_State_Script.WLC_State.Continuable){ 
+      if(_WLC_State.WLC_State == WLC_State_Script.State.Continuable){ 
+                                                   //_._3(symbol:"==",item_to_Test:"WLC_STATE",msg:"equals Continuable.");
          //State: RoundBeforeStart
          if (mode._FullMode_State == Mode.FullMode_State.RoundBeforeStart) {
             if (timer.remaining_time <= 0 || stage.playerReady){ 
+                                                   //._4(symbol:"==",item_to_Test:"FullMode_State",msg:"equals Rnd_Be4_Start.");
                PrepareTimerStart(stage.currentStage);
 
             } 
          }
-         else if(mode._FullMode_State == Mode.FullMode_State.RoundStart){              
+         else if(mode._FullMode_State == Mode.FullMode_State.RoundStart){    
+                                                   //_._5(symbol:"!!!",item_to_Test:"FullMode_State",msg:"equals RndStart.");          
             SpawnMonsters(4);
+                                                   //_._6(symbol:"!!!",item_to_Test:"SpawnMonster()",msg:"spawned 4 mobs.");
             director_SpawnManager.roundStartSpawned= true;
             //Debug.Log("RoundStart");
             //dosth();
@@ -70,11 +78,11 @@ public class _1st_Director : MonoBehaviour{
 
 
       // The state below exit the Round Loop, to Endpoints.
-      else if(_WLC_State._WLC_State == WLC_State_Script.WLC_State.Win){
+      else if(_WLC_State.WLC_State == WLC_State_Script.State.Win){
          //State: Victory
          ShowGameVictory();
       }
-      else if(_WLC_State._WLC_State == WLC_State_Script.WLC_State.Lose){
+      else if(_WLC_State.WLC_State == WLC_State_Script.State.Lose){
          //State: Defeat
          ShowGameOver();
       }
