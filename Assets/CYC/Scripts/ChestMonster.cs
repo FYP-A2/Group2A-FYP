@@ -103,4 +103,10 @@ public class ChestMonster : Monster
         base.TakeDamage(phyDamage, magicDamage);
         getHit = true;
     }
+
+    protected override void Dead()
+    {
+        base.Dead();
+        //Drop
+    }
 }

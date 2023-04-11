@@ -121,4 +121,10 @@ public class WildMonster : Monster
             }
         }
     }
+
+    protected override void Dead()
+    {
+        base.Dead();
+        //Drop
+    }
 }

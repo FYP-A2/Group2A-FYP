@@ -89,4 +89,10 @@ public class StageMonster : Monster
             }
         }
     }
+
+    protected override void Dead()
+    {
+        base.Dead();
+        //Drop
+    }
 }
