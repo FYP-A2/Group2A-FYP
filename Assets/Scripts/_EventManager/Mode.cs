@@ -52,7 +52,7 @@ public class Mode : MonoBehaviour
          gameMode=GameMode.FULL_MODE;
       }
       if(gameMode==GameMode.FULL_MODE){
-         _FirstDirector.FullModeUpdate();
+         _FirstDirector.FullModeUpdateLoop();
       }
       if(gameMode==GameMode.TNT_MODE){
          _FirstDirector.TNTModeUpdate();
@@ -78,5 +78,13 @@ public class Mode : MonoBehaviour
    }
 
 
-   
+   public void FM_SetState_RoundStart(){
+      this._FullMode_State = FullMode_State.RoundStart;
+   }
+   public void FM_SetState_RoundOutOfFinishTime(){
+      this._FullMode_State = FullMode_State.RoundOutOfFinishTime;
+   }
+   public FullMode_State FM_GetCurrState(){
+      return _FullMode_State;
+   }
 }

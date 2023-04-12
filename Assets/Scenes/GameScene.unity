@@ -30033,10 +30033,11 @@ MonoBehaviour:
   announcer: {fileID: 789230079}
   announcer_triggered: 0
   eventChecklist: {fileID: 1587706411}
-  _DA_State: {fileID: 789230080}
+  _DA: {fileID: 789230080}
   _Area_State: {fileID: 789230082}
   _WLC_State: {fileID: 789230084}
-  stage: {fileID: 789230085}
+  stageObject: {fileID: 789230085}
+  _M: {fileID: 1847722989}
   newSpawnManager: {fileID: 1253156055}
 --- !u!114 &789230078
 MonoBehaviour:
@@ -30081,7 +30082,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 789230075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e86187a4ed7de48a32508798427091, type: 3}
+  m_Script: {fileID: 11500000, guid: d740b7c1aa76ac34385b2bc3501a5334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DrawState: 0
@@ -30100,6 +30101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TMP_Text: {fileID: 1202773108}
   remaining_time: 0
+  setted_time: 30
+  _State: 0
 --- !u!114 &789230082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30138,7 +30141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01db9517c5201134a884fc7fc515f97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _WLC_State: 0
+  WLC_State: 0
 --- !u!114 &789230085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30151,7 +30154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46013335e47561a41a928cf936d93714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStage: 4
+  currentStage: 1
   playerReady: 0
   stageDuration: 180
 --- !u!4 &790990240 stripped
