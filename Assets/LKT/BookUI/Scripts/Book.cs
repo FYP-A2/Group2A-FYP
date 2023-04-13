@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Book : MonoBehaviour
 {
-
     public UIBook bookUI;
     public Animator animator;
     public UIBook flipUI;
     public Transform pageTabs;
 
+    XRGrabInteractable xrgi;
+
     // Start is called before the first frame update
     void Start()
     {
         bookUI.gameObject.SetActive(false);
+        xrgi = GetComponent<XRGrabInteractable>();
     }
 
     public void Open()
@@ -41,6 +44,7 @@ public class Book : MonoBehaviour
     {
         animator.SetTrigger("close");
         Invoke("BookUIOff", 0.8f);
+        Invoke("GoBackToParentZero", 0.1f);
     }
 
     void BookUIOff()
@@ -76,4 +80,25 @@ public class Book : MonoBehaviour
         flipUI.gameObject.SetActive(false);
     }
 
+    void GoBackToParentZero()
+    {
+        StartCoroutine(GoBackToParentZero(0.8f));
+    }
+
+    IEnumerator GoBackToParentZero(float duration)
+    {
+        float time = 0f;
+
+        while (time < 1)
+        {
+            if (xrgi.isSelected)
+                yield break;
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, time);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.identity, time);
+
+            time += Time.deltaTime / duration;
+            yield return null;
+        }
+    }
 }

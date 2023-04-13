@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: 4122487943746890252}
   - {fileID: 4122487943024542636}
   moveEndPos: {fileID: 0}
+  emptyPrefab: {fileID: 2830370205417540730, guid: e7f8caf81009bf4448f5358d799d4006, type: 3}
 --- !u!225 &5397258326168182688
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 2951480821549951091}
   - component: {fileID: 2951480821549951092}
   - component: {fileID: 7195763628071981100}
+  - component: {fileID: 6748465607245065428}
   m_Layer: 5
   m_Name: BookCanvas
   m_TagString: Untagged
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2951480821549951092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,25 @@ MonoBehaviour:
   uiMap: {fileID: 3190434514539374731}
   uiMapCamPrefab: {fileID: 2576845210706632404, guid: 7f5e1701107f2ae488ee0b9a1e1634c1, type: 3}
   uiMapCam: {fileID: 0}
+--- !u!114 &6748465607245065428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951480821549951093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1001 &1117071776933809551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1433,11 +1453,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 411f96879b0b4084ca1830b8ec2f8821, type: 3}
---- !u!224 &7812826872583334066 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1131397618539664653, guid: 411f96879b0b4084ca1830b8ec2f8821, type: 3}
-  m_PrefabInstance: {fileID: 7196528482899410367}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7812826872583334065 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1131397618539664654, guid: 411f96879b0b4084ca1830b8ec2f8821, type: 3}
@@ -1449,6 +1464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f1701390bc45f4585252bd91b4b754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7812826872583334066 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1131397618539664653, guid: 411f96879b0b4084ca1830b8ec2f8821, type: 3}
+  m_PrefabInstance: {fileID: 7196528482899410367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8378834017552561161
 PrefabInstance:
   m_ObjectHideFlags: 0
