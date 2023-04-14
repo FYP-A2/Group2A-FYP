@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 2423190287659916360}
   - component: {fileID: 302173379043837851}
   - component: {fileID: 4754280653643966979}
+  - component: {fileID: 1708077176888977721}
   m_Layer: 0
   m_Name: Mummy_Mon
   m_TagString: Monster
@@ -864,6 +865,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1708077176888977721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2423190287669276622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2423190287669276640
 GameObject:
   m_ObjectHideFlags: 0

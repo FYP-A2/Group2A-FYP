@@ -66,7 +66,7 @@ public abstract class Monster : MonoBehaviour, IMonster
             state = State.Move;
     }
 
-    protected virtual void Initialization()
+    protected void Initialization()
     {
         hp = enemyScriptable.hp;
         damage = enemyScriptable.damage;

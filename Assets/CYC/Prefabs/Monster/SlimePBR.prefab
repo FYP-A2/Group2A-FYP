@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 95161444847813696}
   - component: {fileID: 2226225560333093456}
   - component: {fileID: 8364700741443126569}
+  - component: {fileID: 3377277042136653702}
   m_Layer: 0
   m_Name: SlimePBR
   m_TagString: Monster
@@ -476,6 +477,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &3377277042136653702
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919012471076396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1989916952965676
 GameObject:
   m_ObjectHideFlags: 0

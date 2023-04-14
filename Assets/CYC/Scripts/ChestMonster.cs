@@ -9,18 +9,19 @@ public class ChestMonster : Monster
     public float chaseDistance;
     List<Transform> players = new List<Transform>();
     Vector3 originPos;
-    public new enum State { Idle, Chase, Attack, Die }
+    public new enum State { Idle, Home,Chase, Attack, Die }
     public State chestState { get; private set; }
+    const string ani_Wake = "Chest_Wake";
 
-    //void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(originPos, moveRange);
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(transform.position, chaseDistance);
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(originPos, becomeMoveDistance);
-    //}
+    void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(originPos, moveRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(originPos, chaseDistance);
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireSphere(originPos, becomeMoveDistance);
+    }
     protected override void Start()
     {
         base.Start();
@@ -39,6 +40,9 @@ public class ChestMonster : Monster
         {
             case State.Idle:
                 Idle();
+                break;
+            case State.Home:
+                Home();
                 break;
             case State.Chase:
                 Chase(currentTarget);
@@ -61,6 +65,19 @@ public class ChestMonster : Monster
     void Chase(Transform target)
     {
         agent.SetDestination(target.position);
+    }
+
+    void Home()
+    {
+        if(transform.position != originPos)
+        {
+            agent.SetDestination(originPos);
+        }
+        else
+        {
+            animator.SetBool(ani_Wake, false);
+            chestState= State.Idle;
+        }
     }
     void StateChange()
     {
@@ -90,18 +107,18 @@ public class ChestMonster : Monster
 
             if (Vector3.Distance(originPos, currentTarget.position) > chaseDistance)
             {
-                currentTarget = null;
-                agent.SetDestination(originPos);
+                currentTarget = null;               
                 getHit = false;
-                chestState = State.Idle;
+                chestState = State.Home;
             }
         }
     }
 
     public override void TakeDamage(int phyDamage, int magicDamage)
-    {
+    {        
         base.TakeDamage(phyDamage, magicDamage);
         getHit = true;
+        animator.SetBool(ani_Wake, true);
     }
 
     protected override void Dead()

@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 95237074988894122}
   - component: {fileID: 2861429323084757400}
   - component: {fileID: 1469255523518218797}
+  - component: {fileID: 6578683570280721915}
   m_Layer: 0
   m_Name: TurtleShellPBR
   m_TagString: Monster
@@ -873,6 +874,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &6578683570280721915
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774625739149480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &1822049695589022
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3850173379084900446}
   - component: {fileID: 1661934231549338655}
   - component: {fileID: 1274748864171427864}
+  - component: {fileID: 7000508295920703291}
   m_Layer: 0
   m_Name: Kiwi
   m_TagString: Monster
@@ -133,6 +134,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &7000508295920703291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3850173379084900417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &3850173379085484601
 GameObject:
   m_ObjectHideFlags: 0

@@ -1744,7 +1744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1543001009
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,7 +1796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1564613262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,19 +1809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595c4b31bd08d264f97b3db33d4d7021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
-  spawnPoints: []
-  enemySpawnData:
-  - prefab: {fileID: 5626876224596996719, guid: d38e60411f61b6644aa946c4dd831fca, type: 3}
-    spawnDelays: []
-    numToSpawn: 02000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d000000
-  - prefab: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
-    spawnDelays: []
-    numToSpawn: 05000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000
-  stageDuration: 20
-  enemyScriptableObjects:
-  - {fileID: 11400000, guid: 8ebdba6fa807dfd4592bd5813930f922, type: 2}
-  - {fileID: 11400000, guid: 76da76be9dcc0ba40a59600108164a9f, type: 2}
 --- !u!4 &1564613263
 Transform:
   m_ObjectHideFlags: 0
