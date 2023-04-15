@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Test2 : MonoBehaviour
 {
-    public void TriggerTest()
+    public void Test()
     {
-        Debug.Log("hi");
+        GetComponent<CommonTMP>().Display("HI Hiiiiiiii", 3);
     }
 }
