@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class ResourceGroupType : MonoBehaviour,I_GettersSetters_For_Resources
 {
+    public static ResourceGroupType Instance;
     public ResourceGroupTypeSO resourceGroupDefault;
 
     [SerializeField]
@@ -15,6 +16,7 @@ public class ResourceGroupType : MonoBehaviour,I_GettersSetters_For_Resources
 
     private void Start(){
         Initialize(resourceGroupDefault.resources);
+        Instance = this;
     }
 
     public void Initialize(List<Resource> r = null){

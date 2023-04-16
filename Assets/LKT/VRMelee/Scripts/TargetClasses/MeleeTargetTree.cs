@@ -12,10 +12,11 @@ namespace FYP2A.VR.Melee.Target
 
         [Header("")]
         [Header("Melee Target Tree")]
-        Tree tree;
-        [SerializeField]
-        float hp = 5;
-        float nowHp;
+        public Tree tree;
+        [HideInInspector]
+        public float hp = 5;
+        [HideInInspector]
+        public float nowHp;
         bool minigameOn = false;
 
         bool minigameCanInput = false;
@@ -268,7 +269,7 @@ namespace FYP2A.VR.Melee.Target
             minigameCanInput = false;
             LerpAllHitboxsColorTo(colorHitCorrect);
 
-            tree.RewardPlayers();
+            tree.BeingCut();
 
             StartCoroutine(MinigameSuccessWait1sReset());
         }

@@ -1,38 +1,66 @@
+using FYP2A.VR.Melee.Target;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    public ResourceGroupType resourceGroupType;
+    public MeleeTargetTree meleeTree;
 
-    int HP=5;
+    public int HP=5;
+    public int NowHP { get => (int)meleeTree.nowHp; }
+
+    [Header("Reward")]
+    public string rewardResourceType = "Wood";
+    public int rewardAmount = 10;
+
+    [Header("Tree Structure")]
+    public GameObject upperPart;
+    public GameObject lowerPart;
+
+    [Header("Tree Cut Down")]
+    public bool hideLeaf = true;
+    public Material hideLeafMaterial;
+    public float autoCleanDelay = 15f;
+
 
     public enum State{BeenCut=0,Youth=1,QuiteMature=2,Matured=3}
     public State TreeState = State.Matured;
 
-    bool beenCutFlag=false;
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if(HP==0){
-            BeingCut();
-        }
+        meleeTree.tree = this;
+        meleeTree.hp = HP;
+    }
 
-        if(beenCutFlag){
-            RewardPlayers();
-            beenCutFlag=false;
-        }
-        
+    public void BeingCut()
+    {
+        this.TreeState = State.BeenCut;
+        RewardPlayers();
+        StartCoroutine(TreeDown(autoCleanDelay));
     }
 
     public void RewardPlayers(){
-        resourceGroupType.Add("Wood",50);
+        ResourceGroupType.Instance.Add(rewardResourceType, rewardAmount);
     }
 
-    public void BeingCut(){
-        this.TreeState = State.BeenCut;
-        beenCutFlag=true;
+
+    IEnumerator TreeDown(float autoCleanDelay)
+    {
+        ReleaseUpperPart();
+        yield return new WaitForSeconds(autoCleanDelay);
+        upperPart.SetActive(false);
     }
+
+
+    void ReleaseUpperPart()
+    {
+        Rigidbody upperRig = upperPart.GetComponent<Rigidbody>();
+        upperRig.isKinematic = false;
+        upperRig.useGravity = true;
+        if (hideLeaf)
+            upperPart.GetComponent<Renderer>().material = hideLeafMaterial;
+    }
+
+
 }
