@@ -47,6 +47,10 @@ MonoBehaviour:
   textMeshPro: {fileID: 6436351248006692676}
   canvas: {fileID: 5294763457190811407}
   canvasGroup: {fileID: 7331666098280481010}
+  animateInFrom: {x: -1, y: 0, z: 0}
+  startDuration: 0.4
+  endDuration: 0.4
+  animateLerpExponentiationBase: 8
 --- !u!1 &5608373734298584896
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0.69411767}
+  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

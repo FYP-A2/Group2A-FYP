@@ -30,7 +30,7 @@ public class CommonTMP : MonoBehaviour
         Vector3 startPos = animateInFrom;
         while (time < 1)
         {
-            float t = 1 - Mathf.Pow(animateLerpExponentiationBase, (1-time) - 1);
+            float t = 1 - Mathf.Pow(animateLerpExponentiationBase, (1 - time) - 1);
             canvas.anchoredPosition3D = Vector3.Lerp(startPos, Vector3.zero, t);
             canvasGroup.alpha = Mathf.Lerp(0, 1, t);
 
@@ -41,7 +41,7 @@ public class CommonTMP : MonoBehaviour
         //canvasGroup.alpha = 1;
     }
 
-    IEnumerator EndAnimation(float animationDuration,float delay)
+    IEnumerator EndAnimation(float animationDuration, float delay)
     {
         yield return new WaitForSeconds(delay);
 
@@ -58,5 +58,19 @@ public class CommonTMP : MonoBehaviour
         }
         //canvas.anchoredPosition3D = endPos;
         //canvasGroup.alpha = 0;
+    }
+
+    public void Debug1(int n)
+    {
+        if (n == 0)
+            Display("Title Title", 3);
+        if (n == 1)
+            Display("Time: 28");
+        if (n == 2)
+            Display("Testing Text3:" +
+                "\nHahahaha" +
+                "\nJJJJJ" +
+                "\nJJJJJ" +
+                "\nJJJJJ");
     }
 }
