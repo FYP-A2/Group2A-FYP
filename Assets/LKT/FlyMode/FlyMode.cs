@@ -87,15 +87,16 @@ public class FlyMode : MonoBehaviour
 
         float time = 0;
         previousPosition = transform.position;
+        Vector3 previousPlusFly = previousPosition + FlyPositionOffset;
         while (time < 1)
         {
             float t = 1 - Mathf.Pow(animateLerpExponentiationBase, (1 - time) - 1);
-            transform.position = Vector3.Lerp(previousPosition, FlyPositionOffset, t);
+            transform.position = Vector3.Lerp(previousPosition, previousPlusFly, t);
 
             time += Time.deltaTime / animationDuration;
             yield return null;
         }
-        transform.position = FlyPositionOffset;
+        transform.position = previousPlusFly;
     }
     
     IEnumerator BackNormalMode(float animationDuration)

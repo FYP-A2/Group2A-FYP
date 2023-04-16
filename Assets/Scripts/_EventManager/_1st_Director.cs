@@ -65,7 +65,7 @@ public class _1st_Director : MonoBehaviour{
 
 
    #region Game Start & By-Mode Updates
-   void Start(){ Time.timeScale=0; }
+   //void Start(){ Time.timeScale=0; }
 
    public void TNTModeUpdate(){
       if(mode._TNT_State==Mode.TNT_State.Waiting_GoTreeArea){
