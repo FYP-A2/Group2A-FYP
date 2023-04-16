@@ -6,6 +6,10 @@ public class Test2 : MonoBehaviour
 {
     public void Test()
     {
-        GetComponent<CommonTMP>().Display("HI Hiiiiiiii", 3);
+        GetComponent<FlyMode>().EnterFlyMode();
+    }
+    public void Test02()
+    {
+        GetComponent<FlyMode>().ExitFlyMode();
     }
 }

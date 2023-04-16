@@ -37,6 +37,8 @@ public class CommonTMP : MonoBehaviour
             time += Time.deltaTime / animationDuration;
             yield return null;
         }
+        //canvas.anchoredPosition3D = Vector3.zero;
+        //canvasGroup.alpha = 1;
     }
 
     IEnumerator EndAnimation(float animationDuration,float delay)
@@ -54,5 +56,7 @@ public class CommonTMP : MonoBehaviour
             time += Time.deltaTime / animationDuration;
             yield return null;
         }
+        //canvas.anchoredPosition3D = endPos;
+        //canvasGroup.alpha = 0;
     }
 }

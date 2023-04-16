@@ -164,6 +164,7 @@ namespace FYP2A.VR.PlaceTurret
             nowPreview = Instantiate(previewPrefab).GetComponent<TurretPreview>();
             nowPreview.Initialize(gameObject, nowBuild.Tower);
             isPreviewing = true;
+            player.GetComponent<FlyMode>().EnterFlyMode();
         }
 
         public void DeletePreview()
@@ -174,6 +175,7 @@ namespace FYP2A.VR.PlaceTurret
             nowPreview = null;
             isPreviewing = false;
 
+            player.GetComponent<FlyMode>().ExitFlyMode();
         }
 
         protected virtual Ray GetRay()

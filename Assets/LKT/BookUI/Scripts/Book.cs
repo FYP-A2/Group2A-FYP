@@ -11,6 +11,8 @@ public class Book : MonoBehaviour
     public UIBook flipUI;
     public Transform pageTabs;
 
+    int pageNow;
+
     XRGrabInteractable xrgi;
 
     // Start is called before the first frame update
@@ -23,13 +25,14 @@ public class Book : MonoBehaviour
     public void Open()
     {
         animator.SetTrigger("open");
-        bookUI.FlipPage(0);
+        bookUI.FlipPage(pageNow);
 
         Invoke("BookUIOn", 0.8f);
     }
 
     public void Flip(int n)
     {
+        pageNow = n;
         animator.SetTrigger("flip");
         if (bookUI.placeTurret.isPreviewing)
         {

@@ -658,7 +658,6 @@ GameObject:
   - component: {fileID: 219499291}
   - component: {fileID: 219499290}
   - component: {fileID: 219499294}
-  - component: {fileID: 219499295}
   m_Layer: 0
   m_Name: TestHP
   m_TagString: Untagged
@@ -758,18 +757,6 @@ MonoBehaviour:
   max: 50
   now: 25
   umhb: {fileID: 0}
---- !u!114 &219499295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219499289}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &235184210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,7 +1806,6 @@ GameObject:
   - component: {fileID: 616835763}
   - component: {fileID: 616835762}
   - component: {fileID: 616835761}
-  - component: {fileID: 616835766}
   m_Layer: 0
   m_Name: TestHP (1)
   m_TagString: Untagged
@@ -1919,18 +1905,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &616835766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616835760}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &622893148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2051,6 @@ GameObject:
   - component: {fileID: 697108907}
   - component: {fileID: 697108906}
   - component: {fileID: 697108905}
-  - component: {fileID: 697108910}
   m_Layer: 0
   m_Name: TestHP (3)
   m_TagString: Untagged
@@ -2177,18 +2150,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697108910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697108904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &762304035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,6 +3433,34 @@ MonoBehaviour:
   resourceGroup: {fileID: 1451283073}
   movementSpeed: 15
   rotationSpeed: 50
+--- !u!114 &1021438456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021438443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1021438457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021438443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c757fc8053d190040aabe21c65b258de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlyPositionOffset: {x: 0, y: 10, z: 0}
+  goFlySpeed: 0.6
+  backNormalSpeed: 0.6
+  animateLerpExponentiationBase: 64
 --- !u!1 &1021619523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,9 +3640,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310596881}
-        m_TargetAssemblyTypeName: Book, Assembly-CSharp
-        m_MethodName: Flip
+      - m_Target: {fileID: 1021438456}
+        m_TargetAssemblyTypeName: Test2, Assembly-CSharp
+        m_MethodName: Test02
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3813,9 +3802,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 310596881}
-        m_TargetAssemblyTypeName: Book, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 1021438456}
+        m_TargetAssemblyTypeName: Test2, Assembly-CSharp
+        m_MethodName: Test
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3908,7 +3897,6 @@ GameObject:
   - component: {fileID: 1116714952}
   - component: {fileID: 1116714951}
   - component: {fileID: 1116714950}
-  - component: {fileID: 1116714955}
   m_Layer: 0
   m_Name: TestHP (2)
   m_TagString: Untagged
@@ -4008,18 +3996,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1116714955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116714949}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1117523025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
