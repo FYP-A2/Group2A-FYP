@@ -854,6 +854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  at1: {fileID: 0}
+  p1: {fileID: 0}
 --- !u!136 &398600359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1765,6 +1767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7eb1f89b7662874eb33ca0a0a979299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  at1: {fileID: 0}
+  p1: {fileID: 0}
 --- !u!1 &1598264537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2673,10 @@ PrefabInstance:
     - target: {fileID: 5582036142561483587, guid: c8d7a6388ba496e4aba24a7251f8cb00, type: 3}
       propertyPath: m_Name
       value: CommonTMP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582036142561483587, guid: c8d7a6388ba496e4aba24a7251f8cb00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7465480681709706655, guid: c8d7a6388ba496e4aba24a7251f8cb00, type: 3}
       propertyPath: endDuration
