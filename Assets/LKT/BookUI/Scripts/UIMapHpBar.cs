@@ -55,6 +55,7 @@ public class UIMapHpBar : MonoBehaviour
    private void Update()
    {
       UpdateHP();
+      UpdateDisplayScale();
    }
 
    private void LateUpdate()
@@ -106,6 +107,11 @@ public class UIMapHpBar : MonoBehaviour
 
       sliderHPBar.maxValue = maxHP;
       sliderHPBar.value = nowHP;
+   }
+
+   void UpdateDisplayScale()
+   {
+      transform.localScale = new Vector3(UIMap.scale,UIMap.scale, UIMap.scale);
    }
 
    IEnumerator UpdatePositionCoroutine()

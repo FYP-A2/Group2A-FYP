@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/LKT/BookUI/Prefabs/PageTab.meta
+guid: 21a263eb8dad3464da9eda4186d13733
+folderAsset: yes
+========
 guid: b1d1fa2b5aa74b8409b7db2947b6d448
+>>>>>>>> master:Assets/Nicrom/PolyPacks/Wind/Demo/LPW_Prefabs.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
