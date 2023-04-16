@@ -18,6 +18,8 @@ public class AreaTrigger : MonoBehaviour
     private void Start()
     {
         areaTriggers.Add(this);
+        AreaOnTriggerEnter += A;
+        AreaOnTriggerExit += A;
     }
 
     private void OnDestroy()
@@ -30,15 +32,20 @@ public class AreaTrigger : MonoBehaviour
     {
         AreaOnTriggerEnter(other);
 
-        if (TryGetComponent(out Player p) && !playersInSide.Contains(p))
+        if (other.TryGetComponent(out Player p) && !playersInSide.Contains(p))
             playersInSide.Add(p);
+    }
+
+    void A(Collider other)
+    {
+        
     }
 
     public void OnTriggerExit(Collider other)
     {
         AreaOnTriggerExit(other);
 
-        if (TryGetComponent(out Player p) && playersInSide.Contains(p))
+        if (other.TryGetComponent(out Player p) && playersInSide.Contains(p))
             playersInSide.Remove(p);
     }
 
