@@ -92,8 +92,8 @@ public class _1st_Director : MonoBehaviour{
 
             BeginRoundState_for_Timer_n_Announcer();
 
-            _M.mjc_livedata._rmn_time=timer.remaining_time.ToString();
-            _M.mjc_livedata._player_ready=stageObject.playerReady.ToString();
+            //_M.mjc_livedata._rmn_time=timer.remaining_time.ToString();
+            //_M.mjc_livedata._player_ready=stageObject.playerReady.ToString();
 
 
             // !!!!!!!!!!!!!!!!!!!!
@@ -106,6 +106,7 @@ public class _1st_Director : MonoBehaviour{
                timer.Reset();
                ExitRoundState();
                _DA.Reset();
+               
                mode.FM_SetState_RoundStart();
 
                
@@ -121,8 +122,9 @@ public class _1st_Director : MonoBehaviour{
          else if(mode.FM_GetCurrState()  == Mode.FullMode_State.RoundStart){
 
             BeginRoundState_for_Timer_n_Announcer();
+            SpawnMonsters_Once(stageObject, ref director_SpawnManager.roundStartSpawned);
 
-            if(timer.GetCurrState() == Timer.State.PAUSE){
+            if (timer.GetCurrState() == Timer.State.PAUSE){
                Assign_Timer_n_Announcer_ver_RBS(20,ref NeedOf_Asn_Timer_n_Announcer);
             }
             if(timer.GetCurrState() == Timer.State.FINISHED){
@@ -198,10 +200,11 @@ public class _1st_Director : MonoBehaviour{
     #region // State: RoundStart
     public void SpawnMonsters_Once(Stage stage, ref bool onceBoolean){
 
-      onceBoolean=false;
+      
       if (director_SpawnManager.roundStartSpawned == false)
          foreach(MonsterDictionary e in newSpawnManager.enemySpawnData)
                StartCoroutine(newSpawnManager.NewSpawnPrefabs(e,stage));
+        onceBoolean = true;
 
     }
     public void MoveOnToStart_Once(ref bool onceBoolean){

@@ -30,7 +30,7 @@ MonoBehaviour:
   stoppingDistance: 0.5
   radius: 0.5
   height: 2
-  obstacleAvoidance: 1
+  obstacleAvoidance: 2
   avoidancePriority: 50
   areaMask: -1
   velocity: {x: 1, y: 1, z: 1}

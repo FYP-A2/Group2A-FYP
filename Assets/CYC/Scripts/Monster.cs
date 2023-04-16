@@ -47,6 +47,7 @@ public abstract class Monster : MonoBehaviour, IMonster
             firePoint = transform;
 
         state = State.Idle;
+
     }
 
     // Update is called once per frame
