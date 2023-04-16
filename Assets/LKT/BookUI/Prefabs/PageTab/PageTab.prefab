@@ -178,7 +178,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Page 1
+  m_Text: Page 2
 --- !u!1 &4502839058491453115
 GameObject:
   m_ObjectHideFlags: 0

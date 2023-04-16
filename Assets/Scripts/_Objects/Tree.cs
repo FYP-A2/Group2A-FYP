@@ -29,11 +29,14 @@ public class Tree : MonoBehaviour
 
     private void Start()
     {
+        if (meleeTree == null)
+            TryGetComponent(out meleeTree);
+
         meleeTree.tree = this;
         meleeTree.hp = HP;
     }
 
-    public void BeingCut()
+    public void HewComplete()
     {
         this.TreeState = State.BeenCut;
         RewardPlayers();

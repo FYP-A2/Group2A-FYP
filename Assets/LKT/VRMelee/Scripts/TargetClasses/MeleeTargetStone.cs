@@ -14,8 +14,11 @@ namespace FYP2A.VR.Melee.Target
         [Header("Melee Target Stone")]
 
         [SerializeField]
-        float hp = 5;
-        float nowHp;
+        public Stone stone;
+        [HideInInspector]
+        public float hp = 5;
+        [HideInInspector]
+        public float nowHp;
         bool minigameOn = false;
 
         bool minigameCanInput = false;
@@ -39,6 +42,8 @@ namespace FYP2A.VR.Melee.Target
         public GameObject meterHintPrefabs;
         public float meterHintScale = 1;
         public float meterHintDisplayDuration = 0.7f;
+        public Color meterHintColor1 = Color.white;
+        public Color meterHintColor2 = Color.yellow;
 
         // Start is called before the first frame update
         new void Start()
@@ -215,6 +220,8 @@ namespace FYP2A.VR.Melee.Target
         {
             Transform t1 = Instantiate(meterHintPrefabs, transform).transform;
             Transform t2 = Instantiate(meterHintPrefabs, transform).transform;
+            Renderer r1 = t1.GetComponent<Renderer>();
+            Renderer r2 = t2.GetComponent<Renderer>();
             Vector3 t1StartPos = new Vector3(0, meterHintScale, 0);
             Vector3 t2StartPos = new Vector3(0, -meterHintScale, 0);
             float time = 0f;
@@ -231,7 +238,12 @@ namespace FYP2A.VR.Melee.Target
 
                 t1.localPosition = Vector3.Lerp(t1StartPos, Vector3.zero, Mathf.Pow(32, time - 1));
                 t2.localPosition = Vector3.Lerp(t2StartPos, Vector3.zero, Mathf.Pow(32, time - 1));
-
+                if (time > 0.5f)
+                {
+                    float x = Mathf.Pow(32, (time - 0.5f) * 2 - 1);
+                    r1.material.color = Color.Lerp(meterHintColor1, meterHintColor2, x);
+                    r2.material.color = Color.Lerp(meterHintColor1, meterHintColor2, x);
+                }
                 time += Time.deltaTime / duration;
                 yield return null;
             }
@@ -243,6 +255,20 @@ namespace FYP2A.VR.Melee.Target
         IEnumerator DropMeterHint(Transform mh) //drop hint when game failed
         {
             yield return null;
+            Vector3 pos = mh.localPosition;
+            mh.GetComponent<Renderer>().material.color = Color.red;
+
+
+            float duration = 0.2f;
+
+            float time = 0f;
+            while (time < 1)
+            {
+                mh.localPosition = Vector3.Lerp(pos, new Vector3(0,-meterHintScale*2,0), Mathf.Pow(32, time - 1));
+
+                time += Time.deltaTime / duration;
+                yield return null;
+            }
 
             Destroy(mh.gameObject);
         }
@@ -280,7 +306,7 @@ namespace FYP2A.VR.Melee.Target
         {
             minigameCanInput = false;
             MinigameOff();
-            //stone getitem
+            stone.HewComplete();
         }
 
         void MinigameFailed()

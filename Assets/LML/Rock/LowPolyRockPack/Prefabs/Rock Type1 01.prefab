@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 3329734}
   - component: {fileID: 2371728}
   - component: {fileID: 532619106580501864}
+  - component: {fileID: -7692194065329918317}
+  - component: {fileID: 5453303426954546203}
+  - component: {fileID: 1566652646978884276}
+  - component: {fileID: 8325972462017086760}
   m_Layer: 0
   m_Name: Rock Type1 01
   m_TagString: Untagged
@@ -94,6 +98,81 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: beb8ceccb376f684095ae1a93f088717, type: 3}
+--- !u!114 &-7692194065329918317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17706e90a2743b449d75333e784c431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeStone: {fileID: 0}
+  HP: 5
+  rewards:
+  - resourceType: Stone
+    amount: 10
+--- !u!114 &5453303426954546203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3be89769c831d44981d1bcc3decccb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableHitboxs: 1
+  affectByActivator: 1
+  hitbox: {fileID: 0}
+  hitboxes: []
+  fightable: 0
+  hewable: 1
+  stone: {fileID: 0}
+  hp: 5
+  nowHp: 0
+  inTimeRange: 0.1
+  outTimeRange: 0.1
+  timeMeter: 0.25
+  tablatureSize: 20
+  meterHintPrefabs: {fileID: 6016781304884176323, guid: bd1cd4491fa8ffc40aecdf148f23bcbc, type: 3}
+  meterHintScale: 1
+  meterHintDisplayDuration: 0.7
+  meterHintColor1: {r: 1, g: 1, b: 1, a: 1}
+  meterHintColor2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!54 &1566652646978884276
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8325972462017086760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b95c1b390a6a54ea1cb0210ca52273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

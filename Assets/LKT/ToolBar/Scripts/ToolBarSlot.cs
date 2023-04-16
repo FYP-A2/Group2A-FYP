@@ -6,39 +6,50 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ToolBarSlot : MonoBehaviour
 {
-   Vector3 orignalPosition;
-   Vector3 orignalScale;
-   Quaternion orignalRotation;
-   Transform t;
+    public ToolBar toolBar;
 
-   public void StoreTransform()
-   {
-      t = transform.GetChild(0);
-      orignalPosition = t.localPosition;
-      orignalScale = t.localScale;
-      orignalRotation = t.localRotation;
-   }
+    Vector3 orignalPosition;
+    Vector3 orignalScale;
+    Quaternion orignalRotation;
+    Transform t;
 
-   public void RestoreTransform()
-   {
-      if (t.TryGetComponent(out XRGrabInteractable xrgi))
-      {
-         if (!xrgi.isSelected)
-         {
+    XRGrabInteractable xrgi;
+
+    public void StoreTransform()
+    {
+        t = transform.GetChild(0);
+        orignalPosition = t.localPosition;
+        orignalScale = t.localScale;
+        orignalRotation = t.localRotation;
+    }
+
+    private void Update()
+    {
+        if (xrgi != null && xrgi.isSelected)
+            toolBar.Deactivate();
+            
+    }
+
+    public void RestoreTransform()
+    {
+        if (t.TryGetComponent(out xrgi))
+        {
+            if (!xrgi.isSelected)
+            {
+                if (t.parent != transform)
+                    t.SetParent(transform);
+                t.localPosition = orignalPosition;
+                t.localScale = orignalScale;
+                t.localRotation = orignalRotation;
+            }
+        }
+        else
+        {
             if (t.parent != transform)
-               t.SetParent(transform);
+                t.SetParent(transform);
             t.localPosition = orignalPosition;
             t.localScale = orignalScale;
             t.localRotation = orignalRotation;
-         }
-      }
-      else
-      {
-         if (t.parent != transform)
-            t.SetParent(transform);
-         t.localPosition = orignalPosition;
-         t.localScale = orignalScale;
-         t.localRotation = orignalRotation;
-      }
-   }
+        }
+    }
 }

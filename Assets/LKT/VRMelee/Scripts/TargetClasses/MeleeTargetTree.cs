@@ -269,7 +269,7 @@ namespace FYP2A.VR.Melee.Target
             minigameCanInput = false;
             LerpAllHitboxsColorTo(colorHitCorrect);
 
-            tree.BeingCut();
+            tree.HewComplete();
 
             StartCoroutine(MinigameSuccessWait1sReset());
         }

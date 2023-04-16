@@ -63,7 +63,7 @@ public class _InputEvents_Mine : MonoBehaviour
 
    public void CCall(X x){CCall();} public void CCall(){
       Tree treeComp =  tree.GetComponent<Tree>();
-      treeComp.BeingCut();
+      treeComp.HewComplete();
    }
 
    //Larger rotation included.

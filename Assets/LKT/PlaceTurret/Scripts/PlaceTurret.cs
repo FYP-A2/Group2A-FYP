@@ -34,16 +34,6 @@ namespace FYP2A.VR.PlaceTurret
         float placeAnimationHeight = 10f;
         float placeAnimationduration = 0.3f;
 
-        [Header("Test Input")]
-        public InputActionProperty testSelect;
-        public int test1TowerID;
-        public InputActionProperty testSelect2;
-        public int test2TowerID;
-        public InputActionProperty testSelect3;
-        public int test3TowerID;
-        public InputActionProperty testSelect4;
-        public int test4TowerID;
-
 
         float placeCD = 0;
 
@@ -52,19 +42,11 @@ namespace FYP2A.VR.PlaceTurret
         {
             inputConfirm.EnableDirectAction();
             inputCancel.EnableDirectAction();
-            testSelect.EnableDirectAction();
-            testSelect2.EnableDirectAction();
-            testSelect3.EnableDirectAction();
-            testSelect4.EnableDirectAction();
         }
         protected void OnDisable()
         {
             inputConfirm.DisableDirectAction();
             inputCancel.DisableDirectAction();
-            testSelect.DisableDirectAction();
-            testSelect2.DisableDirectAction();
-            testSelect3.DisableDirectAction();
-            testSelect4.DisableDirectAction();
         }
 
         // Start is called before the first frame update
@@ -72,29 +54,6 @@ namespace FYP2A.VR.PlaceTurret
         {
             inputConfirm.action.performed += InputConfirm_Action_performed;
             inputCancel.action.performed += InputCancel_Action_performed;
-            testSelect.action.performed += Test_Action_performed;
-            testSelect2.action.performed += Test2_Action_performed;
-            testSelect3.action.performed += Test3_Action_performed;
-            testSelect4.action.performed += Test4_Action_performed;
-        }
-
-        private void Test_Action_performed(InputAction.CallbackContext obj)
-        {
-            SetPreviewTurret(test1TowerID);
-        }
-        private void Test2_Action_performed(InputAction.CallbackContext obj)
-        {
-            SetPreviewTurret(test2TowerID);
-        }
-
-        private void Test3_Action_performed(InputAction.CallbackContext obj)
-        {
-            SetPreviewTurret(test3TowerID);
-        }
-
-        private void Test4_Action_performed(InputAction.CallbackContext obj)
-        {
-            SetPreviewTurret(test4TowerID);
         }
 
         // Update is called once per frame
