@@ -10,8 +10,10 @@ public abstract class Monster : MonoBehaviour, IMonster
     protected NavMeshAgent agent;
     public int hp, damage;
     [SerializeField] float defense, resistance;
-    float attackDelay, burntTime, slowTime, reductionTime;
-    bool isBurnt, isDefenseBreak, isAttacked;
+    protected float attackDelay;
+    float burntTime, slowTime, reductionTime;
+    bool isBurnt, isDefenseBreak;
+    protected bool isAttacked;
     public bool isSlow { get; private set; }
     public SphereCollider sphereCollider;
     protected List<Transform> hitTargets;
@@ -168,6 +170,7 @@ public abstract class Monster : MonoBehaviour, IMonster
                         animator.SetTrigger(ani_Attack);
                     transform.LookAt(target.position);
                     Idamage.TakeDamage(damage);
+                    Debug.Log(gameObject.name + " Attack Damage");
                     isAttacked = true;
                     StartCoroutine(ResetAttack(attackDelay));
                 }
@@ -258,7 +261,7 @@ public abstract class Monster : MonoBehaviour, IMonster
         }
     }
 
-    IEnumerator ResetAttack(float attackDelay)
+    protected virtual IEnumerator ResetAttack(float attackDelay)
     {
         while (isAttacked)
         {

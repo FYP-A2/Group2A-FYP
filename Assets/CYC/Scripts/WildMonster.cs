@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class WildMonster : Monster
     public float chaseDistance;
     List<Transform> players = new List<Transform>();
     Vector3 originPos;
+    bool isCollided;
     public new enum State {Idle, Move, Chase, Attack, Die }
     public  State wildState { get;private set; }
 
@@ -77,6 +79,33 @@ public class WildMonster : Monster
         }
     }
 
+    protected override void Attack(Transform target)
+    {
+        if (currentTarget == null)
+            wildState = State.Move;
+
+        if (target != null)
+        {
+            if (!isAttacked)
+            {
+                if (!enemyScriptable.isRanged)
+                {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
+                    transform.LookAt(target.position);
+                    isAttacked = true;                    
+                }
+                else
+                {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
+                    Shoot(target);
+                    isAttacked = true;
+                }
+            }
+        }
+    }
+
     void StateChange()
     {
         if(wildState == State.Idle)
@@ -126,5 +155,30 @@ public class WildMonster : Monster
     {
         base.Dead();
         //Drop
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && isAttacked && !isCollided)
+        {
+            IDamage player = collision.gameObject.GetComponent<IDamage>();
+            if (player != null)
+            {
+                isCollided = true;
+                player.TakeDamage(damage);
+                StartCoroutine(ResetAttack(attackDelay));
+                Debug.Log(gameObject.name + " Collision Damage");
+            }
+        }
+    }
+
+    protected override IEnumerator ResetAttack(float attackDelay)
+    {
+        while (isAttacked)
+        {
+            yield return new WaitForSeconds(attackDelay);
+            isAttacked = false;
+            isCollided = false;
+        }
     }
 }

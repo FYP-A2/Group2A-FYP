@@ -16,15 +16,15 @@ MonoBehaviour:
   damage: 20
   defense: 0.5
   resistance: 0.5
-  attackRange: 5
+  attackRange: 2
   attackDelay: 2
-  isRanged: 1
+  isRanged: 0
   fireEffect: {fileID: 4746891339986312836, guid: e958badfd5110f24fb7f93a3efb9383c, type: 3}
   slowEffect: {fileID: 2059965710140594545, guid: 5637123380e71504f821b5f96f911b02, type: 3}
   toxicEffect: {fileID: 7758672653904282153, guid: 0ab14953843c6da4a8c32bec7287b1a4, type: 3}
   bullet: {fileID: 4936703170902901937, guid: c098ec0bf2b6ef74887dec8391e0ce68, type: 3}
   baseOffset: 0
-  speed: 3
+  speed: 5
   angularSpeed: 120
   acceleration: 8
   stoppingDistance: 0.5

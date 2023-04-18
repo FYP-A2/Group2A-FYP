@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class StageMonster : Monster
 {
     public Transform target;
-    
     protected override void Start()
     {
         base.Start();
@@ -26,6 +25,7 @@ public class StageMonster : Monster
                 Move();
                 break;
             case State.Attack:
+                agent.SetDestination(transform.position);
                 Attack(currentTarget);
                 break;
             case State.Die:
@@ -69,8 +69,7 @@ public class StageMonster : Monster
             }
 
             if (obstacleInFront && pathTarget.Contains(currentTarget) || currentTarget == target)
-            {
-                agent.SetDestination(transform.position);
+            {               
                 state = State.Attack;
             }
             else
@@ -84,7 +83,7 @@ public class StageMonster : Monster
         else
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
-            {               
+            {
                 agent.SetDestination(target.position);
             }
         }
