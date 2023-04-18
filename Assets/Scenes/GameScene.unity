@@ -18639,7 +18639,7 @@ GameObject:
   - component: {fileID: 447651510}
   - component: {fileID: 447651511}
   m_Layer: 0
-  m_Name: NavMeshModifierVolume
+  m_Name: NavMeshModifierVolume(InvisiableWall1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27644,7 +27644,7 @@ GameObject:
   - component: {fileID: 707219764}
   - component: {fileID: 707219765}
   m_Layer: 0
-  m_Name: NavMeshModifierVolume(invisiable wall)
+  m_Name: NavMeshModifierVolume(InvisiableWall)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
