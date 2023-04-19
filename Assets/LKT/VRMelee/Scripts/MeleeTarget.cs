@@ -41,6 +41,16 @@ namespace FYP2A.VR.Melee
                 foreach (MeleeHitbox hb in hitboxes)
                     hb.SetMeleeProperty(this);
             }
+
+            enableHitboxs = !enableHitboxs;
+            if (!enableHitboxs)
+            {
+                EnableHitboxs();
+            }
+            else
+            {
+                DisableHitboxs();
+            }
         }
 
 

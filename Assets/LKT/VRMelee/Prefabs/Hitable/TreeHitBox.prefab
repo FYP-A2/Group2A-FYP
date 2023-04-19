@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4858fc6af3776724facb352f3137ed4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableHitboxs: 1
+  enableHitboxs: 0
   affectByActivator: 1
   hitbox: {fileID: 0}
   hitboxes:
@@ -620,7 +620,9 @@ MonoBehaviour:
   - {fileID: 6591271120069200717}
   fightable: 0
   hewable: 1
+  tree: {fileID: 0}
   hp: 4
+  nowHp: 0
   defaultHitDuration: 1.5
   difficultyFactorMin: 1
   difficultyFactorMax: 1.2
