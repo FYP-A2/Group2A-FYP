@@ -15,11 +15,18 @@ public class CommonTMP : MonoBehaviour
     public float endDuration = 0.4f;
     public float animateLerpExponentiationBase = 8;
 
-    public void Display(string text, float duration = 0)
+    public void Display(string text, float duration = 0, bool noStartAnimation = false)
     {
         StopAllCoroutines();
         textMeshPro.text = text;
-        StartCoroutine(StartAnimation(startDuration));
+        if (!noStartAnimation)
+            StartCoroutine(StartAnimation(startDuration));
+        else
+        {
+            canvas.anchoredPosition3D = Vector3.zero;
+            canvasGroup.alpha = 1;
+        }
+
         if (duration > 0)
             StartCoroutine(EndAnimation(endDuration, duration));
     }

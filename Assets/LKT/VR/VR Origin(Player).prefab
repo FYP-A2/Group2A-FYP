@@ -1270,7 +1270,7 @@ MonoBehaviour:
   player: {fileID: 8764947311404728607}
   isPreviewing: 0
   xrRayInteractor: {fileID: 2668174525342265576}
-  turretPrefabIndex: {fileID: 0}
+  turretPrefabIndex: {fileID: 8252520905623984174, guid: a9d1f3e3bccd8f542921540713a2f216, type: 3}
   book: {fileID: 4848051132834313979}
   inputConfirm:
     m_UseReference: 1
