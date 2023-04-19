@@ -126,6 +126,89 @@ public class _1st_Director : MonoBehaviour{
 
         }
 
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_MineStone)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("4. Mine stone", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+            }
+
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_GoBuildArea)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("5.", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+                if (AreaTrigger.FindAreasByID("TNT.BuildArea1").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.BuildArea1")[0].transform;
+            }
+
+            //update
+            TNTModeCheckPlayerInAreaAndJumpState("TNT.BuildArea1", _Player.GetComponent<Player>());
+
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("6. build phy tower", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+            }
+
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("7. building", eventChecklist);
+            }
+
+        }
+
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_Ready)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("8. You are now free to collect resources, press _ to ready for the first wave", eventChecklist);
+            }
+
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_EndCondition)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("gg", eventChecklist);
+            }
+
+        }
     }
 
     void TNTModeCheckPlayerInAreaAndJumpState(string area_ID,Player p)

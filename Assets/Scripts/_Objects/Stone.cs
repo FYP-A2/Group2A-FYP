@@ -34,10 +34,16 @@ public class Stone : MonoBehaviour
         meleeStone.hp = HP;
     }
 
-    public void HewComplete()
+    public void HewComplete(Player byWho = null)
     {
         RewardPlayers();
         Destroy(gameObject);
+
+        if (byWho != null)
+        {
+            if (byWho.director.mode._TNT_State == Mode.TNT_State.Waiting_MineStone)
+                byWho.director.TNTModeJumpState();
+        }
     }
 
     public void RewardPlayers()

@@ -209,6 +209,10 @@ namespace FYP2A.VR.PlaceTurret
                 StartCoroutine(PlaceDownTurretAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
                 book.SelectExitAllButton();
+
+                if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
+                    if (nowBuild.Tower.towerType == TowerScriptableObject.TowerType.Phy)
+                        player.director.TNTModeJumpState();
             }
         }
 
@@ -302,6 +306,10 @@ namespace FYP2A.VR.PlaceTurret
             //Debug.Log(debugMsg);
             //
             //Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
+
+
+            if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
+                    player.director.TNTModeJumpState();
         }
 
         //server execute

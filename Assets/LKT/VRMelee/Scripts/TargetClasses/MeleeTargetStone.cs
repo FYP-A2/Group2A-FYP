@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.VisualScripting.Member;
 
 namespace FYP2A.VR.Melee.Target
 {
@@ -82,7 +83,7 @@ namespace FYP2A.VR.Melee.Target
 
             if (minigameOn && minigameCanInput && isHitTime)
             {
-                HitCorrect();
+                HitCorrect(source);
             }
 
             else if (minigameOn && minigameCanInput && !isHitTime)
@@ -95,14 +96,14 @@ namespace FYP2A.VR.Melee.Target
 
         }
 
-        void HitCorrect()
+        void HitCorrect(MeleeSource source)
         {
             Debug.Log("correct,  accuracy: " + HitAccuracy + " || nowHP: " + (nowHp - nowDamage));
 
             nowHp -= nowDamage;
             hitThisRound = true;
             if (nowHp <= 0)
-                MinigameSuccess();
+                MinigameSuccess(source);
         }
 
         void HitMiss()
@@ -302,11 +303,11 @@ namespace FYP2A.VR.Melee.Target
         }
 
 
-        void MinigameSuccess()
+        void MinigameSuccess(MeleeSource source)
         {
             minigameCanInput = false;
             MinigameOff();
-            stone.HewComplete();
+            stone.HewComplete(source._owner.GetComponent<Player>());
         }
 
         void MinigameFailed()
@@ -328,23 +329,6 @@ namespace FYP2A.VR.Melee.Target
         {
             base.DisableHitboxs();
             MinigameOff();
-        }
-
-        public void Debug1()
-        {
-            if (minigameOn && minigameCanInput && isHitTime)
-            {
-                StartCoroutine(SetNowDamage(1));
-                HitCorrect();
-            }
-
-            else if (minigameOn && minigameCanInput && !isHitTime)
-            {
-                HitMiss();
-            }
-
-            else if (!minigameOn)
-                MinigameOn();
         }
 
     }

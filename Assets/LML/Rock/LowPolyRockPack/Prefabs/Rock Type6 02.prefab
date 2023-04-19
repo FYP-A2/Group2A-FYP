@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7015338157422311383}
   - component: {fileID: -628186891058568600}
   - component: {fileID: 2348965327543787674}
+  - component: {fileID: 7117786243451742459}
   m_Layer: 0
   m_Name: Rock Type6 02
   m_TagString: Untagged
@@ -97,7 +98,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d9a37c1e81c2edd418eab77179043eb0, type: 3}
 --- !u!54 &7015338157422311383
@@ -165,3 +166,15 @@ MonoBehaviour:
   meterHintDisplayDuration: 0.7
   meterHintColor1: {r: 1, g: 1, b: 1, a: 1}
   meterHintColor2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &7117786243451742459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b95c1b390a6a54ea1cb0210ca52273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
