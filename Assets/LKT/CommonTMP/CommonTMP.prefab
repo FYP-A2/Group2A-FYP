@@ -50,7 +50,7 @@ MonoBehaviour:
   animateInFrom: {x: -1, y: 0, z: 0}
   startDuration: 0.4
   endDuration: 0.4
-  animateLerpExponentiationBase: 8
+  animateLerpExponentiationBase: 32
 --- !u!1 &5608373734298584896
 GameObject:
   m_ObjectHideFlags: 0

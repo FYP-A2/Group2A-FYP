@@ -15,6 +15,8 @@ public class CommonTMP : MonoBehaviour
     public float endDuration = 0.4f;
     public float animateLerpExponentiationBase = 8;
 
+    bool displaying = false;
+
     public void Display(string text, float duration = 0, bool noStartAnimation = false)
     {
         StopAllCoroutines();
@@ -31,11 +33,22 @@ public class CommonTMP : MonoBehaviour
             StartCoroutine(EndAnimation(endDuration, duration));
     }
 
+    public void DisplayOff(float delay = 0)
+    {
+        if (displaying)
+        {
+            StopAllCoroutines();
+            StartCoroutine(EndAnimation(endDuration, delay));
+        }
+    }
+
     IEnumerator StartAnimation(float animationDuration)
     {
+        displaying = true;
+
         float time = 0;
         Vector3 startPos = animateInFrom;
-        while (time < 1)
+        while (time < 1 && displaying)
         {
             float t = 1 - Mathf.Pow(animateLerpExponentiationBase, (1 - time) - 1);
             canvas.anchoredPosition3D = Vector3.Lerp(startPos, Vector3.zero, t);
@@ -52,9 +65,11 @@ public class CommonTMP : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
+        displaying = false;
+
         float time = 0;
         Vector3 endPos = animateInFrom;
-        while (time < 1)
+        while (time < 1 && !displaying)
         {
             float t = Mathf.Pow(animateLerpExponentiationBase, time - 1);
             canvas.anchoredPosition3D = Vector3.Lerp(Vector3.zero, endPos, t);
@@ -70,14 +85,10 @@ public class CommonTMP : MonoBehaviour
     public void Debug1(int n)
     {
         if (n == 0)
-            Display("Title Title", 3);
+            Display("Title Title", 6);
         if (n == 1)
-            Display("Time: 28");
+            Display("update",0,true);
         if (n == 2)
-            Display("Testing Text3:" +
-                "\nHahahaha" +
-                "\nJJJJJ" +
-                "\nJJJJJ" +
-                "\nJJJJJ");
+            DisplayOff();
     }
 }
