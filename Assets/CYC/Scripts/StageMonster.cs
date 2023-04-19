@@ -21,12 +21,15 @@ public class StageMonster : Monster
         switch (state)
         {
             case State.Idle:
+                Debug.Log(gameObject.name + state.ToString());
                 Idle();
                 break;
             case State.Move:
+                Debug.Log(gameObject.name + state.ToString());
                 Move();
                 break;
             case State.Attack:
+                Debug.Log(gameObject.name + state.ToString());
                 agent.SetDestination(transform.position);
                 Attack(currentTarget);
                 break;

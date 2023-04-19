@@ -157,6 +157,8 @@ public abstract class Monster : MonoBehaviour, IMonster
     }
     protected virtual void Attack(Transform target)
     {
+        if (!Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
+            currentTarget = null;
         if (currentTarget == null)
             state = State.Move;
 
@@ -170,7 +172,7 @@ public abstract class Monster : MonoBehaviour, IMonster
                         animator.SetTrigger(ani_Attack);
                     transform.LookAt(target.position);
                     Idamage.TakeDamage(damage);
-                    Debug.Log(gameObject.name + " Attack Damage");
+                    //Debug.Log(gameObject.name + " Attack Damage");
                     isAttacked = true;
                     StartCoroutine(ResetAttack(attackDelay));
                 }

@@ -15,15 +15,15 @@ public class WildMonster : Monster
     public new enum State {Idle, Move, Chase, Attack, Die }
     public  State wildState { get;private set; }
 
-    //void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(originPos, moveRange);
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(transform.position, chaseDistance);
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(originPos, becomeMoveDistance);
-    //}
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(originPos, moveRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(originPos, becomeMoveDistance);
+    }
     protected override void Start()
     {
         base.Start();
