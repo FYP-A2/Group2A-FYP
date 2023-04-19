@@ -81484,6 +81484,7 @@ MonoBehaviour:
   resourceGroup: {fileID: 1206644465}
   movementSpeed: 15
   rotationSpeed: 50
+  StoneMeterHintTransform: {fileID: 0}
 --- !u!1 &1071361710574089340
 GameObject:
   m_ObjectHideFlags: 0

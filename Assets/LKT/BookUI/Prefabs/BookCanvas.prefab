@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcaffa58af11f8744845c61a1cae3a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleControl: 30
+  scaleControl: 300
   scaleUITagFactor: 10
   book: {fileID: 0}
   cam: {fileID: 0}
@@ -395,6 +395,7 @@ MonoBehaviour:
   uiMap: {fileID: 3190434514539374731}
   uiMapCamPrefab: {fileID: 2576845210706632404, guid: 7f5e1701107f2ae488ee0b9a1e1634c1, type: 3}
   uiMapCam: {fileID: 0}
+  fakeBook: 0
 --- !u!114 &6748465607245065428
 MonoBehaviour:
   m_ObjectHideFlags: 0

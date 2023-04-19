@@ -22,6 +22,7 @@ public class UIBook : MonoBehaviour
     public UIMap uiMap;
     public GameObject uiMapCamPrefab;
     public Camera uiMapCam;
+    public bool fakeBook = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class UIBook : MonoBehaviour
         uiHover.ownedResource = PlayerResource;
 
 
-        if (uiMapCam == null)
+        if (uiMapCam == null && !fakeBook)
         {
             uiMapCam = Instantiate(uiMapCamPrefab).GetComponent<Camera>();
         }
@@ -66,7 +67,8 @@ public class UIBook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        uiMapCam.transform.position = new Vector3(transform.position.x, 512, transform.position.z);
+        if (!fakeBook)
+            uiMapCam.transform.position = new Vector3(transform.position.x, 512, transform.position.z);
     }
 
     public void SelectExitAllButton()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1002933672358103347}
   - component: {fileID: 7228568699054851890}
   m_Layer: 0
-  m_Name: CTN L2 Ice
+  m_Name: CNT L2 Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2765148239345663367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 5, z: 2.5}
   m_Children:
   - {fileID: 1402394989500341246}
   - {fileID: 3488059837996451291}

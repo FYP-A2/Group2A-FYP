@@ -18,8 +18,11 @@ public class Player : MonoBehaviour,IPlayerMovements,I_TPV
    public float movementSpeed=15;
    public float rotationSpeed=50;
 
-   #region Movements
-   public void Move(Vector2 rightness_n_forwardness_R){
+    [Header("other")]
+    public Transform StoneMeterHintTransform;
+
+    #region Movements
+    public void Move(Vector2 rightness_n_forwardness_R){
       Vector2 temp = rightness_n_forwardness_R;
       GO.transform.Translate(0,0,temp.y*Time.fixedDeltaTime*movementSpeed,Space.Self);
       GO.transform.Rotate(0,temp.x*Time.fixedDeltaTime*rotationSpeed,0,Space.Self);

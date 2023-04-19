@@ -2160,6 +2160,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7195763628071981100, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
+      propertyPath: fakeBook
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195763628071981100, guid: 74a62190c42d4dd40bb10f61ac83247d, type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 0}

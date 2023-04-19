@@ -82,7 +82,7 @@ public class _1st_Director : MonoBehaviour{
                 tntOncePlayed = true;
 
                 _DA.AnimateOnce("Welcome to the Full Game Mode.", announcer);
-                _DA.DrawOnce("1. Follow the Arrow & Go Outside of the Castle", eventChecklist);
+                _DA.DrawOnce("1. Follow the Arrow & Go to the forest", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
                 if (AreaTrigger.FindAreasByID("TNT.TreeArea1").Count > 0)
@@ -100,7 +100,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("2. cut tree", eventChecklist);
+                _DA.DrawOnce("2. Press A to select the Axe\nHew the tree", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
             }
@@ -114,7 +114,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("3.", eventChecklist);
+                _DA.DrawOnce("3. Follow the Arrow & Find a stone", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
                 if (AreaTrigger.FindAreasByID("TNT.StoneArea1").Count > 0)
@@ -133,7 +133,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("4. Mine stone", eventChecklist);
+                _DA.DrawOnce("4.Press A to select the pickaxe\nMine the stone", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
             }
@@ -147,7 +147,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("5.", eventChecklist);
+                _DA.DrawOnce("5.Follow the Arrow", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
                 if (AreaTrigger.FindAreasByID("TNT.BuildArea1").Count > 0)
@@ -166,7 +166,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("6. build phy tower", eventChecklist);
+                _DA.DrawOnce("6. Grab book and turn to page 2\nselect the arrow Tower base", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
             }
@@ -180,7 +180,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("7. building", eventChecklist);
+                _DA.DrawOnce("7. ...building...", eventChecklist);
             }
 
         }
@@ -193,7 +193,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("8. You are now free to collect resources, press _ to ready for the first wave", eventChecklist);
+                _DA.DrawOnce("8. You are now free to collect resources", eventChecklist);
             }
 
         }

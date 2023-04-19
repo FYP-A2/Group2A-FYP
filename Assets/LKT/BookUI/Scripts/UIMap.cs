@@ -16,7 +16,11 @@ public class UIMap : MonoBehaviour
    void Update()
    {
       //if is owner
-      cam.orthographicSize = scaleControl;
+      if (cam != null)
+        {
+            cam.orthographicSize = scaleControl;
+        }
+      
       scale = scaleControl * (scaleUITagFactor/10000);
    }
 

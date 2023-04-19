@@ -46,6 +46,9 @@ namespace FYP2A.VR.Melee.Target
         public Color meterHintColor1 = Color.white;
         public Color meterHintColor2 = Color.yellow;
 
+        Player playerNow;
+        List<GameObject> meterHintList = new List<GameObject>();
+
         // Start is called before the first frame update
         new void Start()
         {
@@ -92,8 +95,10 @@ namespace FYP2A.VR.Melee.Target
             }
 
             else if (!minigameOn)
+            {
                 MinigameOn();
-
+                playerNow = source._owner.GetComponent<Player>();
+            }
         }
 
         void HitCorrect(MeleeSource source)
@@ -221,6 +226,12 @@ namespace FYP2A.VR.Melee.Target
         {
             Transform t1 = Instantiate(meterHintPrefabs, transform).transform;
             Transform t2 = Instantiate(meterHintPrefabs, transform).transform;
+            meterHintList.Add(t1.gameObject);
+            meterHintList.Add(t2.gameObject);
+            t1.SetParent(playerNow.StoneMeterHintTransform);
+            t2.SetParent(playerNow.StoneMeterHintTransform);
+            t1.localRotation = Quaternion.identity;
+            t2.localRotation = Quaternion.identity;
             Renderer r1 = t1.GetComponent<Renderer>();
             Renderer r2 = t2.GetComponent<Renderer>();
             Vector3 t1StartPos = new Vector3(0, meterHintScale, 0);
@@ -249,6 +260,8 @@ namespace FYP2A.VR.Melee.Target
                 yield return null;
             }
 
+            meterHintList.Remove(t1.gameObject);
+            meterHintList.Remove(t2.gameObject);
             Destroy(t1.gameObject);
             Destroy(t2.gameObject);
         }
@@ -271,6 +284,7 @@ namespace FYP2A.VR.Melee.Target
                 yield return null;
             }
 
+            meterHintList.Remove(mh.gameObject);
             Destroy(mh.gameObject);
         }
 
@@ -329,6 +343,15 @@ namespace FYP2A.VR.Melee.Target
         {
             base.DisableHitboxs();
             MinigameOff();
+        }
+
+
+        private void OnDestroy()
+        {
+            foreach(GameObject go in meterHintList)
+            {
+                Destroy(go);
+            }
         }
 
     }
