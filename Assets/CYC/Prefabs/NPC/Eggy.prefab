@@ -664,6 +664,8 @@ GameObject:
   - component: {fileID: 8486634524642612331}
   - component: {fileID: 8486634524642612330}
   - component: {fileID: 7453884434895691122}
+  - component: {fileID: 3710646146726651265}
+  - component: {fileID: 8782294485173511422}
   m_Layer: 0
   m_Name: Eggy
   m_TagString: Untagged
@@ -719,6 +721,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &3710646146726651265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486634524642612333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72facca795c504d4cb7153588ba97b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3.5
+  waypoints: []
+  currentWaypointIndex: 0
+  stayTime: 3
+  timer: 0
+  isLastPoint: 0
+  type: 0
+  talkDistance: 5
+  textBubbleTime: 5
+  talkTxt: []
+  text: {fileID: 1760816090715867090}
+--- !u!195 &8782294485173511422
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486634524642612333}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8486634524683068207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1289,42 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_text
+      value: Hi!! Welcome to our village
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: cf327d1780b106c4b9916ad8732ee5ee, type: 2}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3338061289179697163, guid: cf327d1780b106c4b9916ad8732ee5ee, type: 2}
+    - target: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
 --- !u!224 &3117362910546054257 stripped
@@ -1249,3 +1332,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5414904186111941675, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
   m_PrefabInstance: {fileID: 6946384224503533658}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1760816090715867090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8649496519034034056, guid: 7e5767fa58be28941a18410fe56de71b, type: 3}
+  m_PrefabInstance: {fileID: 6946384224503533658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

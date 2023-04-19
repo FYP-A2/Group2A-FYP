@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class StageMonster : Monster
 {
     public Transform target;
+    List<Transform> pathTarget = new List<Transform>();
+    float pathTargetUpdateTime = 2;
     protected override void Start()
     {
         base.Start();
@@ -37,16 +39,28 @@ public class StageMonster : Monster
 
     protected override void Move()
     {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(target.position);
+        }
+
         if (currentTarget != target && hitTargets.Count > 0)
         {
             //bool targetIsBlocked = false;
-            bool obstacleInFront = false;
-            List<Transform> pathTarget = new List<Transform>();
+            bool obstacleInFront = false;            
 
             NavMeshPath path = new NavMeshPath();
             if (agent.CalculatePath(target.position, path))
             {
-                for (int i = 1; i < path.corners.Length; i++)
+                int count = 0;
+                if (path.corners.Length > 2)
+                {
+                    count = 2;
+                }
+                else
+                    count = path.corners.Length;
+
+                for (int i = 1; i < count; i++)
                 {
                     if (Physics.Linecast(path.corners[i - 1], path.corners[i], out RaycastHit hit1, layer) &&
                         hit1.transform.CompareTag("breakable"))
@@ -78,13 +92,6 @@ public class StageMonster : Monster
                 {
                     agent.SetDestination(target.position);
                 }
-            }
-        }
-        else
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                agent.SetDestination(target.position);
             }
         }
     }

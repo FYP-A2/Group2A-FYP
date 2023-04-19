@@ -3,6 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+public class NPCtxt
+{
+    public static List<string> tipsNPCTxt = new List<string>{"monster", "早上好XX，現在我有冰淇淋" };
+
+    public static List<string> normalNPCTxt = new List<string>{"normal", "早上好XX，現在我有冰淇淋" };
+
+    public static List<string> GetNPCTxt(NPCBehaviour.Type type)
+    {
+        switch (type)
+        {
+            case NPCBehaviour.Type.InOrder: 
+                return normalNPCTxt;
+            case NPCBehaviour.Type.Random:
+                return normalNPCTxt;
+            case NPCBehaviour.Type.Standing:
+                return tipsNPCTxt;
+        }
+        return null;
+    }
+} 
 
 public class NPCBehaviour : MonoBehaviour
 {
@@ -20,7 +40,7 @@ public class NPCBehaviour : MonoBehaviour
 
     public float talkDistance = 2f;
     public float textBubbleTime = 5f;
-    public List<string> talkTxt;
+    public List<string> talkTxt = new List<string>();
     public TMP_Text text;
 
     Animator animator;
@@ -31,6 +51,7 @@ public class NPCBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         agent.speed = moveSpeed;
         currentWaypointIndex = 0;
+        talkTxt = NPCtxt.GetNPCTxt(type);
         timer = stayTime;
         //SetDestination(waypoints[currentWaypointIndex]);
     }
