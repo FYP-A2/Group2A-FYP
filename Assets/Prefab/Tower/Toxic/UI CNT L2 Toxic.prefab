@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1002933672358103347}
   - component: {fileID: 7228568699054851890}
-  m_Layer: 0
-  m_Name: UI CNT L2 Fire 1
+  m_Layer: 31
+  m_Name: UI CNT L2 Toxic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,10 @@ PrefabInstance:
       value: DOWN TUConnector2
       objectReference: {fileID: 0}
     - target: {fileID: 5665614093044295928, guid: 2715b0198a5221a4ba84632e62cca3a7, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665614093044295928, guid: 2715b0198a5221a4ba84632e62cca3a7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -207,6 +211,10 @@ PrefabInstance:
       value: UP TUConnector2
       objectReference: {fileID: 0}
     - target: {fileID: 5665614093044295928, guid: 2715b0198a5221a4ba84632e62cca3a7, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665614093044295928, guid: 2715b0198a5221a4ba84632e62cca3a7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -238,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 4734346725029275974, guid: 011bdce3a0c132e49aa83d90d44ffcb7, type: 3}
       propertyPath: m_Name
       value: towerBaseDn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734346725029275974, guid: 011bdce3a0c132e49aa83d90d44ffcb7, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 5402094072025789436, guid: 011bdce3a0c132e49aa83d90d44ffcb7, type: 3}
       propertyPath: m_RootOrder

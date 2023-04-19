@@ -19,10 +19,10 @@ public class DA_State_Class : MonoBehaviour{
          eventChecklist.SetText(msg);        
       }
    }
-   public void AnimateOnce(string msg, Announcer announcer){
+   public void AnimateOnce(string msg, Announcer announcer, float displayDuration = 5f){
       if(AnimationState==DA_State.NOTHING || AnimationState==DA_State.OUTDATED){
          AnimationState=DA_State.UP_TO_DATE;
-         announcer.Announce(msg);
+         announcer.Announce(msg, displayDuration);
       }
    }
 

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour,IPlayerMovements,I_TPV
    [Header("Game Components")]
    public GameObject GO;
    public GameObject targetPointVisualization;
+    public LookAt lookAt;
+    public _1st_Director director;
 
     [Header("Attributes")]
     [SerializeReference] public ResourceGroupType resourceGroup;

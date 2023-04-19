@@ -17,7 +17,7 @@ public class CommonTMP : MonoBehaviour
 
     bool displaying = false;
 
-    public void Display(string text, float duration = 0, bool noStartAnimation = false)
+    public void Display(string text, float duration = 0, bool noStartAnimation = false) //duration <= 0: display forever
     {
         StopAllCoroutines();
         textMeshPro.text = text;
@@ -78,8 +78,8 @@ public class CommonTMP : MonoBehaviour
             time += Time.deltaTime / animationDuration;
             yield return null;
         }
-        //canvas.anchoredPosition3D = endPos;
-        //canvasGroup.alpha = 0;
+        canvas.anchoredPosition3D = endPos;
+        canvasGroup.alpha = 0;
     }
 
     public void Debug1(int n)

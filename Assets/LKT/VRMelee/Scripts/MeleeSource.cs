@@ -42,7 +42,7 @@ namespace FYP2A.VR.Melee
         protected float nextHewDelay = 1f;
 
         [SerializeField]
-        protected GameObject _owner;
+        public GameObject _owner;
         public GameObject Owner { get { return _owner; } }
 
 

@@ -18,7 +18,7 @@ public class Test2 : MonoBehaviour
 
     private void Update()
     {
-        if (AreaTrigger.CheckPlayerInStateArea(Area_State_Script.Area_State.InCastle, p1))
+        if (AreaTrigger.CheckPlayerInArea(AreaTrigger.FindAreas(x=>x.area_ID=="Hi"), p1))
             Debug.Log("InArea");
     }
 }

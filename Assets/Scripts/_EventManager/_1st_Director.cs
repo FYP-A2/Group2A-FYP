@@ -15,7 +15,7 @@ using UnityEngine;
 public class _1st_Director : MonoBehaviour{
    //SAFE?
    #region Scripts & Objects Binding;
-   [HideInInspector] public GameObject _Player;
+   public GameObject _Player;
    [HideInInspector] public Mode mode;
    public Timer timer;
    [HideInInspector] public Announcer announcer;
@@ -44,10 +44,15 @@ public class _1st_Director : MonoBehaviour{
 
    #region Need of Assigning
    bool NeedOf_Asn_Timer_n_Announcer=false; //STATE: 1
-   #endregion
+    #endregion
 
-   #region OncePrototype
-   public void _Once(ref bool need){
+    private void Start()
+    {
+        _Player.GetComponent<Player>().director = this;
+    }
+
+    #region OncePrototype
+    public void _Once(ref bool need){
       if(need){
          need=false;
          dosth_Once(ref boo_dosth_NeedToStart);
@@ -60,24 +65,84 @@ public class _1st_Director : MonoBehaviour{
       else{need=false;}
    }
 
-   // About booleans' naming: prob. *** boo_XXXX_Started;
-   #endregion
+    // About booleans' naming: prob. *** boo_XXXX_Started;
+    #endregion
 
 
-   #region Game Start & By-Mode Updates
-   //void Start(){ Time.timeScale=0; }
+    #region Game Start & By-Mode Updates
+    //void Start(){ Time.timeScale=0; }
 
+    bool tntOncePlayed = false;
    public void TNTModeUpdate(){
-      if(mode._TNT_State==Mode.TNT_State.Waiting_GoTreeArea){
+        if (mode._TNT_State == Mode.TNT_State.Waiting_GoTreeArea)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
 
-         _DA.AnimateOnce("Welcome to the Full Game Mode.",announcer);
-         _DA.DrawOnce("1. Follow the Arrow & Go Outside of the Castle",eventChecklist);
+                _DA.AnimateOnce("Welcome to the Full Game Mode.", announcer);
+                _DA.DrawOnce("1. Follow the Arrow & Go Outside of the Castle", eventChecklist);
 
-         _Area_State.CheckIsInSquareArea(418,458,1722,1762,"Tree Zone");
-      };
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+                if (AreaTrigger.FindAreasByID("TNT.TreeArea1").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.TreeArea1")[0].transform;
+            }
 
+            //update
+            TNTModeCheckPlayerInAreaAndJumpState("TNT.TreeArea1", _Player.GetComponent<Player>());
+        }
 
-   }
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_CutTree)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("2. cut tree", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+            }
+            
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Waiting_GoStoneArea)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("3.", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+                if (AreaTrigger.FindAreasByID("TNT.StoneArea1").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.StoneArea1")[0].transform;
+            }
+
+            //update
+            TNTModeCheckPlayerInAreaAndJumpState("TNT.StoneArea1", _Player.GetComponent<Player>());
+
+        }
+
+    }
+
+    void TNTModeCheckPlayerInAreaAndJumpState(string area_ID,Player p)
+    {
+        if (AreaTrigger.CheckPlayerInAreaByID(area_ID, p))
+        {
+            announcer.Announce("You arrived " + AreaTrigger.FindAreasByID(area_ID)[0].area_Name);
+            TNTModeJumpState();
+        }
+    }
+
+    public void TNTModeJumpState()
+    {
+        mode._TNT_State++;
+        tntOncePlayed = false;
+        _DA.Reset();
+    }
 
    //Actually it's FullGameModeUpdate(), temp. changed to TNTModeUpdate for debugging.
    public void FullModeUpdateLoop()

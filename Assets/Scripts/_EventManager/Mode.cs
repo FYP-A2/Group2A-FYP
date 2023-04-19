@@ -15,8 +15,8 @@ public class Mode : MonoBehaviour
       Waiting_GoTreeArea=1,Waiting_CutTree=2,
       Waiting_GoStoneArea=3,Waiting_MineStone=4,
       Waiting_GoBuildArea=5,Waiting_BuildPhyTower=6,
-      Waiting_BuildFinished=7
-   }
+      Waiting_BuildFinished=7, Waiting_Ready = 8, Waiting_EndCondition = 9
+    }
    public bool TNTModeTriggered=false,devModeTriggered=false,started_once=false;
 
    public bool Mode2_Triggered=false;

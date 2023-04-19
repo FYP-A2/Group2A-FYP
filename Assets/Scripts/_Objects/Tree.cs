@@ -36,11 +36,17 @@ public class Tree : MonoBehaviour
         meleeTree.hp = HP;
     }
 
-    public void HewComplete()
+    public void HewComplete(Player byWho = null)
     {
         this.TreeState = State.BeenCut;
         RewardPlayers();
         StartCoroutine(TreeDown(autoCleanDelay));
+        
+        if (byWho != null)
+        {
+            if (byWho.director.mode._TNT_State == Mode.TNT_State.Waiting_CutTree)
+                byWho.director.TNTModeJumpState();
+        }
     }
 
     public void RewardPlayers(){

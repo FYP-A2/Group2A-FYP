@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 namespace FYP2A.VR.Melee.Target
 {
@@ -125,7 +126,7 @@ namespace FYP2A.VR.Melee.Target
             if (minigameOn && minigameCanInput && CheckHitRing(targetHitbox) && CheckHitCorrectRing(targetHitbox))
             {
                 StopAllMinigameCheckTimeOut();
-                HitCorrect(targetHitbox);
+                HitCorrect(targetHitbox, source);
             }
 
             if (minigameOn && minigameCanInput && CheckHitRing(targetHitbox) && !CheckHitCorrectRing(targetHitbox))
@@ -214,11 +215,10 @@ namespace FYP2A.VR.Melee.Target
         {
             if (CheckHitRing(hitbox))
                 return hitboxes.IndexOf(hitbox) == nowHitRingNumber;
-
             return false;
         }
 
-        void HitCorrect(MeleeHitbox hitbox)
+        void HitCorrect(MeleeHitbox hitbox, MeleeSource source)
         {
             StopAllMinigameCheckTimeOut();
             nowHp -= nowDamage;
@@ -230,7 +230,7 @@ namespace FYP2A.VR.Melee.Target
             }
             else
             {
-                MinigameSuccess();
+                MinigameSuccess(source);
             }
 
         }
@@ -264,12 +264,13 @@ namespace FYP2A.VR.Melee.Target
 
 
 
-        void MinigameSuccess()
+        void MinigameSuccess(MeleeSource source)
         {
             minigameCanInput = false;
             LerpAllHitboxsColorTo(colorHitCorrect);
 
-            tree.HewComplete();
+            Debug.Log("hew complete source player:" + source._owner.GetComponent<Player>());
+            tree.HewComplete(source._owner.GetComponent<Player>());
 
             StartCoroutine(MinigameSuccessWait1sReset());
         }
