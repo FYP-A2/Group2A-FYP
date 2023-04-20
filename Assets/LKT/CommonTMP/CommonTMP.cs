@@ -28,8 +28,8 @@ public class CommonTMP : MonoBehaviour
             StartCoroutine(StartAnimation(startDuration));
         else
         {
-            finalAnchoredPosition3D = canvas.anchoredPosition3D;
-            finalAlpha = canvasGroup.alpha;
+            canvas.anchoredPosition3D = Vector3.Lerp(animateInFrom, Vector3.zero, LerpExponentiation(animateLerpExponentiationBase, 1));
+            canvasGroup.alpha = Mathf.Lerp(0, 1, LerpExponentiation(animateLerpExponentiationBase, 1));
         }
 
         if (duration > 0)
@@ -61,6 +61,9 @@ public class CommonTMP : MonoBehaviour
             yield return null;
         }
 
+        canvas.anchoredPosition3D = Vector3.Lerp(animateInFrom, Vector3.zero, LerpExponentiation(animateLerpExponentiationBase, 1));
+        canvasGroup.alpha = Mathf.Lerp(0, 1, LerpExponentiation(animateLerpExponentiationBase,1));
+
         finalAnchoredPosition3D = canvas.anchoredPosition3D;
         finalAlpha = canvasGroup.alpha;
         //canvas.anchoredPosition3D = Vector3.zero;
@@ -86,6 +89,11 @@ public class CommonTMP : MonoBehaviour
         }
         canvas.anchoredPosition3D = endPos;
         canvasGroup.alpha = 0;
+    }
+
+    float LerpExponentiation(float exponeBase,float time)
+    {
+        return 1 - Mathf.Pow(animateLerpExponentiationBase, (1 - time) - 1);
     }
 
     public void Debug1(int n)

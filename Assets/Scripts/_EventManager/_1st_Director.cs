@@ -114,6 +114,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
+                _DA.AnimateOnce("You get 10 wood", announcer);
                 _DA.DrawOnce("3. Follow the Arrow & Find a stone", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
@@ -147,6 +148,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
+                _DA.AnimateOnce("You get 5 Stone", announcer);
                 _DA.DrawOnce("5.Follow the Arrow", eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
@@ -193,11 +195,16 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
+                _DA.AnimateOnce("Build Done!!", announcer);
                 _DA.DrawOnce("8. You are now free to collect resources, Monster Will attack the core soon", eventChecklist);
+                timer.Init(10);
+                timer.SetStateRunning();
             }
 
             if(timer.GetCurrState() == Timer.State.FINISHED)
             {
+                timer.Reset();
+
                 bool temp = false;
                 //spawn monster
                 SpawnMonsters_Once(stageObject, ref temp);
@@ -213,7 +220,7 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("Defence", eventChecklist);
+                _DA.DrawOnce("Defence the monster", eventChecklist);
             }
 
             if(GameObject.FindGameObjectsWithTag("Monster").Length < 3)

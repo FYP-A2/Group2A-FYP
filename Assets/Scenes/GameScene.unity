@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2978285, g: 0.6340788, b: 0.99369353, a: 1}
+  m_IndirectSpecularColor: {r: 0.29758373, g: 0.6340128, b: 0.9937014, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -41537,6 +41537,54 @@ PrefabInstance:
     - target: {fileID: 1681029729943227610, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
       propertyPath: m_Layer
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].input.m_Reference
+      value: 
+      objectReference: {fileID: 6022179251899298253, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].input.m_Action.m_Id
+      value: 6843ec35-7cdf-4231-972a-2672cd38c28d
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].input.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].input.m_Action.m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 789230077}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TNTModeJumpState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _1st_Director, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764947311404728592, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: egs.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
@@ -86902,7 +86950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2141283653
 MonoBehaviour:
   m_ObjectHideFlags: 0
