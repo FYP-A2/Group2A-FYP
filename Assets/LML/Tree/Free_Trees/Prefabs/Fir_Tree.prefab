@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: Fir_Tree
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -103,7 +103,9 @@ MonoBehaviour:
   rewardAmount: 10
   upperPart: {fileID: 8271270941179454944}
   lowerPart: {fileID: 7849054404653881564}
+  hideLeaf: 1
   hideLeafMaterial: {fileID: 2100000, guid: f2b12e395ee40d146861601686cdf0b8, type: 2}
+  autoCleanDelay: 15
   TreeState: 3
 --- !u!136 &8837122965544961058
 CapsuleCollider:

@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: Palm_Tree
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -107,20 +107,6 @@ MonoBehaviour:
   hideLeafMaterial: {fileID: 2100000, guid: f2b12e395ee40d146861601686cdf0b8, type: 2}
   autoCleanDelay: 15
   TreeState: 3
---- !u!64 &802442315767044791
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3719299577823188309}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5220702601083036729, guid: c0c51f7b8cacd614d80d10237789b194, type: 3}
 --- !u!54 &1744544201039447056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,6 +123,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &802442315767044791
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719299577823188309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5220702601083036729, guid: c0c51f7b8cacd614d80d10237789b194, type: 3}
 --- !u!64 &2754160634362947909
 MeshCollider:
   m_ObjectHideFlags: 0
