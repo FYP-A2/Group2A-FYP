@@ -50641,6 +50641,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1206644464}
     m_Modifications:
+    - target: {fileID: 341039601055402869, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 7697
+      objectReference: {fileID: 0}
     - target: {fileID: 1399769733214985808, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
       propertyPath: m_Name
       value: VR Origin(Player)
@@ -81481,7 +81485,6 @@ MonoBehaviour:
   targetPointVisualization: {fileID: 290278497}
   lookAt: {fileID: 0}
   director: {fileID: 0}
-  resourceGroup: {fileID: 1206644465}
   movementSpeed: 15
   rotationSpeed: 50
   StoneMeterHintTransform: {fileID: 0}

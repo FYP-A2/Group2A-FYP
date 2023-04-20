@@ -337,7 +337,7 @@ namespace FYP2A.VR.PlaceTurret
         {
             bool result = true;
             for (int i = 0; i < neededResource.resources.Count; i++)
-                if (player.resourceGroup.GetAmount(i) < neededResource.resources[i].amount)
+                if (player.ResourceGroup.GetAmount(i) < neededResource.resources[i].amount)
                     result = false;
             return result;
         }
@@ -345,7 +345,7 @@ namespace FYP2A.VR.PlaceTurret
         void Pay(ResourceGroupTypeSO neededResource)
         {
             for (int i = 0; i < neededResource.resources.Count; i++)
-                player.resourceGroup.Add(i, -neededResource.resources[i].amount);
+                player.ResourceGroup.Add(i, -neededResource.resources[i].amount);
         }
 
 

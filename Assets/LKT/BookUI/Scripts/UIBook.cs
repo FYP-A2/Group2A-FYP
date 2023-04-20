@@ -10,7 +10,7 @@ public class UIBook : MonoBehaviour
     [Header("Player Info")]
     public Player player;
     public Camera playerCam;
-    public ResourceGroupType PlayerResource { get => player.resourceGroup; }
+    public ResourceGroupType PlayerResource { get => player.ResourceGroup; }
     public PlaceTurret placeTurret;
 
     [Header("Book")]

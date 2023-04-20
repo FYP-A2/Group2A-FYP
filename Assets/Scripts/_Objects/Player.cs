@@ -10,8 +10,9 @@ public class Player : MonoBehaviour,IPlayerMovements,I_TPV
     public LookAt lookAt;
     public _1st_Director director;
 
-    [Header("Attributes")]
-    [SerializeReference] public ResourceGroupType resourceGroup;
+    //[Header("Attributes")]
+    //[SerializeReference]
+    public ResourceGroupType ResourceGroup { get => ResourceGroupType.Instance; }
 
    
    [Header("Movement Multipliers")]
@@ -33,8 +34,8 @@ public class Player : MonoBehaviour,IPlayerMovements,I_TPV
    #endregion
 
    #region Setter
-   public void AddResource(string resourceName, int n) { resourceGroup.Add(resourceName,n); }
-   public void AddResource(int resourceIndex, int n) { resourceGroup.Add(resourceIndex, n); }
+   public void AddResource(string resourceName, int n) { ResourceGroup.Add(resourceName,n); }
+   public void AddResource(int resourceIndex, int n) { ResourceGroup.Add(resourceIndex, n); }
    #endregion
 
 

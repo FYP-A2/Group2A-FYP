@@ -137,8 +137,8 @@ CapsuleCollider:
   m_Height: 492.9
   m_Direction: 2
   m_Center: {x: 3.7836456, y: -0.8, z: -294.67}
---- !u!64 &3841585184074794353
-MeshCollider:
+--- !u!136 &8635047987667641025
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,10 +147,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8990950145024547448, guid: 67f89000c8f62824393b3ca47aadee73, type: 3}
+  m_Radius: 22.9
+  m_Height: 49.75
+  m_Direction: 2
+  m_Center: {x: 0, y: 5.3, z: -22.8}
 --- !u!1001 &1241121263991001709
 PrefabInstance:
   m_ObjectHideFlags: 0
