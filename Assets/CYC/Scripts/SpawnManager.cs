@@ -49,8 +49,10 @@ public class SpawnManager : MonoBehaviour
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
+        
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
+        //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, range, 1<<3));
         if (NavMesh.SamplePosition(randomPoint, out hit, range, NavMesh.AllAreas))
         {
             result = hit.position;

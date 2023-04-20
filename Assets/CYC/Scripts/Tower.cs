@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
@@ -57,6 +56,7 @@ public class Tower : MonoBehaviour
                 {
                     for (int i = 0; i < monsters.Count; i++)
                     {
+                        if (monsters[i] == null) return;
                         RaycastHit hit;
                         Physics.Raycast(firePoint.position, (monsters[i].position - firePoint.position).normalized, out hit, attackRange, layer);
                         if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow)
@@ -127,6 +127,7 @@ public class Tower : MonoBehaviour
             {
                 if (!isAttacked)
                 {
+                    if (monsters[0] == null) return;
                     RaycastHit hit;
                     Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
                     if (hit.transform != null && hit.transform.tag == "Monster")

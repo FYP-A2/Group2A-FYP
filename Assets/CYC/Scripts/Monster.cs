@@ -4,27 +4,38 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Monster : MonoBehaviour, IMonster
+public abstract class Monster : MonoBehaviour, IMonster
 {
-    [SerializeField] EnemyScriptableObject enemyScriptable;
-    NavMeshAgent agent;
+    [SerializeField] protected EnemyScriptableObject enemyScriptable;
+    protected NavMeshAgent agent;
     public int hp, damage;
     [SerializeField] float defense, resistance;
-    float attackDelay, burntTime, slowTime, reductionTime;
-    bool isBurnt, isDefenseBreak, isAttacked;
+    protected float attackDelay;
+    float burntTime, slowTime, reductionTime;
+    bool isBurnt, isDefenseBreak;
+    protected bool isAttacked;
     public bool isSlow { get; private set; }
     public SphereCollider sphereCollider;
-    public Transform target;
-    List<Transform> hitTargets;
+    protected List<Transform> hitTargets;
     GameObject bulletPrefab;
     public Slider slider;
-    [SerializeField]GameObject fireEffect, slowEffect, toxicEffect;
+    //[SerializeField]
+    GameObject fireEffect, slowEffect, toxicEffect;
     public GameObject displayDamage;
+    public LayerMask layer;
+
+    protected Animator animator;
+    protected const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
+    public Transform firePoint;
+
+    public enum State { Idle, Move, Attack, Die };
+    public State state { get; protected set; }
+
+    protected Transform currentTarget;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        if(target== null)
-            target = GameObject.Find("Core").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         Initialization();
         burntTime = slowTime = reductionTime = 0;
@@ -32,19 +43,33 @@ public class Monster : MonoBehaviour, IMonster
         hitTargets = sphereCollider.GetComponent<AttackArea>().targets;
         slider.maxValue = hp;
         slider.value = hp;
+
+        animator = GetComponent<Animator>();
+        if (firePoint == null)
+            firePoint = transform;
+
+        state = State.Idle;
+
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        if(target != null) Move();
-        if(isBurnt) Burnt();
-        if(isSlow) Slow();
-        if(isDefenseBreak) DefenseBreak();
+        if (isBurnt) Burnt();
+        if (isSlow) Slow();
+        if (isDefenseBreak) DefenseBreak();
         slider.value = hp;
+        if (animator != null)
+            animator.SetFloat(ani_Move, agent.velocity.magnitude);
     }
 
-    void Initialization()
+    protected virtual void Idle()
+    {
+        if (!agent.pathPending)
+            state = State.Move;
+    }
+
+    protected void Initialization()
     {
         hp = enemyScriptable.hp;
         damage = enemyScriptable.damage;
@@ -52,7 +77,7 @@ public class Monster : MonoBehaviour, IMonster
         resistance = enemyScriptable.resistance;
         sphereCollider.radius = enemyScriptable.attackRange;
         attackDelay = enemyScriptable.attackDelay;
-        if(enemyScriptable.isRanged)
+        if (enemyScriptable.isRanged)
         {
             bulletPrefab = enemyScriptable.bullet;
         }
@@ -69,14 +94,16 @@ public class Monster : MonoBehaviour, IMonster
         agent.areaMask = enemyScriptable.areaMask;
     }
 
-    public void TakeDamage(int phyDamage, int magicDamage)
+    public virtual void TakeDamage(int phyDamage, int magicDamage)
     {
         int finalDamage = (int)(phyDamage * (1 - defense) + magicDamage * (1 - resistance));
         hp -= finalDamage;
-        ShowDamage(finalDamage,Color.black);
+        if (animator != null)
+            animator.SetTrigger(ani_GetHit);
+        ShowDamage(finalDamage, Color.black);
         if (hp <= 0)
         {
-            Dead();
+            state = State.Die;
         }
     }
 
@@ -86,7 +113,7 @@ public class Monster : MonoBehaviour, IMonster
         if (fireEffect == null)
         {
             fireEffect = Instantiate(enemyScriptable.fireEffect, transform);
-            fireEffect.transform.localPosition= new Vector3(0,-enemyScriptable.height/2,0);
+            fireEffect.transform.localPosition = new Vector3(0, -enemyScriptable.height / 2, 0);
             fireEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         if (!isBurnt)
@@ -95,7 +122,6 @@ public class Monster : MonoBehaviour, IMonster
             StartCoroutine(Ignite(burntDamage));
         }
         this.burntTime = burntTime;
-                   
     }
 
     public void GetSlow(int phyDamage, int magicDamage, float slowRatio, float slowTime)
@@ -108,7 +134,7 @@ public class Monster : MonoBehaviour, IMonster
             slowEffect.transform.localScale *= 1 + enemyScriptable.radius;
         }
         agent.speed = enemyScriptable.speed * (1 - slowRatio);
-        this.slowTime= slowTime;
+        this.slowTime = slowTime;
         isSlow = true;
     }
 
@@ -125,67 +151,69 @@ public class Monster : MonoBehaviour, IMonster
         this.reductionTime = reductionTime;
         isDefenseBreak = true;
     }
-    void Move()
+    protected virtual void Move()
     {
-        if(hitTargets.Count>0)
-        {
-            //Debug.Log("Attack");
-            agent.SetDestination(transform.position);
-            Attack(hitTargets[0]);           
-        }
-        else
-        {
-            //Debug.Log("Move");
-            if(!agent.hasPath)
-                agent.SetDestination(target.position);
-        }
-    }
 
-    void Attack(Transform target)
+    }
+    protected virtual void Attack(Transform target)
     {
-        IDamage Idamage = target.GetComponent<IDamage>();
-        if (Idamage != null && !isAttacked)
+        if (!Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
+            currentTarget = null;
+        if (currentTarget == null)
+            state = State.Move;
+
+        if (target != null)
         {
-            if (!enemyScriptable.isRanged)
+            if (target.TryGetComponent<IDamage>(out IDamage Idamage) && !isAttacked)
             {
-                transform.LookAt(hitTargets[0].position);
-                Idamage.TakeDamage(damage);
-                isAttacked = true;
-                StartCoroutine(ResetAttack(attackDelay));
-            }
-            else
-            {
-                Shoot();
-                isAttacked = true;
-                StartCoroutine(ResetAttack(attackDelay));
+                if (!enemyScriptable.isRanged)
+                {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
+                    transform.LookAt(target.position);
+                    Idamage.TakeDamage(damage);
+                    //Debug.Log(gameObject.name + " Attack Damage");
+                    isAttacked = true;
+                    StartCoroutine(ResetAttack(attackDelay));
+                }
+                else
+                {
+                    if (animator != null)
+                        animator.SetTrigger(ani_Attack);
+                    Shoot(target);
+                    isAttacked = true;
+                    StartCoroutine(ResetAttack(attackDelay));
+                }
             }
         }
     }
-    void Dead()
+    protected virtual void Dead()
     {
-        Destroy(gameObject);
+        if (animator != null)
+            animator.SetBool(ani_Die, true);
+        Destroy(gameObject, 3f);
     }
 
     void Burnt()
     {
-        if(burntTime+0.5 > 0)
+        if (burntTime + 0.5 > 0)
         {
             burntTime -= Time.deltaTime;
         }
         else
         {
-            isBurnt= false;
+            isBurnt = false;
             if (fireEffect != null)
             {
                 Destroy(fireEffect);
-                fireEffect = null;             
+                fireEffect = null;
             }
-        }    
+        }
     }
 
     void Slow()
     {
-        if(slowTime > 0)
+        if (slowTime > 0)
         {
             slowTime -= Time.deltaTime;
         }
@@ -196,22 +224,22 @@ public class Monster : MonoBehaviour, IMonster
             if (slowEffect != null)
             {
                 Destroy(slowEffect);
-                slowEffect = null;               
+                slowEffect = null;
             }
         }
     }
 
     void DefenseBreak()
     {
-        if(reductionTime>0)
+        if (reductionTime > 0)
         {
             reductionTime -= Time.deltaTime;
         }
         else
         {
-            isDefenseBreak= false;
-            defense= enemyScriptable.defense;
-            resistance= enemyScriptable.resistance;
+            isDefenseBreak = false;
+            defense = enemyScriptable.defense;
+            resistance = enemyScriptable.resistance;
             if (toxicEffect != null)
             {
                 Destroy(toxicEffect);
@@ -228,14 +256,14 @@ public class Monster : MonoBehaviour, IMonster
             ShowDamage(damage, Color.red);
             if (hp <= 0)
             {
-                Dead();
+                state = State.Die;
                 yield return null;
             }
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    IEnumerator ResetAttack(float attackDelay)
+    protected virtual IEnumerator ResetAttack(float attackDelay)
     {
         while (isAttacked)
         {
@@ -244,32 +272,22 @@ public class Monster : MonoBehaviour, IMonster
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other != null)
-    //    {
-    //        if (other.transform.tag == "breakable")
-    //        {
-    //            hitTargets = other.transform;
-    //        }
-    //    }
-    //}
-
-    void Shoot()
+    protected virtual void Shoot(Transform target)
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
         {
-            transform.LookAt(hitTargets[0].position);
-            bullet.Shoot(transform.forward,damage,gameObject);
+            transform.LookAt(target.position);
+            //bullet.Shoot(transform.forward, damage, gameObject);
+            bullet.Shoot((target.position - firePoint.position).normalized, damage, gameObject);
         }
     }
 
     public void ShowDamage(int DamageShow, Color color)
     {
-        GameObject x = Instantiate(displayDamage, slider.transform.position, slider.transform.rotation,transform);
+        GameObject x = Instantiate(displayDamage, slider.transform.position, slider.transform.rotation, transform);
         x.GetComponent<TextMove>().text.color = color;
         x.GetComponent<TextMove>().SetDamage(DamageShow);
         Destroy(x, 1f);
