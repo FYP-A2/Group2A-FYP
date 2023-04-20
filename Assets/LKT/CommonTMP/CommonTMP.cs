@@ -17,6 +17,9 @@ public class CommonTMP : MonoBehaviour
 
     bool displaying = false;
 
+    Vector3 finalAnchoredPosition3D;
+    float finalAlpha;
+
     public void Display(string text, float duration = 0, bool noStartAnimation = false) //duration <= 0: display forever
     {
         StopAllCoroutines();
@@ -25,8 +28,8 @@ public class CommonTMP : MonoBehaviour
             StartCoroutine(StartAnimation(startDuration));
         else
         {
-            canvas.anchoredPosition3D = Vector3.zero;
-            canvasGroup.alpha = 1;
+            finalAnchoredPosition3D = canvas.anchoredPosition3D;
+            finalAlpha = canvasGroup.alpha;
         }
 
         if (duration > 0)
@@ -57,6 +60,9 @@ public class CommonTMP : MonoBehaviour
             time += Time.deltaTime / animationDuration;
             yield return null;
         }
+
+        finalAnchoredPosition3D = canvas.anchoredPosition3D;
+        finalAlpha = canvasGroup.alpha;
         //canvas.anchoredPosition3D = Vector3.zero;
         //canvasGroup.alpha = 1;
     }
@@ -72,8 +78,8 @@ public class CommonTMP : MonoBehaviour
         while (time < 1 && !displaying)
         {
             float t = Mathf.Pow(animateLerpExponentiationBase, time - 1);
-            canvas.anchoredPosition3D = Vector3.Lerp(Vector3.zero, endPos, t);
-            canvasGroup.alpha = Mathf.Lerp(1, 0, t);
+            canvas.anchoredPosition3D = Vector3.Lerp(finalAnchoredPosition3D, endPos, t);
+            canvasGroup.alpha = Mathf.Lerp(finalAlpha, 0, t);
 
             time += Time.deltaTime / animationDuration;
             yield return null;
