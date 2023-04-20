@@ -193,7 +193,15 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("8. You are now free to collect resources", eventChecklist);
+                _DA.DrawOnce("8. You are now free to collect resources, Monster Will attack the core soon", eventChecklist);
+            }
+
+            if(timer.GetCurrState() == Timer.State.FINISHED)
+            {
+                bool temp = false;
+                //spawn monster
+                SpawnMonsters_Once(stageObject, ref temp);
+                TNTModeJumpState();
             }
 
         }
@@ -205,9 +213,31 @@ public class _1st_Director : MonoBehaviour{
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("gg", eventChecklist);
+                _DA.DrawOnce("Defence", eventChecklist);
             }
 
+            if(GameObject.FindGameObjectsWithTag("Monster").Length < 3)
+            {
+                TNTModeJumpState();
+            }
+
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.End)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce("End", eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+            }
+
+            GameObject[] monsterList = GameObject.FindGameObjectsWithTag("Monster");
+            if (monsterList.Length > 0)
+                _Player.GetComponent<Player>().lookAt.target = monsterList[0].transform;
         }
     }
 

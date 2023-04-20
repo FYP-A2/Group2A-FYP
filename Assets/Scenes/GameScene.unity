@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29758373, g: 0.6340128, b: 0.9937014, a: 1}
+  m_IndirectSpecularColor: {r: 0.2978285, g: 0.6340788, b: 0.99369353, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51326,7 +51326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1253156055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51343,12 +51343,27 @@ MonoBehaviour:
   spawnPoints: []
   enemySpawnData:
   - type: Melee
-    prefab: {fileID: 2182106862086260171, guid: c3c99e481cab67449b336033eaf2ab6a, type: 3}
+    prefab: {fileID: 7128717169128400431, guid: 0d5b58f6db9235847bc989512e84ef6d, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
     numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   - type: Ranged
-    prefab: {fileID: 4267623551590542991, guid: 19395fbc4649c3a479ab1b437a2c5ad2, type: 3}
+    prefab: {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337, type: 3}
+    RMP: {fileID: 738889221}
+    spawnDelays_WhereEachItemMeans_In_A_Level: []
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  - type: Ranged
+    prefab: {fileID: 3850173379084900417, guid: f1a30e77d78f6414f824a272d08af55c, type: 3}
+    RMP: {fileID: 738889221}
+    spawnDelays_WhereEachItemMeans_In_A_Level: []
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  - type: Ranged
+    prefab: {fileID: 1931731618954757432, guid: 21f86c21bb3d585499a60a8844a27a0e, type: 3}
+    RMP: {fileID: 738889221}
+    spawnDelays_WhereEachItemMeans_In_A_Level: []
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  - type: Ranged
+    prefab: {fileID: 5626876224596996719, guid: d38e60411f61b6644aa946c4dd831fca, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
     numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
@@ -51361,7 +51376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253156054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 560.5, y: 80.8, z: 1797}
+  m_LocalPosition: {x: 303.9, y: 75.9, z: 1773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1745126825}
