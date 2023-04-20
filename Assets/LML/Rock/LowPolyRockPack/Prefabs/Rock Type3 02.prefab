@@ -163,7 +163,7 @@ MonoBehaviour:
   tablatureSize: 20
   meterHintPrefabs: {fileID: 6016781304884176323, guid: bd1cd4491fa8ffc40aecdf148f23bcbc, type: 3}
   meterHintScale: 1
-  meterHintDisplayDuration: 0.7
+  meterHintDisplayDuration: 0.6
   meterHintColor1: {r: 1, g: 1, b: 1, a: 1}
   meterHintColor2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &7725290027845991766

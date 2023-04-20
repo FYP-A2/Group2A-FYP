@@ -27,7 +27,7 @@ public class UIResourceDisplay : MonoBehaviour
    {
       if (playerResource == null)
       {
-         playerResource = GameObject.FindObjectOfType<ResourceGroupType>();
+         playerResource = ResourceGroupType.Instance;
       }
 
       textAmount.color = colorNormal;

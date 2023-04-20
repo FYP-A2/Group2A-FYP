@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerNotCheckCollision:
     serializedVersion: 2
-    m_Bits: 5184
+    m_Bits: 2147497206
   colorCanPlace: {fileID: 241166638644325204}
   colorCannotPlace: {fileID: 975208372895296301}
   offsetY: 0
@@ -284,6 +284,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
       propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}
+      propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2671696865666965195, guid: 8146f82d095cb924a8aa31c06b8fc9d6, type: 3}

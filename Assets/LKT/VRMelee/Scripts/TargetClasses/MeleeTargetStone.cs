@@ -79,7 +79,6 @@ namespace FYP2A.VR.Melee.Target
 
         public override void HitBy(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
         {
-            Debug.Log("hit: " + source.name);
 
             if (source.gameObject.name != "Pickaxe")
                 return;
@@ -103,8 +102,6 @@ namespace FYP2A.VR.Melee.Target
 
         void HitCorrect(MeleeSource source)
         {
-            Debug.Log("correct,  accuracy: " + HitAccuracy + " || nowHP: " + (nowHp - nowDamage));
-
             nowHp -= nowDamage;
             hitThisRound = true;
             if (nowHp <= 0)
@@ -113,8 +110,6 @@ namespace FYP2A.VR.Melee.Target
 
         void HitMiss()
         {
-            Debug.Log("miss");
-
             failed = true;
             MinigameFailed();
         }
@@ -130,7 +125,6 @@ namespace FYP2A.VR.Melee.Target
 
         void MinigameOff()
         {
-            Debug.Log("gameOff");
 
             minigameOn = false;
             end = true;
@@ -139,8 +133,6 @@ namespace FYP2A.VR.Melee.Target
 
         void MinigameStart()
         {
-            Debug.Log("game start");
-
             nowHp = hp;
             isHitTime = false;
             hitThisRound = false;
@@ -293,6 +285,9 @@ namespace FYP2A.VR.Melee.Target
             tablature.Clear();
             int randomMax = 2;
             int createdBeat = 0;
+
+            tablature.Enqueue(true);
+            createdBeat++;
 
             for (int i = 0; i < size; i++)
             {

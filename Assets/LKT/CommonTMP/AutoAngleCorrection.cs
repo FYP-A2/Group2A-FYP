@@ -23,15 +23,29 @@ public class AutoAngleCorrection : MonoBehaviour
         Quaternion locRot = transform.localRotation;
         transform.SetParent(originalParent);
 
+        Correcting(locPos, locRot);
+        yield return new WaitForSeconds(0.5f);
+        Correcting(locPos, locRot);
+        yield return new WaitForSeconds(0.5f);
+        Correcting(locPos, locRot);
+        yield return new WaitForSeconds(0.5f);
+        Correcting(locPos, locRot);
+        yield return new WaitForSeconds(0.5f);
+
         while (true)
         {
-            transform.SetParent(centerTransform);
-            transform.localPosition = locPos;
-            transform.localRotation = locRot;
-            transform.SetParent(originalParent);
+            Correcting(locPos, locRot);
 
             yield return new WaitForSeconds(5);
         }
+    }
+
+    void Correcting(Vector3 locPos, Quaternion locRot)
+    {               
+        transform.SetParent(centerTransform);
+        transform.localPosition = locPos;
+        transform.localRotation = locRot;
+        transform.SetParent(originalParent);
     }
 
 }

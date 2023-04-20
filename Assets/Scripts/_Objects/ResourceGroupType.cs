@@ -14,7 +14,7 @@ public class ResourceGroupType : MonoBehaviour,I_GettersSetters_For_Resources
     [SerializeField]
     public List<Resource> resources;
 
-    private void Start(){
+    private void Awake(){
         Initialize(resourceGroupDefault.resources);
         Instance = this;
     }
