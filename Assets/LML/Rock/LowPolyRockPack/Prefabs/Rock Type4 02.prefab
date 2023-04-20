@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6078258886577600701}
   - component: {fileID: 3385024686064032854}
   - component: {fileID: 6938426055689675921}
+  - component: {fileID: 6362424094777253433}
   m_Layer: 0
   m_Name: Rock Type4 02
   m_TagString: Untagged
@@ -178,3 +179,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b95c1b390a6a54ea1cb0210ca52273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6362424094777253433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: 1cabe6c409e182e42841cb0d52516b80, type: 3}
+  - {fileID: 8300000, guid: 32ddaa62775cc644a859a8337b94a10a, type: 3}
+  - {fileID: 8300000, guid: 204c790d3f8a45c44a8d17cfdf526833, type: 3}
+  - {fileID: 8300000, guid: b609b3ed73529c14288949ab09551067, type: 3}
+  - {fileID: 8300000, guid: 483d83382d5160444b3c6957b7818482, type: 3}
+  - {fileID: 8300000, guid: 199b4a494d3bd7944b1fd5b4e39e0fb7, type: 3}

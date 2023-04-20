@@ -13,7 +13,8 @@ public class Tower : MonoBehaviour
     bool isAttacked;
     public LayerMask layer;
     public NavMeshModifierVolume modifierVolume;
-    int phyDamage, magicDamage, attackRange, fireRate;
+    int phyDamage, magicDamage, fireRate;
+    float attackRange;
     float upgradeAOE;
     void Start()
     {
@@ -26,7 +27,7 @@ public class Tower : MonoBehaviour
         }
         phyDamage = towerSO.phyDamage;
         magicDamage = towerSO.magicDamage;
-        attackRange = towerSO.attackRange;
+        attackRange = sphereCollider.radius * 5;
         fireRate = towerSO.fireRate;
         if (firePoint == null)
             firePoint = transform;
@@ -191,7 +192,7 @@ public class Tower : MonoBehaviour
             phyDamage += allTowerSO[i].phyDamage;
             magicDamage += allTowerSO[i].magicDamage;
         }
-        attackRange = towerSO.attackRange;
+        attackRange = sphereCollider.radius*5;
         fireRate = towerSO.fireRate;
     }
 

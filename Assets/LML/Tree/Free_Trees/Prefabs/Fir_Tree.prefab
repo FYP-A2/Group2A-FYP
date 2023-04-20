@@ -107,6 +107,24 @@ MonoBehaviour:
   hideLeafMaterial: {fileID: 2100000, guid: f2b12e395ee40d146861601686cdf0b8, type: 2}
   autoCleanDelay: 15
   TreeState: 3
+--- !u!114 &2585006237156896822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887533531849145386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: 7623d48f4b570e24085fe1f5cdb6a457, type: 3}
+  - {fileID: 8300000, guid: bf078c9e2b560fc498c59253a9e3bec7, type: 3}
+  - {fileID: 8300000, guid: ccc9a85faf004c84b8e401bcdc840f01, type: 3}
+  - {fileID: 8300000, guid: 6261746b61ddc5143a8148f719fb9d4e, type: 3}
+  - {fileID: 8300000, guid: ab405e745e11c614294784adff214173, type: 3}
 --- !u!136 &8837122965544961058
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -308,6 +326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd3c2d648770284ebb6945517f84257, type: 3}
+--- !u!1 &1887533531849145386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6591271120416143840, guid: 4cd3c2d648770284ebb6945517f84257, type: 3}
+  m_PrefabInstance: {fileID: 4704356802625553866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1887533531849145395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6591271120416143865, guid: 4cd3c2d648770284ebb6945517f84257, type: 3}
@@ -318,7 +341,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6591271120416143843, guid: 4cd3c2d648770284ebb6945517f84257, type: 3}
   m_PrefabInstance: {fileID: 4704356802625553866}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1887533531849145386}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4858fc6af3776724facb352f3137ed4e, type: 3}

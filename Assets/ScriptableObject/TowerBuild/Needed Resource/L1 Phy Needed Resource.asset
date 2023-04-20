@@ -15,10 +15,10 @@ MonoBehaviour:
   resources:
   - name: Wood
     icon: {fileID: 21300000, guid: 8c34a53d4ddc98c44a09025377f4b525, type: 3}
-    amount: 0
+    amount: 5
   - name: Stone
     icon: {fileID: 21300000, guid: 4e884ecc783e4d849a97463dd6a9a68f, type: 3}
-    amount: 0
+    amount: 3
   - name: Coin
     icon: {fileID: 21300000, guid: cca1a58e84e71074aa0722fd33d7e119, type: 3}
     amount: 0

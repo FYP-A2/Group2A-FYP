@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c036232864b744695dde770ac7200e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSO: {fileID: 11400000, guid: 917dec12d6a8b81439406c94aae15f2e, type: 2}
+  towerSO: {fileID: 11400000, guid: 54618436bcda9fe4fa0c362ed3b30236, type: 2}
   sphereCollider: {fileID: 7609575880082219411}
   firePoint: {fileID: 6948396071906681512}
   layer:
@@ -147,6 +147,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &4430329153997198010
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7624100179953375868}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.013, y: 0.013, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.009000001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &4847513604432575639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,6 +419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 425d0979fa5318c43ac6e116a7e3658f, type: 3}
+--- !u!1 &7624100179953375868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1960028538592986472, guid: 425d0979fa5318c43ac6e116a7e3658f, type: 3}
+  m_PrefabInstance: {fileID: 8285872528684637972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7099342160317415622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1186904379505434578, guid: 425d0979fa5318c43ac6e116a7e3658f, type: 3}

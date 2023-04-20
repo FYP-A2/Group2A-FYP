@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   damage: 20
-  defense: 1
-  resistance: 1
+  defense: 0
+  resistance: 0
   attackRange: 10
   attackDelay: 2
   isRanged: 1

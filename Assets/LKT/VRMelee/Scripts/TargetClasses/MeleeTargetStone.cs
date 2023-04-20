@@ -83,6 +83,8 @@ namespace FYP2A.VR.Melee.Target
             if (source.gameObject.name != "Pickaxe")
                 return;
 
+            GetComponent<AudioRandomPlayer>().Play();
+
             if (minigameOn && minigameCanInput && isHitTime)
             {
                 HitCorrect(source);

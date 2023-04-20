@@ -15,10 +15,10 @@ MonoBehaviour:
   resources:
   - name: Wood
     icon: {fileID: 21300000, guid: 8c34a53d4ddc98c44a09025377f4b525, type: 3}
-    amount: 0
+    amount: 2
   - name: Stone
     icon: {fileID: 21300000, guid: 4e884ecc783e4d849a97463dd6a9a68f, type: 3}
-    amount: 0
+    amount: 6
   - name: Coin
     icon: {fileID: 21300000, guid: cca1a58e84e71074aa0722fd33d7e119, type: 3}
     amount: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     amount: 0
   - name: Toxic Ore
     icon: {fileID: 21300000, guid: d86c8a911e0806c459a7d2a84abcd57b, type: 3}
-    amount: 0
+    amount: 2
   - name: Electro Ore
     icon: {fileID: 21300000, guid: b43bf6273cb9e7b448756d62ca290700, type: 3}
     amount: 0

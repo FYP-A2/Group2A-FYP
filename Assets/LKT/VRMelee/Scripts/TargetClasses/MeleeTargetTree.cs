@@ -122,6 +122,8 @@ namespace FYP2A.VR.Melee.Target
             if (source.gameObject.name != "Axe")
                 return;
 
+            GetComponent<AudioRandomPlayer>().Play();
+
             if (minigameOn && minigameCanInput && CheckHitRing(targetHitbox) && CheckHitCorrectRing(targetHitbox))
             {
                 StopAllMinigameCheckTimeOut();

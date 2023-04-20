@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9b41051f243f14f9728f491987c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 11400000, guid: 54618436bcda9fe4fa0c362ed3b30236, type: 2}
+  test: {fileID: 11400000, guid: 969b2d4931639874ba2fdeffd5e8d4a5, type: 2}
   currentTower: {fileID: 0}
   currentTowerScriptable: {fileID: 0}
 --- !u!4 &1540368226
