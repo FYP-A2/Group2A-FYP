@@ -4186,7 +4186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &109641494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,7 +4201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   SpawnDelay: 0
-  numToSpawn: 20
+  numToSpawn: 10
   spawnPoints: []
   prefabs:
   - {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337, type: 3}
@@ -30766,7 +30766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &789230076
 Transform:
   m_ObjectHideFlags: 0
@@ -82423,6 +82423,7 @@ GameObject:
   - component: {fileID: 919132148168653249}
   - component: {fileID: 7506013445982540684}
   - component: {fileID: 8082664304477032249}
+  - component: {fileID: 919132148168653250}
   m_Layer: 2
   m_Name: Bunny
   m_TagString: Player
@@ -82447,6 +82448,19 @@ MonoBehaviour:
   resourceGroup: {fileID: 1206644465}
   movementSpeed: 15
   rotationSpeed: 50
+--- !u!114 &919132148168653250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148168653248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c4f525369824a428bce41a564cd59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100000
 --- !u!1 &1071361710574089340
 GameObject:
   m_ObjectHideFlags: 0

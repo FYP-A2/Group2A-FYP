@@ -1,16 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class StageMonster : Monster
 {
     public Transform target;
     List<Transform> pathTarget = new List<Transform>();
     float pathTargetUpdateTime = 2;
+
+    [Header("player detect")]
+    public SphereCollider playerdetected;
+    List<Transform> players = new List<Transform>();
+    public GameObject indicator;
+    Image questionMark;
+    public float detectDistance = 15f;
+    public float chaseDistance = 30f;
+    public float maxHatred = 3f;
+    public float hatred = 0f;
+    Vector3 orginPos = Vector3.zero;
+
     protected override void Start()
     {
         base.Start();
+        playerdetected.radius = detectDistance;
+        players = playerdetected.GetComponent<AttackArea>().targets;
+        questionMark = indicator.GetNamedChild("Img_QuestionMark").GetComponent<Image>();
         if (target == null)
             target = GameObject.Find("Core").GetComponent<Transform>();
     }
@@ -21,23 +38,104 @@ public class StageMonster : Monster
         switch (state)
         {
             case State.Idle:
-                Debug.Log(gameObject.name + state.ToString());
+                //Debug.Log(gameObject.name + state.ToString());
                 Idle();
                 break;
             case State.Move:
-                Debug.Log(gameObject.name + state.ToString());
+                //Debug.Log(gameObject.name + state.ToString());
                 Move();
                 break;
             case State.Attack:
-                Debug.Log(gameObject.name + state.ToString());
+                //Debug.Log(gameObject.name + state.ToString());
                 agent.SetDestination(transform.position);
                 Attack(currentTarget);
+                break;
+            case State.Chase:
+                Chase();
                 break;
             case State.Die:
                 Dead();
                 agent.isStopped = true;
                 break;
         }
+        PlayerDetection();
+        
+    }
+
+    void PlayerDetection()
+    {
+        if (players.Count != 0)
+        {
+            if (hatred < maxHatred)
+            {
+                hatred += Time.deltaTime;
+                if (!indicator.activeSelf)
+                {
+                    indicator.SetActive(true);
+                }
+                indicator.GetComponent<Image>().fillAmount = hatred / maxHatred;
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, target.position) < 80f) return;
+                questionMark.color = Color.red;
+                if (state != State.Attack)
+                {
+                    if (orginPos==Vector3.zero)
+                    {
+                        orginPos = transform.position;
+                    }
+                    Chase();
+                }
+            }
+        }
+        else
+        {
+            if(hatred > 0)
+            {
+                hatred-=Time.deltaTime;
+                questionMark.color = Color.white;
+                indicator.GetComponent<Image>().fillAmount = hatred / maxHatred;
+            }
+            else
+            {
+                if(indicator.activeSelf)
+                {
+                    if(orginPos!=Vector3.zero)
+                    {
+                        orginPos = Vector3.zero;
+                    }
+                    indicator.SetActive(false);                    
+                }                
+            }
+            if(state == State.Chase)
+            {
+                state = State.Move;
+            }
+        }
+    }
+
+    void Chase()
+    {
+        if (Vector3.Distance(orginPos, players[0].position) < chaseDistance)
+        {
+            agent.SetDestination(players[0].position);
+            if (Physics.Raycast(firePoint.position, (players[0].position - firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
+            {
+                if (hit.transform == players[0])
+                {
+                    currentTarget = players[0];
+                    lastState = state;
+                    state = State.Attack;
+                }
+            }
+        }
+        else
+        {
+            questionMark.color = Color.white;
+            state= State.Move;
+        }
+
     }
 
     protected override void Move()
@@ -86,7 +184,8 @@ public class StageMonster : Monster
             }
 
             if (obstacleInFront && pathTarget.Contains(currentTarget) || currentTarget == target)
-            {               
+            {
+                lastState = state;
                 state = State.Attack;
             }
             else

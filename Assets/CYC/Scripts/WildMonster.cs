@@ -14,6 +14,7 @@ public class WildMonster : Monster
     public new enum State {Idle, Move, Chase, Attack, Die }
     public  State wildState { get;private set; }
 
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

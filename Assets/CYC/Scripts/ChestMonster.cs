@@ -98,6 +98,7 @@ public class ChestMonster : Monster
         {
             if (Vector3.Distance(transform.position, currentTarget.position) < enemyScriptable.attackRange)
             {
+                lastState = state;
                 chestState = State.Attack;
             }
             else if (chestState == State.Attack)
