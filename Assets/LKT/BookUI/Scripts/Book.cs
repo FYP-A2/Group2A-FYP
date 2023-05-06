@@ -10,7 +10,6 @@ public class Book : MonoBehaviour
     public Animator animator;
     public UIBook flipUI;
     public Transform pageTabs;
-
     int pageNow;
 
     XRGrabInteractable xrgi;
@@ -26,6 +25,11 @@ public class Book : MonoBehaviour
     {
         animator.SetTrigger("open");
         bookUI.FlipPage(pageNow);
+
+        if (AreaTrigger.CheckPlayerInAreaByID("Buildable", bookUI.player))
+            bookUI.player.GetComponent<FlyMode>().EnterFlyMode();
+
+        bookUI.bookOpened = true;
 
         Invoke("BookUIOn", 0.8f);
     }
@@ -48,6 +52,12 @@ public class Book : MonoBehaviour
         animator.SetTrigger("close");
         Invoke("BookUIOff", 0.8f);
         Invoke("GoBackToParentZero", 0.1f);
+
+        bookUI.bookOpened = false;
+
+        Debug.Log("exit fly: book close");
+        if (!bookUI.placeTurret.isPreviewing)
+            bookUI.player.GetComponent<FlyMode>().ExitFlyMode();
     }
 
     void BookUIOff()

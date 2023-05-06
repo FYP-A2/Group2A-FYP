@@ -23,6 +23,7 @@ public class UIBook : MonoBehaviour
     public GameObject uiMapCamPrefab;
     public Camera uiMapCam;
     public bool fakeBook = false;
+    public bool bookOpened;
 
     // Start is called before the first frame update
     void Start()

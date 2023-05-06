@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,15 @@ public class FlyMode : MonoBehaviour
         dmp = GetComponent<DynamicMoveProvider>();
         thgmp = GetComponent<TwoHandedGrabMoveProvider>();
         gmps = GetComponentsInChildren<GrabMoveProvider>();
+
+        if (AreaTrigger.FindAreasByID("Buildable").Count>0)
+            AreaTrigger.FindAreasByID("Buildable")[0].AreaOnTriggerExit += FlyAreaExit;
+    }
+
+    private void FlyAreaExit(Collider other)
+    {
+        if (other.TryGetComponent<Player>(out Player p) && p == GetComponent<Player>())
+            ForceExitFlyMode();
     }
 
     private void Update()
@@ -45,10 +55,18 @@ public class FlyMode : MonoBehaviour
 
     public void ExitFlyMode()
     {
+        Debug.Log("exit fly");
+
         modeEnteredCount--;
 
         if (modeEnteredCount < 0)
             modeEnteredCount = 0;
+    }
+
+    public void ForceExitFlyMode()
+    {
+        Debug.Log("force exit fly");
+        modeEnteredCount = 0;
     }
 
     bool Fly_Mode

@@ -24,15 +24,16 @@ namespace FYP2A.VR.PlaceTurret
         public TurretPrefabIndex turretPrefabIndex;
 
         [SerializeField]
-        UIBook book;
+        UIBook uiBook;
 
         [SerializeField]
         InputActionProperty inputConfirm;
         [SerializeField]
         InputActionProperty inputCancel;
 
-        float placeAnimationHeight = 10f;
-        float placeAnimationduration = 0.3f;
+        float placeAnimationHeight = 50f;
+        float placeAnimationduration = 0.7f;
+        float upgradeFirePointHeightOffset = 1.2f;
 
 
         float placeCD = 0;
@@ -79,7 +80,7 @@ namespace FYP2A.VR.PlaceTurret
             if (isPreviewing)
             {
                 DeletePreview();
-                book.SelectExitAllButton();
+                uiBook.SelectExitAllButton();
             }
         }
 
@@ -110,7 +111,7 @@ namespace FYP2A.VR.PlaceTurret
             else
             {
                 DeletePreview();
-                book.SelectExitAllButton();
+                uiBook.SelectExitAllButton();
             }
 
             return false;
@@ -123,7 +124,6 @@ namespace FYP2A.VR.PlaceTurret
             nowPreview = Instantiate(previewPrefab).GetComponent<TurretPreview>();
             nowPreview.Initialize(gameObject, nowBuild.Tower);
             isPreviewing = true;
-            player.GetComponent<FlyMode>().EnterFlyMode();
         }
 
         public void DeletePreview()
@@ -133,8 +133,6 @@ namespace FYP2A.VR.PlaceTurret
 
             nowPreview = null;
             isPreviewing = false;
-
-            player.GetComponent<FlyMode>().ExitFlyMode();
         }
 
         protected virtual Ray GetRay()
@@ -208,7 +206,7 @@ namespace FYP2A.VR.PlaceTurret
 
                 StartCoroutine(PlaceDownTurretAnimation(go.transform, placeAnimationHeight, placeAnimationduration));
                 DeletePreview();
-                book.SelectExitAllButton();
+                uiBook.SelectExitAllButton();
 
                 if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
                     if (nowBuild.Tower.towerType == TowerScriptableObject.TowerType.Phy)
@@ -239,10 +237,6 @@ namespace FYP2A.VR.PlaceTurret
             yield return null;
             yield return null;
             yield return null;
-            yield return null;
-            yield return null;
-            yield return null;
-            yield return null;
 
 
             TurretUpgradeConnector1 tuc1;
@@ -250,6 +244,12 @@ namespace FYP2A.VR.PlaceTurret
             {
                 tuc1.connectorDown.ConfirmConnection();
                 tuc1.GetBaseConnector().GetComponent<Tower>().UpdateTowerSO(nowBuild.Tower);
+
+
+                Transform fp = tuc1.GetBaseConnector().GetComponent<Tower>().firePoint;
+                fp.localPosition = new Vector3(fp.localPosition.x,
+                    fp.localPosition.y + upgradeFirePointHeightOffset,
+                    fp.localPosition.z);
             }
 
 
@@ -310,6 +310,10 @@ namespace FYP2A.VR.PlaceTurret
 
             if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
                     player.director.TNTModeJumpState();
+
+            Debug.Log("exit fly: tower place");
+            if (!uiBook.bookOpened)
+                player.GetComponent<FlyMode>().ExitFlyMode();
         }
 
         //server execute
