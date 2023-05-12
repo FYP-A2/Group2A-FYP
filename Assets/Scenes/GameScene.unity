@@ -2209,6 +2209,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 486942, guid: b73c6c1069411b947aaaa9d12c37c652, type: 3}
   m_PrefabInstance: {fileID: 807503986}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &61843814 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 341039601617667850, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
+  m_PrefabInstance: {fileID: 1052078741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &63716349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7229,7 +7234,7 @@ PrefabInstance:
     - target: {fileID: 2407084003995699725, guid: 659488d63f764e541954a01100be7e52, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 509010446}
+      objectReference: {fileID: 61843814}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 659488d63f764e541954a01100be7e52, type: 3}
 --- !u!1001 &172045414
@@ -34114,7 +34119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: baseScale
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: groupChannel
@@ -70032,12 +70037,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: baseScale
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: hpDisplayObject
       value: 
       objectReference: {fileID: 1915243109}
+    - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
+      propertyPath: groupModeIsLeader
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625401, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: m_Name
       value: UIMapTag
@@ -77840,6 +77849,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1399769733214985811, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
   m_PrefabInstance: {fileID: 1052078741}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915243110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915243108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d54dd9d5e8da034788a2eb1553126fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  bloodScreen: {fileID: 1891220893}
+  blackScreen: {fileID: 1153948732}
+  maxDuration: 2
+  delay: 1
+  isDead: 0
+  isRespawning: 0
+  regenarationDelay: 5
 --- !u!1 &1918358494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1598071947681218, guid: 91f1d84678abb9c4898d530e4a3338ee, type: 3}
