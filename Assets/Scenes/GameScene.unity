@@ -4324,7 +4324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &109641494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77849,7 +77849,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1399769733214985811, guid: 06164175bd487ff449eb0a0030b89f3b, type: 3}
   m_PrefabInstance: {fileID: 1052078741}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1915243110
+--- !u!114 &1915243123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77869,6 +77869,19 @@ MonoBehaviour:
   isDead: 0
   isRespawning: 0
   regenarationDelay: 5
+--- !u!65 &1915243124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915243108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.76, z: 1}
+  m_Center: {x: 0, y: 1.26, z: 0}
 --- !u!1 &1918358494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1598071947681218, guid: 91f1d84678abb9c4898d530e4a3338ee, type: 3}
