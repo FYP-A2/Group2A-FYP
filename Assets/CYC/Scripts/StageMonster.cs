@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,6 +20,7 @@ public class StageMonster : Monster
     public float maxHatred = 3f;
     public float hatred = 0f;
     Vector3 orginPos = Vector3.zero;
+    ResourceGroupType resource;
 
     protected override void Start()
     {
@@ -77,14 +77,19 @@ public class StageMonster : Monster
             }
             else
             {
-                if (Vector3.Distance(transform.position, target.position) < 80f) return;
-                questionMark.color = Color.red;
+                if (Vector3.Distance(transform.position, target.position) < 80f)
+                {
+                    questionMark.color= Color.yellow;
+                    return;
+                }
+                
                 if (state != State.Attack)
                 {
                     if (orginPos==Vector3.zero)
                     {
                         orginPos = transform.position;
                     }
+                    questionMark.color = Color.red;
                     Chase();
                 }
             }
