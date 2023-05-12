@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerDamage : MonoBehaviour, IDamage
+public class PlayerDamage : MonoBehaviour, IDamage, IHP
 {
     public float hp = 100;
     public Image bloodScreen;
@@ -136,4 +136,19 @@ public class PlayerDamage : MonoBehaviour, IDamage
         }
     }
 
+    public void GetHP(out float max, out float now)
+    {
+        max = GetMaxHP();
+        now = GetHP();
+    }
+
+    public float GetHP()
+    {
+        return hp;
+    }
+
+    public float GetMaxHP()
+    {
+        return orginHp;
+    }
 }

@@ -21,6 +21,7 @@ public class StageMonster : Monster
     public float hatred = 0f;
     Vector3 orginPos = Vector3.zero;
     ResourceGroupType resource;
+    bool isDropped = false;
 
     protected override void Start()
     {
@@ -212,6 +213,20 @@ public class StageMonster : Monster
     protected override void Dead()
     {
         base.Dead();
-        //Drop
+
+        if (!isDropped)
+        {
+            int num = Random.Range(0, 6);
+            if (num > 2)
+            {
+                ResourceGroupType.Instance.Add(num, 1);
+            }
+            else
+            {
+                ResourceGroupType.Instance.Add(num, 10);
+            }
+            Debug.Log("Dropped " + num);
+            isDropped = true;
+        }
     }
 }

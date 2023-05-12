@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public abstract class Monster : MonoBehaviour, IMonster
+public abstract class Monster : MonoBehaviour, IMonster,IHP
 {
     [SerializeField] protected EnemyScriptableObject enemyScriptable;
     protected NavMeshAgent agent;
@@ -293,5 +293,21 @@ public abstract class Monster : MonoBehaviour, IMonster
         x.GetComponent<TextMove>().text.color = color;
         x.GetComponent<TextMove>().SetDamage(DamageShow);
         Destroy(x, 1f);
+    }
+
+    public void GetHP(out float max, out float now)
+    {
+        max = GetMaxHP();
+        now = GetHP();
+    }
+
+    public float GetHP()
+    {
+        return hp;
+    }
+
+    public float GetMaxHP()
+    {
+        return enemyScriptable.hp;
     }
 }
