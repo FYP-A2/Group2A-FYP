@@ -28,8 +28,10 @@ public abstract class Monster : MonoBehaviour, IMonster
     protected const string ani_Attack = "Animation_Attack", ani_Move = "Animation_Move", ani_GetHit = "Animation_GetHit", ani_Die = "Animation_Die";
     public Transform firePoint;
 
-    public enum State { Idle, Move, Attack, Die };
+    public enum State { Idle, Move, Attack, Chase, Die };
     public State state { get; protected set; }
+
+    protected State lastState;
 
     protected Transform currentTarget;
 
@@ -157,10 +159,10 @@ public abstract class Monster : MonoBehaviour, IMonster
     }
     protected virtual void Attack(Transform target)
     {
-        if (!Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
-            currentTarget = null;
+        if (!Physics.Raycast(firePoint.position, (target.position-firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
+            state = lastState;
         if (currentTarget == null)
-            state = State.Move;
+            state = lastState;
 
         if (target != null)
         {
