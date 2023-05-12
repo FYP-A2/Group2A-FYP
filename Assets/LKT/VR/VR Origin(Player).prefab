@@ -2383,6 +2383,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 341039601617667850}
+    - target: {fileID: 6939536594299727544, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
+      propertyPath: handLeft
+      value: 
+      objectReference: {fileID: 341039599954028397}
+    - target: {fileID: 6939536594299727544, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
+      propertyPath: handRight
+      value: 
+      objectReference: {fileID: 341039601774241676}
     - target: {fileID: 6939536594299727558, guid: ab8e8da77a2079545997f9205ed7b4c8, type: 3}
       propertyPath: m_Name
       value: Toolbar
