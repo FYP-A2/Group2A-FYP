@@ -8,6 +8,15 @@ public class ToolBar : MonoBehaviour
     public List<ToolBarSlot> slots = new List<ToolBarSlot>();
     Vector3 orignalScale;
     public Camera cam;
+    public GameObject camHandPrefab;
+    public Transform swivel;
+    public Transform handLeft;
+    public Transform handRight;
+
+    Rigidbody pLeft;
+    Rigidbody pRight;
+
+    int turnDirection = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +30,31 @@ public class ToolBar : MonoBehaviour
 
         orignalScale = transform.localScale;
 
-        gameObject.SetActive(false);
+        pLeft = Instantiate(camHandPrefab).GetComponent<Rigidbody>();
+        pRight = Instantiate(camHandPrefab).GetComponent<Rigidbody>();
+
+        pLeft.transform.SetParent(cam.transform);
+        pRight.transform.SetParent(cam.transform);
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Swiveling());
+    }
+
+    void FixedUpdate()
+    {
+        pLeft.MovePosition(handLeft.position);
+        pRight.MovePosition(handRight.position);
+
+        float targetVelocity = 10f;
+
+        if (pLeft.velocity.z > targetVelocity || pRight.velocity.z > targetVelocity)
+            SwivelRight();
+        if (pLeft.velocity.z < -targetVelocity || pRight.velocity.z < -targetVelocity)
+            SwivelLeft();
+
+        Debug.Log(pRight.velocity.x);
     }
 
     public void ActivateOrNot()
@@ -53,7 +86,7 @@ public class ToolBar : MonoBehaviour
         while (t < 0.3f)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, orignalScale, t);
-            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, cam.transform.localEulerAngles, t);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, new Vector3(0,cam.transform.localEulerAngles.y,0) , t);
             t += Time.deltaTime;
             yield return null;
         }
@@ -83,5 +116,47 @@ public class ToolBar : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    public void SwivelLeft()
+    {
+        if (sTime >= 1)
+        {
+            targetRotation = originalRotation + new Vector3(0, 120, 0);
+            sTime = 0;
+        }
+    }
+
+    public void SwivelRight()
+    {
+        if (sTime >= 1)
+        {
+            targetRotation = originalRotation + new Vector3(0, -120, 0);
+            sTime = 0;
+        }
+    }
+
+    Vector3 originalRotation = Vector3.zero;
+    Vector3 targetRotation = Vector3.zero;
+    float sTime = 1;
+
+    IEnumerator Swiveling()
+    {
+        float duration = 0.25f;
+
+        while (true)
+        {
+            if (sTime < 1)
+            {
+                swivel.localEulerAngles = Vector3.Lerp(originalRotation, targetRotation, sTime);
+
+                sTime += Time.deltaTime / duration;
+            }
+            else
+                originalRotation = targetRotation;
+
+
+            yield return null;
+        }
     }
 }
