@@ -45,12 +45,13 @@ public class UIMapHpBar : MonoBehaviour
         FindHpInObject();
         SetAmount(1);
         StartCoroutine(UpdatePositionCoroutine());
-        transform.position = new Vector3(hpDisplayObject.position.x, 512, hpDisplayObject.position.z);
 
         imageFill.color = fillColor;
         imageFillBackground.color = backgroundColor;
 
         transform.SetParent(null);
+        transform.localEulerAngles = new Vector3(90, 0, 0);
+        transform.position = new Vector3(hpDisplayObject.position.x, 512, hpDisplayObject.position.z);
     }
 
     private void Update()
@@ -295,8 +296,10 @@ public class UIMapHpBar : MonoBehaviour
 
     void NotifyNewGroup(UIMapHpBar newLeader)
     {
-        foreach (UIMapHpBar a in groupMembers)
+        UIMapHpBar[] hpBars = groupMembers.ToArray();
+        for(int i = 0; i < hpBars.Length; i++ )
         {
+            UIMapHpBar a = hpBars[i];
             if (a != newLeader)
             {
                 a.LeaveGroup();
@@ -308,10 +311,12 @@ public class UIMapHpBar : MonoBehaviour
     void NotifyDeleteGroup()
     {
         if (groupMembers == null) return;
-        while (groupMembers.Count > 0)
+        UIMapHpBar[] hpBars = groupMembers.ToArray();
+        for (int i = 0; i < hpBars.Length; i++)
         {
-            if (groupMembers[0] != null)
-                groupMembers[0].LeaveGroup();
+            UIMapHpBar a = hpBars[i];
+            if (a != null)
+                a.LeaveGroup();
         }
     }
 

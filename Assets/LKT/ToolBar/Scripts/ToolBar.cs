@@ -53,8 +53,6 @@ public class ToolBar : MonoBehaviour
             SwivelRight();
         if (pLeft.velocity.z < -targetVelocity || pRight.velocity.z < -targetVelocity)
             SwivelLeft();
-
-        Debug.Log(pRight.velocity.x);
     }
 
     public void ActivateOrNot()
