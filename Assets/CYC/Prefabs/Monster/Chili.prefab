@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 4964053407415496178}
   - component: {fileID: 6568972961535413105}
   - component: {fileID: 7814881987799152050}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Chili
   m_TagString: Monster
   m_Icon: {fileID: 0}

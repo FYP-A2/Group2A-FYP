@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 2570483934808727957}
   - component: {fileID: 5343528089953890090}
   - component: {fileID: 102013808138177035}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: BeholderPolyart
   m_TagString: Monster
   m_Icon: {fileID: 0}

@@ -69,6 +69,8 @@ public class StageMonster : Monster
             if (hatred < maxHatred)
             {
                 hatred += Time.deltaTime;
+                if (!indicator.GetComponent<Image>().enabled)
+                    indicator.GetComponent<Image>().enabled = true;
                 if (!indicator.activeSelf)
                 {
                     indicator.SetActive(true);
@@ -90,6 +92,8 @@ public class StageMonster : Monster
                         orginPos = transform.position;
                     }
                     questionMark.color = Color.red;
+                    if(indicator.GetComponent<Image>().enabled)
+                        indicator.GetComponent<Image>().enabled = false;
                     Chase();
                 }
             }
@@ -98,7 +102,9 @@ public class StageMonster : Monster
         {
             if(hatred > 0)
             {
-                hatred-=Time.deltaTime;
+                if (!indicator.GetComponent<Image>().enabled)
+                    indicator.GetComponent<Image>().enabled = true;
+                hatred -=Time.deltaTime;
                 questionMark.color = Color.white;
                 indicator.GetComponent<Image>().fillAmount = hatred / maxHatred;
             }

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1661934231549338655}
   - component: {fileID: 1274748864171427864}
   - component: {fileID: 7000508295920703291}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Kiwi
   m_TagString: Monster
   m_Icon: {fileID: 0}

@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 2287822889126231353}
   - component: {fileID: 4323993709241455115}
   - component: {fileID: 1040524375957266127}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Langsat
   m_TagString: Monster
   m_Icon: {fileID: 0}
