@@ -158,13 +158,13 @@ MonoBehaviour:
   stone: {fileID: 0}
   hp: 5
   nowHp: 0
-  inTimeRange: 0.1
-  outTimeRange: 0.1
-  timeMeter: 0.25
+  inTimeRange: 0.15
+  outTimeRange: 0.15
+  timeMeter: 0.3
   tablatureSize: 20
   meterHintPrefabs: {fileID: 6016781304884176323, guid: bd1cd4491fa8ffc40aecdf148f23bcbc, type: 3}
   meterHintScale: 1
-  meterHintDisplayDuration: 0.6
+  meterHintDisplayDuration: 0.9
   meterHintColor1: {r: 1, g: 1, b: 1, a: 1}
   meterHintColor2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &-7109095355356092155

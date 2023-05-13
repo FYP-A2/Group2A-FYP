@@ -128,7 +128,7 @@ MonoBehaviour:
   firePoint: {fileID: 6948396071906681512}
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7953
   modifierVolume: {fileID: 0}
 --- !u!1001 &4847513604432575639
 PrefabInstance:

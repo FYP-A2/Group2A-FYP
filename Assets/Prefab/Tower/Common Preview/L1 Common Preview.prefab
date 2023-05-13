@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerNotCheckCollision:
     serializedVersion: 2
-    m_Bits: 2147497206
+    m_Bits: 2147497462
   colorCanPlace: {fileID: 241166638644325204}
   colorCannotPlace: {fileID: 975208372895296301}
   offsetY: 0
