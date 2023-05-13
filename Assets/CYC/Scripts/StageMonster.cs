@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class StageMonster : Monster
         questionMark = indicator.GetNamedChild("Img_QuestionMark").GetComponent<Image>();
         if (target == null)
             target = GameObject.Find("Core").GetComponent<Transform>();
+        PathFinding(target);
     }
 
     protected override void Update()
@@ -48,7 +50,7 @@ public class StageMonster : Monster
                 break;
             case State.Attack:
                 //Debug.Log(gameObject.name + state.ToString());
-                agent.SetDestination(transform.position);
+                PathFinding(transform);
                 Attack(currentTarget);
                 break;
             case State.Chase:
@@ -131,7 +133,7 @@ public class StageMonster : Monster
     {
         if (Vector3.Distance(orginPos, players[0].position) < chaseDistance)
         {
-            agent.SetDestination(players[0].position);
+            PathFinding(players[0]);
             if (Physics.Raycast(firePoint.position, (players[0].position - firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
             {
                 if (hit.transform == players[0])
@@ -154,7 +156,7 @@ public class StageMonster : Monster
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            agent.SetDestination(target.position);
+            PathFinding(target);
         }
 
         if (currentTarget != target && hitTargets.Count > 0)
@@ -204,7 +206,7 @@ public class StageMonster : Monster
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    agent.SetDestination(target.position);
+                    PathFinding(target);
                 }
             }
         }
@@ -216,7 +218,7 @@ public class StageMonster : Monster
 
         if (!isDropped)
         {
-            int num = Random.Range(0, 6);
+            int num = Random.Range(2, 6);
             if (num > 2)
             {
                 ResourceGroupType.Instance.Add(num, 1);
@@ -225,8 +227,26 @@ public class StageMonster : Monster
             {
                 ResourceGroupType.Instance.Add(num, 10);
             }
-            Debug.Log("Dropped " + num);
             isDropped = true;
+        }
+    }
+
+    void PathFinding(Transform target)
+    {
+        agent.SetDestination(target.position); //Don't forget to initiate the first movement.
+        NavMeshPath path = new NavMeshPath();
+        if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
+        {
+            agent.SetPath(path);
+        }
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
+        {          
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                agent.SetPath(path);
+            }
+            yield return null;
         }
     }
 }
