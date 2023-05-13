@@ -5954,6 +5954,18 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Welcom to our city
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Be careful the monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
 --- !u!1001 &140555743
@@ -10821,11 +10833,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: talkTxt.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hello
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Please protect our core
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -11933,8 +11953,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Ummmmmm......
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Have some bacteria monster outside
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -12260,6 +12292,18 @@ PrefabInstance:
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Welcom to our city
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: You can go outside to kill monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
@@ -12590,6 +12634,18 @@ PrefabInstance:
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Have a nice day
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: We have a shop on above borad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
@@ -22476,8 +22532,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hurrr......
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I want to play game, don't want to work
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -30749,8 +30817,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Nice to meet you
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -35846,6 +35922,18 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Hope you have a nice day
+      objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -36623,8 +36711,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Good morning
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Please open the gate when the moster hit the gate
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -43598,8 +43698,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hello
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: If the core break, the city will destroy
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -46671,8 +46783,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Good morning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Have you arrive a strangeness shop?
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -51758,8 +51882,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Wryyyyyyyyyyyyyy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Woooooooooooooo
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -52720,6 +52856,18 @@ PrefabInstance:
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Wuwuwuwu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I want buy some toys, but my mum don't arrow me buy
       objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
@@ -68941,8 +69089,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: You can build different type of tower to defense
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -69827,8 +69987,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Woooooooooooooooo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I don't want to do homework!
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -72794,6 +72966,18 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hello
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Some monster and hit you on faraway
+      objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -74888,6 +75072,18 @@ PrefabInstance:
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: If you near the monster, the monster will hit you
       objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
@@ -77113,8 +77309,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Have many monster attack our city
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -80411,6 +80619,18 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I hate kiwi
+      objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -81580,8 +81800,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I hate chili
       objectReference: {fileID: 0}
     - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -89674,6 +89906,18 @@ PrefabInstance:
       propertyPath: isLastPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Have a nice day
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135082366519714847, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: You can kill monste to buy some item
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
 --- !u!1001 &1958887815
@@ -92428,8 +92672,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1934801068}
     m_Modifications:
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Good morning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Have too many homework to finish
       objectReference: {fileID: 0}
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -94314,6 +94570,18 @@ PrefabInstance:
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Errr
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: I hate history
       objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder
@@ -99271,6 +99539,18 @@ PrefabInstance:
     - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710646146726651265, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
+      propertyPath: talkTxt.Array.data[1]
+      value: Wow, you can find me
       objectReference: {fileID: 0}
     - target: {fileID: 8486634524642612331, guid: 2276ac188b276b1409b8d39b3beb3ee8, type: 3}
       propertyPath: m_RootOrder

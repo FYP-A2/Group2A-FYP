@@ -51,7 +51,7 @@ public class NPCBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         agent.speed = moveSpeed;
         currentWaypointIndex = 0;
-        talkTxt = NPCtxt.GetNPCTxt(type);
+       // talkTxt = NPCtxt.GetNPCTxt(type);
         timer = stayTime;
         if (type != Type.Standing)
          SetDestination(waypoints[currentWaypointIndex]);
