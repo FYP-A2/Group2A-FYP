@@ -35,7 +35,7 @@ public class NPCBehaviour : MonoBehaviour
     public float timer;
 
     public bool isLastPoint = false;
-    public enum Type { InOrder, Random, Standing }
+    public enum Type { InOrder, Random, Standing, Looping }
     public Type type;
 
     public float talkDistance = 2f;
@@ -53,7 +53,8 @@ public class NPCBehaviour : MonoBehaviour
         currentWaypointIndex = 0;
         talkTxt = NPCtxt.GetNPCTxt(type);
         timer = stayTime;
-        //SetDestination(waypoints[currentWaypointIndex]);
+        if (type != Type.Standing)
+         SetDestination(waypoints[currentWaypointIndex]);
     }
 
     void Update()
@@ -68,6 +69,9 @@ public class NPCBehaviour : MonoBehaviour
                 break;
             case Type.Standing:
                 Standing();
+                break;
+            case Type.Looping:
+                Looping();
                 break;
         }
         if (animator != null)
@@ -102,6 +106,32 @@ public class NPCBehaviour : MonoBehaviour
                     {
                         isLastPoint = false;
                     }
+                }
+                SetDestination(waypoints[currentWaypointIndex]);
+                timer = stayTime;
+            }
+        }
+    }
+
+    void Looping()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                if (!isLastPoint)
+                {
+                    currentWaypointIndex++;
+                    if (currentWaypointIndex == waypoints.Length - 1)
+                    {
+                        isLastPoint = true;
+                    }
+                }
+                else
+                {
+                    currentWaypointIndex=0;
+                    isLastPoint = false;
                 }
                 SetDestination(waypoints[currentWaypointIndex]);
                 timer = stayTime;
