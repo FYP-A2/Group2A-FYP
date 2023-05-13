@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
@@ -61,7 +62,7 @@ public class Tower : MonoBehaviour
                         if (monsters[i] == null) return;
                         RaycastHit hit;
                         Physics.Raycast(firePoint.position, (monsters[i].position - firePoint.position).normalized, out hit, attackRange, layer);
-                        if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow)
+                        if (hit.transform != null && hit.transform.tag == "Monster" && !hit.transform.GetComponent<Monster>().isSlow && hit.transform.GetComponent<Monster>().state != Monster.State.Die)
                         {
                             isAttacked = true;
                             Shoot(monsters[i]);
@@ -72,7 +73,7 @@ public class Tower : MonoBehaviour
                     {
                         RaycastHit hit;
                         Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
-                        if (hit.transform != null && hit.transform.tag == "Monster")
+                        if (hit.transform != null && hit.transform.tag == "Monster" && hit.transform.GetComponent<Monster>().state != Monster.State.Die)
                         {
                             isAttacked = true;
                             Shoot(monsters[0]);
@@ -94,14 +95,21 @@ public class Tower : MonoBehaviour
                             bulletGO.Add(Instantiate(towerSO.bulletPrefab, firePoint.position,firePoint.rotation));
                             TestVFX bullet;
                             bulletGO[0].TryGetComponent<TestVFX>(out bullet);
-                            if (bullet != null)
+                            if (monsters[0] != null)
                             {
                                 bullet.SetPos(firePoint.gameObject, monsters[0].gameObject);
                                 monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
                             }
+                            else
+                            {
+                                Destroy(bullet);
+                                return;
+                            }
                             i++;
                             for (int j = 1; j < monsters.Count; j++)
                             {
+                                if (monsters[j] == null) { break; }
+                                if(monsters[0].GetComponent<Monster>().state == Monster.State.Die) { continue; }
                                 bulletGO.Add(Instantiate(towerSO.bulletPrefab, monsters[j].position, monsters[j].rotation));
                                 bulletGO[j].TryGetComponent<TestVFX>(out bullet);
                                 bullet.SetPos(monsters[i-1].gameObject, monsters[i].gameObject);
@@ -114,11 +122,16 @@ public class Tower : MonoBehaviour
                             GameObject bulletGO = Instantiate(towerSO.bulletPrefab);
                             TestVFX bullet;
                             bulletGO.TryGetComponent<TestVFX>(out bullet);
-                            if(bullet != null)
+                            for (int n = 0; n < monsters.Count; n++)
                             {
-                                bullet.SetPos(firePoint.gameObject, monsters[0].gameObject);
-                                monsters[0].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
-                            }     
+                                if (monsters[n] != null)
+                                {
+                                    if(monsters[n].GetComponent<Monster>().state == Monster.State.Die) { continue; }
+                                    bullet.SetPos(firePoint.gameObject, monsters[n].gameObject);
+                                    monsters[n].GetComponent<Monster>().TakeDamage(phyDamage, magicDamage);
+                                    break;
+                                }
+                            }
                         }
                         isAttacked = true;
                         StartCoroutine(ResetAttack(fireRate));

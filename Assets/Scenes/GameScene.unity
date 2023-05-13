@@ -4334,7 +4334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &109641494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4349,7 +4349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   SpawnDelay: 0
-  numToSpawn: 20
+  numToSpawn: 120
   spawnPoints: []
   prefabs:
   - {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337, type: 3}
