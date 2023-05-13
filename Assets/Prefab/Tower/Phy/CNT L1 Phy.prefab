@@ -129,7 +129,7 @@ MonoBehaviour:
   firePoint: {fileID: 6948396071906681512}
   layer:
     serializedVersion: 2
-    m_Bits: 2147499703
+    m_Bits: 2147499959
   modifierVolume: {fileID: 0}
 --- !u!54 &8379887649139719432
 Rigidbody:

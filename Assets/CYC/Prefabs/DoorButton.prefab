@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3351505298896679365}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GateButton, Assembly-CSharp
         m_MethodName: DoorTrigger
         m_Mode: 1
@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 3351505298896679360}
   - component: {fileID: 3351505298896679367}
   - component: {fileID: 3351505298896679366}
-  - component: {fileID: 3351505298896679365}
   m_Layer: 0
   m_Name: DoorButton
   m_TagString: Untagged
@@ -350,21 +349,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3351505298896679365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3351505298896679371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13286c8e0535503489363dcae865f8e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gate: {fileID: 0}
-  isOpen: 0
-  gateOpenDistance: {x: 0, y: 8, z: 0}
-  buttonInDistance: {x: -0.2, y: 0, z: 0}
-  duration: 5
-  open: 0

@@ -159,10 +159,18 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
     }
     protected virtual void Attack(Transform target)
     {
-        if (!Physics.Raycast(firePoint.position, (target.position-firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
-            state = lastState;
         if (currentTarget == null)
+        {
             state = lastState;
+            return;
+        }
+
+        if (target != null && !Physics.Raycast(firePoint.position, (target.position - firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
+        {
+            state = lastState;
+            return;
+        }
+
 
         if (target != null)
         {
@@ -279,7 +287,7 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if (bullet != null)
+        if (bullet != null && target !=null)
         {
             transform.LookAt(target.position);
             //bullet.Shoot(transform.forward, damage, gameObject);
