@@ -290,8 +290,11 @@ public class UIMapHpBar : MonoBehaviour
 
     void MergeGroup(UIMapHpBar other)
     {
-        other.NotifyNewGroup(this);
-        other.JoinGroup(this);
+        if (other != null)
+        {
+            other.NotifyNewGroup(this);
+            other.JoinGroup(this);
+        }
     }
 
     void NotifyNewGroup(UIMapHpBar newLeader)

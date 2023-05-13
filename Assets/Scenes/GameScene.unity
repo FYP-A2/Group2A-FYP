@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2978285, g: 0.6340788, b: 0.99369353, a: 1}
+  m_IndirectSpecularColor: {r: 0.29758373, g: 0.6340128, b: 0.9937014, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -55034,27 +55034,27 @@ MonoBehaviour:
     prefab: {fileID: 7128717169128400431, guid: 0d5b58f6db9235847bc989512e84ef6d, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000800000006000000040000000200000001000000000000000000000000000000000000000000000000000000
   - type: Ranged
     prefab: {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 00000000020000000400000006000000080000000a000000080000000600000004000000020000000000000000000000
   - type: Ranged
     prefab: {fileID: 3850173379084900417, guid: f1a30e77d78f6414f824a272d08af55c, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 02000000060000000a000000080000000600000004000000030000000200000001000000000000000000000000000000
   - type: Ranged
     prefab: {fileID: 1931731618954757432, guid: 21f86c21bb3d585499a60a8844a27a0e, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 000000000000000002000000030000000400000006000000080000000a00000008000000060000000500000004000000
   - type: Ranged
     prefab: {fileID: 5626876224596996719, guid: d38e60411f61b6644aa946c4dd831fca, type: 3}
     RMP: {fileID: 738889221}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 00000000000000000000000000000000000000000100000002000000030000000400000006000000080000000a000000
   enemyScriptableObjects: []
 --- !u!4 &1253156056
 Transform:
@@ -74685,7 +74685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c4f525369824a428bce41a564cd59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100000
+  hp: 1000
   maxHp: 0
 --- !u!1001 &1731757666
 PrefabInstance:

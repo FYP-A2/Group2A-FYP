@@ -11,6 +11,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class _1st_Director : MonoBehaviour
 {
@@ -308,9 +309,7 @@ public class _1st_Director : MonoBehaviour
                     _DA.Reset();
 
                     mode.FM_SetState_RoundStart();
-
-
-
+                    director_SpawnManager.roundStartSpawned = false;
                 }
 
 
@@ -327,7 +326,7 @@ public class _1st_Director : MonoBehaviour
 
                 if (timer.GetCurrState() == Timer.State.PAUSE)
                 {
-                    Assign_Timer_n_Announcer_ver_RS(30, ref NeedOf_Asn_Timer_n_Announcer);
+                    Assign_Timer_n_Announcer_ver_RS(4, ref NeedOf_Asn_Timer_n_Announcer);
                 }
                 if (timer.GetCurrState() == Timer.State.FINISHED)
                 {
@@ -346,7 +345,7 @@ public class _1st_Director : MonoBehaviour
 
                     if (timer.GetCurrState() == Timer.State.PAUSE)
                     {
-                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(10, ref NeedOf_Asn_Timer_n_Announcer);
+                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(2, ref NeedOf_Asn_Timer_n_Announcer);
                     }
                     if (timer.GetCurrState() == Timer.State.FINISHED)
                     {
@@ -354,6 +353,7 @@ public class _1st_Director : MonoBehaviour
                         mode.FM_SetState_RoundStart();
                         ExitRoundState();
                         _DA.Reset();
+                        director_SpawnManager.roundStartSpawned = false;
                     }
                 }
                 
@@ -440,7 +440,7 @@ public class _1st_Director : MonoBehaviour
             if (stageObject.currentStage >= 1 && stageObject.currentStage < 12)
             {
                 timer.Init(second);
-                _DA.AnimateOnce("Ready for Wave " + stageObject.currentStage + 1, announcer);
+                _DA.AnimateOnce("Ready for Wave " + (stageObject.currentStage + 1), announcer);
                 timer.SetStateRunning();
             }
         }
@@ -512,16 +512,16 @@ public class _1st_Director : MonoBehaviour
     #region // State: Victory
     public void ShowGameVictory_Once(ref bool onceBoolean)
     {
-        onceBoolean = false;
-        dosth_Once(ref boo_dosth_NeedToStart);
+        PlayerPrefs.SetString("msg", "win");
+        SceneManager.LoadScene("EndScene");
     }
     #endregion
 
     #region // State: Defeat
     public void ShowGameOver_Once(ref bool onceBoolean)
     {
-        onceBoolean = false;
-        dosth_Once(ref boo_dosth_NeedToStart);
+        PlayerPrefs.SetString("msg", "lose");
+        SceneManager.LoadScene("EndScene");
     }
     #endregion
 

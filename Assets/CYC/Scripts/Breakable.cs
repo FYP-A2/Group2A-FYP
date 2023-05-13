@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Breakable : MonoBehaviour, IDamage,IHP
 {
@@ -24,7 +25,14 @@ public class Breakable : MonoBehaviour, IDamage,IHP
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        if(hp < 0) Destroy(gameObject);
+        if(hp < 0)
+        {
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            TryGetComponent<NavMeshObstacle>(out NavMeshObstacle nmo);
+            if (nmo != null)
+                nmo.enabled = false;
+        }
     }
 
     void Start()
