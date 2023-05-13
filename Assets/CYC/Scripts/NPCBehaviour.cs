@@ -163,11 +163,15 @@ public class NPCBehaviour : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, talkDistance);
         foreach(Collider c in colliders)
         {
-            if (text!= null && c.tag == "Player" && !text.IsActive())
+            if(c.tag != "Player") { continue; }
+            transform.LookAt(new Vector3(c.transform.position.x, transform.position.y, c.transform.position.z));
+
+            if (text!= null && !text.IsActive())
             {
                 text.text = talkTxt[Random.Range(0,talkTxt.Count)];
                 text.enabled = true;
-                StartCoroutine(CloseTextBubble());
+                StartCoroutine(CloseTextBubble());                
+                agent.isStopped = true;
                 break;
             }
         }
@@ -177,5 +181,6 @@ public class NPCBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(textBubbleTime);
         text.enabled = false;
+        agent.isStopped = false;
     }
 }
