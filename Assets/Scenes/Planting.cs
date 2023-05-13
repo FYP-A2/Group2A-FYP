@@ -26,6 +26,9 @@ public class Planting : MonoBehaviour
             Vector3 pos;
             Vector3 rot;
             GetNextPt(out pos,out rot);
+
+            if (pos.x == 114514) break;
+
             temp.transform.position = pos;
             temp.transform.rotation = Quaternion.LookRotation(rot);
             temp.transform.LookAt(transform.up);
@@ -50,14 +53,23 @@ public class Planting : MonoBehaviour
     {
         Vector3 finalPos;
         Vector3 finalRot;
-
+        int runCount = 0;
         while (true) {
+            runCount++;
+            if (runCount > 5)
+            {
+                finalPos = Vector3.zero;
+                finalPos.x = 114514;
+                finalRot = Vector3.zero;
+                break;
+            }
 
             Vector2 pt = GetRandomPt();
             Vector3 pt3 = new Vector3(pt.x, transform.position.y + 30, pt.y);
             Ray ray = new Ray(pt3, pt3 + Vector3.down * 50);
             RaycastHit hit;
             Physics.Raycast(ray,out hit, 50);
+            Debug.Log(hit.collider);
             if (hit.collider != null)
                 if (planted.Count == 0 || (planted.Count > 0 &&!(hit.collider.gameObject.layer == 0)))
                 {
