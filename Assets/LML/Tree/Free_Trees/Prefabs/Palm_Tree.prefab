@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3339706}
   - component: {fileID: 2355238}
   - component: {fileID: 6412599487788806568}
+  - component: {fileID: 3682856006023226886}
   m_Layer: 0
   m_Name: Palm_Tree
   m_TagString: Untagged
@@ -107,6 +108,40 @@ MonoBehaviour:
   hideLeafMaterial: {fileID: 2100000, guid: f2b12e395ee40d146861601686cdf0b8, type: 2}
   autoCleanDelay: 15
   TreeState: 3
+--- !u!208 &3682856006023226886
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 2.6980002, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.71, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &2516141666552064317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536403949508832288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: 7623d48f4b570e24085fe1f5cdb6a457, type: 3}
+  - {fileID: 8300000, guid: bf078c9e2b560fc498c59253a9e3bec7, type: 3}
+  - {fileID: 8300000, guid: ccc9a85faf004c84b8e401bcdc840f01, type: 3}
+  - {fileID: 8300000, guid: 6261746b61ddc5143a8148f719fb9d4e, type: 3}
+  - {fileID: 8300000, guid: ab405e745e11c614294784adff214173, type: 3}
 --- !u!54 &1744544201039447056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,24 +186,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8427528481817182187, guid: c0c51f7b8cacd614d80d10237789b194, type: 3}
---- !u!114 &2516141666552064317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2536403949508832288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipList:
-  - {fileID: 8300000, guid: 7623d48f4b570e24085fe1f5cdb6a457, type: 3}
-  - {fileID: 8300000, guid: bf078c9e2b560fc498c59253a9e3bec7, type: 3}
-  - {fileID: 8300000, guid: ccc9a85faf004c84b8e401bcdc840f01, type: 3}
-  - {fileID: 8300000, guid: 6261746b61ddc5143a8148f719fb9d4e, type: 3}
-  - {fileID: 8300000, guid: ab405e745e11c614294784adff214173, type: 3}
 --- !u!1001 &4169404868071660002
 PrefabInstance:
   m_ObjectHideFlags: 0

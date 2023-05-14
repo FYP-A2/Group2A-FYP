@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3398346}
   - component: {fileID: 2340482}
   - component: {fileID: 3421058448695116413}
+  - component: {fileID: 4067580508672321578}
   m_Layer: 0
   m_Name: Oak_Tree
   m_TagString: Untagged
@@ -107,6 +108,22 @@ MonoBehaviour:
   hideLeafMaterial: {fileID: 2100000, guid: f2b12e395ee40d146861601686cdf0b8, type: 2}
   autoCleanDelay: 15
   TreeState: 3
+--- !u!208 &4067580508672321578
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191266}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.4, y: 2.657, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.042000003, y: 2.647, z: 0.096}
+  m_TimeToStationary: 0.5
 --- !u!136 &4827918372887991714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -121,24 +138,6 @@ CapsuleCollider:
   m_Height: 78.3
   m_Direction: 2
   m_Center: {x: -4.0205193, y: 1.786472, z: -38.116425}
---- !u!114 &1020262554044834836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8574360442866010019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipList:
-  - {fileID: 8300000, guid: 7623d48f4b570e24085fe1f5cdb6a457, type: 3}
-  - {fileID: 8300000, guid: bf078c9e2b560fc498c59253a9e3bec7, type: 3}
-  - {fileID: 8300000, guid: ccc9a85faf004c84b8e401bcdc840f01, type: 3}
-  - {fileID: 8300000, guid: 6261746b61ddc5143a8148f719fb9d4e, type: 3}
-  - {fileID: 8300000, guid: ab405e745e11c614294784adff214173, type: 3}
 --- !u!54 &4298945472972918495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -169,6 +168,24 @@ CapsuleCollider:
   m_Height: 451.63
   m_Direction: 2
   m_Center: {x: 2.5, y: 6.69, z: -303.83835}
+--- !u!114 &1020262554044834836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574360442866010019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a0181912c8722488f9390e80e0aba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: 7623d48f4b570e24085fe1f5cdb6a457, type: 3}
+  - {fileID: 8300000, guid: bf078c9e2b560fc498c59253a9e3bec7, type: 3}
+  - {fileID: 8300000, guid: ccc9a85faf004c84b8e401bcdc840f01, type: 3}
+  - {fileID: 8300000, guid: 6261746b61ddc5143a8148f719fb9d4e, type: 3}
+  - {fileID: 8300000, guid: ab405e745e11c614294784adff214173, type: 3}
 --- !u!1001 &3280548306064866883
 PrefabInstance:
   m_ObjectHideFlags: 0
