@@ -283,7 +283,7 @@ namespace FYP2A.VR.PlaceTurret
                 yield return null;
             }
             turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
-            if (TryGetComponent<AudioSource>(out AudioSource audioSource))
+            if (turret.TryGetComponent<AudioSource>(out AudioSource audioSource))
             {
                 audioSource.PlayOneShot(clip);
             }

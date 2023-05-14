@@ -106,7 +106,8 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
         if (animator != null)
             animator.SetTrigger(ani_GetHit);
         ShowDamage(finalDamage, Color.black);
-        audioSource.PlayOneShot(clip);
+        audioSource.clip = clip;
+        audioSource.Play();
         if (hp <= 0)
         {
             state = State.Die;
