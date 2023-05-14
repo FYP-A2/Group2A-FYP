@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,7 @@ public class StageMonster : Monster
     Vector3 orginPos = Vector3.zero;
     ResourceGroupType resource;
     bool isDropped = false;
+    Vector3 result = Vector3.zero;
 
     protected override void Start()
     {
@@ -32,7 +34,8 @@ public class StageMonster : Monster
         questionMark = indicator.GetNamedChild("Img_QuestionMark").GetComponent<Image>();
         if (target == null)
             target = GameObject.Find("Core").GetComponent<Transform>();
-        PathFinding(target);
+        //result = RandomPoint(target.position, 15f);
+        PathFinding(target.position);
     }
 
     protected override void Update()
@@ -50,7 +53,7 @@ public class StageMonster : Monster
                 break;
             case State.Attack:
                 //Debug.Log(gameObject.name + state.ToString());
-                PathFinding(transform);
+                PathFinding(transform.position);
                 Attack(currentTarget);
                 break;
             case State.Chase:
@@ -61,8 +64,13 @@ public class StageMonster : Monster
                 agent.isStopped = true;
                 break;
         }
-        PlayerDetection();
         
+        PlayerDetection();
+
+        if(currentTarget != null && currentTarget != target && !hitTargets.Contains(currentTarget)) 
+        {
+            currentTarget = null;
+        }        
     }
 
     void PlayerDetection()
@@ -103,7 +111,12 @@ public class StageMonster : Monster
         }
         else
         {
-            if(hatred > 0)
+            if (state == State.Chase)
+            {
+                state = State.Move;
+            }
+
+            if (hatred > 0)
             {
                 if (!indicator.GetComponent<Image>().enabled)
                     indicator.GetComponent<Image>().enabled = true;
@@ -121,11 +134,7 @@ public class StageMonster : Monster
                     }
                     indicator.SetActive(false);                    
                 }                
-            }
-            if(state == State.Chase)
-            {
-                state = State.Move;
-            }
+            }           
         }
     }
 
@@ -133,7 +142,7 @@ public class StageMonster : Monster
     {
         if (Vector3.Distance(orginPos, players[0].position) < chaseDistance)
         {
-            PathFinding(players[0]);
+            PathFinding(players[0].position);
             if (Physics.Raycast(firePoint.position, (players[0].position - firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
             {
                 if (hit.transform == players[0])
@@ -156,7 +165,7 @@ public class StageMonster : Monster
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            PathFinding(target);
+            PathFinding(target.position);
         }
 
         if (currentTarget != target && hitTargets.Count > 0)
@@ -190,11 +199,11 @@ public class StageMonster : Monster
 
             if (Physics.Raycast(firePoint.position, transform.forward, out RaycastHit hit, enemyScriptable.attackRange, layer))
             {
-                if (hit.transform.CompareTag("breakable"))
+                if (hit.transform.CompareTag("breakable") && hit.transform.GetComponent<MeshRenderer>().enabled)
                 {
                     obstacleInFront = true;
                     currentTarget = hit.transform;
-                }
+                }               
             }
 
             if (obstacleInFront && pathTarget.Contains(currentTarget) || currentTarget == target)
@@ -206,7 +215,7 @@ public class StageMonster : Monster
             {
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    PathFinding(target);
+                    PathFinding(target.position);
                 }
             }
         }
@@ -231,11 +240,11 @@ public class StageMonster : Monster
         }
     }
 
-    void PathFinding(Transform target)
+    void PathFinding(Vector3 target)
     {
-        agent.SetDestination(target.position); //Don't forget to initiate the first movement.
+        agent.SetDestination(target); //Don't forget to initiate the first movement.
         NavMeshPath path = new NavMeshPath();
-        if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
+        if (NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path))
         {
             agent.SetPath(path);
         }
@@ -248,5 +257,11 @@ public class StageMonster : Monster
             }
             yield return null;
         }
+    }
+
+    Vector3 RandomPoint(Vector3 center, float range)
+    {     
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
+        return new Vector3(randomPoint.x,center.y,randomPoint.z);
     }
 }

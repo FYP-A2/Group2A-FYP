@@ -171,7 +171,6 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
             return;
         }
 
-
         if (target != null)
         {
             if (target.TryGetComponent<IDamage>(out IDamage Idamage) && !isAttacked)

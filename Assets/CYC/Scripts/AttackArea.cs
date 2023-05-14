@@ -40,7 +40,9 @@ public class AttackArea : MonoBehaviour
             for (int i = 0; i < targets.Count; i++)
             {
                 //Debug.Log(targets[0].ToString());
-                if (targets[i] == null)
+                Collider col;
+                targets[i].TryGetComponent<Collider>(out col);
+                if (targets[i] == null || col != null && !col.enabled)
                 {
                     //Debug.Log("Remove");
                     targets.Remove(targets[i]);
