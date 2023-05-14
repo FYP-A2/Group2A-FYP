@@ -1304,6 +1304,7 @@ MonoBehaviour:
   isPreviewing: 0
   xrRayInteractor: {fileID: 2668174525342265576}
   turretPrefabIndex: {fileID: 8252520905623984174, guid: a9d1f3e3bccd8f542921540713a2f216, type: 3}
+  clip: {fileID: 8300000, guid: 6776757b2102ed643b3e9c709801e8df, type: 3}
   uiBook: {fileID: 4848051132834313979}
   inputConfirm:
     m_UseReference: 1
@@ -1661,6 +1662,7 @@ MonoBehaviour:
   isPreviewing: 0
   xrRayInteractor: {fileID: 2668174525342265576}
   turretPrefabIndex: {fileID: 0}
+  clip: {fileID: 0}
   uiBook: {fileID: 0}
   inputConfirm:
     m_UseReference: 1
@@ -2659,6 +2661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book Model and Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4243769592900850544, guid: 0da0d99651a7b5d47998620621541431, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8764947311404728607}
     - target: {fileID: 5413305617489155114, guid: 0da0d99651a7b5d47998620621541431, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

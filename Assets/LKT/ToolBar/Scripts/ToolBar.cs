@@ -35,6 +35,8 @@ public class ToolBar : MonoBehaviour
 
         pLeft.transform.SetParent(cam.transform);
         pRight.transform.SetParent(cam.transform);
+
+        Deactivate();
     }
 
     private void OnEnable()
@@ -47,7 +49,7 @@ public class ToolBar : MonoBehaviour
         pLeft.MovePosition(handLeft.position);
         pRight.MovePosition(handRight.position);
 
-        float targetVelocity = 10f;
+        float targetVelocity = 5f;
 
         if (pLeft.velocity.z > targetVelocity || pRight.velocity.z > targetVelocity)
             SwivelRight();

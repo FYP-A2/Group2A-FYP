@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 96789643b2c68e44bbc1902f501d962b
+<<<<<<<< HEAD:Assets/Scenes/EndScene.unity.meta
+guid: 146bc1bf51b1bfb4e8079faa41f0501c
+========
+guid: 4ee95b6cecb70b84495c01a92e788e80
+>>>>>>>> origin/LML_whyicantsavewiththesamename:Assets/Scenes/GameScene for mapping.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

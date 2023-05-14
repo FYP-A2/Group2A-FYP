@@ -23,6 +23,8 @@ namespace FYP2A.VR.PlaceTurret
 
         public TurretPrefabIndex turretPrefabIndex;
 
+        public AudioClip clip;
+
         [SerializeField]
         UIBook uiBook;
 
@@ -37,6 +39,8 @@ namespace FYP2A.VR.PlaceTurret
 
 
         float placeCD = 0;
+
+
 
 
         protected void OnEnable()
@@ -279,6 +283,10 @@ namespace FYP2A.VR.PlaceTurret
                 yield return null;
             }
             turret.position = new Vector3(turret.position.x, originHeight, turret.position.z);
+            if (TryGetComponent<AudioSource>(out AudioSource audioSource))
+            {
+                audioSource.PlayOneShot(clip);
+            }
             yield return null;
             yield return null;
             yield return null;
