@@ -18,6 +18,10 @@ public class Tower : MonoBehaviour
     int phyDamage, magicDamage, fireRate;
     float attackRange;
     float upgradeAOE;
+
+    AudioSource audioSource;
+    public List<AudioClip> audioClips= new List<AudioClip>();
+    
     void Start()
     {
         allTowerSO.Add(towerSO);
@@ -34,6 +38,7 @@ public class Tower : MonoBehaviour
         if (firePoint == null)
             firePoint = transform;
         upgradeAOE = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -133,6 +138,7 @@ public class Tower : MonoBehaviour
                                 }
                             }
                         }
+                        audioSource.PlayOneShot(audioClips[0]);
                         isAttacked = true;
                         StartCoroutine(ResetAttack(fireRate));
                     }
@@ -166,15 +172,19 @@ public class Tower : MonoBehaviour
             switch (towerSO.towerType.ToString())
             {
                 case "Phy":
+                    audioSource.PlayOneShot(audioClips[1]);
                     bullet.Seek(m.transform, towerSO.towerType.ToString(), phyDamage, magicDamage);
                     break;
                 case "Magic":
+                    audioSource.PlayOneShot(audioClips[2]);
                     bullet.Seek(m.transform, towerSO.towerType.ToString(), phyDamage, magicDamage);
                     break;
                 case "Fire":
+                    audioSource.PlayOneShot(audioClips[3]);
                     bullet.Seek(m.transform, towerSO.towerType.ToString(), magicDamage, towerSO.burntDamage,towerSO.burntTime, towerSO.exposionRadius);
                     break;
                 case "Ice":
+                    audioSource.PlayOneShot(audioClips[4]);
                     bullet.Seek(m.transform, towerSO.towerType.ToString(), magicDamage, slowRatio:towerSO.slowRatio, slowTime:towerSO.slowTime);
                     break;              
             }

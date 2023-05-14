@@ -35,6 +35,9 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
 
     protected Transform currentTarget;
 
+    AudioSource audioSource;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -49,7 +52,7 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
         animator = GetComponent<Animator>();
         if (firePoint == null)
             firePoint = transform;
-
+        audioSource = GetComponent<AudioSource>();
         state = State.Idle;
 
     }
@@ -103,6 +106,7 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
         if (animator != null)
             animator.SetTrigger(ani_GetHit);
         ShowDamage(finalDamage, Color.black);
+        audioSource.PlayOneShot(clip);
         if (hp <= 0)
         {
             state = State.Die;

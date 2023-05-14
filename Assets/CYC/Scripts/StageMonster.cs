@@ -5,7 +5,6 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
 public class StageMonster : Monster
 {
     public Transform target;
@@ -25,7 +24,7 @@ public class StageMonster : Monster
     ResourceGroupType resource;
     bool isDropped = false;
     Vector3 result = Vector3.zero;
-
+    
     protected override void Start()
     {
         base.Start();

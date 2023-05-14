@@ -131,6 +131,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2321
   modifierVolume: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 4f4d9b3380053d44a860ca70e7420bc2, type: 3}
+  - {fileID: 8300000, guid: 78e513c5f6dd75d48a1a271ccddf57ed, type: 3}
+  - {fileID: 8300000, guid: 0a9b1409ff5d71d4dbff00865d51a741, type: 3}
+  - {fileID: 8300000, guid: 583f469b3689e1842a875ea53ad05f08, type: 3}
+  - {fileID: 8300000, guid: bf427a175f6c68e418f621db7b4010ef, type: 3}
 --- !u!54 &6576838766939971804
 Rigidbody:
   m_ObjectHideFlags: 0
