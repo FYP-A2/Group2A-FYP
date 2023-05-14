@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29758373, g: 0.6340128, b: 0.9937014, a: 1}
+  m_IndirectSpecularColor: {r: 0.2978285, g: 0.6340788, b: 0.99369353, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -33962,6 +33962,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274560180458830945, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 474694c8afb9c534085ded6dfe98a051, type: 3}
     - target: {fileID: 5274560180834625399, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -34225,6 +34229,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274560180458830945, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d59fb12376556bf4ba63203c8c8c7afc, type: 3}
     - target: {fileID: 5274560180834625399, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -34311,7 +34319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: baseScale
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: groupChannel
@@ -84457,6 +84465,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274560180458830945, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d59fb12376556bf4ba63203c8c8c7afc, type: 3}
     - target: {fileID: 5274560180834625399, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -84543,7 +84555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: baseScale
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5274560180834625400, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: groupChannel
