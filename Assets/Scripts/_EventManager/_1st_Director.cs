@@ -326,7 +326,7 @@ public class _1st_Director : MonoBehaviour
 
                 if (timer.GetCurrState() == Timer.State.PAUSE)
                 {
-                    Assign_Timer_n_Announcer_ver_RS(4, ref NeedOf_Asn_Timer_n_Announcer);
+                    Assign_Timer_n_Announcer_ver_RS(30, ref NeedOf_Asn_Timer_n_Announcer);
                 }
                 if (timer.GetCurrState() == Timer.State.FINISHED)
                 {
@@ -345,7 +345,7 @@ public class _1st_Director : MonoBehaviour
 
                     if (timer.GetCurrState() == Timer.State.PAUSE)
                     {
-                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(2, ref NeedOf_Asn_Timer_n_Announcer);
+                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(5, ref NeedOf_Asn_Timer_n_Announcer);
                     }
                     if (timer.GetCurrState() == Timer.State.FINISHED)
                     {
