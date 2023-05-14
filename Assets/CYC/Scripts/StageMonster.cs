@@ -66,7 +66,7 @@ public class StageMonster : Monster
         
         PlayerDetection();
 
-        if(currentTarget != null && currentTarget != target && !hitTargets.Contains(currentTarget)) 
+        if (currentTarget != null && currentTarget != target && !hitTargets.Contains(currentTarget) && !players.Contains(currentTarget))
         {
             currentTarget = null;
         }        
