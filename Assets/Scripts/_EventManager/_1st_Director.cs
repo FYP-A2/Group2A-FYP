@@ -476,8 +476,11 @@ public class _1st_Director : MonoBehaviour
 
 
         if (director_SpawnManager.roundStartSpawned == false)
+        {
+            newSpawnManager.PathDisplay();
             foreach (MonsterDictionary e in newSpawnManager.enemySpawnData)
                 StartCoroutine(newSpawnManager.NewSpawnPrefabs(e, stage));
+        }
         onceBoolean = true;
 
     }
