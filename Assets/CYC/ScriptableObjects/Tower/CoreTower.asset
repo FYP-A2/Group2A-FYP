@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a11753cecf7bc443a784b9cf12a2d8b, type: 3}
+  m_Name: CoreTower
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 6237713900703245859, guid: eaf66b77be1b9b24791fbc1c7eefdd3c, type: 3}
+  phyDamage: 0
+  magicDamage: 20
+  fireRate: 2
+  attackRange: 50
+  towerType: 5
+  level: 0
+  bulletPrefab: {fileID: 3484785623309836574, guid: 12eb0a02cb7ca9d44ab870ec68135619, type: 3}
+  burntDamage: 0
+  burntTime: 0
+  exposionRadius: 0
+  slowRatio: 0
+  slowTime: 0
+  penetrationRatio: 0
+  penetrationTime: 0
+  jumpCount: 0

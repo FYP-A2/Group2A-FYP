@@ -279,7 +279,29 @@ public class StageMonster : Monster
                         currentWaypointIndex++;
                     }                    
                 }
-                agent.SetDestination(RandomPoint(waypoints[currentWaypointIndex].position, range));
+                if (currentWaypointIndex == waypoints.Count - 1)
+                {
+                    Vector3 pos = RandomPoint(waypoints[currentWaypointIndex].position, range);
+                    agent.SetDestination(pos); //Don't forget to initiate the first movement.
+                    NavMeshPath path = new NavMeshPath();
+                    if (NavMesh.CalculatePath(transform.position, pos, NavMesh.AllAreas, path))
+                    {
+                        agent.SetPath(path);
+                    }
+                    StartCoroutine(Coroutine());
+                    IEnumerator Coroutine()
+                    {
+                        if (path.status == NavMeshPathStatus.PathComplete)
+                        {
+                            agent.SetPath(path);
+                        }
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    agent.SetDestination(RandomPoint(waypoints[currentWaypointIndex].position, range));
+                }
                 //Debug.Log(waypoints[currentWaypointIndex].name);
             }
             
