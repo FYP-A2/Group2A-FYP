@@ -54,6 +54,9 @@ namespace FYP2A.VR.Melee.Target
 
         MeleeSource sourceNow;
 
+        GateRepair repairNow;
+        float repairActiveCD = 0;
+
         // Start is called before the first frame update
         new void Start()
         {
@@ -102,6 +105,16 @@ namespace FYP2A.VR.Melee.Target
             {
                 hitTimeCD -= Time.deltaTime;
             }
+
+            if (repairNow != null && repairActiveCD > 0)
+            {
+                repairActiveCD -= Time.deltaTime;
+            }
+
+            if (repairNow != null && repairActiveCD <= 0)
+            {
+                SuspendRepair();
+            }
         }
 
         public override void HitBy(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
@@ -123,6 +136,8 @@ namespace FYP2A.VR.Melee.Target
                 HitArea1Enter++;
             if (hitboxes.IndexOf(targetHitbox) == 2)
                 HitArea2Enter++;
+
+            repairActiveCD = 3;
         }
 
         public override void HitLeave(MeleeSource source, MeleeHitbox sourceHitbox, MeleeHitbox targetHitbox)
@@ -229,6 +244,33 @@ namespace FYP2A.VR.Melee.Target
         float WitchOfAgnesi(float a,float b,float c,float x)
         {
             return (Mathf.Pow(a, 2) * x/c) / ((Mathf.Pow(x/c, 2) + a * b));
+        }
+
+        public void SetRepair(GateRepair repair)
+        {
+            if (repair != null)
+                repair.SuspendRepair();
+            repairNow = repair;
+            repairActiveCD = 3f;
+
+            hitArea.gameObject.SetActive(true);
+        }
+
+        //suspend when there is no activity for a long time
+        public void SuspendRepair()
+        {
+            repairNow.SuspendRepair();
+            repairNow = null;
+
+            hitArea.gameObject.SetActive(false);
+        }
+
+        public void EndRepair(GateRepair repair)
+        {
+            if (repairNow.Equals(repair))
+                repairNow = null;
+
+            hitArea.gameObject.SetActive(false);
         }
     }
 
