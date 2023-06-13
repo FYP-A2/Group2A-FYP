@@ -66,6 +66,8 @@ namespace FYP2A.VR.Melee.Target
             cA0 = hitboxes[0].GetComponent<Renderer>().material.color;
             cA1 = hitboxes[1].GetComponent<Renderer>().material.color;
             cA2 = hitboxes[2].GetComponent<Renderer>().material.color;
+
+            SuspendRepair();
         }
 
         // Update is called once per frame
@@ -248,8 +250,8 @@ namespace FYP2A.VR.Melee.Target
 
         public void SetRepair(GateRepair repair)
         {
-            if (repair != null)
-                repair.SuspendRepair();
+            if (repairNow != null)
+                repairNow.SuspendRepair();
             repairNow = repair;
             repairActiveCD = 3f;
 
@@ -259,14 +261,19 @@ namespace FYP2A.VR.Melee.Target
         //suspend when there is no activity for a long time
         public void SuspendRepair()
         {
-            repairNow.SuspendRepair();
-            repairNow = null;
+            if (repairNow != null)
+            {
+                repairNow.SuspendRepair();
+                repairNow = null;
+            }
+
 
             hitArea.gameObject.SetActive(false);
         }
 
         public void EndRepair(GateRepair repair)
         {
+            Debug.Log("end repair");
             if (repairNow.Equals(repair))
                 repairNow = null;
 

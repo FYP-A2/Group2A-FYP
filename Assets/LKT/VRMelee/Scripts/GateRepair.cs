@@ -3,23 +3,23 @@ using FYP2A.VR.Melee.Target;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GateRepair : MeleeTarget
 {
     MeleeTargetCommonBuild mtcb;
+    [Header("Gate Repair")]
     public GameObject gate;
     public bool canBeRepair = false;
     public bool repairing = false;
 
-    public float maxHP = 100;
+    public float maxHP = 30;
     public float nowHP = 0;
 
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
-        canBeRepair = false;
+        canBeRepair = true;
         repairing = false;
         maxHP = 100;
         nowHP = 0;
@@ -34,6 +34,17 @@ public class GateRepair : MeleeTarget
 
         if (!repairing && canBeRepair)
             StartRepair();
+    }
+
+    private void Update()
+    {
+        if (repairing)
+        {
+            if (nowHP > 0)
+                nowHP -= Time.deltaTime*5;
+
+            mtcb.SetProgressionDisplay(nowHP, maxHP);
+        }
     }
 
     void StartRepair()
@@ -52,15 +63,19 @@ public class GateRepair : MeleeTarget
     void EndRepair()
     {
         repairing = false;
+        canBeRepair = false;
         mtcb.EndRepair(this);
         mtcb.AddBuildProgressEvent -= Mtcb_AddBuildProgressEvent;
         nowHP = 0;
+
+        //do success event
     }
 
     private void Mtcb_AddBuildProgressEvent(float buildProgress)
     {
-        nowHP += buildProgress / 3;
-        mtcb.SetProgressionDisplay(nowHP, maxHP);
+        nowHP += buildProgress / 2;
+
+        Debug.Log("now: " + nowHP + "   maxHP: " + maxHP);
 
         if (nowHP >= maxHP)
         {
