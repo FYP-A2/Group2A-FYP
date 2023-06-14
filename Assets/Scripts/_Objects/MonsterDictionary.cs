@@ -29,6 +29,7 @@ public class MonsterDictionary {
 
     public List<int> numToSpawn_WhereEachItemMeans_In_A_Level;
 
+    public List<int> whichSpawn;
     void Start(){
         //prefab=RMP.reg_Mon_Pref_2;
     }
