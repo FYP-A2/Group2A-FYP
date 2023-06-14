@@ -16,6 +16,9 @@ public class ToolBar : MonoBehaviour
     Rigidbody pLeft;
     Rigidbody pRight;
 
+    float oldLeftLocPos = 0;
+    float oldRightLocPos = 0;
+
     int turnDirection = 0;
 
     // Start is called before the first frame update
@@ -51,10 +54,18 @@ public class ToolBar : MonoBehaviour
 
         float targetVelocity = 5f;
 
-        if (pLeft.velocity.z > targetVelocity || pRight.velocity.z > targetVelocity)
+        float l = oldLeftLocPos - pLeft.transform.localPosition.x;
+        float r = oldRightLocPos - pRight.transform.localPosition.x;
+
+        if ( l / Time.fixedDeltaTime > targetVelocity 
+            || r / Time.fixedDeltaTime > targetVelocity)
             SwivelRight();
-        if (pLeft.velocity.z < -targetVelocity || pRight.velocity.z < -targetVelocity)
+        if ( l / Time.fixedDeltaTime < -targetVelocity
+            || r / Time.fixedDeltaTime < -targetVelocity)
             SwivelLeft();
+
+        oldLeftLocPos = pLeft.transform.localPosition.x;
+        oldRightLocPos = pRight.transform.localPosition.x;
     }
 
     public void ActivateOrNot()
