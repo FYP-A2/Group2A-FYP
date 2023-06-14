@@ -300,6 +300,7 @@ public class _1st_Director : MonoBehaviour
                 // !!!!!!!!!!!!!!!!!!!!
                 if (timer.GetCurrState() == Timer.State.PAUSE)
                 {
+                    newSpawnManager.PathDisplay();
                     Assign_Timer_n_Announcer_ver_RBS(30, ref NeedOf_Asn_Timer_n_Announcer);
                 }
                 if (timer.GetCurrState() == Timer.State.FINISHED)
@@ -345,6 +346,7 @@ public class _1st_Director : MonoBehaviour
 
                     if (timer.GetCurrState() == Timer.State.PAUSE)
                     {
+                        newSpawnManager.PathDisplay();
                         Assign_Timer_n_Announcer_ver_WaitingForNextStage(10, ref NeedOf_Asn_Timer_n_Announcer);
                     }
                     if (timer.GetCurrState() == Timer.State.FINISHED)
@@ -476,8 +478,10 @@ public class _1st_Director : MonoBehaviour
 
 
         if (director_SpawnManager.roundStartSpawned == false)
+        {           
             foreach (MonsterDictionary e in newSpawnManager.enemySpawnData)
                 StartCoroutine(newSpawnManager.NewSpawnPrefabs(e, stage));
+        }
         onceBoolean = true;
 
     }

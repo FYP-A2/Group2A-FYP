@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,7 +23,13 @@ public class StageMonster : Monster
     ResourceGroupType resource;
     bool isDropped = false;
     Vector3 result = Vector3.zero;
-    
+
+    [Header("WayPoint")]
+    public bool wayPointMode = false;
+    public List<Transform> waypoints;
+    public int currentWaypointIndex = 0;
+    private float range = 2f;
+
     protected override void Start()
     {
         base.Start();
@@ -95,7 +100,7 @@ public class StageMonster : Monster
                     return;
                 }
                 
-                if (state != State.Attack)
+                if (state != State.Attack && state != State.Chase)
                 {
                     if (orginPos==Vector3.zero)
                     {
@@ -104,7 +109,8 @@ public class StageMonster : Monster
                     questionMark.color = Color.red;
                     if(indicator.GetComponent<Image>().enabled)
                         indicator.GetComponent<Image>().enabled = false;
-                    Chase();
+                    //Chase();
+                    state = State.Chase;
                 }
             }
         }
@@ -139,9 +145,9 @@ public class StageMonster : Monster
 
     void Chase()
     {
-        if (Vector3.Distance(orginPos, players[0].position) < chaseDistance)
+        if (players.Count != 0 && Vector3.Distance(orginPos, players[0].position) < chaseDistance)
         {
-            PathFinding(players[0].position);
+            PathFinding(players[0].position);            
             if (Physics.Raycast(firePoint.position, (players[0].position - firePoint.position).normalized, out RaycastHit hit, enemyScriptable.attackRange, layer))
             {
                 if (hit.transform == players[0])
@@ -155,6 +161,7 @@ public class StageMonster : Monster
         else
         {
             questionMark.color = Color.white;
+            PathFinding(transform.position);
             state= State.Move;
         }
 
@@ -169,8 +176,15 @@ public class StageMonster : Monster
 
         if (currentTarget != target && hitTargets.Count > 0)
         {
+            if (hitTargets.Contains(target))
+            {
+                currentTarget= target;
+                lastState = state;
+                state = State.Attack;
+                return;
+            }
             //bool targetIsBlocked = false;
-            bool obstacleInFront = false;            
+            bool obstacleInFront = false;
 
             NavMeshPath path = new NavMeshPath();
             if (agent.CalculatePath(target.position, path))
@@ -241,20 +255,74 @@ public class StageMonster : Monster
 
     void PathFinding(Vector3 target)
     {
-        agent.SetDestination(target); //Don't forget to initiate the first movement.
-        NavMeshPath path = new NavMeshPath();
-        if (NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path))
+        if (wayPointMode)
         {
-            agent.SetPath(path);
+            if (state == State.Chase)
+            {
+                agent.SetDestination(target);
+                return;
+            }
+
+            if (isAttacked && currentTarget == this.target)
+            {
+                agent.SetDestination(transform.position);
+                return;
+            }
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if(currentWaypointIndex == waypoints.Count - 1) { return; }
+                if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) <= range * 2)
+                {
+                    if (currentWaypointIndex != waypoints.Count - 1)
+                    {
+                        currentWaypointIndex++;
+                    }                    
+                }
+                if (currentWaypointIndex == waypoints.Count - 1)
+                {
+                    Vector3 pos = RandomPoint(waypoints[currentWaypointIndex].position, range);
+                    agent.SetDestination(pos); //Don't forget to initiate the first movement.
+                    NavMeshPath path = new NavMeshPath();
+                    if (NavMesh.CalculatePath(transform.position, pos, NavMesh.AllAreas, path))
+                    {
+                        agent.SetPath(path);
+                    }
+                    StartCoroutine(Coroutine());
+                    IEnumerator Coroutine()
+                    {
+                        if (path.status == NavMeshPathStatus.PathComplete)
+                        {
+                            agent.SetPath(path);
+                        }
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    agent.SetDestination(RandomPoint(waypoints[currentWaypointIndex].position, range));
+                }
+                //Debug.Log(waypoints[currentWaypointIndex].name);
+            }
+            
         }
-        StartCoroutine(Coroutine());
-        IEnumerator Coroutine()
-        {          
-            if (path.status == NavMeshPathStatus.PathComplete)
+        else
+        {
+            agent.SetDestination(target); //Don't forget to initiate the first movement.
+            NavMeshPath path = new NavMeshPath();
+            if (NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path))
             {
                 agent.SetPath(path);
             }
-            yield return null;
+            StartCoroutine(Coroutine());
+            IEnumerator Coroutine()
+            {
+                if (path.status == NavMeshPathStatus.PathComplete)
+                {
+                    agent.SetPath(path);
+                }
+                yield return null;
+            }
         }
     }
 

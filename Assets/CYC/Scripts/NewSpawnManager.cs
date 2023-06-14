@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public class EnemyPath
+{
+    public List<EnemyPathLists> Sapwn;
+}
 
+[System.Serializable]
+public class EnemyPathLists
+{
+    [NonReorderable] public List<Transform> path1;
+    [NonReorderable] public List<Transform> path2;
+    [NonReorderable] public List<Transform> path3;
+}
 
 public class NewSpawnManager : MonoBehaviour
 {
@@ -13,6 +26,11 @@ public class NewSpawnManager : MonoBehaviour
     public List<Transform> spawnPoints;
     public List<MonsterDictionary> enemySpawnData;
     public List<EnemyScriptableObject> enemyScriptableObjects;
+    public EnemyPath enemyPath;
+    public int pathIndex;
+    public List<List<Transform>> currentSpawnersPath = new List<List<Transform>>();
+    public GameObject lineRenderer;
+    public List<LineRenderer> lineRenderers= new List<LineRenderer>();
     //public Stage stage;
     private void Awake()
     {
@@ -30,11 +48,57 @@ public class NewSpawnManager : MonoBehaviour
         //{            
         //    StartCoroutine(NewSpawnPrefabs(e, stage));
         //}
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            GameObject l = Instantiate(lineRenderer, Vector3.zero, Quaternion.identity, null);
+            lineRenderers.Add(l.GetComponent<LineRenderer>());
+            lineRenderers[i].enabled = false;
+        }
+    }
+
+    public void PathDisplay()
+    {
+        if(currentSpawnersPath.Count != 0)
+        {
+            currentSpawnersPath = new List<List<Transform>>();
+        }
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {           
+            currentSpawnersPath.Add(GetRandomPath(i));
+            lineRenderers[i].positionCount = currentSpawnersPath[i].Count;
+            lineRenderers[i].SetPositions(currentSpawnersPath[i].Select(t => t.position).ToArray());
+            lineRenderers[i].enabled = true;
+        }
     }
    
     private Transform GetSpawnpoint()
     {
         return spawnPoints[Random.Range(0, spawnPoints.Count)];
+    }
+
+    private Vector3 GetSpawnpoint(int index)
+    {
+        return spawnPoints[index].position;
+    }
+
+    private List<Transform> GetRandomPath(int index)
+    {
+        EnemyPathLists randomPath = enemyPath.Sapwn[index];
+        List<Transform> chosenPath;
+        int randomPathIndex = Random.Range(0, 2);
+        switch (randomPathIndex)
+        {
+            case 0:
+                chosenPath = randomPath.path1;
+                return chosenPath;
+            case 1:
+                chosenPath = randomPath.path2;
+                return chosenPath;
+            case 2:
+                chosenPath = randomPath.path3;
+                return chosenPath;
+        }
+        return null;
     }
 
     private bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -65,13 +129,42 @@ public class NewSpawnManager : MonoBehaviour
                 //float burstDelay = 1f;
                 //yield return new WaitForSeconds(burstDelay);
 
-                Vector3 spawnPoint = GetSpawnpoint().position;
+                //Vector3 spawnPoint = GetSpawnpoint().position;
+                int spawnPointIndex = Random.Range(0, spawnPoints.Count);
 
                 for (int i = 0; i < numToBurst && numSpawned < numToSpawn; i++)
                 {
-                    if (RandomPoint(spawnPoint, range, out Vector3 point))
+                    //if (RandomPoint(spawnPoint, range, out Vector3 point))
+                    if(RandomPoint(GetSpawnpoint(spawnPointIndex),range,out Vector3 point))
                     {
-                        Instantiate(enemyData.prefab, point, Quaternion.identity);
+                        GameObject enemy = Instantiate(enemyData.prefab, point, Quaternion.identity);
+                        for(int j=0; j < spawnPoints.Count;j++)
+                        {
+                            if(spawnPointIndex == j)
+                            {
+                                if (!enemy.GetComponent<StageMonster>().wayPointMode)
+                                    enemy.GetComponent<StageMonster>().wayPointMode = true;
+                                enemy.GetComponent<StageMonster>().waypoints = currentSpawnersPath[j];
+                            }
+                        }
+                        /*switch (spawnPointIndex){
+                            case 0:
+                                if (!enemy.GetComponent<StageMonster>().wayPointMode)
+                                    enemy.GetComponent<StageMonster>().wayPointMode = true;
+                                enemy.GetComponent<StageMonster>().waypoints = enemyPath.Sapwn[0].path1;
+                                break;
+                            case 1:
+                                if (!enemy.GetComponent<StageMonster>().wayPointMode)
+                                    enemy.GetComponent<StageMonster>().wayPointMode = true;
+                                enemy.GetComponent<StageMonster>().waypoints = enemyPath.Sapwn[1].path1;
+                                break;
+                            case 2:
+                                if (!enemy.GetComponent<StageMonster>().wayPointMode)
+                                    enemy.GetComponent<StageMonster>().wayPointMode = true;
+                                enemy.GetComponent<StageMonster>().waypoints = enemyPath.Sapwn[2].path1;
+                                break;
+                        }*/
+                        
                         numSpawned++;
                     }
                 }

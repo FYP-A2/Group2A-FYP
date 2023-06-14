@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -45,7 +43,10 @@ public class AttackArea : MonoBehaviour
                 {
                     targets[i].TryGetComponent<Collider>(out col);
                     if (col != null && !col.enabled)
+                    {
                         targets.Remove(targets[i]);
+                        break;
+                    }
                 }
                 
                 if (targets[i] == null)
