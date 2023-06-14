@@ -8,7 +8,7 @@ public class GateRepair : MeleeTarget
 {
     MeleeTargetCommonBuild mtcb;
     [Header("Gate Repair")]
-    public GameObject gate;
+    public Breakable gate;
     public bool canBeRepair = false;
     public bool repairing = false;
 
@@ -19,7 +19,7 @@ public class GateRepair : MeleeTarget
     new void Start()
     {
         base.Start();
-        canBeRepair = true;
+        canBeRepair = false;
         repairing = false;
         maxHP = 100;
         nowHP = 0;
@@ -38,6 +38,9 @@ public class GateRepair : MeleeTarget
 
     private void Update()
     {
+        if (!canBeRepair && gate.GetHP() <= 0)
+            canBeRepair = true;
+
         if (repairing)
         {
             if (nowHP > 0)
@@ -69,6 +72,7 @@ public class GateRepair : MeleeTarget
         nowHP = 0;
 
         //do success event
+        gate.GateReset();
     }
 
     private void Mtcb_AddBuildProgressEvent(float buildProgress)
