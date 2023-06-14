@@ -35,6 +35,17 @@ public class Breakable : MonoBehaviour, IDamage,IHP
         }
     }
 
+    public void GateReset()
+    {
+        TryGetComponent<NavMeshObstacle>(out NavMeshObstacle nmo);
+        if (nmo != null)
+        {
+            hp = (int)GetMaxHP();
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
+            nmo.enabled = true;
+        }
+    }
     void Start()
     {
         maxHp = hp;
@@ -42,6 +53,6 @@ public class Breakable : MonoBehaviour, IDamage,IHP
 
     void Update()
     {
-        
+
     }
 }
