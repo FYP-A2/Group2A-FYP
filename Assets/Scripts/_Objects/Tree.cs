@@ -44,7 +44,7 @@ public class Tree : MonoBehaviour
         
         if (byWho != null)
         {
-            if (byWho.director.mode._TNT_State == Mode.TNT_State.Waiting_CutTree)
+            if (byWho.director.mode._TNT_State == Mode.TNT_State.Tree5)
                 byWho.director.TNTModeJumpState();
         }
     }

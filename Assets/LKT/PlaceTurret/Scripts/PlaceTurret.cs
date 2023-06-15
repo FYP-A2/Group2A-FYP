@@ -212,7 +212,7 @@ namespace FYP2A.VR.PlaceTurret
                 DeletePreview();
                 uiBook.SelectExitAllButton();
 
-                if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
+                if (player.director.mode._TNT_State == Mode.TNT_State.Build5)
                     if (nowBuild.Tower.towerType == TowerScriptableObject.TowerType.Phy)
                         player.director.TNTModeJumpState();
             }
@@ -316,7 +316,7 @@ namespace FYP2A.VR.PlaceTurret
             //Debug.Log("all pearl: " + tuc1.GetAllActivatedPearl().Count);
 
 
-            if (player.director.mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
+            if (player.director.mode._TNT_State == Mode.TNT_State.Build6)
                     player.director.TNTModeJumpState();
 
             Debug.Log("exit fly: tower place");

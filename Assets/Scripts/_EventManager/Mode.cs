@@ -12,17 +12,17 @@ public class Mode : MonoBehaviour
    public _1st_Director _FirstDirector;
 
    public enum TNT_State{
-      Waiting_GoTreeArea=1,Waiting_CutTree=2,
-      Waiting_GoStoneArea=3,Waiting_MineStone=4,
-      Waiting_GoBuildArea=5,Waiting_BuildPhyTower=6,
-      Waiting_BuildFinished=7, Waiting_Ready = 8,
-        Waiting_EndCondition = 9, End = 10
+        Tree1 = 0, Tree2 = 1, Tree3 = 2, Tree4 = 3, Tree5 = 4,
+        Stone1 = 5, Stone2 = 6, Stone3 = 7, Stone4 = 8, Stone5 = 9,
+        Repair1 = 10, Repair2 = 11, Repair3 = 12, Repair4 = 13, Repair5 = 14,
+        Build1 = 15, Build2 = 16, Build3 = 17, Build4 = 18, Build5 = 19, Build6 = 20,
+        WaitEnd = 21, End = 22
     }
    public bool TNTModeTriggered=false,devModeTriggered=false,started_once=false;
 
    public bool Mode2_Triggered=false;
 
-   public TNT_State _TNT_State = TNT_State.Waiting_GoTreeArea;
+   public TNT_State _TNT_State = 0;
 
    public enum FullMode_State
    {

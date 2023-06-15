@@ -41,7 +41,7 @@ public class Stone : MonoBehaviour
 
         if (byWho != null)
         {
-            if (byWho.director.mode._TNT_State == Mode.TNT_State.Waiting_MineStone)
+            if (byWho.director.mode._TNT_State == Mode.TNT_State.Stone5)
                 byWho.director.TNTModeJumpState();
         }
     }
