@@ -147,8 +147,8 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
 
     public void DefenseReduction(float value, float reductionTime)
     {
-        defense = enemyScriptable.defense * (1 - value);
-        resistance = enemyScriptable.resistance * (1 - value);
+        defense = enemyScriptable.defense - value;
+        resistance = enemyScriptable.resistance - value;
         if (toxicEffect == null)
         {
             toxicEffect = Instantiate(enemyScriptable.toxicEffect, transform);

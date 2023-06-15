@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CoreTower
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6237713900703245859, guid: eaf66b77be1b9b24791fbc1c7eefdd3c, type: 3}
-  phyDamage: 0
-  magicDamage: 20
-  fireRate: 2
+  phyDamage: 50
+  magicDamage: 50
+  fireRate: 10
   attackRange: 50
   towerType: 5
   level: 0

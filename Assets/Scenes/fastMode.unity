@@ -13971,37 +13971,37 @@ MonoBehaviour:
     prefab: {fileID: 1919012471076396, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000300000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 030000000300000003000000
     whichSpawn: 040000000400000004000000
   - type: Slime(Spawn5)
     prefab: {fileID: 1919012471076396, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000000000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 030000000000000003000000
     whichSpawn: 050000000500000005000000
   - type: Slime(Spawn6)
     prefab: {fileID: 1919012471076396, guid: 55776efecb0cd134ea5f418c2f97a705, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000000000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 000000000000000003000000
     whichSpawn: 060000000600000006000000
   - type: Turtle(Spawn4)
     prefab: {fileID: 1774625739149480, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000300000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 030000000300000003000000
     whichSpawn: 040000000400000004000000
   - type: Turtle(Spawn5)
     prefab: {fileID: 1774625739149480, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000000000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 030000000000000003000000
     whichSpawn: 050000000500000005000000
   - type: Turtle(Spawn6)
     prefab: {fileID: 1774625739149480, guid: 38efdaadbfe1d624bbee439cb02e7661, type: 3}
     RMP: {fileID: 0}
     spawnDelays_WhereEachItemMeans_In_A_Level: []
-    numToSpawn_WhereEachItemMeans_In_A_Level: 060000000000000003000000
+    numToSpawn_WhereEachItemMeans_In_A_Level: 000000000000000003000000
     whichSpawn: 060000000600000006000000
   - type: Chili(Spawn1)
     prefab: {fileID: 7128717169128400431, guid: 0d5b58f6db9235847bc989512e84ef6d, type: 3}
@@ -14290,7 +14290,7 @@ MonoBehaviour:
       - {fileID: 1588249435}
       - {fileID: 1659288250}
     isSpawn:
-    - spawn: 000000010101000000
+    - spawn: 000000010100000000
     - spawn: 010101010000010101
     - spawn: 010101010101010101
   pathIndex: 0
@@ -55788,6 +55788,10 @@ PrefabInstance:
     - target: {fileID: 8047079439947971649, guid: cda3d36848f86ab44b42c4ed64ddf53f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418356542941187463, guid: cda3d36848f86ab44b42c4ed64ddf53f, type: 3}
+      propertyPath: setted_time
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8418356542941187707, guid: cda3d36848f86ab44b42c4ed64ddf53f, type: 3}
       propertyPath: _Core

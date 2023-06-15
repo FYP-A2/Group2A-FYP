@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Langsat
   m_EditorClassIdentifier: 
   hp: 100
-  damage: 20
-  defense: 0.4
+  damage: 30
+  defense: 0
   resistance: 0.4
   attackRange: 2
   attackDelay: 2

@@ -27,6 +27,9 @@ public class GateButton : MonoBehaviour
         btnINEndPos = buttonIN.transform.position + buttonInDistance;
         btnOUTOrginPos= buttonOUT.transform.position;
         btnOUTEndPos = buttonOUT.transform.position + buttonOUTDistance;
+
+        Vector3 core = GameObject.Find("core").GetComponent<Transform>().position;
+        Debug.Log(Vector3.Distance(core, transform.position));
     }
     public void Update()
     {
