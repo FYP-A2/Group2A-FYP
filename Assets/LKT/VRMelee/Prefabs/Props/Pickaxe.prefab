@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 252588599929508502}
   - component: {fileID: 1919139946098535788}
   - component: {fileID: 605779433744058539}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pickaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3538358711583343001}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Holding point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HittableActivator
       objectReference: {fileID: 0}
+    - target: {fileID: 6900962714118845405, guid: dad18cc0eb2f83545b84af25a4ed2129, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad18cc0eb2f83545b84af25a4ed2129, type: 3}
 --- !u!4 &6206447430640002062 stripped
@@ -424,9 +428,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6046503664920540437, guid: 1c83ad1d5a29a5e4eaf9700311c61b39, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -4777904132360443520, guid: 1c83ad1d5a29a5e4eaf9700311c61b39, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1c83ad1d5a29a5e4eaf9700311c61b39, type: 3}
       propertyPath: m_Name
       value: Pickaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1c83ad1d5a29a5e4eaf9700311c61b39, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c83ad1d5a29a5e4eaf9700311c61b39, type: 3}

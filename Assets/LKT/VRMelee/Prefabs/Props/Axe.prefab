@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2102393092208682388}
   - component: {fileID: 3329502176105299039}
   - component: {fileID: 1832326375810910186}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: "\u5713\u67F1\u9AD4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2984321126239032476}
   - component: {fileID: -2858699081159310173}
   - component: {fileID: 5358245976585981874}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3049315363265225951}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: AXE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 937298293407978269}
   - component: {fileID: 8120945829083182827}
   - component: {fileID: 2181021030568570476}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3538358711583343001}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Holding point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,6 +554,10 @@ PrefabInstance:
     - target: {fileID: 6900962714118845405, guid: dad18cc0eb2f83545b84af25a4ed2129, type: 3}
       propertyPath: m_Name
       value: HittableActivator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900962714118845405, guid: dad18cc0eb2f83545b84af25a4ed2129, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad18cc0eb2f83545b84af25a4ed2129, type: 3}
