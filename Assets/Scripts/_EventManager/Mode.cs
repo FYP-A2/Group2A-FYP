@@ -32,8 +32,8 @@ public class Mode : MonoBehaviour
    public FullMode_State _FullMode_State = FullMode_State.RoundBeforeStart;
 
 
-   public void F11(){ gameMode=GameMode.DEV_MODE; TMP_Text.SetText("DEV MODE ON"); }
-   public void F12(){ gameMode=GameMode.FULL_MODE; TMP_Text.SetText("FULL MODE ON"); Mode2_Triggered=true;}
+   public void F11(){ gameMode=GameMode.DEV_MODE; if (TMP_Text != null) TMP_Text.SetText("DEV MODE ON"); }
+   public void F12(){ gameMode=GameMode.FULL_MODE; if (TMP_Text != null) TMP_Text.SetText("FULL MODE ON"); Mode2_Triggered=true;}
 
    void Update(){
       if(gameMode==GameMode.TNT_MODE ){ TNTModeTriggered=true; }

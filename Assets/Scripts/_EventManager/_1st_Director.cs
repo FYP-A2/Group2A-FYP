@@ -19,15 +19,15 @@ public class _1st_Director : MonoBehaviour
     #region Scripts & Objects Binding;
     public GameObject _Player;
     public Breakable _Core;
-    [HideInInspector] public Mode mode;
+    public Mode mode;
     public Timer timer;
-    [HideInInspector] public Announcer announcer;
-    [HideInInspector] public bool announcer_triggered;
-    [HideInInspector] public EventChecklist eventChecklist;
+    public Announcer announcer;
+    public bool announcer_triggered;
+    public EventChecklist eventChecklist;
     public DA_State_Class _DA;
-    [HideInInspector] public Area_State_Script _Area_State;
-    [HideInInspector] public WLC_State_Script _WLC_State;
-    [HideInInspector] public Stage stageObject;
+    public Area_State_Script _Area_State;
+    public WLC_State_Script _WLC_State;
+    public Stage stageObject;
     public MZRealTimeTracer _M; //MZDBG
 
     public NewSpawnManager newSpawnManager;

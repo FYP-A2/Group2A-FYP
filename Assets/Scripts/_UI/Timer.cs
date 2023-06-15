@@ -26,14 +26,18 @@ public class Timer : MonoBehaviour
             {
                 remaining_time -= Time.deltaTime;
                 TimeSpan timeSpan = new TimeSpan(0, 0, (int)(remaining_time));
-                TMP_Text.SetText(timeSpan.ToString(@"mm\:ss"));
-                VR_TMP.Display(timeSpan.ToString(@"mm\:ss"),0,true);
+                if (TMP_Text != null)
+                    TMP_Text.SetText(timeSpan.ToString(@"mm\:ss"));
+                if (VR_TMP != null)
+                    VR_TMP.Display(timeSpan.ToString(@"mm\:ss"),0,true);
             }
 
             if (remaining_time <= 0)
             {
-                TMP_Text.SetText("Time's up!");
-                VR_TMP.Display("Time's up!",4f);
+                if (TMP_Text != null)
+                    TMP_Text.SetText("Time's up!");
+                if (VR_TMP != null)
+                    VR_TMP.Display("Time's up!",4f);
                 _State = State.FINISHED;
             }
         }

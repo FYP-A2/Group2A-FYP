@@ -59,10 +59,10 @@ public class ToolBar : MonoBehaviour
 
         if ( l / Time.fixedDeltaTime > targetVelocity 
             || r / Time.fixedDeltaTime > targetVelocity)
-            SwivelRight();
+            SwivelLeft();
         if ( l / Time.fixedDeltaTime < -targetVelocity
             || r / Time.fixedDeltaTime < -targetVelocity)
-            SwivelLeft();
+            SwivelRight();
 
         oldLeftLocPos = pLeft.transform.localPosition.x;
         oldRightLocPos = pRight.transform.localPosition.x;

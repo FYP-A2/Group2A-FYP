@@ -8,13 +8,17 @@ public class EventChecklist : MonoBehaviour
     public TMP_Text TMP_Text;
     public CommonTMP VR_TMP;
     public void SetText(string msg){
-        TMP_Text.SetText(msg);
-        VR_TMP.Display(msg);
+        if (TMP_Text != null)
+            TMP_Text.SetText(msg);
+        if (VR_TMP != null)
+            VR_TMP.Display(msg);
     }
 
     public void ClearText()
     {
-        TMP_Text.SetText("");
-        VR_TMP.DisplayOff();
+        if (TMP_Text != null)
+            TMP_Text.SetText("");
+        if (VR_TMP != null)
+            VR_TMP.DisplayOff();
     }
 }
