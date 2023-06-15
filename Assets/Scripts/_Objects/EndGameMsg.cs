@@ -11,10 +11,15 @@ public class EndGameMsg : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        msg = PlayerPrefs.GetString("msg", "lose");
+        msg = PlayerPrefs.GetString("msg", "");
         if (msg == "lose")
             text.text = "Defeat";
         else if (msg == "win")
             text.text = "Victory";
+
+        PlayerPrefs.SetString("msg", "");
+
+        if (msg != "win" && msg != "lose")
+            gameObject.SetActive(false);
     }
 }

@@ -465,6 +465,9 @@ MonoBehaviour:
   chaseDistance: 30
   maxHatred: 3
   hatred: 0
+  wayPointMode: 0
+  waypoints: []
+  currentWaypointIndex: 0
 --- !u!195 &8364700741443126569
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -712,6 +715,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274560180458830945, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48525b00681a3a34a894f3f080df72df, type: 3}
     - target: {fileID: 5274560180834625399, guid: 88aa65c839baeeb4fbc4a29014850196, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

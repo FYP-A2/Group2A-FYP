@@ -748,7 +748,7 @@ public class _1st_Director : MonoBehaviour
 
                 if (timer.GetCurrState() == Timer.State.PAUSE)
                 {
-                    Assign_Timer_n_Announcer_ver_RS(30, ref NeedOf_Asn_Timer_n_Announcer);
+                    Assign_Timer_n_Announcer_ver_RS(45, ref NeedOf_Asn_Timer_n_Announcer);
                 }
                 if (timer.GetCurrState() == Timer.State.FINISHED)
                 {
@@ -761,14 +761,14 @@ public class _1st_Director : MonoBehaviour
             else if (mode.FM_GetCurrState() == Mode.FullMode_State.RoundOutOfFinishTime)
             {
                 //if stage < 11, wait, add stage number and set round start
-                if (stageObject.currentStage <= 11)
+                if (stageObject.currentStage <= 2)
                 {
                     BeginRoundState_for_Timer_n_Announcer();
 
                     if (timer.GetCurrState() == Timer.State.PAUSE)
                     {
                         newSpawnManager.PathDisplay(stageObject.currentStage);
-                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(10, ref NeedOf_Asn_Timer_n_Announcer);
+                        Assign_Timer_n_Announcer_ver_WaitingForNextStage(15, ref NeedOf_Asn_Timer_n_Announcer);
                     }
                     if (timer.GetCurrState() == Timer.State.FINISHED)
                     {
@@ -790,7 +790,7 @@ public class _1st_Director : MonoBehaviour
             }
 
             //if stage == 12, check monster amount < 3 , set  _WLC_State.WLC_State = WLC_State_Script.State.Win
-            if (stageObject.currentStage==12)
+            if (stageObject.currentStage==3)
             {
                 Monster[] ms = FindObjectsOfType<Monster>();
                 if (ms.Length < 4) {
@@ -832,7 +832,7 @@ public class _1st_Director : MonoBehaviour
             if (stageObject.currentStage >= 1 && stageObject.currentStage < 12)
             {
                 timer.Init(second);
-                _DA.AnimateOnce("Game will start in "+ second + " seconds, press [button] to start now", announcer);
+                _DA.AnimateOnce("Game will start in "+ second + " seconds", announcer);
                 timer.SetStateRunning();
             }
         }
@@ -845,7 +845,7 @@ public class _1st_Director : MonoBehaviour
         {
             need = false;
 
-            if (stageObject.currentStage >= 1 && stageObject.currentStage < 12)
+            if (stageObject.currentStage >= 1 && stageObject.currentStage < 3)
             {
                 timer.Init(second);
                 _DA.AnimateOnce("Wave " + stageObject.currentStage, announcer);
@@ -860,7 +860,7 @@ public class _1st_Director : MonoBehaviour
         {
             need = false;
 
-            if (stageObject.currentStage >= 1 && stageObject.currentStage < 12)
+            if (stageObject.currentStage >= 1 && stageObject.currentStage < 3)
             {
                 timer.Init(second);
                 _DA.AnimateOnce("Ready for Wave " + (stageObject.currentStage + 1), announcer);
@@ -938,7 +938,7 @@ public class _1st_Director : MonoBehaviour
     public void ShowGameVictory_Once(ref bool onceBoolean)
     {
         PlayerPrefs.SetString("msg", "win");
-        SceneManager.LoadScene("EndScene");
+        SceneManager.LoadScene("StartMenu");
     }
     #endregion
 
@@ -946,7 +946,7 @@ public class _1st_Director : MonoBehaviour
     public void ShowGameOver_Once(ref bool onceBoolean)
     {
         PlayerPrefs.SetString("msg", "lose");
-        SceneManager.LoadScene("EndScene");
+        SceneManager.LoadScene("StartMenu");
     }
     #endregion
 
