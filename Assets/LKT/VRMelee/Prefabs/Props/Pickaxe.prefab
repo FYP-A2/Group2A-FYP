@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 252588599929508502}
   - component: {fileID: 1919139946098535788}
   - component: {fileID: 605779433744058539}
+  - component: {fileID: 1826263426022044785}
   m_Layer: 15
   m_Name: Pickaxe
   m_TagString: Untagged
@@ -201,6 +202,24 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &1826263426022044785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515356994975050270}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.96142673, g: 1, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!64 &8954797961197885911
 MeshCollider:
   m_ObjectHideFlags: 0

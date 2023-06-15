@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class _1st_Director : MonoBehaviour
 {
@@ -79,185 +80,371 @@ public class _1st_Director : MonoBehaviour
     //void Start(){ Time.timeScale=0; }
 
     bool tntOncePlayed = false;
+    TutorialOutline tntOutline;
     public void TNTModeUpdate()
     {
-        if (mode._TNT_State == Mode.TNT_State.Waiting_GoTreeArea)
+        if (mode._TNT_State == Mode.TNT_State.Tree1)
         {
             //once
             if (!tntOncePlayed)
             {
+                TryGetComponent(out tntOutline);
                 tntOncePlayed = true;
 
-                _DA.AnimateOnce("Welcome to the Full Game Mode.", announcer);
-                _DA.DrawOnce("1. Follow the Arrow & Go to the forest", eventChecklist);
+                _DA.AnimateOnce("Welcome to the Tutorial", announcer);
+                _DA.DrawOnce(
+                    "Follow the arrow below. Use the left-hand joystick to move, or use the right-hand joystick to teleport.\r\n請跟隨下方箭頭移動, 使用左手的操縱桿移動, 或者使用右手的操縱桿傳送。",
+                    eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
-                if (AreaTrigger.FindAreasByID("TNT.TreeArea1").Count > 0)
-                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.TreeArea1")[0].transform;
+                if (AreaTrigger.FindAreasByID("Tree").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("Tree")[0].transform;
+
+                tntOutline.joystickL.enabled = true;
+                tntOutline.joystickR.enabled = true;
             }
 
             //update
-            TNTModeCheckPlayerInAreaAndJumpState("TNT.TreeArea1", _Player.GetComponent<Player>());
-        }
+            TNTModeCheckPlayerInAreaAndJumpState("Tree", _Player.GetComponent<Player>());
+        } 
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_CutTree)
+        else if (mode._TNT_State == Mode.TNT_State.Tree2)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("2. Press A to select the Axe\nHew the tree", eventChecklist);
+                _DA.DrawOnce(
+                    "Press A button on the right controller to activate the tool stand.\r\n按右側控制器上的 A 按鈕啟動工具架\r\n",
+                    eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
-            }
 
+                tntOutline.joystickL.enabled = false;
+                tntOutline.joystickR.enabled = false;
+
+                tntOutline.a.enabled = true;
+            }
         }
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_GoStoneArea)
+        else if (mode._TNT_State == Mode.TNT_State.Tree3)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.AnimateOnce("You get 10 wood", announcer);
-                _DA.DrawOnce("3. Follow the Arrow & Find a stone", eventChecklist);
+                _DA.DrawOnce(
+                    "Swing the hand to swivel the tool stand go left or right.\r\n擺動右手去令工具架旋轉",
+                    eventChecklist);
+
+                tntOutline.a.enabled = false;
+
+                tntOutline.axe.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Tree4)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Reach out and touch the wooden handle of the axe, Then hold the Middle Finger button to grab the axe.\r\n伸手去觸摸斧頭的木柄,並按住中指去拾起它",
+                    eventChecklist);
+
+                tntOutline.triggerL.enabled = true;
+                tntOutline.triggerR.enabled = true;
+            }
+
+            if (tntOutline.axe.GetComponent<XRGrabInteractable>().isSelected)
+                TNTModeJumpState();
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Tree5)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Go near the tree and chop it, then the minigame will start, you need to chop to the green area as soon as possible.\r\n走到樹的附近,然後劈它一下,小遊戲就會開始,你需要盡快劈到綠色的區域",
+                    eventChecklist);
+
+                tntOutline.triggerL.enabled = false;
+                tntOutline.triggerR.enabled = false;
+
+                tntOutline.tree.enabled = true;
+            }
+        }
+
+
+
+
+        else if (mode._TNT_State == Mode.TNT_State.Stone1)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.AnimateOnce("Tutorial 2: Stone", announcer);
+                _DA.DrawOnce(
+                    "Follow the arrow below to the next area.\r\n跟隨下方箭頭前往下一個區域",
+                    eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
-                if (AreaTrigger.FindAreasByID("TNT.StoneArea1").Count > 0)
-                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.StoneArea1")[0].transform;
+                if (AreaTrigger.FindAreasByID("Stone").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("stone")[0].transform;
+
+                tntOutline.tree.enabled = false;
+
+                tntOutline.joystickL.enabled = true;
+                tntOutline.joystickR.enabled = true;
             }
 
             //update
-            TNTModeCheckPlayerInAreaAndJumpState("TNT.StoneArea1", _Player.GetComponent<Player>());
-
+            TNTModeCheckPlayerInAreaAndJumpState("Stone", _Player.GetComponent<Player>());
         }
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_MineStone)
+        else if (mode._TNT_State == Mode.TNT_State.Stone2)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("4.Press A to select the pickaxe\nMine the stone", eventChecklist);
+                _DA.DrawOnce(
+                    "Press A button on the right controller to activate the tool stand.\r\n按右側控制器上的 A 按鈕啟動工具架\r\n",
+                    eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
-            }
 
+                tntOutline.joystickL.enabled = false;
+                tntOutline.joystickR.enabled = false;
+
+                tntOutline.a.enabled = true;
+            }
         }
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_GoBuildArea)
+        else if (mode._TNT_State == Mode.TNT_State.Stone3)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.AnimateOnce("You get 5 Stone", announcer);
-                _DA.DrawOnce("5.Follow the Arrow", eventChecklist);
+                _DA.DrawOnce(
+                    "Swing the hand to swivel the tool stand go left or right.\r\n擺動右手去令工具架旋轉",
+                    eventChecklist);
 
-                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
-                if (AreaTrigger.FindAreasByID("TNT.BuildArea1").Count > 0)
-                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.BuildArea1")[0].transform;
+                tntOutline.a.enabled = false;
+
+                tntOutline.axe.enabled = true;
             }
-
-            //update
-            TNTModeCheckPlayerInAreaAndJumpState("TNT.BuildArea1", _Player.GetComponent<Player>());
-
         }
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
+        else if (mode._TNT_State == Mode.TNT_State.Stone4)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("6. Grab book and turn to page 2\nselect the arrow Tower base", eventChecklist);
+                _DA.DrawOnce(
+                    "Reach out and touch the wooden handle of the pickaxe, Then hold the Middle Finger button to grab the pickaxe.\r\n伸手去觸摸鋤頭的木柄,並按住中指去拾起它",
+                    eventChecklist);
 
-                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+                tntOutline.triggerL.enabled = true;
+                tntOutline.triggerR.enabled = true;
             }
 
+            if (tntOutline.pickaxe.GetComponent<XRGrabInteractable>().isSelected)
+                TNTModeJumpState();
         }
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
+        else if (mode._TNT_State == Mode.TNT_State.Stone5)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
 
-                _DA.DrawOnce("7. ...building...", eventChecklist);
-            }
+                _DA.DrawOnce(
+                    "Walk up to the stone and dig it, then the minigame will start, you need to dig the stone in rhythm.\r\n走到石頭的附近,然後挖掘它一下,小遊戲就會開始,你需要跟住節奏挖掘石頭",
+                    eventChecklist);
 
+                tntOutline.triggerL.enabled = false;
+                tntOutline.triggerR.enabled = false;
+
+                tntOutline.stone.enabled = true;
+            }
         }
 
-
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_Ready)
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_CutTree)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("2. Press A to select the Axe\nHew the tree", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+        //    }
+        //
+        //}
+        //
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_GoStoneArea)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.AnimateOnce("You get 10 wood", announcer);
+        //        _DA.DrawOnce("3. Follow the Arrow & Find a stone", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+        //        if (AreaTrigger.FindAreasByID("TNT.StoneArea1").Count > 0)
+        //            _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.StoneArea1")[0].transform;
+        //    }
+        //
+        //    //update
+        //    TNTModeCheckPlayerInAreaAndJumpState("TNT.StoneArea1", _Player.GetComponent<Player>());
+        //
+        //}
+        //
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_MineStone)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("4.Press A to select the pickaxe\nMine the stone", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+        //    }
+        //
+        //}
+        //
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_GoBuildArea)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.AnimateOnce("You get 5 Stone", announcer);
+        //        _DA.DrawOnce("5.Follow the Arrow", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+        //        if (AreaTrigger.FindAreasByID("TNT.BuildArea1").Count > 0)
+        //            _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("TNT.BuildArea1")[0].transform;
+        //    }
+        //
+        //    //update
+        //    TNTModeCheckPlayerInAreaAndJumpState("TNT.BuildArea1", _Player.GetComponent<Player>());
+        //
+        //}
+        //
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildPhyTower)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("6. Grab book and turn to page 2\nselect the arrow Tower base", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+        //    }
+        //
+        //}
+        //
+        //else if (mode._TNT_State == Mode.TNT_State.Waiting_BuildFinished)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("7. ...building...", eventChecklist);
+        //    }
+        //
+        //}
+        //
+        //
+        else if (mode._TNT_State == Mode.TNT_State.WaitEnd)
         {
             //once
             if (!tntOncePlayed)
             {
                 tntOncePlayed = true;
-
+        
                 _DA.AnimateOnce("Build Done!!", announcer);
-                _DA.DrawOnce("8. You are now free to collect resources, Monster Will attack the core soon", eventChecklist);
+                _DA.DrawOnce("we will send you to main menu soon", eventChecklist);
                 timer.Init(10);
                 timer.SetStateRunning();
             }
-
+        
             if (timer.GetCurrState() == Timer.State.FINISHED)
             {
                 timer.Reset();
-
+        
                 bool temp = false;
                 //spawn monster
                 //SpawnMonsters_Once(stageObject, ref temp);
                 //TNTModeJumpState();
-
+        
                 //skip TNT
-                mode.gameMode = Mode.GameMode.FULL_MODE;
-                eventChecklist.ClearText();
-                _DA.Reset();
-            }
+                //mode.gameMode = Mode.GameMode.FULL_MODE;
+                //eventChecklist.ClearText();
+                //_DA.Reset();
 
+                //tp to lobby
+            }
+        
         }
+        
+        //else if (mode._TNT_State == Mode.TNT_State.WaitEnd)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("monster is arriving, defence the core", eventChecklist);
+        //    }
+        //
+        //    if (GameObject.FindGameObjectsWithTag("Monster").Length < 3)
+        //    {
+        //        TNTModeJumpState();
+        //    }
+        //
+        //}
 
-        else if (mode._TNT_State == Mode.TNT_State.Waiting_EndCondition)
-        {
-            //once
-            if (!tntOncePlayed)
-            {
-                tntOncePlayed = true;
-
-                _DA.DrawOnce("monster is arriving, defence the core", eventChecklist);
-            }
-
-            if (GameObject.FindGameObjectsWithTag("Monster").Length < 3)
-            {
-                TNTModeJumpState();
-            }
-
-        }
-
-        else if (mode._TNT_State == Mode.TNT_State.End)
-        {
-            //once
-            if (!tntOncePlayed)
-            {
-                tntOncePlayed = true;
-
-                _DA.DrawOnce("End", eventChecklist);
-
-                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
-            }
-
-            GameObject[] monsterList = GameObject.FindGameObjectsWithTag("Monster");
-            if (monsterList.Length > 0)
-                _Player.GetComponent<Player>().lookAt.target = monsterList[0].transform;
-        }
+        //else if (mode._TNT_State == Mode.TNT_State.End)
+        //{
+        //    //once
+        //    if (!tntOncePlayed)
+        //    {
+        //        tntOncePlayed = true;
+        //
+        //        _DA.DrawOnce("End", eventChecklist);
+        //
+        //        _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+        //    }
+        //
+        //    GameObject[] monsterList = GameObject.FindGameObjectsWithTag("Monster");
+        //    if (monsterList.Length > 0)
+        //        _Player.GetComponent<Player>().lookAt.target = monsterList[0].transform;
+        //}
     }
 
     void TNTModeCheckPlayerInAreaAndJumpState(string area_ID, Player p)

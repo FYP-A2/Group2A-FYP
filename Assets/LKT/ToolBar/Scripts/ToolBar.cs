@@ -21,6 +21,8 @@ public class ToolBar : MonoBehaviour
 
     int turnDirection = 0;
 
+    _1st_Director dir;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,26 @@ public class ToolBar : MonoBehaviour
         pLeft.transform.SetParent(cam.transform);
         pRight.transform.SetParent(cam.transform);
 
+        dir = GameObject.FindObjectOfType<_1st_Director>();
+
         Deactivate();
+    }
+
+    private void Update()
+    {
+        if (transform.localScale == orignalScale)
+        {
+            Debug.Log("tool bar near: " + GetPlayerNearestSlot());
+            if (GetPlayerNearestSlot() == 1 && dir.mode._TNT_State == Mode.TNT_State.Tree3)
+                dir.TNTModeJumpState();
+
+            if (GetPlayerNearestSlot() == 0 && dir.mode._TNT_State == Mode.TNT_State.Stone3)
+                dir.TNTModeJumpState();
+
+            if (GetPlayerNearestSlot() == 2 && dir.mode._TNT_State == Mode.TNT_State.Repair3)
+                dir.TNTModeJumpState();
+        }
+
     }
 
     private void OnEnable()
@@ -70,10 +91,14 @@ public class ToolBar : MonoBehaviour
 
     public void ActivateOrNot()
     {
+
         if (gameObject.activeSelf)
             Deactivate();
         else
             Activate();
+
+        if (dir.mode._TNT_State == Mode.TNT_State.Tree2 || dir.mode._TNT_State == Mode.TNT_State.Stone2 || dir.mode._TNT_State == Mode.TNT_State.Repair2)
+            dir.TNTModeJumpState();
     }
 
 
@@ -131,6 +156,7 @@ public class ToolBar : MonoBehaviour
 
     public void SwivelLeft()
     {
+        Debug.Log("SwivelLeft");
         if (sTime >= 1)
         {
             targetRotation = originalRotation + new Vector3(0, 120, 0);
@@ -169,5 +195,32 @@ public class ToolBar : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    float GetDistanceOfSlotNPlayer(ToolBarSlot s)
+    {
+        Transform p = GameObject.FindObjectOfType<Transform>();
+        return (p.position - s.transform.position).magnitude;
+    }
+
+    int GetPlayerNearestSlot()
+    {
+        float[] sd = new float[3];
+        sd[0] = GetDistanceOfSlotNPlayer(slots[0]);
+        sd[1] = GetDistanceOfSlotNPlayer(slots[2]);
+        sd[2] = GetDistanceOfSlotNPlayer(slots[4]);
+
+        int result = 0;
+        float min = 1024;
+        for (int i = 0;i<3;i++)
+        {
+            if (sd[i] < min)
+            {
+                min = sd[i];
+                result = i;
+            }
+        }
+
+        return result;
     }
 }
