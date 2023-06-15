@@ -300,7 +300,7 @@ public class _1st_Director : MonoBehaviour
                 // !!!!!!!!!!!!!!!!!!!!
                 if (timer.GetCurrState() == Timer.State.PAUSE)
                 {
-                    newSpawnManager.PathDisplay();
+                    newSpawnManager.PathDisplay(stageObject.currentStage - 1);
                     Assign_Timer_n_Announcer_ver_RBS(30, ref NeedOf_Asn_Timer_n_Announcer);
                 }
                 if (timer.GetCurrState() == Timer.State.FINISHED)
@@ -346,12 +346,12 @@ public class _1st_Director : MonoBehaviour
 
                     if (timer.GetCurrState() == Timer.State.PAUSE)
                     {
-                        newSpawnManager.PathDisplay();
+                        newSpawnManager.PathDisplay(stageObject.currentStage);
                         Assign_Timer_n_Announcer_ver_WaitingForNextStage(10, ref NeedOf_Asn_Timer_n_Announcer);
                     }
                     if (timer.GetCurrState() == Timer.State.FINISHED)
                     {
-                        stageObject.currentStage++;
+                        stageObject.currentStage++;                        
                         mode.FM_SetState_RoundStart();
                         ExitRoundState();
                         _DA.Reset();
