@@ -298,6 +298,9 @@ MonoBehaviour:
   tree: {fileID: 1458916560}
   stone: {fileID: 1608277248}
   gate: {fileID: 554832491}
+  buildGround: {fileID: 942138624}
+  page2Button: {fileID: 1336531373}
+  all: []
 --- !u!114 &80671019 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5420221300931422852, guid: cda3d36848f86ab44b42c4ed64ddf53f, type: 3}
@@ -1169,11 +1172,11 @@ MonoBehaviour:
   hitbox: {fileID: 0}
   hitboxes: []
   fightable: 0
-  hewable: 0
+  hewable: 1
   gate: {fileID: 548300845}
   canBeRepair: 0
   repairing: 0
-  maxHP: 30
+  maxHP: 20
   nowHP: 0
 --- !u!1 &581112121
 GameObject:
@@ -2002,7 +2005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 481554, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.45
+      value: 49.28
       objectReference: {fileID: 0}
     - target: {fileID: 481554, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2984,6 +2987,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1336531366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8917083072957540839, guid: cda3d36848f86ab44b42c4ed64ddf53f, type: 3}
+  m_PrefabInstance: {fileID: 296351246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1336531373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336531366}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.96142673, g: 1, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1353612955
 PrefabInstance:
   m_ObjectHideFlags: 0

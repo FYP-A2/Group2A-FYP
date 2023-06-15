@@ -93,7 +93,7 @@ public class _1st_Director : MonoBehaviour
 
                 _DA.AnimateOnce("Welcome to the Tutorial", announcer);
                 _DA.DrawOnce(
-                    "Follow the arrow below. Use the left-hand joystick to move, or use the right-hand joystick to teleport.\r\n請跟隨下方箭頭移動, 使用左手的操縱桿移動, 或者使用右手的操縱桿傳送。",
+                    "Follow the arrow below. Use the left-hand joystick to move, or use the right-hand joystick to teleport.",
                     eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
@@ -116,7 +116,7 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Press A button on the right controller to activate the tool stand.\r\n按右側控制器上的 A 按鈕啟動工具架\r\n",
+                    "Press A button on the right controller to activate the tool stand.",
                     eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
@@ -136,7 +136,7 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Swing the hand to swivel the tool stand go left or right.\r\n擺動右手去令工具架旋轉",
+                    "Swing the hand to swivel the tool stand go left or right.",
                     eventChecklist);
 
                 tntOutline.a.enabled = false;
@@ -153,11 +153,11 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Reach out and touch the wooden handle of the axe, Then hold the Middle Finger button to grab the axe.\r\n伸手去觸摸斧頭的木柄,並按住中指去拾起它",
+                    "Reach out and touch the wooden handle of the axe, Then hold the Middle Finger button to grab the axe.",
                     eventChecklist);
 
-                tntOutline.triggerL.enabled = true;
-                tntOutline.triggerR.enabled = true;
+                tntOutline.gripL.enabled = true;
+                tntOutline.gripR.enabled = true;
             }
 
             if (tntOutline.axe.GetComponent<XRGrabInteractable>().isSelected)
@@ -172,11 +172,12 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Go near the tree and chop it, then the minigame will start, you need to chop to the green area as soon as possible.\r\n走到樹的附近,然後劈它一下,小遊戲就會開始,你需要盡快劈到綠色的區域",
+                    "Go near the tree and chop it, then the minigame will start, you need to chop to the green area as soon as possible.",
                     eventChecklist);
 
-                tntOutline.triggerL.enabled = false;
-                tntOutline.triggerR.enabled = false;
+                tntOutline.axe.enabled = false;
+                tntOutline.gripL.enabled = false;
+                tntOutline.gripR.enabled = false;
 
                 tntOutline.tree.enabled = true;
             }
@@ -194,12 +195,12 @@ public class _1st_Director : MonoBehaviour
 
                 _DA.AnimateOnce("Tutorial 2: Stone", announcer);
                 _DA.DrawOnce(
-                    "Follow the arrow below to the next area.\r\n跟隨下方箭頭前往下一個區域",
+                    "Follow the arrow below to the next area.",
                     eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
                 if (AreaTrigger.FindAreasByID("Stone").Count > 0)
-                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("stone")[0].transform;
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("Stone")[0].transform;
 
                 tntOutline.tree.enabled = false;
 
@@ -219,7 +220,7 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Press A button on the right controller to activate the tool stand.\r\n按右側控制器上的 A 按鈕啟動工具架\r\n",
+                    "Press A button on the right controller to activate the tool stand.",
                     eventChecklist);
 
                 _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
@@ -239,12 +240,12 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Swing the hand to swivel the tool stand go left or right.\r\n擺動右手去令工具架旋轉",
+                    "Swing the hand to swivel the tool stand go left or right.",
                     eventChecklist);
 
                 tntOutline.a.enabled = false;
 
-                tntOutline.axe.enabled = true;
+                tntOutline.pickaxe.enabled = true;
             }
         }
 
@@ -256,11 +257,11 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Reach out and touch the wooden handle of the pickaxe, Then hold the Middle Finger button to grab the pickaxe.\r\n伸手去觸摸鋤頭的木柄,並按住中指去拾起它",
+                    "Reach out and touch the wooden handle of the pickaxe, Then hold the Middle Finger button to grab the pickaxe.",
                     eventChecklist);
 
-                tntOutline.triggerL.enabled = true;
-                tntOutline.triggerR.enabled = true;
+                tntOutline.gripL.enabled = true;
+                tntOutline.gripR.enabled = true;
             }
 
             if (tntOutline.pickaxe.GetComponent<XRGrabInteractable>().isSelected)
@@ -275,13 +276,245 @@ public class _1st_Director : MonoBehaviour
                 tntOncePlayed = true;
 
                 _DA.DrawOnce(
-                    "Walk up to the stone and dig it, then the minigame will start, you need to dig the stone in rhythm.\r\n走到石頭的附近,然後挖掘它一下,小遊戲就會開始,你需要跟住節奏挖掘石頭",
+                    "Walk up to the stone and dig it, then the minigame will start, you need to dig the stone in rhythm.",
+                    eventChecklist);
+
+                tntOutline.pickaxe.enabled = false;
+
+                tntOutline.gripL.enabled = false;
+                tntOutline.gripR.enabled = false;
+
+                tntOutline.stone.enabled = true;
+            }
+        }
+
+
+
+        else if (mode._TNT_State == Mode.TNT_State.Repair1)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.AnimateOnce("Tutorial 3: Repair", announcer);
+                _DA.DrawOnce(
+                    "Follow the arrow below to the next area.",
+                    eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+                if (AreaTrigger.FindAreasByID("Repair").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("Repair")[0].transform;
+
+                tntOutline.tree.enabled = false;
+
+                tntOutline.joystickL.enabled = true;
+                tntOutline.joystickR.enabled = true;
+            }
+
+            //update
+            TNTModeCheckPlayerInAreaAndJumpState("Repair", _Player.GetComponent<Player>());
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Repair2)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Press A button on the right controller to activate the tool stand.",
+                    eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+
+                tntOutline.joystickL.enabled = false;
+                tntOutline.joystickR.enabled = false;
+
+                tntOutline.a.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Repair3)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Swing the hand to swivel the tool stand go left or right.",
+                    eventChecklist);
+
+                tntOutline.a.enabled = false;
+
+                tntOutline.hammer.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Repair4)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Reach out and touch the wooden handle of the hammer, Then hold the Middle Finger button to grab the hammer.",
+                    eventChecklist);
+
+                tntOutline.gripL.enabled = true;
+                tntOutline.gripR.enabled = true;
+            }
+
+            if (tntOutline.hammer.GetComponent<XRGrabInteractable>().isSelected)
+                TNTModeJumpState();
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Repair5)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Walk near the gate and hammer it to start the minigame, aim for the middle of the wheel and keep hammering.",
+                    eventChecklist);
+
+                tntOutline.hammer.enabled = false;
+
+                tntOutline.gripL.enabled = false;
+                tntOutline.gripR.enabled = false;
+
+                tntOutline.gate.enabled = true;
+                Breakable gate = tntOutline.gate.GetComponent<GateRepair>().gate;
+                gate.hp = 0;
+                gate.GetComponent<Renderer>().enabled = false;
+                gate.GetComponent<Collider>().enabled = false;
+            }
+        }
+
+
+
+
+        else if (mode._TNT_State == Mode.TNT_State.Build1)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.AnimateOnce("Tutorial 4: Build", announcer);
+                _DA.DrawOnce(
+                    "Follow the arrow below to the next area.",
+                    eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(true);
+                if (AreaTrigger.FindAreasByID("Buildable").Count > 0)
+                    _Player.GetComponent<Player>().lookAt.target = AreaTrigger.FindAreasByID("Buildable")[0].transform;
+
+                tntOutline.tree.enabled = false;
+
+                tntOutline.joystickL.enabled = true;
+                tntOutline.joystickR.enabled = true;
+            }
+
+            //update
+            TNTModeCheckPlayerInAreaAndJumpState("Buildable", _Player.GetComponent<Player>());
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Build2)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Reach out and touch the book. Then hold the Middle Finger button to open it.",
+                    eventChecklist);
+
+                _Player.GetComponent<Player>().lookAt.gameObject.SetActive(false);
+
+                tntOutline.joystickL.enabled = false;
+                tntOutline.joystickR.enabled = false;
+
+                tntOutline.book.enabled = true;
+                tntOutline.gripL.enabled = true;
+                tntOutline.gripR.enabled = true;
+            }
+            
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Build3)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Turn to the second page and aim at the second page button with the line shot from your hand",
+                    eventChecklist);
+
+                tntOutline.book.enabled = false;
+                tntOutline.gripL.enabled = false;
+                tntOutline.gripR.enabled = false;
+
+                tntOutline.page2Button.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Build4)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Aim at the button in the top left corner and press the Index Finger button",
+                    eventChecklist);
+
+                tntOutline.page2Button.enabled = false;
+
+                tntOutline.triggerL.enabled = true;
+                tntOutline.triggerR.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Build5)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Aim at the floor, choose the right spot and click the index finger button to place the defence tower",
                     eventChecklist);
 
                 tntOutline.triggerL.enabled = false;
                 tntOutline.triggerR.enabled = false;
 
-                tntOutline.stone.enabled = true;
+                tntOutline.buildGround.enabled = true;
+            }
+        }
+
+        else if (mode._TNT_State == Mode.TNT_State.Build6)
+        {
+            //once
+            if (!tntOncePlayed)
+            {
+                tntOncePlayed = true;
+
+                _DA.DrawOnce(
+                    "Building",
+                    eventChecklist);
+
+                tntOutline.buildGround.enabled = false;
             }
         }
 
@@ -389,7 +622,7 @@ public class _1st_Director : MonoBehaviour
         
                 _DA.AnimateOnce("Build Done!!", announcer);
                 _DA.DrawOnce("we will send you to main menu soon", eventChecklist);
-                timer.Init(10);
+                timer.Init(5);
                 timer.SetStateRunning();
             }
         
@@ -401,13 +634,14 @@ public class _1st_Director : MonoBehaviour
                 //spawn monster
                 //SpawnMonsters_Once(stageObject, ref temp);
                 //TNTModeJumpState();
-        
+
                 //skip TNT
                 //mode.gameMode = Mode.GameMode.FULL_MODE;
                 //eventChecklist.ClearText();
                 //_DA.Reset();
 
                 //tp to lobby
+                SceneManager.LoadScene("StartMenu");
             }
         
         }

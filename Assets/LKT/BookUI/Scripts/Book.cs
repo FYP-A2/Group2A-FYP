@@ -32,6 +32,9 @@ public class Book : MonoBehaviour
         bookUI.bookOpened = true;
 
         Invoke("BookUIOn", 0.8f);
+
+        if (bookUI.player.director.mode._TNT_State == Mode.TNT_State.Build2)
+            bookUI.player.director.TNTModeJumpState();
     }
 
     public void Flip(int n)
@@ -45,6 +48,9 @@ public class Book : MonoBehaviour
         }
 
         StartCoroutine(Flip(0.2f, n, 0.25f, 0.15f));
+
+        if (n == 1 && bookUI.player.director.mode._TNT_State == Mode.TNT_State.Build3)
+            bookUI.player.director.TNTModeJumpState();
     }
 
     public void Close()

@@ -40,6 +40,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1391971620463464200}
     m_Modifications:
+    - target: {fileID: 4502839058394448696, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
+      propertyPath: m_Text
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4502839058491453113, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4502839058491453114, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.176
       objectReference: {fileID: 0}
     - target: {fileID: 4502839058491453114, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -194,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4502839058491453114, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.853
+      value: -0.855
       objectReference: {fileID: 0}
     - target: {fileID: 4502839058491453114, guid: 79cf066e1c6c18c478ba9782cd7e0f9f, type: 3}
       propertyPath: m_LocalRotation.w

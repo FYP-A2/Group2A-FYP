@@ -97,7 +97,7 @@ namespace FYP2A.VR.Melee.Target
                     hitAreaRandomOffset();
                     hitTimeCD += defaultHitTimeCD;
 
-                    StartCoroutine(HapticTest(sourceNow.GetGrabbingHand()));
+                    //StartCoroutine(HapticTest(sourceNow.GetGrabbingHand()));
                 }
 
                 thisUpdateRoundEnter = false;

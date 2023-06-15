@@ -2,6 +2,7 @@ using FYP2A.VR.PlaceTurret;
 using MiscUtil.Xml.Linq.Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UICommonButton;
 
@@ -85,6 +86,9 @@ public class UIBook : MonoBehaviour
             SelectTurret(n);
         else if (t == SelectType.pearl)
             SelectPearl(n);
+
+        if (player.director.mode._TNT_State == Mode.TNT_State.Build4)
+            player.director.TNTModeJumpState();
     }
 
     public void SelectTurret(int n)

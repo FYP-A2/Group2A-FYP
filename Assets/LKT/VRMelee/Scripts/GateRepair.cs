@@ -15,6 +15,8 @@ public class GateRepair : MeleeTarget
     public float maxHP = 30;
     public float nowHP = 0;
 
+    MeleeSource source;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -31,6 +33,8 @@ public class GateRepair : MeleeTarget
     {
         if (source.gameObject.name != "Hammer")
             return;
+
+        this.source = source;
 
         if (!repairing && canBeRepair)
             StartRepair();
@@ -73,6 +77,11 @@ public class GateRepair : MeleeTarget
 
         //do success event
         gate.GateReset();
+        if (source != null)
+        {
+            if (source._owner.GetComponent<Player>().director.mode._TNT_State == Mode.TNT_State.Repair5)
+                source._owner.GetComponent<Player>().director.TNTModeJumpState();
+        }
     }
 
     private void Mtcb_AddBuildProgressEvent(float buildProgress)

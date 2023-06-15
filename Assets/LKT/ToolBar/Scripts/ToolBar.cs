@@ -199,7 +199,7 @@ public class ToolBar : MonoBehaviour
 
     float GetDistanceOfSlotNPlayer(ToolBarSlot s)
     {
-        Transform p = GameObject.FindObjectOfType<Transform>();
+        Transform p = GameObject.FindObjectOfType<Player>().transform;
         return (p.position - s.transform.position).magnitude;
     }
 
