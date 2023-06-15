@@ -21,15 +21,15 @@ public class MonsterDictionary {
     //    }
     //}
 
-    
 
 
 
-    public List<float> spawnDelays_WhereEachItemMeans_In_A_Level;
 
-    public List<int> numToSpawn_WhereEachItemMeans_In_A_Level;
+    [NonReorderable] public List<float> spawnDelays_WhereEachItemMeans_In_A_Level;
 
-    public List<int> whichSpawn;
+    [NonReorderable] public List<int> numToSpawn_WhereEachItemMeans_In_A_Level;
+
+    [NonReorderable] public List<int> whichSpawn;
     void Start(){
         //prefab=RMP.reg_Mon_Pref_2;
     }

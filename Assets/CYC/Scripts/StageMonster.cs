@@ -37,7 +37,7 @@ public class StageMonster : Monster
         players = playerdetected.GetComponent<AttackArea>().targets;
         questionMark = indicator.GetNamedChild("Img_QuestionMark").GetComponent<Image>();
         if (target == null)
-            target = GameObject.Find("Core").GetComponent<Transform>();
+            target = GameObject.Find("core").GetComponent<Transform>();
         //result = RandomPoint(target.position, 15f);
         PathFinding(target.position);
     }

@@ -24,7 +24,7 @@ MonoBehaviour:
   toxicEffect: {fileID: 7758672653904282153, guid: 0ab14953843c6da4a8c32bec7287b1a4, type: 3}
   bullet: {fileID: 0}
   baseOffset: 0
-  speed: 3
+  speed: 6
   angularSpeed: 120
   acceleration: 8
   stoppingDistance: 0.5
