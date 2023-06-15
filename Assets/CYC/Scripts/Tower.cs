@@ -151,6 +151,8 @@ public class Tower : MonoBehaviour
                     if (monsters[0] == null) return;
                     RaycastHit hit;
                     Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
+                    //Debug.DrawRay(firePoint.position, (monsters[0].position - firePoint.position).normalized * attackRange, Color.black, 2f);
+                    //Debug.Log(transform.name + hit.transform.name);
                     if (hit.transform != null && hit.transform.tag == "Monster")
                     {
                         isAttacked = true;

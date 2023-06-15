@@ -383,8 +383,8 @@ GameObject:
   - component: {fileID: 9011648103030661363}
   - component: {fileID: 2570483934808727957}
   - component: {fileID: 5343528089953890090}
-  - component: {fileID: 102013808138177035}
   - component: {fileID: 4442540846646583214}
+  - component: {fileID: 8201452108363605351}
   m_Layer: 8
   m_Name: BeholderPolyart
   m_TagString: Monster
@@ -463,6 +463,9 @@ MonoBehaviour:
   chaseDistance: 30
   maxHatred: 3
   hatred: 0
+  wayPointMode: 0
+  waypoints: []
+  currentWaypointIndex: 0
 --- !u!195 &5343528089953890090
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -485,19 +488,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &102013808138177035
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9011648103021171507}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!82 &4442540846646583214
 AudioSource:
   m_ObjectHideFlags: 0
@@ -594,6 +584,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &8201452108363605351
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011648103021171507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &9011648103021171509
 GameObject:
   m_ObjectHideFlags: 0

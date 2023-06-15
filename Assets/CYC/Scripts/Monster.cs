@@ -9,7 +9,7 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
     [SerializeField] protected EnemyScriptableObject enemyScriptable;
     protected NavMeshAgent agent;
     public int hp, damage;
-    [SerializeField] float defense, resistance;
+    [SerializeField] protected float defense, resistance;
     protected float attackDelay;
     float burntTime, slowTime, reductionTime;
     bool isBurnt, isDefenseBreak;
@@ -35,7 +35,7 @@ public abstract class Monster : MonoBehaviour, IMonster,IHP
 
     protected Transform currentTarget;
 
-    AudioSource audioSource;
+    protected AudioSource audioSource;
     public AudioClip clip;
 
     // Start is called before the first frame update
