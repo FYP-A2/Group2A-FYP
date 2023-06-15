@@ -23,7 +23,6 @@ public class GateRepair : MeleeTarget
         base.Start();
         canBeRepair = false;
         repairing = false;
-        maxHP = 100;
         nowHP = 0;
 
         mtcb = FindObjectOfType<MeleeTargetCommonBuild>();
