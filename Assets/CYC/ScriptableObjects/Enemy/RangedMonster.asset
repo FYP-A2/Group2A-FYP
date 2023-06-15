@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangedMonster
   m_EditorClassIdentifier: 
   hp: 100
-  damage: 20
+  damage: 50
   defense: 0
   resistance: 0
   attackRange: 10

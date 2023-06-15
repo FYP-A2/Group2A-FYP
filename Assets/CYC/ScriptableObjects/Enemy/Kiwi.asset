@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9391b5a0a12a54ca411a703defd06e, type: 3}
   m_Name: Kiwi
   m_EditorClassIdentifier: 
-  hp: 100
-  damage: 20
-  defense: 0.1
-  resistance: 0.1
+  hp: 80
+  damage: 100
+  defense: 0.2
+  resistance: 0.2
   attackRange: 2
   attackDelay: 2
   isRanged: 0

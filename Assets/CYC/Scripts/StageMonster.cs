@@ -74,7 +74,16 @@ public class StageMonster : Monster
         if (currentTarget != null && currentTarget != target && !hitTargets.Contains(currentTarget) && !players.Contains(currentTarget))
         {
             currentTarget = null;
-        }        
+        }
+        
+        if(Vector3.Distance(transform.position,target.position) > 300f)
+        {
+            agent.speed = enemyScriptable.speed * 3;
+        }
+        else
+        {
+            agent.speed = enemyScriptable.speed;
+        }
     }
 
     void PlayerDetection()

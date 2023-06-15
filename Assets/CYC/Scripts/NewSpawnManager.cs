@@ -74,7 +74,7 @@ public class NewSpawnManager : MonoBehaviour
             currentSpawnersPath.Add(GetRandomPath(i));
             lineRenderers[i].positionCount = currentSpawnersPath[i].Count;
             lineRenderers[i].SetPositions(currentSpawnersPath[i].Select(t => t.position).ToArray());
-            Debug.Log(enemyPath.isSpawn[stageIndex].spawn[i]);
+            //Debug.Log(enemyPath.isSpawn[stageIndex].spawn[i]);
             if (enemyPath.isSpawn[stageIndex].spawn[i])
             {
                 lineRenderers[i].enabled = true;
@@ -131,7 +131,7 @@ public class NewSpawnManager : MonoBehaviour
 
     public IEnumerator NewSpawnPrefabs(MonsterDictionary enemyData, Stage data)
     {
-        Debug.Log("Starting stage " + data.currentStage);
+        //Debug.Log("Starting stage " + data.currentStage);
         if (enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1] > 0)
         {
             int numToSpawn = enemyData.numToSpawn_WhereEachItemMeans_In_A_Level[data.currentStage - 1];
@@ -198,7 +198,7 @@ public class NewSpawnManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log("End " + data.currentStage);
+        //Debug.Log("End " + data.currentStage);
 
     }  
 }

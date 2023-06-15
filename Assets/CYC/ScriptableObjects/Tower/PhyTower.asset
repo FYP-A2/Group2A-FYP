@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhyTower
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6237713900703245859, guid: 78b966f9c35cd694593da6f1fba75a4b, type: 3}
-  phyDamage: 20
+  phyDamage: 25
   magicDamage: 0
   fireRate: 1
   attackRange: 10

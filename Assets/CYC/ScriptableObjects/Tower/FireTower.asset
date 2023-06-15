@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 2765148239345663367, guid: 13d9f6a08d3fce64a904c7852f3ca9d6, type: 3}
   phyDamage: 0
-  magicDamage: 30
+  magicDamage: 35
   fireRate: 2
   attackRange: 10
   towerType: 1
   level: 1
   bulletPrefab: {fileID: 7140364812559797392, guid: 8395d1750f5bf5744b7e39474c1ecf25, type: 3}
-  burntDamage: 5
+  burntDamage: 10
   burntTime: 5
   exposionRadius: 6
   slowRatio: 0

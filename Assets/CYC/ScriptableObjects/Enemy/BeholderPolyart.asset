@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9391b5a0a12a54ca411a703defd06e, type: 3}
   m_Name: BeholderPolyart
   m_EditorClassIdentifier: 
-  hp: 100
-  damage: 20
-  defense: 0.2
-  resistance: 0.2
+  hp: 200
+  damage: 25
+  defense: 0.3
+  resistance: 0.3
   attackRange: 2
   attackDelay: 2
   isRanged: 0

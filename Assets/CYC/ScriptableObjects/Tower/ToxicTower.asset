@@ -25,6 +25,6 @@ MonoBehaviour:
   exposionRadius: 0
   slowRatio: 0
   slowTime: 0
-  penetrationRatio: 1.5
+  penetrationRatio: 0.5
   penetrationTime: 2
   jumpCount: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -147,16 +148,37 @@ public class Tower : MonoBehaviour
             else
             {
                 if (!isAttacked)
-                {                   
-                    if (monsters[0] == null) return;
-                    RaycastHit hit;
-                    Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
-                    //Debug.DrawRay(firePoint.position, (monsters[0].position - firePoint.position).normalized * attackRange, Color.black, 2f);
-                    //Debug.Log(transform.name + hit.transform.name);
-                    if (hit.transform != null && hit.transform.tag == "Monster")
+                {
+                    if (monsters.Count > 1)
                     {
-                        isAttacked = true;
-                        Shoot(monsters[0]);
+                        for (int i = 0; i < monsters.Count; i++)
+                        {
+                            if (monsters[i] == null) return;
+                            if (monsters[i].GetComponent<Monster>().state == Monster.State.Die) continue;
+                            RaycastHit hit;
+                            Physics.Raycast(firePoint.position, (monsters[i].position - firePoint.position).normalized, out hit, attackRange, layer);
+                            //Debug.DrawRay(firePoint.position, (monsters[0].position - firePoint.position).normalized * attackRange, Color.black, 2f);
+                            //Debug.Log(transform.name + hit.transform.name);
+                            if (hit.transform != null && hit.transform.tag == "Monster")
+                            {
+                                isAttacked = true;
+                                Shoot(monsters[i]);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (monsters[0] == null || monsters[0].GetComponent<Monster>().state == Monster.State.Die) return;
+                        RaycastHit hit;
+                        Physics.Raycast(firePoint.position, (monsters[0].position - firePoint.position).normalized, out hit, attackRange, layer);
+                        //Debug.DrawRay(firePoint.position, (monsters[0].position - firePoint.position).normalized * attackRange, Color.black, 2f);
+                        //Debug.Log(transform.name + hit.transform.name);
+                        if (hit.transform != null && hit.transform.tag == "Monster")
+                        {
+                            isAttacked = true;
+                            Shoot(monsters[0]);
+                        }
                     }
                 }
             }
